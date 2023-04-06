@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="mt-3">
+      <div class="row">
+        <div class="col p-3">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless">
+                <thead>
+                  <tr class="mt-5">
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3">Model Name</th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom" colspan="3">
+                      <h5>i4ET (SINGLE PHASE UPS)</h5>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Bypass Input</b></span>
+                        <div class="d-flex">
+                          <div class="blinking-red"></div>
+                          <span class="status-card-text-space">
+                            Out of Range
+                          </span>
+                        </div>
+                      </div>
+
+                      <div id="id2">
+                        <div class="d-flex flex-column">
+                          <span><b>Main's Supply</b></span>
+                          <div class="d-flex">
+                            <div class="dot-red"></div>
+                            <span class="status-card-text-space"> Absent </span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Main's Supply</b></span>
+                        <div class="d-flex">
+                          <div class="dot-red"></div>
+                          <span class="status-card-text-space"> Absent </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Rectifier Operation</b></span>
+                        <div class="d-flex">
+                          <div class="dot-green"></div>
+                          <span class="status-card-text-space">
+                            Within range
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span
+                          ><b>Booster Operation(Battery Discharging)</b></span
+                        >
+                        <div class="d-flex">
+                          <div class="blinking-green"></div>
+                          <span class="status-card-text-space">
+                            Ok (Within Limit)
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span
+                          ><b>Charger Operation (Battery Charging)</b>
+                        </span>
+                        <div class="d-flex">
+                          <div class="dot-yellow"></div>
+                          <span class="status-card-text-space">
+                            Ok (Within Limit)
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Inverter Operation</b></span>
+                        <div class="d-flex">
+                          <div class="blinking-yellow"></div>
+                          <span class="status-card-text-space">
+                            Ok (Within Limit)
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Load on Inverter</b></span>
+                        <div class="d-flex">
+                          <div class="dot-gray"></div>
+                          <span class="status-card-text-space"> Absent </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Load on Bypass</b></span>
+                        <div class="d-flex">
+                          <div class="blinking"></div>
+                          <span class="status-card-text-space">
+                            Ok (Within Limit)
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Synchronization</b></span>
+                        <div class="d-flex">
+                          <div class="blinking"></div>
+                          <span class="status-card-text-space">
+                            Ok (Within Limit)
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Common Alarm Indication</b></span>
+                        <div class="d-flex">
+                          <div class="blinking"></div>
+                          <span class="status-card-text-space">
+                            Ok (Within Limit)
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-column">
+                        <span><b>Battery MCCB Status </b></span>
+                        <div class="d-flex">
+                          <div class="blinking"></div>
+                          <span class="status-card-text-space">
+                            Ok (Within Limit)
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td>
+                      <div class="d-flex flex-column">
+                        <span>Main's Supply</span>
+                        <div class="d-flex">
+                          <div class="blinking"></div>
+                          <span class="status-card-text-space">
+                            Ok (Within Limit)
+                          </span>
+                        </div>
+                      </div>
+                    </td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        document.getElementById("id2").style.display = "none";
+        alert("I am clicked!");
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+html,body{height:100%;}
+
+a:hover {
+  text-decoration: none;
+  color: #FFF;
+  border-bottom: 1px #fff solid;
+}
+
+.active-tab-border {
+  border: 1px white solid;
+  padding: 7px;
+}
+
+.header-main-menu {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.navbar {
+  background-color: #0d66d0;
+}
+
+.main-bgcolor {
+  background-color: #F0F0F0;
+}
+.nav-tabs .nav-link.active {
+  background-color:#0d66d0;
+  color: #F0F0F0;
+}
+
+.tab-pane { 
+  border-top: 4px solid #0d66d0;
+  padding: 0;
+}
+
+.nav-tabs {
+  margin-bottom: 0;
+}
+
+/* .card:hover{
+  border: #0d66d0;
+} */
+
+.img-setup {
+  height: 100px;
+  width: 120px;
+}
+
+.status-card-text-space {
+  padding-left: 5px;
+}
+
+.dot-red {
+  background:red;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%
+}
+
+.dot-green {
+  background: green;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%
+}
+
+.dot-yellow {
+  background: yellow;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%
+}
+
+.dot-gray {
+  background: #808080;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%
+}
+
+.blinking-red{
+  animation: 1s blink-red ease infinite;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%
+}
+
+
+@keyframes blink-red {
+  0% {
+    opacity: 0;
+    background-color: red;
+  }
+  
+   
+    50% {
+    opacity: 1;
+    background-color: red; 
+  }
+  
+
+  100%{
+    opacity: 0;
+    background-color: red;
+  }
+}
+
+.blinking-green{
+  animation: 1s blink-green ease infinite;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%
+}
+
+@keyframes blink-green {
+  0% {
+    opacity: 0;
+    background-color: green;
+  }
+  
+   
+    50% {
+    opacity: 1;
+    background-color: green; 
+  }
+  
+
+  100%{
+    opacity: 0;
+    background-color: green;
+  }
+}
+
+
+.blinking-yellow{
+  animation: 1s blink-yellow ease infinite;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%
+}
+
+@keyframes blink-yellow {
+  0% {
+    opacity: 0;
+    background-color: yellow;
+  }
+  
+   
+    50% {
+    opacity: 1;
+    background-color: yellow; 
+  }
+  
+
+  100%{
+    opacity: 0;
+    background-color: yellow;
+  }
+}
+
+
