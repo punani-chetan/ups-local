@@ -613,7 +613,15 @@
 <script> -->
 
 <script type="text/javascript">
-  // Close websocket if exists
+
+
+  (function () {
+    // your page initialization code here
+    // Close websocket if exists
+    socketConnection();
+  })();
+
+  // // Close websocket if exists
   function socketConnection() {
     if (ws.readyState == WebSocket.OPEN) {
       connect();
@@ -634,10 +642,10 @@
   // }
   // var curr_date = dd + '/' + mm + '/' + yyyy;
   ////////////RUCHITA///////////////////
-  var obj = new Object();
-  obj.msg_id = 2;
-  obj.dev_id = "94e686fa76e4";
-  var jsonString1 = JSON.stringify(obj);
+  // var obj = new Object();
+  // obj.msg_id = 2;
+  // obj.dev_id = "94e686fa76e4";
+  // var jsonString1 = JSON.stringify(obj);
   //    var obj = new Object();
   //    obj.msg_id = 5;
   //    obj.dev_id  = "94e686fa76e4";
@@ -665,8 +673,8 @@
   ws.onopen = function () {
     //ws.send('Metering WS Started');
     ws.send(jsonString);
-    ws.send(jsonString1);
-    console.log("Web socket is connected")
+    // ws.send(jsonString1);
+    console.log("Web socket is connected in metering")
   };
 
   function connect() {
@@ -824,11 +832,14 @@
         pf_cells[i].innerHTML = POWER_FACTOR[i] + ' PF';
       }
     }
+
+
     setTimeout(function () {
       console.log("WebSocket resend data");
       ws.send('Metering WS Started');
       connect();
     }, 5000);
+
 
     ws.onclose = function (event) {
       console.log("WebSocket is closed now.");

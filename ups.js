@@ -181,6 +181,7 @@ const UPS_MSG = async (payload) => {
     console.log('parsedPayload');
     console.log(parsedPayload);
     return false;
+
     let allTransistersString = splitPayload[1];
     if (allTransistersString) {
         let json = {};
