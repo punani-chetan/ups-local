@@ -617,6 +617,9 @@
 
   (function () {
     // your page initialization code here
+    var url = 'ws://ups-gateway:80/ws';
+    var ws = new WebSocket(url);
+
     // Close websocket if exists
     socketConnection();
   })();
@@ -667,8 +670,9 @@
   // }, 1000);
 
   // document.getElementById('ups_date').innerHTML = curr_date;
-  const url = 'ws://ups-gateway:80/ws'
-  var ws = new WebSocket(url);
+
+  // const url = 'ws://ups-gateway:80/ws'
+  // var ws = new WebSocket(url);
 
   ws.onopen = function () {
     //ws.send('Metering WS Started');
