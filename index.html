@@ -53,7 +53,7 @@
                           <i class="bi bi-check2-circle"></i><span class="m-2">Status</span>
                         </b>
                       </button>
-                      <button class="nav-link" id="nav-metering-tab" data-bs-toggle="tab" data-bs-target="#nav-metering"
+                      <button onclick="showTab('metering')" class="nav-link" id="nav-metering-tab" data-bs-toggle="tab" data-bs-target="#nav-metering"
                         type="button" role="tab" aria-controls="nav-metering" aria-selected="false">
                         <b>
                           <i class="bi bi-speedometer2"></i><span class="m-2">Metering</span>
@@ -262,10 +262,17 @@
                       </div>
                     </div>
                     <div class="tab-pane fade" id="nav-metering" role="tabpanel" aria-labelledby="nav-metering-tab">
-                      <div class="containr">
+                      <div class="containr" id="meteringIframe">
+
                         <!-- <include src="metering.html"></include> -->
-                        <iframe src="metering.html" name="metering" title="Metering" width="100%" style="height: 115vh;"
-                          scrolling="no" allowfullscreen></iframe>
+                        <!-- <iframe 
+                          src="metering.html" 
+                          name="metering" 
+                          title="Metering" width="100%"
+                          style="height: 115vh;" 
+                          scrolling="no" allowfullscreen>
+                        </iframe> -->
+
                       </div>
                     </div>
                     <div class="tab-pane fade" id="nav-eventlog" role="tabpanel" aria-labelledby="nav-eventlog-tab">
@@ -292,18 +299,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
+
+function showTab(tabName){
+let iframeName = tabName+'Iframe';
+document.getElementById('meteringIframe').innerHTML = '<iframe src="metering.html" name="metering" title="Metering" width="100%" style="height: 115vh;" scrolling="no" allowfullscreen></iframe>'
+}
+
+
   // Add html file dynamic --- start
   let includes = document.getElementsByTagName('include');
   for (var i = 0; i < includes.length; i++) {
     let include = includes[i];
-    load_file(includes[i].attributes.src.value, function (text) {
-      include.insertAdjacentHTML('afterend', text);
-      include.remove();
-    });
+    // load_file(includes[i].attributes.src.value, function (text) {
+    //   include.insertAdjacentHTML('afterend', text);
+    //   include.remove();
+    // });
   }
-  function load_file(filename, callback) {
-    fetch(filename).then(response => response.text()).then(text => callback(text));
-  }
+  // function load_file(filename, callback) {
+  //   fetch(filename).then(response => response.text()).then(text => callback(text));
+  // }
   // Add html file dynamic --- end
 
   // Show/Hide element in status
