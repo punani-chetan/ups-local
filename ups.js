@@ -1,3 +1,27 @@
+var hashTagValue;
+var hashTagCss;
+
+function makeTabActive(tagName) {
+
+    console.log('tagName in usp.js => ', tagName);
+    hashTagCss = 'show', 'active';
+
+    document.getElementById('nav-status-tab').classList.remove('active');
+    document.getElementById('nav-metering-tab').classList.remove('active');
+    document.getElementById('nav-eventlog-tab').classList.remove('active');
+    document.getElementById('nav-datalog-tab').classList.remove('active');
+
+    document.getElementById('status').classList.remove('show', 'active');
+    document.getElementById('metering').classList.remove('show', 'active');
+    document.getElementById('eventlog').classList.remove('show', 'active');
+    document.getElementById('datalog').classList.remove('show', 'active');
+
+    document.getElementById('nav-' + tagName + '-tab').classList.add('active');
+    document.getElementById(tagName).classList.add('show', 'active');
+}
+
+
+
 const getthermistervalues = async (remainingTransisters) => {
     let [
         // R_Y_Phase_Input_Voltage,

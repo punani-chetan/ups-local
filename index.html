@@ -45,37 +45,68 @@
                 </div>
                 <div class="mt-3">
                   <nav>
+
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <button class="nav-link active" id="nav-status-tab" data-bs-toggle="tab"
+                      <a onclick="changeUrlParams('status')" class="nav-link active" id="nav-status-tab"
+                        data-toggle="tab" href="#status" role="tab" aria-controls="status" aria-selected="true"><b>
+                          <i class="bi bi-check2-circle"></i><span class="m-2">Status</span>
+                        </b></a>
+
+                      <!-- <button class="nav-link active" id="nav-status-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-status" type="button" role="tab" aria-controls="nav-status"
                         aria-selected="true">
                         <b>
                           <i class="bi bi-check2-circle"></i><span class="m-2">Status</span>
                         </b>
-                      </button>
-                      <button onclick="showTab('metering')" class="nav-link" id="nav-metering-tab" data-bs-toggle="tab" data-bs-target="#nav-metering"
+                      </button> -->
+                      <!-- <button onclick="showTab('metering')" class="nav-link" id="nav-metering-tab" data-bs-toggle="tab" data-bs-target="#nav-metering"
                         type="button" role="tab" aria-controls="nav-metering" aria-selected="false">
                         <b>
                           <i class="bi bi-speedometer2"></i><span class="m-2">Metering</span>
                         </b>
-                      </button>
-                      <button class="nav-link" id="nav-eventlog-tab" data-bs-toggle="tab" data-bs-target="#nav-eventlog"
+                      </button> -->
+
+                      <a onclick="showTab('metering')" class="nav-link" id="nav-metering-tab" data-toggle="tab"
+                        role="tab" href="#metering" aria-controls="metering" aria-selected="false">
+                        <b>
+                          <i class="bi bi-speedometer2"></i><span class="m-2">Metering</span>
+                        </b>
+                      </a>
+
+                      <!-- <button class="nav-link" id="nav-eventlog-tab" data-bs-toggle="tab" data-bs-target="#nav-eventlog"
                         type="button" role="tab" aria-controls="nav-eventlog" aria-selected="false">
                         <b>
                           <i class="bi bi-calendar-event"></i><span class="m-2">EventLog</span>
                         </b>
-                      </button>
-                      <button class="nav-link" id="nav-datalog-tab" data-bs-toggle="tab" data-bs-target="#nav-datalog"
+                      </button> -->
+
+                      <a onclick="changeUrlParams('eventlog')" class="nav-link" id="nav-eventlog-tab" data-toggle="tab"
+                        role="tab" href="#eventlog" aria-controls="eventlog" aria-selected="false">
+                        <b>
+                          <i class="bi bi-speedometer2"></i><span class="m-2">EventLog</span>
+                        </b>
+                      </a>
+
+                      <!-- <button class="nav-link" id="nav-datalog-tab" data-bs-toggle="tab" data-bs-target="#nav-datalog"
                         type="button" role="tab" aria-controls="nav-datalog" aria-selected="false">
                         <b>
                           <i class="bi bi-clipboard-data"></i><span class="m-2">DataLog</span>
                         </b>
-                      </button>
+                      </button> -->
+
+                      <a onclick="changeUrlParams('datalog')" class="nav-link" id="nav-datalog-tab" data-toggle="tab"
+                        role="tab" href="#datalog" aria-controls="datalog" aria-selected="false">
+                        <b>
+                          <i class="bi bi-speedometer2"></i><span class="m-2">DataLog</span>
+                        </b>
+                      </a>
                     </div>
+
                   </nav>
+
+
                   <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-status" role="tabpanel"
-                      aria-labelledby="nav-status-tab">
+                    <div class="tab-pane fade show active" id="status" role="tabpanel" aria-labelledby="nav-status-tab">
                       <div class="mt-3">
                         <!-- <include src="status.html"></include> -->
 
@@ -261,7 +292,7 @@
 
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-metering" role="tabpanel" aria-labelledby="nav-metering-tab">
+                    <div class="tab-pane fade" id="metering" role="tabpanel" aria-labelledby="nav-metering-tab">
                       <div class="containr" id="meteringIframe">
 
                         <!-- <include src="metering.html"></include> -->
@@ -275,11 +306,13 @@
 
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-eventlog" role="tabpanel" aria-labelledby="nav-eventlog-tab">
-                      <include src="eventlog.html"></include>
+                    <div class="tab-pane fade" id="eventlog" role="tabpanel" aria-labelledby="nav-eventlog-tab">
+                      <!-- <include src="eventlog.html"></include> -->
+                      <iframe src="eventlog.html" frameborder="0"></iframe>
                     </div>
-                    <div class="tab-pane fade" id="nav-datalog" role="tabpanel" aria-labelledby="nav-datalog-tab">
-                      <include src="datalog.html"></include>
+                    <div class="tab-pane fade" id="datalog" role="tabpanel" aria-labelledby="nav-datalog-tab">
+                      <!-- <include src="datalog.html"></include> -->
+                      <iframe src="datalog.html" frameborder="0"></iframe>
                     </div>
                   </div>
                 </div>
@@ -300,10 +333,35 @@
   integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
 
-function showTab(tabName){
-let iframeName = tabName+'Iframe';
-document.getElementById('meteringIframe').innerHTML = '<iframe src="metering.html" name="metering" title="Metering" width="100%" style="height: 115vh;" scrolling="no" allowfullscreen></iframe>'
-}
+  (function () {
+    // getUrlParams();
+    console.log(new URL(document.URL).hash);
+    let hashTag = new URL(document.URL).hash;
+    let tagName;
+    if (!hashTag || hashTag == '#status') tagName = 'status';
+    else if (hashTag == '#metering') {
+      tagName = 'metering';
+      showTab(tagName);
+    }
+    else if (hashTag == '#eventlog') tagName = 'eventlog';
+    else if (hashTag == '#datalog') tagName = 'datalog';
+    changeUrlParams(tagName)
+  })();
+
+  function changeUrlParams(tabName) {
+    makeTabActive(tabName);
+  }
+
+  function showTab(tabName) {
+    changeUrlParams('metering');
+
+    let iframeName = tabName + 'Iframe';
+    document.getElementById('meteringIframe').innerHTML = '<iframe src="metering.html" name="metering" title="Metering" width="100%" style="height: 115vh;" scrolling="no" allowfullscreen></iframe>';
+
+    setTimeout(() => {
+      window.scrollTo({ top: 0 });
+    }, 100);
+  }
 
 
   // Add html file dynamic --- start
