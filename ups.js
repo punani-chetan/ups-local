@@ -83,7 +83,8 @@ const singlePhaseValues = async (singlePhaseVars) => {
         Total_UPS_Power_In_KVA: Total_UPS_Power_In_KVA,
         Total_UPS_Power_In_KW: Total_UPS_Power_In_KW,
         Total_UPS_Power_PF: Total_UPS_Power_PF,
-        DATA_TYPE: 1
+        DATA_TYPE: 1,
+        DATA_NAME: 'metering'
 
         // System_Control_Card_Software_Version: convertToDecimal(
         //     System_Control_Card_Software_Version
@@ -221,7 +222,8 @@ const threePhasevalues = async (threePhaseVars) => {
         Total_UPS_Power_In_KVA: Total_UPS_Power_In_KVA,
         Total_UPS_Power_In_KW: Total_UPS_Power_In_KW,
         Total_UPS_Power_PF: Total_UPS_Power_PF,
-        DATA_TYPE: 3
+        DATA_TYPE: 3,
+        DATA_NAME: 'metering'
         // System_Control_Card_Software_Version: convertToDecimal(
         //     System_Control_Card_Software_Version
         // ),
@@ -242,18 +244,108 @@ const UPS_MSG = async (payload) => {
 
     // console.log('parsedPayload');
     // console.log(parsedPayload);
+    // return;
+
+    let json = {};
     let jsonValues = {};
-    if (parsedPayload.ph_type == 1) {
+    let jsonValuesStatus = {};
+
+    if (parsedPayload.ph_type === 1) {
         // single phase
-        if (parsedPayload.msg_id == 1) {
+        if (parsedPayload.msg_id === 1) {
             jsonValues = await singlePhaseValues(parsedPayload.properties);
         }
-    }
-    else if (parsedPayload.ph_type == 0) {
-        // three phase
-        if (parsedPayload.msg_id == 1) {
-            jsonValues = await threePhasevalues(parsedPayload.properties);
+        if (parsedPayload.msg_id === 7) {
+            // jsonValues = await singlePhaseStatusValues(parsedPayload.properties);
+            jsonValues = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
         }
     }
+    else if (parsedPayload.ph_type === 0) {
+        // three phase
+        if (parsedPayload.msg_id === 1) {
+            jsonValues = await threePhasevalues(parsedPayload.properties);
+        }
+        if (parsedPayload.msg_id === 7) {
+            jsonValues = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
+        }
+    }
+    // json = { ...jsonValues, ...jsonValuesStatus };
     return jsonValues;
 };
+
+
+const mapAlarmData = async (alarmData, ph_type) => {
+
+    const [
+        UI_Alarm,
+        Rectifier_Alarm1,
+        Rectifier_Alarm2,
+        Inverter_Alarm1,
+        Inverter_Alarm2,
+        Battery_Alarm1,
+        Inverter_Alarm3,
+        Input_Alarm_0,
+        Can_Alarm1,
+        Rectifier_Status1,
+        Inverter_Status1,
+        Battery_Status1,
+    ] = await Promise.all([
+        createBITAlarmJSON(alarmData.UI_Alarm),
+        createBITAlarmJSON(alarmData.Rectifier_Alarm1),
+        createBITAlarmJSON(alarmData.Rectifier_Alarm2),
+        createBITAlarmJSON(alarmData.Inverter_Alarm1),
+        createBITAlarmJSON(alarmData.Inverter_Alarm2),
+        createBITAlarmJSON(alarmData.Battery_Alarm1),
+        createBITAlarmJSON(alarmData.Inverter_Alarm3),
+        createBITAlarmJSON(alarmData.Input_Alarm_0),
+        createBITAlarmJSON(alarmData.Can_Alarm1),//---
+        createBITAlarmJSON(alarmData.Rectifier_Status1),
+        createBITAlarmJSON(alarmData.Inverter_Status1),
+        createBITAlarmJSON(alarmData.Battery_Status1),
+    ]);
+
+    let allAlarmBitJson = {
+        UI_Alarm,
+        Rectifier_Alarm1,
+        Rectifier_Alarm2,
+        Inverter_Alarm1,
+        Inverter_Alarm2,
+        Battery_Alarm1,
+        Inverter_Alarm3,
+        Input_Alarm_0,
+        Can_Alarm1,
+        Rectifier_Status1,
+        Inverter_Status1,
+        Battery_Status1,
+        DATA_TYPE: ph_type === 1 ? 1 : 3,
+        DATA_NAME: 'status'
+    };
+
+    return allAlarmBitJson;
+};
+
+
+const createBITAlarmJSON = async (UIAlarm) => {
+    // console.log('UIAlarm => ', UIAlarm)
+    let mobusBit = {};
+    const modbus = convertToBinary(UIAlarm);
+    // console.log('modbus => ', modbus)
+    let modbusBITRepr = modbus.toString().padStart(16, "0");
+    // console.log('modbusBITRepr => ', modbusBITRepr);
+    for (let index = 15; index >= 0; index--) {
+        mobusBit[`BIT_${15 - index}`] = Number(modbusBITRepr[index]);
+    }
+    return mobusBit;
+};
+
+function convertToBinary(x) {
+    let bin = 0;
+    let rem, i = 1, step = 1;
+    while (x != 0) {
+        rem = x % 2;
+        x = parseInt(x / 2);
+        bin = bin + rem * i;
+        i = i * 10;
+    }
+    return bin;
+}

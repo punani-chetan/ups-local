@@ -601,7 +601,8 @@
 <script> -->
 
 <script type="text/javascript">
-  const url = 'ws://ups-gateway:80/ws'
+  const url = 'ws://ups-gateway:80/ws';
+  // var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
   connect();
 
@@ -611,14 +612,14 @@
 
   function connect() {
     ws.onmessage = async function (evt) {
-      console.log('event Data', evt.data);
+      // console.log('event Data', evt.data);
       var ups_data = await UPS_MSG(evt.data);
 
       console.log("ups_data");
       console.log(ups_data);
       // return false;
 
-      if (ups_data.DATA_TYPE === 1) {
+      if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === 'metering') {
         /*********************** for 1 phase ******************************/
 
         // need to do show hide when get data
@@ -820,7 +821,7 @@
 
 
 
-      } else if (ups_data.DATA_TYPE === 3) {
+      } else if (ups_data.DATA_TYPE === 3 && ups_data.DATA_NAME === 'metering') {
         /*********************** for 3 phase ******************************/
 
 

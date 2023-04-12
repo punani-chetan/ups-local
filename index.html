@@ -100,7 +100,7 @@
                                     </tr>
                                     <tr>
                                       <th class="border-bottom" colspan="3">
-                                        <h5>i4ET (SINGLE PHASE UPS)</h5>
+                                        <h5 id="titleStr">i4ET (SINGLE PHASE UPS)</h5>
                                       </th>
                                     </tr>
                                   </thead>
@@ -112,54 +112,58 @@
                                           <div class="d-flex flex-column">
                                             <span><b>Bypass Input</b></span>
                                             <div class="d-flex">
-                                              <div class="blinking-red"></div>
-                                              <span class="status-card-text-space">
+                                              <div class="blinking-red" id="bypass_input_css"></div>
+                                              <span class="status-card-text-space" id="bypass_input_css_text">
                                                 Out of Range
                                               </span>
                                             </div>
                                           </div>
                                         </div>
 
-
                                         <div id="id2">
                                           <div class="d-flex flex-column">
                                             <span><b>Main's Supply</b></span>
                                             <div class="d-flex">
-                                              <div class="dot-red"></div>
-                                              <span class="status-card-text-space"> Absent </span>
+                                              <div class="dot-red" id="mainsupply_input_css"></div>
+                                              <span class="status-card-text-space" id="mainsupply_input_css_text">
+                                                Absent
+                                              </span>
                                             </div>
                                           </div>
                                         </div>
                                       </td>
+
                                       <td>
                                         <div class="d-flex flex-column">
                                           <span><b>Main's Supply</b></span>
                                           <div class="d-flex">
-                                            <div class="dot-red"></div>
+                                            <div class="dot-red" id=""></div>
                                             <span class="status-card-text-space"> Absent </span>
                                           </div>
                                         </div>
                                       </td>
+
                                       <td>
                                         <div class="d-flex flex-column">
                                           <span><b>Rectifier Operation</b></span>
                                           <div class="d-flex">
-                                            <div class="dot-green"></div>
-                                            <span class="status-card-text-space">
+                                            <div class="dot-green" id="rectifier_input_css"></div>
+                                            <span class="status-card-text-space" id="rectifier_input_css_text">
                                               Within range
                                             </span>
                                           </div>
                                         </div>
                                       </td>
                                     </tr>
+
                                     <tr>
                                       <th scope="row"></th>
                                       <td>
                                         <div class="d-flex flex-column">
                                           <span><b>Booster Operation(Battery Discharging)</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking-green"></div>
-                                            <span class="status-card-text-space">
+                                            <div class="blinking-green" id="battery_input_css"></div>
+                                            <span class="status-card-text-space" id="battery_input_css_text">
                                               Ok (Within Limit)
                                             </span>
                                           </div>
@@ -170,8 +174,8 @@
                                           <span><b>Charger Operation (Battery Charging)</b>
                                           </span>
                                           <div class="d-flex">
-                                            <div class="dot-yellow"></div>
-                                            <span class="status-card-text-space">
+                                            <div class="dot-yellow" id="battery_charging_input_css"></div>
+                                            <span class="status-card-text-space" id="battery_charging_input_css_text">
                                               Ok (Within Limit)
                                             </span>
                                           </div>
@@ -181,8 +185,8 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Inverter Operation</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking-yellow"></div>
-                                            <span class="status-card-text-space">
+                                            <div class="blinking-yellow" id="inverter_input_css"></div>
+                                            <span class="status-card-text-space" id="inverter_input_css_text">
                                               Ok (Within Limit)
                                             </span>
                                           </div>
@@ -195,8 +199,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Load on Inverter</b></span>
                                           <div class="d-flex">
-                                            <div class="dot-gray"></div>
-                                            <span class="status-card-text-space"> Absent </span>
+                                            <div class="dot-gray" id="load_inverter_input_css"></div>
+                                            <span class="status-card-text-space" id="load_inverter_input_css_text">
+                                              Absent </span>
                                           </div>
                                         </div>
                                       </td>
@@ -204,8 +209,8 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Load on Bypass</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking"></div>
-                                            <span class="status-card-text-space">
+                                            <div class="blinking" id="load_bypass_input_css"></div>
+                                            <span class="status-card-text-space" id="load_bypass_input_css_text">
                                               Ok (Within Limit)
                                             </span>
                                           </div>
@@ -215,8 +220,8 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Synchronization</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking"></div>
-                                            <span class="status-card-text-space">
+                                            <div class="blinking" id="synchronization_input_css"></div>
+                                            <span class="status-card-text-space" id="synchronization_input_css_text">
                                               Ok (Within Limit)
                                             </span>
                                           </div>
@@ -229,8 +234,8 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Common Alarm Indication</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking"></div>
-                                            <span class="status-card-text-space">
+                                            <div class="blinking" id="common_alarm_input_css"></div>
+                                            <span class="status-card-text-space" id="common_alarm_input_css_text">
                                               Ok (Within Limit)
                                             </span>
                                           </div>
@@ -240,8 +245,8 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Battery MCCB Status </b></span>
                                           <div class="d-flex">
-                                            <div class="blinking"></div>
-                                            <span class="status-card-text-space">
+                                            <div class="blinking" id="battery_mccb_input_css"></div>
+                                            <span class="status-card-text-space" id="battery_mccb_input_css_text">
                                               Ok (Within Limit)
                                             </span>
                                           </div>
@@ -370,8 +375,276 @@
   // var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
 
+  connect();
+
   ws.onopen = function () {
-    // ws.send('Metering WS Started');
+    ws.send('Status WS Started');
     console.log("Web socket is connected in index.html");
   };
+
+
+  function connect() {
+    ws.onmessage = async function (evt) {
+      // console.log('event Data in index', evt.data);
+      var ups_data = await UPS_MSG(evt.data);
+
+      console.log("ups_data in index");
+      console.log(ups_data);
+      // return false;
+
+      let titleStr;
+      let UI_Alarm = ups_data?.UI_Alarm;
+      let Rectifier_Alarm1 = ups_data?.Rectifier_Alarm1;
+      let Rectifier_Alarm2 = ups_data?.Rectifier_Alarm2;
+      let Inverter_Alarm1 = ups_data?.Inverter_Alarm1;
+      let Inverter_Alarm2 = ups_data?.Inverter_Alarm2;
+      let Battery_Alarm1 = ups_data?.Battery_Alarm1;
+      let Inverter_Alarm3 = ups_data?.Inverter_Alarm3;
+      let Input_Alarm_0 = ups_data?.Input_Alarm_0;
+      let Can_Alarm1 = ups_data?.Can_Alarm1;
+      let Rectifier_Status1 = ups_data?.Rectifier_Status1;
+      let Inverter_Status1 = ups_data?.Inverter_Status1;
+      let Battery_Status1 = ups_data?.Battery_Status1;
+
+      let Bypass_Input_text;
+      let Bypass_Input_text_class;
+
+      let mainsupply_Input_text;
+      let mainsupply_Input_text_class;
+
+      let rectifier_Input_text;
+      let rectifier_Input_text_class;
+
+      let battery_Input_text;
+      let battery_Input_text_class;
+
+      let battery_charging_Input_text;
+      let battery_charging_Input_text_class;
+
+      let inverter_Input_text;
+      let inverter_Input_text_class;
+
+      let load_inverter_Input_text;
+      let load_inverter_Input_text_class;
+
+      let synchronization_Input_text;
+      let synchronization_Input_text_class;
+
+      let common_alarm_Input_text;
+      let common_alarm_Input_text_class;
+
+      let battery_mccb_Input_text;
+      let battery_mccb_Input_text_class;
+
+
+      if (ups_data.DATA_NAME === 'status') {
+        titleStr = (ups_data.DATA_TYPE === 1) ? 'i4ET (1-PHASE UPS)' : 'i6ET (3-PHASE UPS)';
+        document.getElementById('titleStr').innerText = titleStr;
+
+        /******************** bypass input **************************/
+
+        if (Inverter_Alarm1.BIT_2 === 1 || Inverter_Alarm1.BIT_3 === 1) {
+          Bypass_Input_text = 'Out of Range';
+          Bypass_Input_text_class = 'blinking-red';
+        } else if (Inverter_Status1.BIT_6 === 0) {
+          Bypass_Input_text = 'Absent';
+          Bypass_Input_text_class = 'dot-red';
+        } else if (Inverter_Status1.BIT_6 === 1) {
+          Bypass_Input_text = 'Within range';
+          Bypass_Input_text_class = 'dot-green';
+        }
+
+        document.getElementById('bypass_input_css').classList.remove(...document.getElementById('bypass_input_css').classList);
+        document.getElementById('bypass_input_css').classList.add(Bypass_Input_text_class);
+        document.getElementById('bypass_input_css_text').innerText = Bypass_Input_text;
+
+        /******************** bypass input **************************/
+
+
+        /******************** main supply **************************/
+
+        if (Rectifier_Alarm1.BIT_6 === 1) {
+          mainsupply_Input_text = 'Absent';
+          mainsupply_Input_text_class = 'dot-gray';
+        } else if (Rectifier_Alarm1.BIT_2 === 1 || Rectifier_Alarm1.BIT_3 === 1) {
+          mainsupply_Input_text = 'Out of Range';
+          mainsupply_Input_text_class = 'blinking-green';
+        } else if (Rectifier_Alarm1.BIT_6 === 0) {
+          mainsupply_Input_text = 'Within range';
+          mainsupply_Input_text_class = 'dot-green';
+        }
+
+        document.getElementById('mainsupply_input_css').classList.remove(...document.getElementById('mainsupply_input_css').classList);
+        document.getElementById('mainsupply_input_css').classList.add(mainsupply_Input_text_class);
+        document.getElementById('mainsupply_input_css_text').innerText = mainsupply_Input_text;
+        /******************** main supply **************************/
+
+
+        /******************** rectifier operation **************************/
+
+        if (Rectifier_Alarm1.BIT_0 === 1) {
+          rectifier_Input_text = 'Trip';
+          rectifier_Input_text_class = 'blinking-red';
+        } else if (Rectifier_Status1.BIT_1 === 0) {
+          rectifier_Input_text = 'OFF';
+          rectifier_Input_text_class = 'dot-gray';
+        } else if (Rectifier_Status1.BIT_1 === 1) {
+          rectifier_Input_text = 'ON';
+          rectifier_Input_text_class = 'dot-green';
+        }
+
+        document.getElementById('rectifier_input_css').classList.remove(...document.getElementById('rectifier_input_css').classList);
+        document.getElementById('rectifier_input_css').classList.add(rectifier_Input_text_class);
+        document.getElementById('rectifier_input_css_text').innerText = rectifier_Input_text;
+        /******************** rectifier operation **************************/
+
+
+        /******************** booster operation **************************/
+        if (Battery_Alarm1.BIT_5 === 1) {
+          battery_Input_text = 'Trip';
+          battery_Input_text_class = 'blinking-red';
+        } else if (Battery_Status1.BIT_2 === 0) {
+          battery_Input_text = 'OFF';
+          battery_Input_text_class = 'dot-gray';
+        } else if (Battery_Status1.BIT_2 === 1) {
+          battery_Input_text = 'ON';
+          battery_Input_text_class = 'dot-red';
+        }
+
+        document.getElementById('battery_input_css').classList.remove(...document.getElementById('battery_input_css').classList);
+        document.getElementById('battery_input_css').classList.add(battery_Input_text_class);
+        document.getElementById('battery_input_css_text').innerText = battery_Input_text;
+        /******************** booster operation **************************/
+
+        /******************** charger operation **************************/
+        if (Battery_Status1.BIT_3 === 1) {
+          battery_charging_Input_text = 'Trip';
+          battery_charging_Input_text_class = 'blinking-red';
+        } else if (Battery_Status1.BIT_6 === 1) {
+          battery_charging_Input_text = 'Boost charge';
+          battery_charging_Input_text_class = 'dot-red';
+        } else if (Battery_Status1.BIT_5 === 1) {
+          battery_charging_Input_text = 'Float Charge';
+          battery_charging_Input_text_class = 'dot-green';
+        } else if (Battery_Status1.BIT_1 === 0) {
+          battery_charging_Input_text = 'OFF';
+          battery_charging_Input_text_class = 'dot-gray';
+        }
+
+        document.getElementById('battery_charging_input_css').classList.remove(...document.getElementById('battery_charging_input_css').classList);
+        document.getElementById('battery_charging_input_css').classList.add(battery_charging_Input_text_class);
+        document.getElementById('battery_charging_input_css_text').innerText = battery_charging_Input_text;
+        /******************** charger operation **************************/
+
+        /******************** inverter operation **************************/
+        if (Inverter_Alarm1.BIT_6 === 1) {
+          inverter_Input_text = 'Trip';
+          inverter_Input_text_class = 'blinking-red';
+        } else if (Inverter_Status1.BIT_0 === 0) {
+          inverter_Input_text = 'OFF';
+          inverter_Input_text_class = 'dot-red';
+        } else if (Inverter_Status1.BIT_0 === 1) {
+          inverter_Input_text = 'ON';
+          inverter_Input_text_class = 'dot-green';
+        }
+
+        document.getElementById('inverter_input_css').classList.remove(...document.getElementById('inverter_input_css').classList);
+        document.getElementById('inverter_input_css').classList.add(inverter_Input_text_class);
+        document.getElementById('inverter_input_css_text').innerText = inverter_Input_text;
+        /******************** inverter operation **************************/
+
+        /******************** load on inverter operation **************************/
+        if (Inverter_Status1.BIT_4 === 1) {
+          load_inverter_Input_text = 'Inverter SSW ON';
+          load_inverter_Input_text_class = 'dot-green';
+        } else if (Inverter_Status1.BIT_4 === 0) {
+          load_inverter_Input_text = 'Inverter SSW OFF';
+          load_inverter_Input_text_class = 'dot-gray';
+        }
+
+        document.getElementById('load_inverter_input_css').classList.remove(...document.getElementById('load_inverter_input_css').classList);
+        document.getElementById('load_inverter_input_css').classList.add(load_inverter_Input_text_class);
+        document.getElementById('load_inverter_input_css_text').innerText = load_inverter_Input_text;
+        /******************** load on inverter operation **************************/
+
+        /******************** load on bypass operation **************************/
+        if (Inverter_Status1.BIT_3 === 1) {
+          load_bypass_Input_text = 'Bypass SSW ON';
+          load_bypass_Input_text_class = 'dot-red';
+        } else if (Inverter_Status1.BIT_3 === 0) {
+          load_bypass_Input_text = 'Bypass SSW OFF';
+          load_bypass_Input_text_class = 'dot-gray';
+        }
+
+        document.getElementById('load_bypass_input_css').classList.remove(...document.getElementById('load_bypass_input_css').classList);
+        document.getElementById('load_bypass_input_css').classList.add(load_bypass_Input_text_class);
+        document.getElementById('load_bypass_input_css_text').innerText = load_bypass_Input_text;
+        /******************** load on bypass operation **************************/
+
+
+        /******************** synchronization **************************/
+        if (Inverter_Status1.BIT_8 === 1) {
+          synchronization_Input_text = 'Sync';
+          synchronization_Input_text_class = 'dot-yellow';
+        } else if (Inverter_Status1.BIT_8 === 0) {
+          synchronization_Input_text = 'No sync';
+          synchronization_Input_text_class = 'blinking-yellow';
+        }
+
+        document.getElementById('synchronization_input_css').classList.remove(...document.getElementById('synchronization_input_css').classList);
+        document.getElementById('synchronization_input_css').classList.add(synchronization_Input_text_class);
+        document.getElementById('synchronization_input_css_text').innerText = synchronization_Input_text;
+        /******************** synchronization **************************/
+
+        /******************** battery mccb status  **************************/
+        if (UI_Alarm.BIT_5 === 1) {
+          battery_mccb_Input_text = 'Battery MCCB is OFF';
+          battery_mccb_Input_text_class = 'blinking-red';
+        } else if (UI_Alarm.BIT_5 === 0) {
+          battery_mccb_Input_text = 'Battery MCCB is ON';
+          battery_mccb_Input_text_class = 'dot-green';
+        }
+
+        document.getElementById('battery_mccb_input_css').classList.remove(...document.getElementById('battery_mccb_input_css').classList);
+        document.getElementById('battery_mccb_input_css').classList.add(battery_mccb_Input_text_class);
+        document.getElementById('battery_mccb_input_css_text').innerText = battery_mccb_Input_text;
+        /******************** battery mccb status **************************/
+
+
+        /******************** common alarm indication  **************************/
+        if (UI_Alarm.BIT_0 && UI_Alarm.BIT_1 === 0 && UI_Alarm.BIT_2 === 0 && UI_Alarm.BIT_3 === 0 && UI_Alarm.BIT_4 === 0 && UI_Alarm.BIT_5 === 0 && UI_Alarm.BIT_6 === 0 && UI_Alarm.BIT_7 === 0 && UI_Alarm.BIT_8 === 0 && UI_Alarm.BIT_9 === 0 && UI_Alarm.BIT_10 === 0 && UI_Alarm.BIT_11 === 0 && UI_Alarm.BIT_12 === 0 && UI_Alarm.BIT_13 === 0 && UI_Alarm.BIT_14 === 0 && UI_Alarm.BIT_15 === 0 && Rectifier_Alarm1.BIT_0 === 0 && Rectifier_Alarm1.BIT_1 === 0 && Rectifier_Alarm1.BIT_2 === 0 && Rectifier_Alarm1.BIT_3 === 0 && Rectifier_Alarm1.BIT_4 === 0 && Rectifier_Alarm1.BIT_5 === 0 && Rectifier_Alarm1.BIT_6 === 0 && Rectifier_Alarm1.BIT_7 === 0 && Rectifier_Alarm1.BIT_8 === 0 && Rectifier_Alarm1.BIT_9 === 0 && Rectifier_Alarm1.BIT_10 === 0 && Rectifier_Alarm1.BIT_11 === 0 && Rectifier_Alarm1.BIT_12 === 0 && Rectifier_Alarm1.BIT_13 === 0 && Rectifier_Alarm1.BIT_14 === 0 && Rectifier_Alarm1.BIT_15 === 0 && Rectifier_Alarm2.BIT_0 === 0 && Rectifier_Alarm2.BIT_1 === 0 && Rectifier_Alarm2.BIT_2 === 0 && Rectifier_Alarm2.BIT_3 === 0 && Rectifier_Alarm2.BIT_4 === 0 && Rectifier_Alarm2.BIT_5 === 0 && Rectifier_Alarm2.BIT_6 === 0 && Rectifier_Alarm2.BIT_7 === 0 && Rectifier_Alarm2.BIT_8 === 0 && Rectifier_Alarm2.BIT_9 === 0 && Rectifier_Alarm2.BIT_10 === 0 && Rectifier_Alarm2.BIT_11 === 0 && Rectifier_Alarm2.BIT_12 === 0 && Rectifier_Alarm2.BIT_13 === 0 && Rectifier_Alarm2.BIT_14 === 0 && Rectifier_Alarm2.BIT_15 === 0 && Inverter_Alarm1.BIT_0 === 0 && Inverter_Alarm1.BIT_1 === 0 && Inverter_Alarm1.BIT_2 === 0 && Inverter_Alarm1.BIT_3 === 0 && Inverter_Alarm1.BIT_4 === 0 && Inverter_Alarm1.BIT_5 === 0 && Inverter_Alarm1.BIT_6 === 0 && Inverter_Alarm1.BIT_7 === 0 && Inverter_Alarm1.BIT_8 === 0 && Inverter_Alarm1.BIT_9 === 0 && Inverter_Alarm1.BIT_10 === 0 && Inverter_Alarm1.BIT_11 === 0 && Inverter_Alarm1.BIT_12 === 0 && Inverter_Alarm1.BIT_13 === 0 && Inverter_Alarm1.BIT_14 === 0 && Inverter_Alarm1.BIT_15 === 0 && Inverter_Alarm2.BIT_0 === 0 && Inverter_Alarm2.BIT_1 === 0 && Inverter_Alarm2.BIT_2 === 0 && Inverter_Alarm2.BIT_3 === 0 && Inverter_Alarm2.BIT_4 === 0 && Inverter_Alarm2.BIT_5 === 0 && Inverter_Alarm2.BIT_6 === 0 && Inverter_Alarm2.BIT_7 === 0 && Inverter_Alarm2.BIT_8 === 0 && Inverter_Alarm2.BIT_9 === 0 && Inverter_Alarm2.BIT_10 === 0 && Inverter_Alarm2.BIT_11 === 0 && Inverter_Alarm2.BIT_12 === 0 && Inverter_Alarm2.BIT_13 === 0 && Inverter_Alarm2.BIT_14 === 0 && Inverter_Alarm2.BIT_15 === 0 && Battery_Alarm1.BIT_0 === 0 && Battery_Alarm1.BIT_1 === 0 && Battery_Alarm1.BIT_2 === 0 && Battery_Alarm1.BIT_3 === 0 && Battery_Alarm1.BIT_4 === 0 && Battery_Alarm1.BIT_5 === 0 && Battery_Alarm1.BIT_6 === 0 && Battery_Alarm1.BIT_7 === 0 && Battery_Alarm1.BIT_8 === 0 && Battery_Alarm1.BIT_9 === 0 && Battery_Alarm1.BIT_10 === 0 && Battery_Alarm1.BIT_11 === 0 && Battery_Alarm1.BIT_12 === 0 && Battery_Alarm1.BIT_13 === 0 && Battery_Alarm1.BIT_14 === 0 && Battery_Alarm1.BIT_15 === 0 && Inverter_Alarm3.BIT_0 === 0 && Inverter_Alarm3.BIT_1 === 0 && Inverter_Alarm3.BIT_2 === 0 && Inverter_Alarm3.BIT_3 === 0 && Inverter_Alarm3.BIT_4 === 0 && Inverter_Alarm3.BIT_5 === 0 && Inverter_Alarm3.BIT_6 === 0 && Inverter_Alarm3.BIT_7 === 0 && Inverter_Alarm3.BIT_8 === 0 && Inverter_Alarm3.BIT_9 === 0 && Inverter_Alarm3.BIT_10 === 0 && Inverter_Alarm3.BIT_11 === 0 && Inverter_Alarm3.BIT_12 === 0 && Inverter_Alarm3.BIT_13 === 0 && Inverter_Alarm3.BIT_14 === 0 && Inverter_Alarm3.BIT_15 === 0 && Input_Alarm_0.BIT_0 === 0 && Input_Alarm_0.BIT_1 === 0 && Input_Alarm_0.BIT_2 === 0 && Input_Alarm_0.BIT_3 === 0 && Input_Alarm_0.BIT_4 === 0 && Input_Alarm_0.BIT_5 === 0 && Input_Alarm_0.BIT_6 === 0 && Input_Alarm_0.BIT_7 === 0 && Input_Alarm_0.BIT_8 === 0 && Input_Alarm_0.BIT_9 === 0 && Input_Alarm_0.BIT_10 === 0 && Input_Alarm_0.BIT_11 === 0 && Input_Alarm_0.BIT_12 === 0 && Input_Alarm_0.BIT_13 === 0 && Input_Alarm_0.BIT_14 === 0 && Input_Alarm_0.BIT_15 === 0 && Can_Alarm1.BIT_0 === 0 && Can_Alarm1.BIT_1 === 0 && Can_Alarm1.BIT_2 === 0 && Can_Alarm1.BIT_3 === 0 && Can_Alarm1.BIT_4 === 0 && Can_Alarm1.BIT_5 === 0 && Can_Alarm1.BIT_6 === 0 && Can_Alarm1.BIT_7 === 0 && Can_Alarm1.BIT_8 === 0 && Can_Alarm1.BIT_9 === 0 && Can_Alarm1.BIT_10 === 0 && Can_Alarm1.BIT_11 === 0 && Can_Alarm1.BIT_12 === 0 && Can_Alarm1.BIT_13 === 0 && Can_Alarm1.BIT_14 === 0 && Can_Alarm1.BIT_15 === 0) {
+          common_alarm_Input_text = 'No Alarm';
+          common_alarm_Input_text_class = 'dot-gray';
+        } else {
+          common_alarm_Input_text = 'Any alarm present';
+          common_alarm_Input_text_class = 'blinking-red';
+        }
+
+        document.getElementById('common_alarm_input_css').classList.remove(...document.getElementById('common_alarm_input_css').classList);
+        document.getElementById('common_alarm_input_css').classList.add(common_alarm_Input_text_class);
+        document.getElementById('common_alarm_input_css_text').innerText = common_alarm_Input_text;
+        /******************** common alarm indication **************************/
+
+
+
+
+
+      }
+    }
+    // console.log(ws);
+
+
+    // setTimeout(function () {
+    //   console.log("WebSocket resend data");
+    //   ws.send("Metering WS Started");
+    //   connect();
+    // }, 5000);
+
+    ws.onclose = function (event) {
+      console.log("WebSocket is closed now.");
+      setTimeout(function () {
+        connect();
+      }, 1000);
+    };
+  }
 </script>
