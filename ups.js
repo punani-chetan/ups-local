@@ -245,27 +245,15 @@ const UPS_MSG = async (payload) => {
     let jsonValues = {};
     if (parsedPayload.ph_type == 1) {
         // single phase
-        jsonValues = await singlePhaseValues(parsedPayload.properties);
+        if (parsedPayload.msg_id == 1) {
+            jsonValues = await singlePhaseValues(parsedPayload.properties);
+        }
     }
     else if (parsedPayload.ph_type == 0) {
         // three phase
-        jsonValues = await threePhasevalues(parsedPayload.properties);
+        if (parsedPayload.msg_id == 1) {
+            jsonValues = await threePhasevalues(parsedPayload.properties);
+        }
     }
     return jsonValues;
-
-    // return false;
-
-    // let allTransistersString = splitPayload[1];
-    // if (allTransistersString) {
-    //     let json = {};
-    //     let allTransistersArray = allTransistersString.split(",");
-    //     // let alarmNotificationTransiter = allTransistersArray.slice(0, 12);
-    //     let remainingTransisters = allTransistersArray.slice(12);
-    //     // let alarmJson = await mapAlarmData(alarmNotificationTransiter);
-    //     let thermisterValues = await getthermistervalues(remainingTransisters);
-    //     json = { ...alarmJson, ...thermisterValues };
-    //     return json;
-    //     //console.log(json);
-    //     // ! Use this JSON for frontend represenataion
-    // }
 };

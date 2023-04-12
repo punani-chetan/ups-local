@@ -601,22 +601,21 @@
 <script> -->
 
 <script type="text/javascript">
-  (function () {
-    console.log("in metering");
-    connect();
-  })();
+  const url = 'ws://ups-gateway:80/ws'
+  var ws = new WebSocket(url);
+  connect();
+
+  ws.onopen = function () {
+    ws.send('Metering WS Started');
+  };
 
   function connect() {
-    // open web socket
-    const url = 'ws://ups-gateway:80/ws'
-    // var url = "ws://localhost:8080";
-    var ws = new WebSocket(url);
     ws.onmessage = async function (evt) {
-      // console.log(evt.data);
+      console.log('event Data', evt.data);
       var ups_data = await UPS_MSG(evt.data);
 
-      // console.log("ups_data");
-      // console.log(ups_data);
+      console.log("ups_data");
+      console.log(ups_data);
       // return false;
 
       if (ups_data.DATA_TYPE === 1) {
