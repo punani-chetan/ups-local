@@ -120,7 +120,7 @@
                                           </div>
                                         </div>
 
-                                        <div id="id2">
+                                        <!-- <div id="id2">
                                           <div class="d-flex flex-column">
                                             <span><b>Main's Supply</b></span>
                                             <div class="d-flex">
@@ -130,15 +130,17 @@
                                               </span>
                                             </div>
                                           </div>
-                                        </div>
+                                        </div> -->
                                       </td>
 
                                       <td>
                                         <div class="d-flex flex-column">
                                           <span><b>Main's Supply</b></span>
                                           <div class="d-flex">
-                                            <div class="dot-red" id=""></div>
-                                            <span class="status-card-text-space"> Absent </span>
+                                            <div class="dot-red" id="mainsupply_input_css"></div>
+                                            <span class="status-card-text-space" id="mainsupply_input_css_text">
+                                              Absent
+                                            </span>
                                           </div>
                                         </div>
                                       </td>
@@ -349,7 +351,7 @@
 
 
   // Show/Hide element in status
-  document.getElementById("id2").style.display = "none";
+  // document.getElementById("id2").style.display = "none";
 
   // Date & Time --- start
   var today = new Date();
@@ -371,8 +373,8 @@
   document.getElementById('ups_date').innerHTML = curr_date;
   // Date & Time --- end
 
-  const url = 'ws://ups-gateway:80/ws';
-  // var url = 'ws://localhost:8080';
+  // const url = 'ws://ups-gateway:80/ws';
+  var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
 
   connect();
