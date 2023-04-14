@@ -142,9 +142,9 @@
                 </tr>
                 <tr>
                   <th scope="row">Frequency</th>
-                  <td>0 Htz</td>
-                  <td>0 Htz</td>
-                  <td>0 Htz</td>
+                  <td>0 Hz</td>
+                  <td>0 Hz</td>
+                  <td>0 Hz</td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp;</th>
@@ -304,7 +304,7 @@
                 <tr>
                   <th scope="col" colspan="3">Rectifier</th>
                   <th scope="row">DC Link Voltage</th>
-                  <th scope="row">0 Volt</th>
+                  <td scope="row">0 Volt</td>
                 </tr>
               </thead>
             </table>
@@ -352,9 +352,9 @@
                 </tr>
                 <tr>
                   <th scope="row">Frequency</th>
-                  <td>0 Htz</td>
-                  <td>0 Htz</td>
-                  <td>0 Htz</td>
+                  <td>0 Hz</td>
+                  <td>0 Hz</td>
+                  <td>0 Hz</td>
                 </tr>
               </tbody>
             </table>
@@ -395,7 +395,7 @@
                 </tr>
                 <tr>
                   <th scope="row">Frequency</th>
-                  <td>0 Htz</td>
+                  <td>0 Hz</td>
                   <!-- <td>0 Volt</td>
                   <td>0 Volt</td> -->
                 </tr>
@@ -437,7 +437,7 @@
                   <td>0 Volt</td> -->
                 </tr>
                 <th scope="row">Frequency</th>
-                <td>0 Htz</td>
+                <td>0 Hz</td>
               </tbody>
             </table>
           </div>
@@ -520,7 +520,7 @@
                 </tr>
                 <tr>
                   <th scope="row">Frequency</th>
-                  <td>0 Htz</td>
+                  <td>0 Hz</td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp;</th>
@@ -583,7 +583,7 @@
               <tr>
                 <th scope="col" colspan="3">Rectifier</th>
                 <th scope="row">DC Link Voltage</th>
-                <th scope="row">0 Volt</th>
+                <td scope="row">0 Volt</td>
               </tr>
             </thead>
           </table>
@@ -760,7 +760,7 @@
 
         frequency_cells = frequency_Row.getElementsByTagName("td");
         for (let i = 0; i < frequency_cells.length; i++) {
-          frequency_cells[i].innerHTML = INVERTER_FREQUENCY[i] + " Htz";
+          frequency_cells[i].innerHTML = INVERTER_FREQUENCY[i] + " Hz";
         }
 
         var output_table = document.getElementById("output-single");
@@ -962,7 +962,7 @@
 
         frequency_cells = frequency_Row.getElementsByTagName("td");
         for (let i = 0; i < frequency_cells.length; i++) {
-          frequency_cells[i].innerHTML = INVERTER_FREQUENCY[i] + " Htz";
+          frequency_cells[i].innerHTML = INVERTER_FREQUENCY[i] + " Hz";
         }
 
         var output_table = document.getElementById("output");
