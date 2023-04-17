@@ -336,6 +336,7 @@
 
   function changeUrlParams(tabName) {
     makeTabActive(tabName);
+    if (tabName === 'status') connect();
   }
 
   function showTab(tabName) {
@@ -349,10 +350,7 @@
     }, 100);
   }
 
-  // Show/Hide element in status
-  // document.getElementById("id2").style.display = "none";
-
-  // Date & Time --- start
+  /********************** Date & Time --- start ****************/
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
@@ -370,14 +368,15 @@
     document.getElementById('ups_time').innerHTML = curr_time;
   }, 1000);
   document.getElementById('ups_date').innerHTML = curr_date;
-  // Date & Time --- end
+  /********************** Date & Time --- end ****************/
 
 
   connect();
 
   function connect() {
-    // var ws = new WebSocket('ws://ups-gateway:80/ws');
-    var ws = new WebSocket('ws://localhost:8080');
+    // var url = 'ws://ups-gateway:80/ws';
+    var url = 'ws://localhost:8080';
+    var ws = new WebSocket(url);
 
     ws.onopen = function () {
       ws.send('Status WS Started');
@@ -634,10 +633,14 @@
 
     ws.onclose = function (event) {
       console.log("WebSocket is closed now.");
-
       setTimeout(function () {
         connect();
-      }, 1000);
+      }, 5000);
     };
+
+    // ws.onerror = (error) => {
+    //   console.error('WebSocket error', error);
+    // };
+
   }
 </script>
