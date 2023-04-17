@@ -349,7 +349,6 @@
     }, 100);
   }
 
-
   // Show/Hide element in status
   // document.getElementById("id2").style.display = "none";
 
@@ -373,19 +372,29 @@
   document.getElementById('ups_date').innerHTML = curr_date;
   // Date & Time --- end
 
-  const url = 'ws://ups-gateway:80/ws';
+  // // const url = 'ws://ups-gateway:80/ws';
   // var url = 'ws://localhost:8080';
-  var ws = new WebSocket(url);
+  // var ws = new WebSocket(url);
 
+  // var isConnected = false;
+
+  // connect();
+
+  // ws.onopen = function () {
+  //   isConnected = true;
+  //   ws.send('Status WS Started');
+  //   console.log("Web socket is connected in index.html");
+  // };
   connect();
-
-  ws.onopen = function () {
-    ws.send('Status WS Started');
-    console.log("Web socket is connected in index.html");
-  };
-
-
   function connect() {
+    var ws = new WebSocket('ws://ups-gateway:80/ws');
+    // var ws = new WebSocket('ws://localhost:8080');
+
+    ws.onopen = function () {
+      ws.send('Status WS Started');
+      console.log("Web socket is connected in index.html");
+    };
+
     ws.onmessage = async function (evt) {
       // console.log('event Data in index', evt.data);
       var ups_data = await UPS_MSG(evt.data);
@@ -640,13 +649,20 @@
     //   console.log("WebSocket resend data");
     //   ws.send("Metering WS Started");
     //   connect();
-    // }, 5000);
+    // }, 2000);
 
     ws.onclose = function (event) {
       console.log("WebSocket is closed now.");
+      // ws = null;
+      // console.log(ws.readyState)
+      // if (!ws || ws.readyState == 3) {
+
       setTimeout(function () {
+        // var url = 'ws://localhost:8080';
+        // var ws = new WebSocket(url);
         connect();
       }, 1000);
+      // }
     };
   }
 </script>
