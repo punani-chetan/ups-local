@@ -380,7 +380,15 @@
 
     ws.onopen = function () {
       ws.send('Status WS Started');
-      // console.log("Web socket is connected in index.html");
+      console.log("Web socket is connected in index.html");
+
+      ws.onclose = function (event) {
+        console.log("WebSocket is closed now.");
+        setTimeout(function () {
+          connect();
+        }, 2000);
+      };
+
     };
 
     ws.onmessage = async function (evt) {
@@ -631,15 +639,11 @@
       }
     }
 
-    ws.onclose = function (event) {
-      console.log("WebSocket is closed now.");
-      setTimeout(function () {
-        connect();
-      }, 5000);
-    };
-
-    // ws.onerror = (error) => {
-    //   console.error('WebSocket error', error);
+    // ws.onclose = function (event) {
+    //   console.log("WebSocket is closed now.");
+    //   setTimeout(function () {
+    //     connect();
+    //   }, 5000);
     // };
 
   }
