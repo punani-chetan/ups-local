@@ -601,16 +601,20 @@
 <script> -->
 
 <script type="text/javascript">
-  const url = 'ws://ups-gateway:80/ws';
-  // var url = 'ws://localhost:8080';
-  var ws = new WebSocket(url);
+
   connect();
 
-  ws.onopen = function () {
-    ws.send('Metering WS Started');
-  };
-
   function connect() {
+
+    // var ws = new WebSocket('ws://ups-gateway:80/ws');
+    var ws = new WebSocket('ws://localhost:8080');
+
+    ws.onopen = function () {
+      ws.send('Metering WS Started');
+      // console.log("Web socket is connected in Metering");
+    };
+
+
     ws.onmessage = async function (evt) {
       // console.log('event Data', evt.data);
       var ups_data = await UPS_MSG(evt.data);
@@ -695,8 +699,11 @@
           ups_data?.Battery_Status,
         ];
 
+
+        // console.log(ups_data?.DC_Link_Voltage + ' Volt');
+
         var rectifier_table = document.getElementById('rectifier-single');
-        // console.log(rectifier_table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0].getElementsByTagName('th')[2]);
+        console.log(rectifier_table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0].getElementsByTagName('td'));
         rectifier_table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0].getElementsByTagName('td').innerHTML = ups_data?.DC_Link_Voltage + ' Volt';
 
 
@@ -1022,17 +1029,10 @@
 
 
     };
-    // console.log(ws);
-
-
-    // setTimeout(function () {
-    //   console.log("WebSocket resend data");
-    //   ws.send("Metering WS Started");
-    //   connect();
-    // }, 5000);
 
     ws.onclose = function (event) {
       console.log("WebSocket is closed now.");
+
       setTimeout(function () {
         connect();
       }, 1000);
