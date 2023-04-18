@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -279,13 +281,9 @@
                       <div class="containr" id="meteringIframe">
 
                         <!-- <include src="metering.html"></include> -->
-                        <!-- <iframe 
-                          src="metering.html" 
-                          name="metering" 
-                          title="Metering" width="100%"
-                          style="height: 115vh;" 
+                        <iframe src="metering.html" name="metering" title="Metering" width="100%" style="height: 115vh;"
                           scrolling="no" allowfullscreen>
-                        </iframe> -->
+                        </iframe>
 
                       </div>
                     </div>
@@ -316,6 +314,8 @@
   integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
 
+  //write a code for 
+
   (function () {
     let hashTag = new URL(document.URL).hash;
     let tagName;
@@ -343,12 +343,36 @@
     changeUrlParams('metering');
 
     let iframeName = tabName + 'Iframe';
-    document.getElementById('meteringIframe').innerHTML = '<iframe src="metering.html" name="metering" title="Metering" width="100%" style="height: 115vh;" allowfullscreen></iframe>';
+    // document.getElementById('meteringIframe').innerHTML = '<iframe src="metering.html" id="meteringIframe" name="metering" title="Metering" width="100%" style="height: 115vh;" allowfullscreen></iframe>';
+
+    // call the loadIframe function when needed
+    // loadIframe();
 
     setTimeout(() => {
       window.scrollTo({ top: 0 });
     }, 100);
   }
+
+
+  // var iframeContainer = document.getElementById('meteringIframe');
+  // var iframe;
+
+  // function loadIframe() {
+  //   // var iframeContainer = document.getElementById('meteringIframe');
+  //   // var iframe;
+  //   console.log('iframe')
+  //   console.log(iframe)
+  //   if (!iframe) {
+  //     // create the iframe element
+  //     iframe = document.createElement('iframe');
+  //     iframe.src = 'metering.html';
+  //     iframe.width = '100%';
+  //     iframe.height = '500';
+  //     iframeContainer.appendChild(iframe);
+  //   } else {
+  //   }
+  // }
+
 
   /********************** Date & Time --- start ****************/
   var today = new Date();
