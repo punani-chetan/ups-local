@@ -327,7 +327,7 @@
         </div>
       </div>
     </div>
-    <div class="my-3 container-fluid" id="row4">
+    <div class="mt-3 container-fluid" id="row4">
       <div class="row">
         <div class="col-6 p-3">
           <div class="card shadow rounded">
@@ -631,7 +631,7 @@
         </div>
       </div>
     </div>
-    <div class="my-3 container-fluid d-none" id="row7">
+    <div class="mt-3 container-fluid d-none" id="row7">
       <div class="col-4 p-2">
         <div class="card shadow rounded">
           <div class="card-body">
@@ -657,9 +657,9 @@
 <script> -->
 
 <script type="text/javascript">
-  connect();
+  meteringConnect();
 
-  function connect() {
+  function meteringConnect() {
     // var url = 'ws://ups-gateway:80/ws';
     var url = "ws://localhost:8080";
     var ws = new WebSocket(url);
@@ -673,10 +673,10 @@
       // console.log('event Data', evt.data);
       var ups_data = await UPS_MSG(evt.data);
 
-      console.log("ups_data");
+      console.log("ups_data in metering");
       console.log(ups_data);
       // return false;
-
+      console.log("data name ---", ups_data.DATA_NAME);
       if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === "metering") {
         /*********************** for 1 phase ******************************/
 
@@ -1127,7 +1127,7 @@
 
     ws.onclose = function (event) {
       console.log("WebSocket is closed now in metering.");
-      connect();
+      meteringConnect();
       // setTimeout(function () {
       //   connect();
       // }, 1000);

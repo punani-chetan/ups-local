@@ -15,6 +15,13 @@
   <!-- Option 1: Include in HTML -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
   <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
+
+  <style>
+		iframe {
+			width: 100%;
+			border: none;
+		}
+	</style>
 </head>
 
 <body>
@@ -278,11 +285,12 @@
                       </div>
                     </div>
                     <div class="tab-pane fade" id="metering" role="tabpanel" aria-labelledby="nav-metering-tab">
-                      <div class="containr" id="meteringIframe">
+                      <!-- <div class="containr" id="meteringIframe" width="100%"
+                      onload="resizeIframe(this)"> -->
 
                         <!-- <include src="metering.html"></include> -->
-                        <iframe src="metering.html" name="metering" title="Metering" scrolling="no" width="100%"
-                        onload="resizeIframe(this)" class="mb-5">
+                        <iframe src="metering.html" name="metering" title="Metering" scrolling="no"
+                        id="iframeMeteringHeight">
                         </iframe>
 
                       </div>
@@ -314,12 +322,13 @@
   integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
 
+
 function resizeIframe(iframe) {
 			iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+      // window.addEventListener('resize', function() {
+      //   iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+      // });
 		}
-		window.addEventListener('resize', function() {
-			iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-		});
 
   //write a code for 
 
@@ -330,7 +339,7 @@ function resizeIframe(iframe) {
       tagName = 'status';
       setTimeout(() => {
         window.scrollTo({ top: 0 });
-      }, 100);
+      }, 1000);
     }
     else if (hashTag == '#metering') {
       tagName = 'metering';
@@ -415,9 +424,10 @@ function resizeIframe(iframe) {
 
       ws.onclose = function (event) {
         console.log("WebSocket is closed now.");
-        setTimeout(function () {
-          connect();
-        }, 2000);
+        connect();
+        // setTimeout(function () {
+        //   connect();
+        // }, 2000);
       };
 
     };
@@ -428,6 +438,12 @@ function resizeIframe(iframe) {
 
       console.log("ups_data in index");
       console.log(ups_data);
+
+      if(ups_data.DATA_TYPE === 1) {
+        document.getElementById('iframeMeteringHeight').style.height = '150vh';
+      } else {
+        document.getElementById('iframeMeteringHeight').style.height = '200vh';
+      }
       // return false;
 
       let titleStr;
@@ -474,7 +490,7 @@ function resizeIframe(iframe) {
       let battery_mccb_Input_text;
       let battery_mccb_Input_text_class;
 
-
+      console.log('data name ---', ups_data.DATA_NAME)
       if (ups_data.DATA_NAME === 'status') {
         titleStr = (ups_data.DATA_TYPE === 1) ? 'i4ET (1-PHASE UPS)' : 'i6ET (3-PHASE UPS)';
         document.getElementById('titleStr').innerText = titleStr;
