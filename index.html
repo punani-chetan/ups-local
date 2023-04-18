@@ -114,9 +114,9 @@
                                           <div class="d-flex flex-column">
                                             <span><b>Bypass Input</b></span>
                                             <div class="d-flex">
-                                              <div class="blinking-red" id="bypass_input_css"></div>
+                                              <div id="bypass_input_css"></div>
                                               <span class="status-card-text-space" id="bypass_input_css_text">
-                                                Out of Range
+                                                Loading ...
                                               </span>
                                             </div>
                                           </div>
@@ -139,9 +139,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Main's Supply</b></span>
                                           <div class="d-flex">
-                                            <div class="dot-red" id="mainsupply_input_css"></div>
+                                            <div  id="mainsupply_input_css"></div>
                                             <span class="status-card-text-space" id="mainsupply_input_css_text">
-                                              Absent
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -151,9 +151,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Rectifier Operation</b></span>
                                           <div class="d-flex">
-                                            <div class="dot-green" id="rectifier_input_css"></div>
+                                            <div  id="rectifier_input_css"></div>
                                             <span class="status-card-text-space" id="rectifier_input_css_text">
-                                              Within range
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -166,9 +166,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Booster Operation(Battery Discharging)</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking-green" id="battery_input_css"></div>
+                                            <div  id="battery_input_css"></div>
                                             <span class="status-card-text-space" id="battery_input_css_text">
-                                              Ok (Within Limit)
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -178,9 +178,9 @@
                                           <span><b>Charger Operation (Battery Charging)</b>
                                           </span>
                                           <div class="d-flex">
-                                            <div class="dot-yellow" id="battery_charging_input_css"></div>
+                                            <div id="battery_charging_input_css"></div>
                                             <span class="status-card-text-space" id="battery_charging_input_css_text">
-                                              Ok (Within Limit)
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -189,9 +189,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Inverter Operation</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking-yellow" id="inverter_input_css"></div>
+                                            <div  id="inverter_input_css"></div>
                                             <span class="status-card-text-space" id="inverter_input_css_text">
-                                              Ok (Within Limit)
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -203,9 +203,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Load on Inverter</b></span>
                                           <div class="d-flex">
-                                            <div class="dot-gray" id="load_inverter_input_css"></div>
+                                            <div  id="load_inverter_input_css"></div>
                                             <span class="status-card-text-space" id="load_inverter_input_css_text">
-                                              Absent </span>
+                                              Loading ... </span>
                                           </div>
                                         </div>
                                       </td>
@@ -213,9 +213,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Load on Bypass</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking" id="load_bypass_input_css"></div>
+                                            <div  id="load_bypass_input_css"></div>
                                             <span class="status-card-text-space" id="load_bypass_input_css_text">
-                                              Ok (Within Limit)
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -224,9 +224,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Synchronization</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking" id="synchronization_input_css"></div>
+                                            <div  id="synchronization_input_css"></div>
                                             <span class="status-card-text-space" id="synchronization_input_css_text">
-                                              Ok (Within Limit)
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -238,9 +238,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Common Alarm Indication</b></span>
                                           <div class="d-flex">
-                                            <div class="blinking" id="common_alarm_input_css"></div>
+                                            <div  id="common_alarm_input_css"></div>
                                             <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                              Ok (Within Limit)
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -249,9 +249,9 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Battery MCCB Status </b></span>
                                           <div class="d-flex">
-                                            <div class="blinking" id="battery_mccb_input_css"></div>
+                                            <div  id="battery_mccb_input_css"></div>
                                             <span class="status-card-text-space" id="battery_mccb_input_css_text">
-                                              Ok (Within Limit)
+                                              Loading ...
                                             </span>
                                           </div>
                                         </div>
@@ -281,8 +281,8 @@
                       <div class="containr" id="meteringIframe">
 
                         <!-- <include src="metering.html"></include> -->
-                        <iframe src="metering.html" name="metering" title="Metering" width="100%" style="height: 115vh;"
-                          scrolling="no" allowfullscreen>
+                        <iframe src="metering.html" name="metering" title="Metering" scrolling="no" width="100%"
+                        onload="resizeIframe(this)" class="mb-5">
                         </iframe>
 
                       </div>
@@ -314,6 +314,13 @@
   integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
 
+function resizeIframe(iframe) {
+			iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+		}
+		window.addEventListener('resize', function() {
+			iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+		});
+
   //write a code for 
 
   (function () {
@@ -336,7 +343,7 @@
 
   function changeUrlParams(tabName) {
     makeTabActive(tabName);
-    if (tabName === 'status') connect();
+    // if (tabName === 'status') connect();
   }
 
   function showTab(tabName) {

@@ -1,305 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <script
+      type="text/JavaScript"
+      src=" https://MomentJS.com/downloads/moment.js"
+    ></script>
+  </head>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-  <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
-</head>
-
-<body>
-  <!------------ for 3 phase start ---------------->
-  <div class="mt-3 container-fluid" id="row1">
-    <div class="row">
-      <div class="col-6 p-3">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="main-input">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Main's Input
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">R-Y Phase</th>
-                  <th class="border-bottom">Y-B Phase</th>
-                  <th class="border-bottom">B-R Phase</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Voltage</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Current</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Frequency</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-              </tbody>
-            </table>
+  <body style="background-color: #f0f0f000">
+    <!------------ for 3 phase start ---------------->
+    <div class="mt-3 container-fluid" id="row1">
+      <div class="row">
+        <div class="col-6 p-3">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="main-input">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Main's Input
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">R-Y Phase</th>
+                    <th class="border-bottom">Y-B Phase</th>
+                    <th class="border-bottom">B-R Phase</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Voltage</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Current</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Frequency</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-6 p-3">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="alternate">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Alternate
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">R-Y Phase</th>
-                  <th class="border-bottom">Y-B Phase</th>
-                  <th class="border-bottom">B-R Phase</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">ByPass Voltage</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Alternate Current</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Frequency</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="col-6 p-3">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="alternate">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Alternate
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">R-Y Phase</th>
+                    <th class="border-bottom">Y-B Phase</th>
+                    <th class="border-bottom">B-R Phase</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">ByPass Voltage</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Alternate Current</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Frequency</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="mt-3 container-fluid" id="row2">
-    <div class="row">
-      <div class="col-6 p-3">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="inverter">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Inverter
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">R-Y Phase</th>
-                  <th class="border-bottom">Y-B Phase</th>
-                  <th class="border-bottom">B-R Phase</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Voltage</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Current</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Frequency</th>
-                  <td>0 Hz</td>
-                  <td>0 Hz</td>
-                  <td>0 Hz</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;</th>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-              </tbody>
-            </table>
+    <div class="mt-3 container-fluid" id="row2">
+      <div class="row">
+        <div class="col-6 p-3">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="inverter">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Inverter
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">R-Y Phase</th>
+                    <th class="border-bottom">Y-B Phase</th>
+                    <th class="border-bottom">B-R Phase</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Voltage</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Current</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Frequency</th>
+                    <td>0 Hz</td>
+                    <td>0 Hz</td>
+                    <td>0 Hz</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">&nbsp;</th>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-6 p-3">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="battery">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Battery
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">Value</th>
-                  <th class="border-bottom"></th>
-                  <th class="border-bottom"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Charger O/P Voltage</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td> -->
-                  <!-- <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">Voltage</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td> -->
-                  <!-- <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">Current</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td> -->
-                  <!-- <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">Status</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td> -->
-                  <!-- <td>0 Volt</td> -->
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-3 container-fluid" id="row3">
-    <div class="row">
-      <div class="col-6 p-3">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="ups-totalload">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="2" class="border-bottom">
-                    UPS & Total Load
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">UPS Load</th>
-                  <th class="border-bottom">Total Load</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Load in KVA</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Load in KW</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Power Factor</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 p-3">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="output">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Output
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">R-Y Phase</th>
-                  <th class="border-bottom">Y-B Phase</th>
-                  <th class="border-bottom">B-R Phase</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Voltage</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Current</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Frequency</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="col-6 p-3">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="battery">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Battery
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">Value</th>
+                    <th class="border-bottom"></th>
+                    <th class="border-bottom"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Charger O/P Voltage</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td> -->
+                    <!-- <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Voltage</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td> -->
+                    <!-- <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Current</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td> -->
+                    <!-- <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Status</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td> -->
+                    <!-- <td>0 Volt</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="mt-3 container-fluid" id="row4">
-    <div class="row">
-      <div class="col-6 p-3">
+    <div class="mt-3 container-fluid" id="row3">
+      <div class="row">
+        <div class="col-6 p-3">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="ups-totalload">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="2" class="border-bottom">
+                      UPS & Total Load
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">UPS Load</th>
+                    <th class="border-bottom">Total Load</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Load in KVA</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Load in KW</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Power Factor</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 p-3">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="output">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Output
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">R-Y Phase</th>
+                    <th class="border-bottom">Y-B Phase</th>
+                    <th class="border-bottom">B-R Phase</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Voltage</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Current</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Frequency</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-3 container-fluid" id="row4">
+      <div class="row">
+        <div class="col-6 p-3">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="rectifier">
+                <thead>
+                  <tr>
+                    <th scope="col" colspan="3">Rectifier</th>
+                    <th scope="row">DC Link Voltage</th>
+                    <td scope="row">0 Volt</td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------ for 3 phase end ---------------->
+
+    <!------------ for 1 phase start ---------------->
+    <div class="mt-3 container-fluid d-none" id="row5">
+      <div class="row">
+        <div class="col-4 p-2">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="main-input-single">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Main's Input
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">R-Y Phase</th>
+                    <th class="border-bottom">Y-B Phase</th>
+                    <th class="border-bottom">B-R Phase</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Voltage</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Current</th>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Frequency</th>
+                    <td>0 Hz</td>
+                    <td>0 Hz</td>
+                    <td>0 Hz</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 p-2">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="alternate-single">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Alternate
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">Value</th>
+                    <!-- <th class="border-bottom">Y-B Phase</th>
+                  <th class="border-bottom">B-R Phase</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">ByPass Voltage</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td>
+                  <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Alternate Current</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td>
+                  <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Frequency</th>
+                    <td>0 Hz</td>
+                    <!-- <td>0 Volt</td>
+                  <td>0 Volt</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 p-2">
+          <div class="card shadow rounded">
+            <div class="card-body">
+              <table class="table table-borderless" id="inverter-single">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Inverter
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">Value</th>
+                    <!-- <th class="border-bottom">Y-B Phase</th>
+                  <th class="border-bottom">B-R Phase</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Voltage</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td>
+                  <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Current</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td>
+                  <td>0 Volt</td> -->
+                  </tr>
+                  <th scope="row">Frequency</th>
+                  <td>0 Hz</td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 container-fluid d-none" id="row6">
+      <div class="row">
+        <div class="col-4 p-2">
+          <div class="card shadow rounded">
+            <div class="card-body pb-0">
+              <table class="table table-borderless" id="ups-totalload-single">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="2" class="border-bottom">
+                      UPS & Total Load
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">UPS Load</th>
+                    <!-- <th class="border-bottom">Total Load</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Load in KVA</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Load in KW</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Power Factor</th>
+                    <td>0 Volt</td>
+                    <!-- <td>0 Volt</td> -->
+                  </tr>
+                  <tr>
+                    <th scope="row">&nbsp;</th>
+                    <td>&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 p-2">
+          <div class="card shadow rounded">
+            <div class="card-body pb-0">
+              <table class="table table-borderless" id="output-single">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Output
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">Value</th>
+                    <!-- <th class="border-bottom">Y-B Phase</th>
+                  <th class="border-bottom">B-R Phase</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Voltage</th>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Current</th>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Frequency</th>
+                    <td>0 Hz</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">&nbsp;</th>
+                    <td>&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 p-2">
+          <div class="card shadow rounded">
+            <div class="card-body pb-0">
+              <table class="table table-borderless" id="battery-single">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2" class="align-middle">
+                      <img
+                        src="asset/blank_img.jpg"
+                        class="card-img-top img-setup"
+                        alt="Img"
+                      />
+                    </th>
+                    <th scope="col" colspan="3" class="border-bottom">
+                      Battery
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="border-bottom">Value</th>
+                    <!-- <th class="border-bottom"></th>
+                  <th class="border-bottom"></th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Charger O/P Voltage</th>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Voltage</th>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Current</th>
+                    <td>0 Volt</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Status</th>
+                    <td>0 Volt</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-3 container-fluid d-none" id="row7">
+      <div class="col-4 p-2">
         <div class="card shadow rounded">
           <div class="card-body">
-            <table class="table table-borderless" id="rectifier">
+            <table class="table table-borderless" id="rectifier-single">
               <thead>
                 <tr>
                   <th scope="col" colspan="3">Rectifier</th>
@@ -312,288 +648,8 @@
         </div>
       </div>
     </div>
-  </div>
-  <!------------ for 3 phase end ---------------->
-
-  <!------------ for 1 phase start ---------------->
-  <div class="mt-3 container-fluid d-none" id="row5">
-    <div class="row">
-      <div class="col-4 p-2">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="main-input-single">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Main's Input
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">R-Y Phase</th>
-                  <th class="border-bottom">Y-B Phase</th>
-                  <th class="border-bottom">B-R Phase</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Voltage</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Current</th>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Frequency</th>
-                  <td>0 Hz</td>
-                  <td>0 Hz</td>
-                  <td>0 Hz</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 p-2">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="alternate-single">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Alternate
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">Value</th>
-                  <!-- <th class="border-bottom">Y-B Phase</th>
-                  <th class="border-bottom">B-R Phase</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">ByPass Voltage</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td>
-                  <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">Alternate Current</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td>
-                  <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">Frequency</th>
-                  <td>0 Hz</td>
-                  <!-- <td>0 Volt</td>
-                  <td>0 Volt</td> -->
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 p-2">
-        <div class="card shadow rounded">
-          <div class="card-body">
-            <table class="table table-borderless" id="inverter-single">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Inverter
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">Value</th>
-                  <!-- <th class="border-bottom">Y-B Phase</th>
-                  <th class="border-bottom">B-R Phase</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Voltage</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td>
-                  <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">Current</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td>
-                  <td>0 Volt</td> -->
-                </tr>
-                <th scope="row">Frequency</th>
-                <td>0 Hz</td>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-3 container-fluid d-none" id="row6">
-    <div class="row">
-      <div class="col-4 p-2">
-        <div class="card shadow rounded">
-          <div class="card-body pb-0">
-            <table class="table table-borderless" id="ups-totalload-single">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="2" class="border-bottom">
-                    UPS & Total Load
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">UPS Load</th>
-                  <!-- <th class="border-bottom">Total Load</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Load in KVA</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">Load in KW</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">Power Factor</th>
-                  <td>0 Volt</td>
-                  <!-- <td>0 Volt</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;</th>
-                  <td>&nbsp;</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 p-2">
-        <div class="card shadow rounded">
-          <div class="card-body pb-0">
-            <table class="table table-borderless" id="output-single">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Output
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">Value</th>
-                  <!-- <th class="border-bottom">Y-B Phase</th>
-                  <th class="border-bottom">B-R Phase</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Voltage</th>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Current</th>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Frequency</th>
-                  <td>0 Hz</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;</th>
-                  <td>&nbsp;</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 p-2">
-        <div class="card shadow rounded">
-          <div class="card-body pb-0">
-            <table class="table table-borderless" id="battery-single">
-              <thead>
-                <tr>
-                  <th scope="col" rowspan="2" class="align-middle">
-                    <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
-                  </th>
-                  <th scope="col" colspan="3" class="border-bottom">
-                    Battery
-                  </th>
-                </tr>
-                <tr>
-                  <th class="border-bottom">Value</th>
-                  <!-- <th class="border-bottom"></th>
-                  <th class="border-bottom"></th> -->
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Charger O/P Voltage</th>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Voltage</th>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Current</th>
-                  <td>0 Volt</td>
-                </tr>
-                <tr>
-                  <th scope="row">Status</th>
-                  <td>0 Volt</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-3 container-fluid d-none" id="row7">
-    <div class="col-4 p-2">
-      <div class="card shadow rounded">
-        <div class="card-body">
-          <table class="table table-borderless" id="rectifier-single">
-            <thead>
-              <tr>
-                <th scope="col" colspan="3">Rectifier</th>
-                <th scope="row">DC Link Voltage</th>
-                <td scope="row">0 Volt</td>
-              </tr>
-            </thead>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!------------ for 1 phase end ---------------->
-</body>
-
+    <!------------ for 1 phase end ---------------->
+  </body>
 </html>
 <script type="text/javascript" src="./ups.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -601,21 +657,17 @@
 <script> -->
 
 <script type="text/javascript">
-
-
   connect();
 
   function connect() {
-
     // var url = 'ws://ups-gateway:80/ws';
-    var url = 'ws://localhost:8080';
+    var url = "ws://localhost:8080";
     var ws = new WebSocket(url);
 
     ws.onopen = function () {
-      ws.send('Metering WS Started');
+      ws.send("Metering WS Started");
       // console.log("Web socket is connected in Metering");
     };
-
 
     ws.onmessage = async function (evt) {
       // console.log('event Data', evt.data);
@@ -625,17 +677,17 @@
       console.log(ups_data);
       // return false;
 
-      if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === 'metering') {
+      if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === "metering") {
         /*********************** for 1 phase ******************************/
 
         // need to do show hide when get data
-        document.getElementById('row1').classList.add('d-none');
-        document.getElementById('row2').classList.add('d-none');
-        document.getElementById('row3').classList.add('d-none');
-        document.getElementById('row4').classList.add('d-none');
-        document.getElementById('row5').classList.remove('d-none');
-        document.getElementById('row6').classList.remove('d-none');
-        document.getElementById('row7').classList.remove('d-none');
+        document.getElementById("row1").classList.add("d-none");
+        document.getElementById("row2").classList.add("d-none");
+        document.getElementById("row3").classList.add("d-none");
+        document.getElementById("row4").classList.add("d-none");
+        document.getElementById("row5").classList.remove("d-none");
+        document.getElementById("row6").classList.remove("d-none");
+        document.getElementById("row7").classList.remove("d-none");
 
         const MAIN_INPUT_Voltage = [
           ups_data?.R_Y_Phase_Input_Voltage,
@@ -701,13 +753,15 @@
           ups_data?.Battery_Status,
         ];
 
-
         // console.log(ups_data?.DC_Link_Voltage + ' Volt');
 
-        var rectifier_table = document.getElementById('rectifier-single');
+        var rectifier_table = document.getElementById("rectifier-single");
         // console.log(rectifier_table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0].getElementsByTagName('td'));
-        rectifier_table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerHTML = ups_data?.DC_Link_Voltage + ' Volt';
-
+        rectifier_table
+          .getElementsByTagName("thead")[0]
+          .getElementsByTagName("tr")[0]
+          .getElementsByTagName("td")[0].innerHTML =
+          ups_data?.DC_Link_Voltage + " Volt";
 
         var main_table = document.getElementById("main-input-single");
         var tableRef = main_table.getElementsByTagName("tbody")[0];
@@ -793,17 +847,37 @@
           freq_cells[i].innerHTML = ups_data?.Output_Freq + " Hz";
         }
 
-        var battery_table = document.getElementById("battery-single").getElementsByTagName("tbody")[0].rows[0].getElementsByTagName("td");
+        var battery_table = document
+          .getElementById("battery-single")
+          .getElementsByTagName("tbody")[0]
+          .rows[0].getElementsByTagName("td");
         battery_table[0].innerHTML = ups_data?.Charger_OUTPUT_Voltage + " Volt";
-        document.getElementById("battery-single").getElementsByTagName("tbody")[0].rows[1].getElementsByTagName("td")[0].innerHTML = ups_data?.Battery_Voltage + " Volt";
-        document.getElementById("battery-single").getElementsByTagName("tbody")[0].rows[2].getElementsByTagName("td")[0].innerHTML = ups_data?.Battery_Current + " Amp";
+        document
+          .getElementById("battery-single")
+          .getElementsByTagName("tbody")[0]
+          .rows[1].getElementsByTagName("td")[0].innerHTML =
+          ups_data?.Battery_Voltage + " Volt";
+        document
+          .getElementById("battery-single")
+          .getElementsByTagName("tbody")[0]
+          .rows[2].getElementsByTagName("td")[0].innerHTML =
+          ups_data?.Battery_Current + " Amp";
 
         if (ups_data?.Battery_Status === 0) {
-          document.getElementById("battery-single").getElementsByTagName("tbody")[0].rows[3].getElementsByTagName("td")[0].innerHTML = "OFF";
+          document
+            .getElementById("battery-single")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "OFF";
         } else if (ups_data?.Battery_Status === 1) {
-          document.getElementById("battery-single").getElementsByTagName("tbody")[0].rows[3].getElementsByTagName("td")[0].innerHTML = "CHARGING";
+          document
+            .getElementById("battery-single")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "CHARGING";
         } else {
-          document.getElementById("battery-single").getElementsByTagName("tbody")[0].rows[3].getElementsByTagName("td")[0].innerHTML = "DISCHARGING";
+          document
+            .getElementById("battery-single")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "DISCHARGING";
         }
 
         var load_table = document.getElementById("ups-totalload-single");
@@ -826,21 +900,19 @@
         for (let i = 0; i < pf_cells.length; i++) {
           pf_cells[i].innerHTML = POWER_FACTOR[i] + " PF";
         }
-
-
-
-
-      } else if (ups_data.DATA_TYPE === 3 && ups_data.DATA_NAME === 'metering') {
+      } else if (
+        ups_data.DATA_TYPE === 3 &&
+        ups_data.DATA_NAME === "metering"
+      ) {
         /*********************** for 3 phase ******************************/
 
-
-        document.getElementById('row1').classList.remove('d-none');
-        document.getElementById('row2').classList.remove('d-none');
-        document.getElementById('row3').classList.remove('d-none');
-        document.getElementById('row4').classList.remove('d-none');
-        document.getElementById('row5').classList.add('d-none');
-        document.getElementById('row6').classList.add('d-none');
-        document.getElementById('row7').classList.add('d-none');
+        document.getElementById("row1").classList.remove("d-none");
+        document.getElementById("row2").classList.remove("d-none");
+        document.getElementById("row3").classList.remove("d-none");
+        document.getElementById("row4").classList.remove("d-none");
+        document.getElementById("row5").classList.add("d-none");
+        document.getElementById("row6").classList.add("d-none");
+        document.getElementById("row7").classList.add("d-none");
 
         const MAIN_INPUT_Voltage = [
           ups_data?.R_Y_Phase_Input_Voltage,
@@ -906,9 +978,12 @@
           ups_data?.Battery_Status,
         ];
 
-        var rectifier_table = document.getElementById('rectifier');
-        rectifier_table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerHTML = ups_data?.DC_Link_Voltage + ' Volt';
-
+        var rectifier_table = document.getElementById("rectifier");
+        rectifier_table
+          .getElementsByTagName("thead")[0]
+          .getElementsByTagName("tr")[0]
+          .getElementsByTagName("td")[0].innerHTML =
+          ups_data?.DC_Link_Voltage + " Volt";
 
         var main_table = document.getElementById("main-input");
         var tableRef = main_table.getElementsByTagName("tbody")[0];
@@ -994,17 +1069,37 @@
           freq_cells[i].innerHTML = ups_data?.Output_Freq + " Hz";
         }
 
-        var battery_table = document.getElementById("battery").getElementsByTagName("tbody")[0].rows[0].getElementsByTagName("td");
+        var battery_table = document
+          .getElementById("battery")
+          .getElementsByTagName("tbody")[0]
+          .rows[0].getElementsByTagName("td");
         battery_table[0].innerHTML = ups_data?.Charger_OUTPUT_Voltage + " Volt";
-        document.getElementById("battery").getElementsByTagName("tbody")[0].rows[1].getElementsByTagName("td")[0].innerHTML = ups_data?.Battery_Voltage + " Volt";
-        document.getElementById("battery").getElementsByTagName("tbody")[0].rows[2].getElementsByTagName("td")[0].innerHTML = ups_data?.Battery_Current + " Amp";
+        document
+          .getElementById("battery")
+          .getElementsByTagName("tbody")[0]
+          .rows[1].getElementsByTagName("td")[0].innerHTML =
+          ups_data?.Battery_Voltage + " Volt";
+        document
+          .getElementById("battery")
+          .getElementsByTagName("tbody")[0]
+          .rows[2].getElementsByTagName("td")[0].innerHTML =
+          ups_data?.Battery_Current + " Amp";
 
         if (ups_data?.Battery_Status === 0) {
-          document.getElementById("battery").getElementsByTagName("tbody")[0].rows[3].getElementsByTagName("td")[0].innerHTML = "OFF";
+          document
+            .getElementById("battery")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "OFF";
         } else if (ups_data?.Battery_Status === 1) {
-          document.getElementById("battery").getElementsByTagName("tbody")[0].rows[3].getElementsByTagName("td")[0].innerHTML = "CHARGING";
+          document
+            .getElementById("battery")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "CHARGING";
         } else {
-          document.getElementById("battery").getElementsByTagName("tbody")[0].rows[3].getElementsByTagName("td")[0].innerHTML = "DISCHARGING";
+          document
+            .getElementById("battery")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "DISCHARGING";
         }
 
         var load_table = document.getElementById("ups-totalload");
@@ -1028,17 +1123,14 @@
           pf_cells[i].innerHTML = POWER_FACTOR[i] + " PF";
         }
       }
-
-
     };
 
     ws.onclose = function (event) {
       console.log("WebSocket is closed now in metering.");
-
-      setTimeout(function () {
-        connect();
-      }, 1000);
+      connect();
+      // setTimeout(function () {
+      //   connect();
+      // }, 1000);
     };
   }
-
 </script>
