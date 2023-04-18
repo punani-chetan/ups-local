@@ -257,7 +257,7 @@ const UPS_MSG = async (payload) => {
         }
         if (parsedPayload.msg_id === 7) {
             // jsonValues = await singlePhaseStatusValues(parsedPayload.properties);
-            jsonValues = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
+            jsonValuesStatus = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
         }
     }
     else if (parsedPayload.ph_type === 0) {
@@ -266,11 +266,12 @@ const UPS_MSG = async (payload) => {
             jsonValues = await threePhasevalues(parsedPayload.properties);
         }
         if (parsedPayload.msg_id === 7) {
-            jsonValues = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
+            jsonValuesStatus = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
         }
     }
-    // json = { ...jsonValues, ...jsonValuesStatus };
-    return jsonValues;
+    json = { ...jsonValues, ...jsonValuesStatus };
+    // console.log(json);
+    return json;
 };
 
 

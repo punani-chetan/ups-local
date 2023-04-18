@@ -17,11 +17,11 @@
   <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
 
   <style>
-		iframe {
-			width: 100%;
-			border: none;
-		}
-	</style>
+    iframe {
+      width: 100%;
+      border: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -146,7 +146,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Main's Supply</b></span>
                                           <div class="d-flex">
-                                            <div  id="mainsupply_input_css"></div>
+                                            <div id="mainsupply_input_css"></div>
                                             <span class="status-card-text-space" id="mainsupply_input_css_text">
                                               Loading ...
                                             </span>
@@ -158,7 +158,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Rectifier Operation</b></span>
                                           <div class="d-flex">
-                                            <div  id="rectifier_input_css"></div>
+                                            <div id="rectifier_input_css"></div>
                                             <span class="status-card-text-space" id="rectifier_input_css_text">
                                               Loading ...
                                             </span>
@@ -173,7 +173,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Booster Operation(Battery Discharging)</b></span>
                                           <div class="d-flex">
-                                            <div  id="battery_input_css"></div>
+                                            <div id="battery_input_css"></div>
                                             <span class="status-card-text-space" id="battery_input_css_text">
                                               Loading ...
                                             </span>
@@ -196,7 +196,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Inverter Operation</b></span>
                                           <div class="d-flex">
-                                            <div  id="inverter_input_css"></div>
+                                            <div id="inverter_input_css"></div>
                                             <span class="status-card-text-space" id="inverter_input_css_text">
                                               Loading ...
                                             </span>
@@ -210,7 +210,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Load on Inverter</b></span>
                                           <div class="d-flex">
-                                            <div  id="load_inverter_input_css"></div>
+                                            <div id="load_inverter_input_css"></div>
                                             <span class="status-card-text-space" id="load_inverter_input_css_text">
                                               Loading ... </span>
                                           </div>
@@ -220,7 +220,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Load on Bypass</b></span>
                                           <div class="d-flex">
-                                            <div  id="load_bypass_input_css"></div>
+                                            <div id="load_bypass_input_css"></div>
                                             <span class="status-card-text-space" id="load_bypass_input_css_text">
                                               Loading ...
                                             </span>
@@ -231,7 +231,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Synchronization</b></span>
                                           <div class="d-flex">
-                                            <div  id="synchronization_input_css"></div>
+                                            <div id="synchronization_input_css"></div>
                                             <span class="status-card-text-space" id="synchronization_input_css_text">
                                               Loading ...
                                             </span>
@@ -245,7 +245,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Common Alarm Indication</b></span>
                                           <div class="d-flex">
-                                            <div  id="common_alarm_input_css"></div>
+                                            <div id="common_alarm_input_css"></div>
                                             <span class="status-card-text-space" id="common_alarm_input_css_text">
                                               Loading ...
                                             </span>
@@ -256,7 +256,7 @@
                                         <div class="d-flex flex-column">
                                           <span><b>Battery MCCB Status </b></span>
                                           <div class="d-flex">
-                                            <div  id="battery_mccb_input_css"></div>
+                                            <div id="battery_mccb_input_css"></div>
                                             <span class="status-card-text-space" id="battery_mccb_input_css_text">
                                               Loading ...
                                             </span>
@@ -288,21 +288,20 @@
                       <!-- <div class="containr" id="meteringIframe" width="100%"
                       onload="resizeIframe(this)"> -->
 
-                        <!-- <include src="metering.html"></include> -->
-                        <iframe src="metering.html" name="metering" title="Metering" scrolling="no"
+                      <!-- <include src="metering.html"></include> -->
+                      <iframe src="metering.html" name="metering" title="Metering" scrolling="no"
                         id="iframeMeteringHeight">
-                        </iframe>
+                      </iframe>
 
-                      </div>
                     </div>
-                    <div class="tab-pane fade" id="eventlog" role="tabpanel" aria-labelledby="nav-eventlog-tab">
-                      <!-- <include src="eventlog.html"></include> -->
-                      <iframe src="eventlog.html" frameborder="0"></iframe>
-                    </div>
-                    <div class="tab-pane fade" id="datalog" role="tabpanel" aria-labelledby="nav-datalog-tab">
-                      <!-- <include src="datalog.html"></include> -->
-                      <iframe src="datalog.html" frameborder="0"></iframe>
-                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="eventlog" role="tabpanel" aria-labelledby="nav-eventlog-tab">
+                    <!-- <include src="eventlog.html"></include> -->
+                    <iframe src="eventlog.html" frameborder="0"></iframe>
+                  </div>
+                  <div class="tab-pane fade" id="datalog" role="tabpanel" aria-labelledby="nav-datalog-tab">
+                    <!-- <include src="datalog.html"></include> -->
+                    <iframe src="datalog.html" frameborder="0"></iframe>
                   </div>
                 </div>
               </div>
@@ -311,6 +310,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 
@@ -323,12 +323,12 @@
 <script>
 
 
-function resizeIframe(iframe) {
-			iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-      // window.addEventListener('resize', function() {
-      //   iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-      // });
-		}
+  function resizeIframe(iframe) {
+    iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    // window.addEventListener('resize', function() {
+    //   iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    // });
+  }
 
   //write a code for 
 
@@ -439,7 +439,7 @@ function resizeIframe(iframe) {
       console.log("ups_data in index");
       console.log(ups_data);
 
-      if(ups_data.DATA_TYPE === 1) {
+      if (ups_data.DATA_TYPE === 1) {
         document.getElementById('iframeMeteringHeight').style.height = '150vh';
       } else {
         document.getElementById('iframeMeteringHeight').style.height = '200vh';
