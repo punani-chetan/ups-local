@@ -226,7 +226,9 @@ const UPS_MSG = async (payload) => {
     let json = {};
     let jsonValues = {};
     let jsonValuesStatus = {};
-
+    let id = {
+        dev_id: parsedPayload.dev_id
+    }
     if (parsedPayload.ph_type === 1) {
         // single phase
         if (parsedPayload.msg_id === 1) {
@@ -246,7 +248,8 @@ const UPS_MSG = async (payload) => {
             jsonValuesStatus = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
         }
     }
-    json = { ...jsonValues, ...jsonValuesStatus };
+    json = { ...id, ...jsonValues, ...jsonValuesStatus };
+    // console.log(json);
     return json;
 };
 

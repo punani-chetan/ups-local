@@ -1,7 +1,186 @@
 
 connect();
 
+let text = "'AAAA01' 003,04-05-0006,09:08:07,RESERVED UI - 2@\n000,00-00-0000,01:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n025,70-27-0098,60:55:29,SMPS FAIL@\n017,18-19-0020,23:22:21,RECT OVER TEMP@\n009,10-11-0012,15:14:13,RECTIFIER FAIL'5555'"
+
+// Remove 'AAAA01' and '5555' from the text
+text = text.replace(/'AAAA01'\s|\s'5555'/g, '')
+
+// Split the text into an array of alarms
+const alarms = text.split('@\n')
+
+// Convert the array of alarms into an array of objects
+const arr = alarms.map(alarm => {
+  const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',')
+  return {
+    Alarm_Number,
+    Date,
+    Time,
+    Alarm_Name
+  }
+})
+
+// Create the HTML table
+// const table = document.createElement('table')
+
+// Create the table header
+// const headerRow = table.insertRow()
+// const headers = ['Alarm Number', 'Date', 'Time', 'Alarm Name']
+// headers.forEach(header => {
+//   const th = document.createElement('th')
+//   th.textContent = header
+//   headerRow.appendChild(th)
+// })
+
+// // Add the table data
+// arr.forEach(alarm => {
+//   const row = table.insertRow()
+//   Object.values(alarm).forEach(val => {
+//     const cell = row.insertCell()
+//     cell.textContent = val
+//   })
+// })
+
+// // Add the table to the HTML document
+// document.body.appendChild(table)
+
+// // Create the CSV file
+// let csv = headers.join(',') + '\n'
+// arr.forEach(alarm => {
+//   csv += Object.values(alarm).join(',') + '\n'
+// })
+
+// // Download the CSV file
+// const downloadLink = document.createElement('a')
+// downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv)
+// downloadLink.download = 'alarms.csv'
+// document.body.appendChild(downloadLink)
+// downloadLink.click()
+
+
+
+// // Parse the text into an array
+// let text = "'AAAA01'003,04-05-0006,09:08:07,RESERVED UI - 2 @\n000,00-00-0000,01:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n025,70-27-0098,60:55:29,SMPS FAIL@\n017,18-19-0020,23:22:21,RECT OVER TEMP@\n009,10-11-0012,15:14:13,RECTIFIER FAIL'5555'";
+// // Remove 'AAAA01' and '5555' from text
+// text = text.replace(/'AAAA01'|'5555'/g, '')
+
+// // Split text into lines
+// let lines = text.split('\n')
+
+// // Create array of objects
+// let arr = lines.map(line => {
+//   let parts = line.split(',')
+//   return {
+//     Alarm_Number: parts[0],
+//     Date: parts[1],
+//     Time: parts[2],
+//     Alarm_Name: parts[3]
+//   }
+// })
+
+
+// Create a table in HTML
+const tableBody = document.querySelector('#alarm-table tbody');
+let i = 0;
+for (const item of arr) {
+  const row = document.createElement('tr');
+  const cell0 = document.createElement('td');
+  cell0.textContent = ++i;
+  row.appendChild(cell0);
+  const cell1 = document.createElement('td');
+  cell1.textContent = item.Alarm_Number;
+  row.appendChild(cell1);
+  const cell2 = document.createElement('td');
+  cell2.textContent = item.Date;
+  row.appendChild(cell2);
+  const cell3 = document.createElement('td');
+  cell3.textContent = item.Time;
+  row.appendChild(cell3);
+  const cell4 = document.createElement('td');
+  cell4.textContent = item.Alarm_Name;
+  row.appendChild(cell4);
+  tableBody.appendChild(row);
+}
+
+function exportToCSV() {
+
+  // Variable to store the final csv data
+  var csv_data = [];
+
+  // Get each row data
+  var rows = document.getElementById('alarm-table').getElementsByTagName('tr');
+
+  for (var i = 0; i < rows.length; i++) {
+
+    // Get each column data
+    var cols = rows[i].querySelectorAll('td,th');
+
+    // Stores each csv row data
+    var csvrow = [];
+    for (var j = 0; j < cols.length; j++) {
+
+      // Get the text data of each cell
+      // of a row and push it to csvrow
+      csvrow.push(cols[j].innerHTML);
+    }
+
+    // Combine each column value with comma
+    csv_data.push(csvrow.join(","));
+  }
+
+  // Combine each row data with new line character
+  csv_data = csv_data.join('\n');
+
+  // Call this function to download csv file
+  downloadCSVFile(csv_data);
+
+}
+
+function downloadCSVFile(csv_data) {
+
+  // Create CSV file object and feed
+  // our csv_data into it
+  CSVFile = new Blob([csv_data], {
+    type: "text/csv"
+  });
+
+  // Create to temporary link to initiate
+  // download process
+  var temp_link = document.createElement('a');
+
+  // Download csv file
+  temp_link.download = "eventLog.csv";
+  var url = window.URL.createObjectURL(CSVFile);
+  temp_link.href = url;
+
+  // This link should not be displayed
+  temp_link.style.display = "none";
+  document.body.appendChild(temp_link);
+
+  // Automatically click the link to
+  // trigger download
+  temp_link.click();
+  document.body.removeChild(temp_link);
+}
+
+
+// Create a link to download the data in CSV format
+// let csvData = 'data:text/csv;charset=utf-8,';
+// arr.forEach(function (row) {
+//   csvData += row.Alarm_Number + ',' + row.Date + ',' + row.Time + ',' + row.Alarm_Name + '\n';
+// });
+// let encodedUri = encodeURI(csvData);
+// let link = document.createElement('a');
+// link.setAttribute('href', encodedUri);
+// link.setAttribute('download', 'data.csv');
+// link.innerHTML = 'Download CSV';
+// document.body.appendChild(link);
+
+
+
+
 function connect() {
+
   var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
 
@@ -25,6 +204,7 @@ function connect() {
     ws.send('Status WS Started');
     console.log("Web socket is connected");
 
+
     ws.onclose = function (event) {
       console.log("WebSocket is closed now.");
       setInterval(() => {
@@ -34,12 +214,21 @@ function connect() {
   };
 
   ws.onmessage = async function (evt) {
-    // console.log('event Data in index', evt.data);
+
     var ups_data = await UPS_MSG(evt.data);
 
     console.log("ups_data in index");
     console.log(ups_data);
 
+    var obj = new Object();
+    obj.msg_id = 2;
+    obj.dev_id = ups_data.dev_id;
+    var jsonString = JSON.stringify(obj);
+
+    ws.send(jsonString);
+
+
+    /******************** status code ******************/
     let titleStr;
     let UI_Alarm = ups_data?.UI_Alarm;
     let Rectifier_Alarm1 = ups_data?.Rectifier_Alarm1;
@@ -275,7 +464,7 @@ function connect() {
     }
 
 
-
+    /********************** metering code ********************/
     if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === "metering") {
       /*********************** for 1 phase ******************************/
 
@@ -804,46 +993,3 @@ function makeTabActive(tagName) {
   document.getElementById('nav-' + tagName + '-tab').classList.add('active');
   document.getElementById(tagName).classList.add('show', 'active');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const ws = require('ws');
-
-// const socketIo = require('socket.io');
-// const io = socketIo(server);
-// const socket = require('./socket')(io);
-
-// const port = 9001;
-// process.env.PORT for production
-// server.listen(port, () => console.log('server started on ' + port));
-
-// const wss = new ws.Server({ server });
-
-// wss.on('connection', (ws) => {
-
-//   //connection is up, let's add a simple simple event
-//   ws.on('message', (message) => {
-
-//       //log the received message and send it back to the client
-//      // console.log('received: %s', message);
-//       ws.send(`${message}`);
-//   });
-// });

@@ -863,51 +863,31 @@
                     </div>
                   </div>
                   <div class="tab-pane fade" id="eventlog" role="tabpanel" aria-labelledby="nav-eventlog-tab">
-                    Eventlog page
 
-                    <div class="row">
+                    <div class="row mt-3">
                       <div class="col-md-12">
                         <button type="button" class="btn btn-outline-primary" onclick="exportToCSV()">Export to
                           CSV</button>
                       </div>
                     </div>
 
-                    <table class="table" id="eventLogTable">
-                      <thead>
-                        <tr>
-                          <th scope="col">Serial_No</th>
-                          <th scope="col">Alarm_Number</th>
-                          <th scope="col">Date</th>
-                          <th scope="col">Time</th>
-                          <th scope="col">Alarm_Name</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td scope="row">1</td>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <td scope="row">2</td>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <td scope="row">3</td>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
 
 
+                    <div class="mt-5">
+                      <table id="alarm-table" class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">Serial_No</th>
+                            <th scope="col">Alarm_Number</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Alarm_Name</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
 
 
 
@@ -916,6 +896,8 @@
                     Datalog page
                   </div>
                 </div>
+
+
               </div>
             </div>
           </div>
@@ -932,70 +914,3 @@
 <script type="text/javascript" src="./ups.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script>
-
-
-  function exportToCSV() {
-
-    // Variable to store the final csv data
-    var csv_data = [];
-
-    // Get each row data
-    var rows = document.getElementById('eventLogTable').getElementsByTagName('tr');
-
-    for (var i = 0; i < rows.length; i++) {
-
-      // Get each column data
-      var cols = rows[i].querySelectorAll('td,th');
-
-      // Stores each csv row data
-      var csvrow = [];
-      for (var j = 0; j < cols.length; j++) {
-
-        // Get the text data of each cell
-        // of a row and push it to csvrow
-        csvrow.push(cols[j].innerHTML);
-      }
-
-      // Combine each column value with comma
-      csv_data.push(csvrow.join(","));
-    }
-
-    // Combine each row data with new line character
-    csv_data = csv_data.join('\n');
-
-    // Call this function to download csv file 
-    downloadCSVFile(csv_data);
-
-  }
-
-  function downloadCSVFile(csv_data) {
-
-    // Create CSV file object and feed
-    // our csv_data into it
-    CSVFile = new Blob([csv_data], {
-      type: "text/csv"
-    });
-
-    // Create to temporary link to initiate
-    // download process
-    var temp_link = document.createElement('a');
-
-    // Download csv file
-    temp_link.download = "eventLog.csv";
-    var url = window.URL.createObjectURL(CSVFile);
-    temp_link.href = url;
-
-    // This link should not be displayed
-    temp_link.style.display = "none";
-    document.body.appendChild(temp_link);
-
-    // Automatically click the link to
-    // trigger download
-    temp_link.click();
-    document.body.removeChild(temp_link);
-  }
-
-
-
-</script>
