@@ -247,7 +247,6 @@ const UPS_MSG = async (payload) => {
         }
     }
     json = { ...jsonValues, ...jsonValuesStatus };
-    // console.log(json);
     return json;
 };
 
@@ -304,12 +303,9 @@ const mapAlarmData = async (alarmData, ph_type) => {
 
 
 const createBITAlarmJSON = async (UIAlarm) => {
-    // console.log('UIAlarm => ', UIAlarm)
     let mobusBit = {};
     const modbus = convertToBinary(UIAlarm);
-    // console.log('modbus => ', modbus)
     let modbusBITRepr = modbus.toString().padStart(16, "0");
-    // console.log('modbusBITRepr => ', modbusBITRepr);
     for (let index = 15; index >= 0; index--) {
         mobusBit[`BIT_${15 - index}`] = Number(modbusBITRepr[index]);
     }

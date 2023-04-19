@@ -5,13 +5,31 @@ function connect() {
   var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
 
+  // console.log('navigator.onLine ==> ', navigator.onLine)
+
+  window.addEventListener("online", function () {
+    console.log("I am connected to the internet");
+    console.log('navigator.onLine ==> ', navigator.onLine)
+    if (navigator.onLine) {
+      connect();
+    }
+  })
+
+  window.addEventListener("offline", function () {
+    console.log("Disconnected...so sad!!!");
+    console.log('navigator.onLine ==> ', navigator.onLine);
+  })
+
+
   ws.onopen = function () {
     ws.send('Status WS Started');
     console.log("Web socket is connected");
 
     ws.onclose = function (event) {
       console.log("WebSocket is closed now.");
-      connect();
+      setInterval(() => {
+        connect();
+      }, 500);
     };
   };
 
@@ -21,13 +39,6 @@ function connect() {
 
     console.log("ups_data in index");
     console.log(ups_data);
-
-    // if (ups_data.DATA_TYPE === 1) {
-    //   document.getElementById('iframeMeteringHeight').style.height = '150vh';
-    // } else {
-    //   document.getElementById('iframeMeteringHeight').style.height = '200vh';
-    // }
-    // return false;
 
     let titleStr;
     let UI_Alarm = ups_data?.UI_Alarm;
@@ -715,10 +726,6 @@ function connect() {
 
   }
 }
-
-
-
-
 
 
 (function () {

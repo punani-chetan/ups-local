@@ -128,18 +128,6 @@
                                             </div>
                                           </div>
                                         </div>
-
-                                        <!-- <div id="id2">
-                                          <div class="d-flex flex-column">
-                                            <span><b>Main's Supply</b></span>
-                                            <div class="d-flex">
-                                              <div class="dot-red" id="mainsupply_input_css"></div>
-                                              <span class="status-card-text-space" id="mainsupply_input_css_text">
-                                                Absent
-                                              </span>
-                                            </div>
-                                          </div>
-                                        </div> -->
                                       </td>
 
                                       <td>
@@ -875,12 +863,57 @@
                     </div>
                   </div>
                   <div class="tab-pane fade" id="eventlog" role="tabpanel" aria-labelledby="nav-eventlog-tab">
-                    <!-- <include src="eventlog.html"></include> -->
-                    <iframe src="eventlog.html" frameborder="0"></iframe>
+                    Eventlog page
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-outline-primary" onclick="exportToCSV()">Export to
+                          CSV</button>
+                      </div>
+                    </div>
+
+                    <table class="table" id="eventLogTable">
+                      <thead>
+                        <tr>
+                          <th scope="col">Serial_No</th>
+                          <th scope="col">Alarm_Number</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Alarm_Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td scope="row">1</td>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">2</td>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">3</td>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
+
+
+
                   </div>
                   <div class="tab-pane fade" id="datalog" role="tabpanel" aria-labelledby="nav-datalog-tab">
-                    <!-- <include src="datalog.html"></include> -->
-                    <iframe src="datalog.html" frameborder="0"></iframe>
+                    Datalog page
                   </div>
                 </div>
               </div>
@@ -902,45 +935,67 @@
 <script>
 
 
-  // function resizeIframe(iframe) {
-  //   iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-  //   // window.addEventListener('resize', function() {
-  //   //   iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-  //   // });
-  // }
+  function exportToCSV() {
 
-  //write a code for
+    // Variable to store the final csv data
+    var csv_data = [];
+
+    // Get each row data
+    var rows = document.getElementById('eventLogTable').getElementsByTagName('tr');
+
+    for (var i = 0; i < rows.length; i++) {
+
+      // Get each column data
+      var cols = rows[i].querySelectorAll('td,th');
+
+      // Stores each csv row data
+      var csvrow = [];
+      for (var j = 0; j < cols.length; j++) {
+
+        // Get the text data of each cell
+        // of a row and push it to csvrow
+        csvrow.push(cols[j].innerHTML);
+      }
+
+      // Combine each column value with comma
+      csv_data.push(csvrow.join(","));
+    }
+
+    // Combine each row data with new line character
+    csv_data = csv_data.join('\n');
+
+    // Call this function to download csv file 
+    downloadCSVFile(csv_data);
+
+  }
+
+  function downloadCSVFile(csv_data) {
+
+    // Create CSV file object and feed
+    // our csv_data into it
+    CSVFile = new Blob([csv_data], {
+      type: "text/csv"
+    });
+
+    // Create to temporary link to initiate
+    // download process
+    var temp_link = document.createElement('a');
+
+    // Download csv file
+    temp_link.download = "eventLog.csv";
+    var url = window.URL.createObjectURL(CSVFile);
+    temp_link.href = url;
+
+    // This link should not be displayed
+    temp_link.style.display = "none";
+    document.body.appendChild(temp_link);
+
+    // Automatically click the link to
+    // trigger download
+    temp_link.click();
+    document.body.removeChild(temp_link);
+  }
 
 
-  // connect();
 
-  // function connect() {
-    // var url = 'ws://ups-gateway:80/ws';
-    // var url = 'ws://localhost:8080';
-    // var ws = new WebSocket(url);
-
-    // ws.onopen = function () {
-    //   ws.send('Status WS Started');
-    //   console.log("Web socket is connected in index.html");
-
-    //   ws.onclose = function (event) {
-    //     console.log("WebSocket is closed now.");
-    //     connect();
-    //     // setTimeout(function () {
-    //     //   connect();
-    //     // }, 2000);
-    //   };
-
-    // };
-
-
-
-    // ws.onclose = function (event) {
-    //   console.log("WebSocket is closed now.");
-    //   setTimeout(function () {
-    //     connect();
-    //   }, 5000);
-    // };
-
-  // }
 </script>
