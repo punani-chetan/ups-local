@@ -1,114 +1,57 @@
 
 connect();
+var deviceId;
+var tagName;
+// let text = "'AAAA01' 003,04-05-0006,09:08:07,RESERVED UI - 2@\n000,00-00-0000,01:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n025,70-27-0098,60:55:29,SMPS FAIL@\n017,18-19-0020,23:22:21,RECT OVER TEMP@\n009,10-11-0012,15:14:13,RECTIFIER FAIL'5555'";
 
-let text = "'AAAA01' 003,04-05-0006,09:08:07,RESERVED UI - 2@\n000,00-00-0000,01:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n025,70-27-0098,60:55:29,SMPS FAIL@\n017,18-19-0020,23:22:21,RECT OVER TEMP@\n009,10-11-0012,15:14:13,RECTIFIER FAIL'5555'"
+// // Remove 'AAAA01' and '5555' from the text
+// text = text.replace(/'AAAA01'\s|\s'5555'/g, '');
 
-// Remove 'AAAA01' and '5555' from the text
-text = text.replace(/'AAAA01'\s|\s'5555'/g, '')
+// // Split the text into an array of alarms
+// const alarms = text.split('@\n');
 
-// Split the text into an array of alarms
-const alarms = text.split('@\n')
-
-// Convert the array of alarms into an array of objects
-const arr = alarms.map(alarm => {
-  const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',')
-  return {
-    Alarm_Number,
-    Date,
-    Time,
-    Alarm_Name
-  }
-})
-
-// Create the HTML table
-// const table = document.createElement('table')
-
-// Create the table header
-// const headerRow = table.insertRow()
-// const headers = ['Alarm Number', 'Date', 'Time', 'Alarm Name']
-// headers.forEach(header => {
-//   const th = document.createElement('th')
-//   th.textContent = header
-//   headerRow.appendChild(th)
-// })
-
-// // Add the table data
-// arr.forEach(alarm => {
-//   const row = table.insertRow()
-//   Object.values(alarm).forEach(val => {
-//     const cell = row.insertCell()
-//     cell.textContent = val
-//   })
-// })
-
-// // Add the table to the HTML document
-// document.body.appendChild(table)
-
-// // Create the CSV file
-// let csv = headers.join(',') + '\n'
-// arr.forEach(alarm => {
-//   csv += Object.values(alarm).join(',') + '\n'
-// })
-
-// // Download the CSV file
-// const downloadLink = document.createElement('a')
-// downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv)
-// downloadLink.download = 'alarms.csv'
-// document.body.appendChild(downloadLink)
-// downloadLink.click()
-
-
-
-// // Parse the text into an array
-// let text = "'AAAA01'003,04-05-0006,09:08:07,RESERVED UI - 2 @\n000,00-00-0000,01:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n025,70-27-0098,60:55:29,SMPS FAIL@\n017,18-19-0020,23:22:21,RECT OVER TEMP@\n009,10-11-0012,15:14:13,RECTIFIER FAIL'5555'";
-// // Remove 'AAAA01' and '5555' from text
-// text = text.replace(/'AAAA01'|'5555'/g, '')
-
-// // Split text into lines
-// let lines = text.split('\n')
-
-// // Create array of objects
-// let arr = lines.map(line => {
-//   let parts = line.split(',')
+// // Convert the array of alarms into an array of objects
+// const arr = alarms.map(alarm => {
+//   const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
 //   return {
-//     Alarm_Number: parts[0],
-//     Date: parts[1],
-//     Time: parts[2],
-//     Alarm_Name: parts[3]
+//     Alarm_Number,
+//     Date,
+//     Time,
+//     Alarm_Name
 //   }
 // })
 
 
-// Create a table in HTML
-const tableBody = document.querySelector('#alarm-table tbody');
-let i = 0;
-for (const item of arr) {
-  const row = document.createElement('tr');
-  const cell0 = document.createElement('td');
-  cell0.textContent = ++i;
-  row.appendChild(cell0);
-  const cell1 = document.createElement('td');
-  cell1.textContent = item.Alarm_Number;
-  row.appendChild(cell1);
-  const cell2 = document.createElement('td');
-  cell2.textContent = item.Date;
-  row.appendChild(cell2);
-  const cell3 = document.createElement('td');
-  cell3.textContent = item.Time;
-  row.appendChild(cell3);
-  const cell4 = document.createElement('td');
-  cell4.textContent = item.Alarm_Name;
-  row.appendChild(cell4);
-  tableBody.appendChild(row);
-}
+// // Create a table in HTML
+// const tableBody = document.querySelector('#alarm-table tbody');
+// let i = 0;
+// for (const item of arr) {
+//   const row = document.createElement('tr');
+//   const cell0 = document.createElement('td');
+//   cell0.textContent = ++i;
+//   row.appendChild(cell0);
+//   const cell1 = document.createElement('td');
+//   cell1.textContent = item.Alarm_Number;
+//   row.appendChild(cell1);
+//   const cell2 = document.createElement('td');
+//   cell2.textContent = item.Date;
+//   row.appendChild(cell2);
+//   const cell3 = document.createElement('td');
+//   cell3.textContent = item.Time;
+//   row.appendChild(cell3);
+//   const cell4 = document.createElement('td');
+//   cell4.textContent = item.Alarm_Name;
+//   row.appendChild(cell4);
+//   tableBody.appendChild(row);
+// }
 
-function exportToCSV() {
+function exportToCSV(tableId) {
 
   // Variable to store the final csv data
   var csv_data = [];
 
   // Get each row data
-  var rows = document.getElementById('alarm-table').getElementsByTagName('tr');
+  var rows = document.getElementById(tableId).getElementsByTagName('tr');
 
   for (var i = 0; i < rows.length; i++) {
 
@@ -149,7 +92,7 @@ function downloadCSVFile(csv_data) {
   var temp_link = document.createElement('a');
 
   // Download csv file
-  temp_link.download = "eventLog.csv";
+  temp_link.download = "alarmlog.csv";
   var url = window.URL.createObjectURL(CSVFile);
   temp_link.href = url;
 
@@ -164,27 +107,11 @@ function downloadCSVFile(csv_data) {
 }
 
 
-// Create a link to download the data in CSV format
-// let csvData = 'data:text/csv;charset=utf-8,';
-// arr.forEach(function (row) {
-//   csvData += row.Alarm_Number + ',' + row.Date + ',' + row.Time + ',' + row.Alarm_Name + '\n';
-// });
-// let encodedUri = encodeURI(csvData);
-// let link = document.createElement('a');
-// link.setAttribute('href', encodedUri);
-// link.setAttribute('download', 'data.csv');
-// link.innerHTML = 'Download CSV';
-// document.body.appendChild(link);
-
-
-
-
 function connect() {
+  console.log('in connect')
 
   var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
-
-  // console.log('navigator.onLine ==> ', navigator.onLine)
 
   window.addEventListener("online", function () {
     console.log("I am connected to the internet");
@@ -194,16 +121,9 @@ function connect() {
     }
   })
 
-  window.addEventListener("offline", function () {
-    console.log("Disconnected...so sad!!!");
-    console.log('navigator.onLine ==> ', navigator.onLine);
-  })
-
-
   ws.onopen = function () {
     ws.send('Status WS Started');
     console.log("Web socket is connected");
-
 
     ws.onclose = function (event) {
       console.log("WebSocket is closed now.");
@@ -220,13 +140,521 @@ function connect() {
     console.log("ups_data in index");
     console.log(ups_data);
 
-    var obj = new Object();
-    obj.msg_id = 2;
-    obj.dev_id = ups_data.dev_id;
-    var jsonString = JSON.stringify(obj);
+    deviceId = ups_data.dev_id;
 
-    ws.send(jsonString);
+    if (ups_data) { tabs(); }
 
+    if (deviceId) {
+      console.log(deviceId)
+      if (tagName === 'alarmlog') {
+        // console.log('in alarmlog')
+        var obj = {};
+        obj.msg_id = 2;
+        obj.dev_id = deviceId;
+        var jsonString = JSON.stringify(obj);
+        ws.send(jsonString);
+      }
+      else if (tagName === 'datalog') {
+        // console.log('in datalog')
+        var obj = {};
+        obj.msg_id = 3;
+        obj.dev_id = deviceId;
+        var jsonString = JSON.stringify(obj);
+        ws.send(jsonString);
+      }
+    }
+
+
+
+    if (!deviceId) {
+
+      // Remove 'AAAA01' and '5555' from the text
+      let compareTxtStr = ups_data.payload.substring(1, 7);
+
+      if (compareTxtStr === 'AAAA02') {
+        text = ups_data.payload.replace(/'AAAA02'/g, '');
+        text = text.replace(/'5555'/g, '');
+
+        // Split the text into an array of alarms
+        const alarms = text.split('@\n');
+        // Convert the array of alarms into an array of objects
+        const arr = alarms.map(alarm => {
+          const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
+          return {
+            Alarm_Number,
+            Date,
+            Time,
+            Alarm_Name
+          }
+        });
+
+        // Create a table in HTML
+        const tableBody = document.querySelector('#alarm-table tbody');
+        let i = 0;
+        for (const item of arr) {
+          const row = document.createElement('tr');
+          const cell0 = document.createElement('td');
+          cell0.textContent = ++i;
+          row.appendChild(cell0);
+          const cell1 = document.createElement('td');
+          cell1.textContent = item.Alarm_Number;
+          row.appendChild(cell1);
+          const cell2 = document.createElement('td');
+          cell2.textContent = item.Date;
+          row.appendChild(cell2);
+          const cell3 = document.createElement('td');
+          cell3.textContent = item.Time;
+          row.appendChild(cell3);
+          const cell4 = document.createElement('td');
+          cell4.textContent = item.Alarm_Name;
+          row.appendChild(cell4);
+          tableBody.appendChild(row);
+        }
+      } else if (compareTxtStr === 'AAAA03') {
+
+        text = ups_data.payload.replace(/'AAAA03'/g, '');
+        text = text.replace(/'5555'/g, '');
+
+        // Split the text into an array of alarms
+        let alarms = text.split('\n');
+
+        // console.log(alarms)
+
+        // Convert the array of alarms into an array of objects
+        let arr = alarms.map(alarm => {
+          let tmpSplitArr = alarm.split(',');
+
+          let [
+            Date,
+            Time,
+            UI_Alarm,
+            Rectifier_Alarm1,
+            Rectifier_Alarm2,
+            Inverter_Alarm1,
+            Inverter_Alarm2,
+            Battery_Alarm1,
+            Inverter_Alarm3,
+            Can_Alarm1,
+            Input_Alarm_0,
+            Rectifier_Status1,
+            Inverter_Status1,
+            Battery_Status1,
+            R_Y_Phase_Input_Voltage,
+            R_Phase_Input_Current,
+            Y_B_Phase_Input_Voltage,
+            Y_Phase_Input_Current,
+            B_R_Phase_Input_Voltage,
+            B_Phase_Input_Current,
+            Mains_Input_Freq,
+            DC_Link_Voltage,
+            Charger_O_P_Voltage,
+            R_Phase_Output_Voltage,
+            Y_Phase_Output_Voltage,
+            B_Phase_Output_Voltage,
+            R_Phase_Output_Current,
+            Y_Phase_Output_Current,
+            B_Phase_Output_Current,
+            Output_Freq,
+            R_Phase_Bypass_Voltage,
+            Y_Phase_Bypass_Voltage,
+            B_Phase_Bypass_Voltage,
+            R_Phase_Alternate_Current,
+            Y_Phase_Alternate_Current,
+            B_Phase_Alternate_Current,
+            Bypass_Freq,
+            R_Phase_Inverter_Voltage,
+            Y_Phase_Inverter_Voltage,
+            B_Phase_Inverter_Voltage,
+            R_Phase_Inverter_Current,
+            Y_Phase_Inverter_Current,
+            B_Phase_Inverter_Current,
+            Inverter_Frequency,
+            Battery_Voltage,
+            Battery_Current,
+            Battery_Status,
+            R_Phase_Output_Power_KVA,
+            R_Phase_Output_Power_KW,
+            R_Phase_Output_Power_Factor,
+            Y_Phase_Output_Power_KVA,
+            Y_Phase_Output_Power_KW,
+            Y_Phase_Output_Power_Factor,
+            B_Phase_Output_Power_KVA,
+            B_Phase_Output_Power_KW,
+            B_Phase_Output_Power_Factor,
+            Total_Output_Power_KVA,
+            Total_Output_Power_KW,
+            Total_Output_Power_PF,
+            R_Phase_UPS_Power_KVA,
+            R_Phase_UPS_Power_KW,
+            R_Phase_UPS_Power_Factor,
+            Y_Phase_UPS_Power_KVA,
+            Y_Phase_UPS_Power_KW,
+            Y_Phase_UPS_Power_Factor,
+            B_Phase_UPS_Power_KVA,
+            B_Phase_UPS_Power_KW,
+            B_Phase_UPS_Power_Factor,
+            Total_UPS_Power_KVA,
+            Total_UPS_Power_KW,
+            Total_UPS_Power_PF,
+            System_Control_Card_Software_Version,
+            User_Interface_Card_Software_Version,
+            Total_Number_of_Faults_Store_in_UPS,
+            Current_Fault_Store_Location_in_UPS,
+            Battery_Room_Temperature,
+            Traceback_bit_Read,
+            Battery_Backup_AH_BMS_Module,
+            Battery_Backup_Time_BMS_Module,
+            Battery_Life_Discharge_Cycle,
+            Battery_Life_In_Month,
+            UPS_Model
+          ] = tmpSplitArr;
+
+          return {
+            Date,
+            Time,
+            UI_Alarm,
+            Rectifier_Alarm1,
+            Rectifier_Alarm2,
+            Inverter_Alarm1,
+            Inverter_Alarm2,
+            Battery_Alarm1,
+            Inverter_Alarm3,
+            Can_Alarm1,
+            Input_Alarm_0,
+            Rectifier_Status1,
+            Inverter_Status1,
+            Battery_Status1,
+            R_Y_Phase_Input_Voltage,
+            R_Phase_Input_Current,
+            Y_B_Phase_Input_Voltage,
+            Y_Phase_Input_Current,
+            B_R_Phase_Input_Voltage,
+            B_Phase_Input_Current,
+            Mains_Input_Freq,
+            DC_Link_Voltage,
+            Charger_O_P_Voltage,
+            R_Phase_Output_Voltage,
+            Y_Phase_Output_Voltage,
+            B_Phase_Output_Voltage,
+            R_Phase_Output_Current,
+            Y_Phase_Output_Current,
+            B_Phase_Output_Current,
+            Output_Freq,
+            R_Phase_Bypass_Voltage,
+            Y_Phase_Bypass_Voltage,
+            B_Phase_Bypass_Voltage,
+            R_Phase_Alternate_Current,
+            Y_Phase_Alternate_Current,
+            B_Phase_Alternate_Current,
+            Bypass_Freq,
+            R_Phase_Inverter_Voltage,
+            Y_Phase_Inverter_Voltage,
+            B_Phase_Inverter_Voltage,
+            R_Phase_Inverter_Current,
+            Y_Phase_Inverter_Current,
+            B_Phase_Inverter_Current,
+            Inverter_Frequency,
+            Battery_Voltage,
+            Battery_Current,
+            Battery_Status,
+            R_Phase_Output_Power_KVA,
+            R_Phase_Output_Power_KW,
+            R_Phase_Output_Power_Factor,
+            Y_Phase_Output_Power_KVA,
+            Y_Phase_Output_Power_KW,
+            Y_Phase_Output_Power_Factor,
+            B_Phase_Output_Power_KVA,
+            B_Phase_Output_Power_KW,
+            B_Phase_Output_Power_Factor,
+            Total_Output_Power_KVA,
+            Total_Output_Power_KW,
+            Total_Output_Power_PF,
+            R_Phase_UPS_Power_KVA,
+            R_Phase_UPS_Power_KW,
+            R_Phase_UPS_Power_Factor,
+            Y_Phase_UPS_Power_KVA,
+            Y_Phase_UPS_Power_KW,
+            Y_Phase_UPS_Power_Factor,
+            B_Phase_UPS_Power_KVA,
+            B_Phase_UPS_Power_KW,
+            B_Phase_UPS_Power_Factor,
+            Total_UPS_Power_KVA,
+            Total_UPS_Power_KW,
+            Total_UPS_Power_PF,
+            System_Control_Card_Software_Version,
+            User_Interface_Card_Software_Version,
+            Total_Number_of_Faults_Store_in_UPS,
+            Current_Fault_Store_Location_in_UPS,
+            Battery_Room_Temperature,
+            Traceback_bit_Read,
+            Battery_Backup_AH_BMS_Module,
+            Battery_Backup_Time_BMS_Module,
+            Battery_Life_Discharge_Cycle,
+            Battery_Life_In_Month,
+            UPS_Model
+          }
+        });
+
+        // console.log(arr[0])
+
+        // Create a table in HTML
+        const tableBody = document.querySelector('#data-log-table tbody');
+        let i = 0;
+        for (let item of arr) {
+          console.log(item[0]);
+          console.log(item[1]);
+          const row = document.createElement('tr');
+          const cell0 = document.createElement('td');
+          cell0.textContent = ++i;
+          row.appendChild(cell0);
+          const cell1 = document.createElement('td');
+          cell1.textContent = item.Date;
+          row.appendChild(cell1);
+          const cell2 = document.createElement('td');
+          cell2.textContent = item.Time;
+          row.appendChild(cell2);
+          const cell3 = document.createElement('td');
+          cell3.textContent = item.UI_Alarm;
+          row.appendChild(cell3);
+          const cell4 = document.createElement('td');
+          cell4.textContent = item.Rectifier_Alarm1;
+          row.appendChild(cell4);
+          const cell5 = document.createElement('td');
+          cell5.textContent = item.Rectifier_Alarm2;
+          row.appendChild(cell5);
+          const cell6 = document.createElement('td');
+          cell6.textContent = item.Inverter_Alarm1;
+          row.appendChild(cell6);
+          const cell7 = document.createElement('td');
+          cell7.textContent = item.Inverter_Alarm2;
+          row.appendChild(cell7);
+          const cell8 = document.createElement('td');
+          cell8.textContent = item.Battery_Alarm1;
+          row.appendChild(cell8);
+          const cell9 = document.createElement('td');
+          cell9.textContent = item.Inverter_Alarm3;
+          row.appendChild(cell9);
+          const cell10 = document.createElement('td');
+          cell10.textContent = item.Can_Alarm1;
+          row.appendChild(cell10);
+          const cell11 = document.createElement('td');
+          cell11.textContent = item.Input_Alarm_0;
+          row.appendChild(cell11);
+          const cell12 = document.createElement('td');
+          cell12.textContent = item.Rectifier_Status1;
+          row.appendChild(cell12);
+          const cell13 = document.createElement('td');
+          cell13.textContent = item.Inverter_Status1;
+          row.appendChild(cell13);
+          const cell14 = document.createElement('td');
+          cell14.textContent = item.Battery_Status1;
+          row.appendChild(cell14);
+          const cell15 = document.createElement('td');
+          cell15.textContent = item.R_Y_Phase_Input_Voltage;
+          row.appendChild(cell15);
+          const cell16 = document.createElement('td');
+          cell16.textContent = item.R_Phase_Input_Current;
+          row.appendChild(cell16);
+          const cell17 = document.createElement('td');
+          cell17.textContent = item.Y_B_Phase_Input_Voltage;
+          row.appendChild(cell17);
+          const cell18 = document.createElement('td');
+          cell18.textContent = item.Y_Phase_Input_Current;
+          row.appendChild(cell18);
+          const cell19 = document.createElement('td');
+          cell19.textContent = item.B_R_Phase_Input_Voltage;
+          row.appendChild(cell19);
+          const cell20 = document.createElement('td');
+          cell20.textContent = item.B_Phase_Input_Current;
+          row.appendChild(cell20);
+          const cell21 = document.createElement('td');
+          cell21.textContent = item.Mains_Input_Freq;
+          row.appendChild(cell21);
+          const cell22 = document.createElement('td');
+          cell22.textContent = item.DC_Link_Voltage;
+          row.appendChild(cell22);
+          const cell23 = document.createElement('td');
+          cell23.textContent = item.Charger_O_P_Voltage;
+          row.appendChild(cell23);
+          const cell24 = document.createElement('td');
+          cell24.textContent = item.R_Phase_Output_Voltage;
+          row.appendChild(cell24);
+          const cell25 = document.createElement('td');
+          cell25.textContent = item.Y_Phase_Output_Voltage;
+          row.appendChild(cell25);
+          const cell26 = document.createElement('td');
+          cell26.textContent = item.B_Phase_Output_Voltage;
+          row.appendChild(cell26);
+          const cell27 = document.createElement('td');
+          cell27.textContent = item.R_Phase_Output_Current;
+          row.appendChild(cell27);
+          const cell28 = document.createElement('td');
+          cell28.textContent = item.Y_Phase_Output_Current;
+          row.appendChild(cell28);
+          const cell29 = document.createElement('td');
+          cell29.textContent = item.B_Phase_Output_Current;
+          row.appendChild(cell29);
+          const cell30 = document.createElement('td');
+          cell30.textContent = item.Output_Freq;
+          row.appendChild(cell30);
+          const cell31 = document.createElement('td');
+          cell31.textContent = item.R_Phase_Bypass_Voltage;
+          row.appendChild(cell31);
+          const cell32 = document.createElement('td');
+          cell32.textContent = item.Y_Phase_Bypass_Voltage;
+          row.appendChild(cell32);
+          const cell33 = document.createElement('td');
+          cell33.textContent = item.B_Phase_Bypass_Voltage;
+          row.appendChild(cell33);
+          const cell34 = document.createElement('td');
+          cell34.textContent = item.R_Phase_Alternate_Current;
+          row.appendChild(cell34);
+          const cell35 = document.createElement('td');
+          cell35.textContent = item.Y_Phase_Alternate_Current;
+          row.appendChild(cell35);
+          const cell36 = document.createElement('td');
+          cell36.textContent = item.B_Phase_Alternate_Current;
+          row.appendChild(cell36);
+          const cell37 = document.createElement('td');
+          cell37.textContent = item.Bypass_Freq;
+          row.appendChild(cell37);
+          const cell38 = document.createElement('td');
+          cell38.textContent = item.R_Phase_Inverter_Voltage;
+          row.appendChild(cell38);
+          const cell39 = document.createElement('td');
+          cell39.textContent = item.Y_Phase_Inverter_Voltage;
+          row.appendChild(cell39);
+          const cell40 = document.createElement('td');
+          cell40.textContent = item.B_Phase_Inverter_Voltage;
+          row.appendChild(cell40);
+          const cell41 = document.createElement('td');
+          cell41.textContent = item.R_Phase_Inverter_Current;
+          row.appendChild(cell41);
+          const cell42 = document.createElement('td');
+          cell42.textContent = item.Y_Phase_Inverter_Current;
+          row.appendChild(cell42);
+          const cell43 = document.createElement('td');
+          cell43.textContent = item.B_Phase_Inverter_Current;
+          row.appendChild(cell43);
+          const cell44 = document.createElement('td');
+          cell44.textContent = item.Battery_Voltage;
+          row.appendChild(cell44);
+          const cell45 = document.createElement('td');
+          cell45.textContent = item.Battery_Current;
+          row.appendChild(cell45);
+          const cell46 = document.createElement('td');
+          cell46.textContent = item.Battery_Status;
+          row.appendChild(cell46);
+          const cell47 = document.createElement('td');
+          cell47.textContent = item.R_Phase_Output_Power_KVA;
+          row.appendChild(cell47);
+          const cell48 = document.createElement('td');
+          cell48.textContent = item.R_Phase_Output_Power_KW;
+          row.appendChild(cell48);
+          const cell49 = document.createElement('td');
+          cell49.textContent = item.R_Phase_Output_Power_Factor;
+          row.appendChild(cell49);
+          const cell50 = document.createElement('td');
+          cell50.textContent = item.Y_Phase_Output_Power_KVA;
+          row.appendChild(cell50);
+          const cell51 = document.createElement('td');
+          cell51.textContent = item.Y_Phase_Output_Power_KW;
+          row.appendChild(cell51);
+          const cell52 = document.createElement('td');
+          cell52.textContent = item.Y_Phase_Output_Power_Factor;
+          row.appendChild(cell52);
+          const cell53 = document.createElement('td');
+          cell53.textContent = item.B_Phase_Output_Power_KVA;
+          row.appendChild(cell53);
+          const cell54 = document.createElement('td');
+          cell54.textContent = item.B_Phase_Output_Power_KW;
+          row.appendChild(cell54);
+          const cell55 = document.createElement('td');
+          cell55.textContent = item.B_Phase_Output_Power_Factor;
+          row.appendChild(cell55);
+          const cell56 = document.createElement('td');
+          cell56.textContent = item.Total_Output_Power_KVA;
+          row.appendChild(cell56);
+          const cell57 = document.createElement('td');
+          cell57.textContent = item.Total_Output_Power_KW;
+          row.appendChild(cell57);
+          const cell58 = document.createElement('td');
+          cell58.textContent = item.Total_Output_Power_PF;
+          row.appendChild(cell58);
+          const cell59 = document.createElement('td');
+          cell59.textContent = item.R_Phase_UPS_Power_KVA;
+          row.appendChild(cell59);
+          const cell60 = document.createElement('td');
+          cell60.textContent = item.R_Phase_UPS_Power_KW;
+          row.appendChild(cell60);
+          const cell61 = document.createElement('td');
+          cell61.textContent = item.R_Phase_UPS_Power_Factor;
+          row.appendChild(cell61);
+          const cell62 = document.createElement('td');
+          cell62.textContent = item.Y_Phase_UPS_Power_KVA;
+          row.appendChild(cell62);
+          const cell63 = document.createElement('td');
+          cell63.textContent = item.Y_Phase_UPS_Power_KW;
+          row.appendChild(cell63);
+          const cell64 = document.createElement('td');
+          cell64.textContent = item.Y_Phase_UPS_Power_Factor;
+          row.appendChild(cell64);
+          const cell65 = document.createElement('td');
+          cell65.textContent = item.B_Phase_UPS_Power_KVA;
+          row.appendChild(cell65);
+          const cell67 = document.createElement('td');
+          cell67.textContent = item.B_Phase_UPS_Power_KW;
+          row.appendChild(cell67);
+          const cell68 = document.createElement('td');
+          cell68.textContent = item.B_Phase_UPS_Power_Factor;
+          row.appendChild(cell68);
+          const cell69 = document.createElement('td');
+          cell69.textContent = item.Total_UPS_Power_KVA;
+          row.appendChild(cell69);
+          const cell70 = document.createElement('td');
+          cell70.textContent = item.Total_UPS_Power_KW;
+          row.appendChild(cell70);
+          const cell71 = document.createElement('td');
+          cell71.textContent = item.Total_UPS_Power_PF;
+          row.appendChild(cell71);
+          const cell72 = document.createElement('td');
+          cell72.textContent = item.System_Control_Card_Software_Version;
+          row.appendChild(cell72);
+          const cell73 = document.createElement('td');
+          cell73.textContent = item.User_Interface_Card_Software_Version;
+          row.appendChild(cell73);
+          const cell74 = document.createElement('td');
+          cell74.textContent = item.Total_Number_of_Faults_Store_in_UPS;
+          row.appendChild(cell74);
+          const cell75 = document.createElement('td');
+          cell75.textContent = item.Current_Fault_Store_Location_in_UPS;
+          row.appendChild(cell75);
+          const cell76 = document.createElement('td');
+          cell76.textContent = item.Battery_Room_Temperature;
+          row.appendChild(cell76);
+          const cell77 = document.createElement('td');
+          cell77.textContent = item.Traceback_bit_Read;
+          row.appendChild(cell77);
+          const cell78 = document.createElement('td');
+          cell78.textContent = item.Battery_Backup_AH_BMS_Module;
+          row.appendChild(cell78);
+          const cell79 = document.createElement('td');
+          cell79.textContent = item.Battery_Backup_Time_BMS_Module;
+          row.appendChild(cell79);
+          const cell80 = document.createElement('td');
+          cell80.textContent = item.Battery_Life_Discharge_Cycle;
+          row.appendChild(cell80);
+          const cell81 = document.createElement('td');
+          cell81.textContent = item.Battery_Life_In_Month;
+          row.appendChild(cell81);
+          const cell82 = document.createElement('td');
+          cell82.textContent = item.UPS_Model;
+          row.appendChild(cell82);
+
+          tableBody.appendChild(row);
+        }
+      }
+    }
 
     /******************** status code ******************/
     let titleStr;
@@ -917,9 +1345,16 @@ function connect() {
 }
 
 
-(function () {
+// (function () {
+
+window.addEventListener("load", (event) => {
+  console.log("page is fully loaded");
+  tabs();
+});
+
+function tabs() {
   let hashTag = new URL(document.URL).hash;
-  let tagName;
+  // let tagName;
   if (!hashTag || hashTag == '#status') {
     tagName = 'status';
     setTimeout(() => {
@@ -930,21 +1365,41 @@ function connect() {
     tagName = 'metering';
     showTab(tagName);
   }
-  else if (hashTag == '#eventlog') tagName = 'eventlog';
+  else if (hashTag == '#alarmlog') tagName = 'alarmlog';
   else if (hashTag == '#datalog') tagName = 'datalog';
   changeUrlParams(tagName)
-})();
+}
+
+// })();
 
 function changeUrlParams(tabName) {
   makeTabActive(tabName);
-  // if (tabName === 'status') connect();
+
+  // if (deviceId) {
+  //   var url = 'ws://localhost:8080';
+  //   var ws = new WebSocket(url);
+  //   console.log(deviceId)
+  //   if (tabName === 'alarmlog') {
+  //     // console.log('in alarmlog')
+  //     var obj = {};
+  //     obj.msg_id = 2;
+  //     obj.dev_id = deviceId;
+  //     var jsonString = JSON.stringify(obj);
+  //     ws.send(jsonString);
+  //   }
+  //   else if (tabName === 'datalog') {
+  //     // console.log('in datalog')
+  //     var obj = {};
+  //     obj.msg_id = 3;
+  //     obj.dev_id = deviceId;
+  //     var jsonString = JSON.stringify(obj);
+  //     ws.send(jsonString);
+  //   }
+  // }
 }
 
 function showTab(tabName) {
   changeUrlParams('metering');
-
-  let iframeName = tabName + 'Iframe';
-  // document.getElementById('meteringIframe').innerHTML = '<iframe src="metering.html" id="meteringIframe" name="metering" title="Metering" width="100%" style="height: 115vh;" allowfullscreen></iframe>';
 
   setTimeout(() => {
     window.scrollTo({ top: 0 });
@@ -975,21 +1430,21 @@ document.getElementById('ups_date').innerHTML = curr_date;
 var hashTagValue;
 var hashTagCss;
 
-function makeTabActive(tagName) {
+function makeTabActive(tagNam) {
   // this function is to remain on same page when refresh
 
   hashTagCss = 'show', 'active';
 
   document.getElementById('nav-status-tab').classList.remove('active');
   document.getElementById('nav-metering-tab').classList.remove('active');
-  document.getElementById('nav-eventlog-tab').classList.remove('active');
+  document.getElementById('nav-alarmlog-tab').classList.remove('active');
   document.getElementById('nav-datalog-tab').classList.remove('active');
 
   document.getElementById('status').classList.remove('show', 'active');
   document.getElementById('metering').classList.remove('show', 'active');
-  document.getElementById('eventlog').classList.remove('show', 'active');
+  document.getElementById('alarmlog').classList.remove('show', 'active');
   document.getElementById('datalog').classList.remove('show', 'active');
 
-  document.getElementById('nav-' + tagName + '-tab').classList.add('active');
-  document.getElementById(tagName).classList.add('show', 'active');
+  document.getElementById('nav-' + tagNam + '-tab').classList.add('active');
+  document.getElementById(tagNam).classList.add('show', 'active');
 }

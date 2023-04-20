@@ -71,10 +71,10 @@
                         </b>
                       </a>
 
-                      <a onclick="changeUrlParams('eventlog')" class="nav-link" id="nav-eventlog-tab" data-toggle="tab"
-                        role="tab" href="#eventlog" aria-controls="eventlog" aria-selected="false">
+                      <a onclick="changeUrlParams('alarmlog')" class="nav-link" id="nav-alarmlog-tab" data-toggle="tab"
+                        role="tab" href="#alarmlog" aria-controls="alarmlog" aria-selected="false">
                         <b>
-                          <i class="bi bi-calendar-event"></i><span class="m-2">EventLog</span>
+                          <i class="bi bi-calendar-event"></i><span class="m-2">AlarmLog</span>
                         </b>
                       </a>
 
@@ -862,17 +862,15 @@
 
                     </div>
                   </div>
-                  <div class="tab-pane fade" id="eventlog" role="tabpanel" aria-labelledby="nav-eventlog-tab">
-
+                  <div class="tab-pane fade" id="alarmlog" role="tabpanel" aria-labelledby="nav-alarmlog-tab">
+                    <!-- alarm log table -->
                     <div class="row mt-3">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-outline-primary" onclick="exportToCSV()">Export to
+                        <button type="button" class="btn btn-outline-primary"
+                          onclick="exportToCSV('alarm-table')">Export to
                           CSV</button>
                       </div>
                     </div>
-
-
-
                     <div class="mt-5">
                       <table id="alarm-table" class="table table-bordered">
                         <thead>
@@ -889,11 +887,122 @@
                       </table>
                     </div>
 
-
-
                   </div>
+
+
+
                   <div class="tab-pane fade" id="datalog" role="tabpanel" aria-labelledby="nav-datalog-tab">
-                    Datalog page
+
+
+                    <!-- data log table -->
+                    <div class="row mt-3">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-outline-primary"
+                          onclick="exportToCSV('data-log-table')">Export to
+                          CSV</button>
+                      </div>
+                    </div>
+                    <div class="mt-5">
+                      <table id="data-log-table" class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">UI_Alarm</th>
+                            <th scope="col">Rectifier_Alarm1</th>
+                            <th scope="col">Rectifier_Alarm2</th>
+                            <th scope="col">Inverter_Alarm1</th>
+                            <th scope="col">Inverter_Alarm2</th>
+                            <th scope="col">Battery_Alarm1</th>
+                            <th scope="col">Inverter_Alarm3</th>
+                            <th scope="col">Can_Alarm1</th>
+                            <th scope="col">Input_Alarm_0</th>
+                            <th scope="col">Rectifier_Status1</th>
+                            <th scope="col">Inverter_Status1</th>
+                            <th scope="col">Battery_Status1</th>
+                            <th scope="col">R-Y Phase Input Voltage</th>
+                            <th scope="col">R Phase Input Current</th>
+                            <th scope="col">Y-B Phase Input Voltage</th>
+                            <th scope="col">Y Phase Input Current</th>
+                            <th scope="col">B-R Phase Input Voltage</th>
+
+                            <th scope="col">B Phase Input Current</th>
+                            <th scope="col">Mains Input Freq</th>
+                            <th scope="col">DC Link Voltage</th>
+
+                            <th scope="col">Charger O/P Voltage</th>
+                            <th scope="col">R-Phase Output Voltage</th>
+                            <th scope="col">Y-Phase Output Voltage</th>
+                            <th scope="col">B-Phase Output Voltage</th>
+                            <th scope="col">R-Phase Output Current</th>
+                            <th scope="col">Y-Phase Output Current</th>
+                            <th scope="col">B-Phase Output Current</th>
+
+                            <th scope="col">Output Freq</th>
+                            <th scope="col">R Phase Bypass Voltage</th>
+                            <th scope="col">Y Phase Bypass Voltage</th>
+                            <th scope="col">B Phase Bypass Voltage</th>
+                            <th scope="col">R Phase Alternate Current</th>
+                            <th scope="col">Y Phase Alternate Current</th>
+                            <th scope="col">B Phase Alternate Current</th>
+                            <th scope="col">Bypass Freq</th>
+
+                            <th scope="col">R-Phase Inverter Voltage</th>
+                            <th scope="col">Y-Phase Inverter Voltage</th>
+                            <th scope="col">B-Phase Inverter Voltage</th>
+                            <th scope="col">R-Phase Inverter Current</th>
+                            <th scope="col">Y-Phase Inverter Current</th>
+                            <th scope="col">B-Phase Inverter Current</th>
+                            <th scope="col">Inverter Frequency</th>
+
+                            <th scope="col">Battery Voltage</th>
+                            <th scope="col">Battery Current</th>
+                            <th scope="col">Battery Status</th>
+                            <th scope="col">R-Phase Output Power (In KVA)</th>
+                            <th scope="col">R-Phase Output Power (In KW)</th>
+                            <th scope="col">R-Phase Output Power Factor</th>
+                            <th scope="col">Y-Phase Output Power (In KVA)</th>
+                            <th scope="col">Y-Phase Output Power (In KW)</th>
+                            <th scope="col">Y-Phase Output Power Factor</th>
+                            <th scope="col">B-Phase Output Power (In KVA)</th>
+                            <th scope="col">B-Phase Output Power (In KW)</th>
+                            <th scope="col">B-Phase Output Power Factor</th>
+
+                            <th scope="col">Total Output Power (In KVA)</th>
+                            <th scope="col">Total Output Power (In KW)</th>
+                            <th scope="col">Total Output Power PF</th>
+
+                            <th scope="col">R-Phase UPS(Module) Power (In KVA)</th>
+                            <th scope="col">R-Phase UPS(Module) Power (In KW)</th>
+                            <th scope="col">R-Phase UPS(Module) Power Factor</th>
+                            <th scope="col">Y-Phase UPS(Module) Power (In KVA)</th>
+                            <th scope="col">Y-Phase UPS(Module) Power (In KW)</th>
+                            <th scope="col">Y-Phase UPS(Module) Power Factor</th>
+                            <th scope="col">B-Phase UPS(Module) Power (In KVA)</th>
+                            <th scope="col">B-Phase UPS(Module) Power (In KW)</th>
+                            <th scope="col">B-Phase UPS(Module) Power Factor</th>
+                            <th scope="col">Total UPS(Module) Power (In KVA)</th>
+                            <th scope="col">Total UPS(Module) Power (In KW)</th>
+                            <th scope="col">Total UPS(Module) Power PF</th>
+                            <th scope="col">System Control Card Software Version</th>
+                            <th scope="col">User Interface Card Software Version</th>
+                            <th scope="col">Total Number of Faults Store in UPS</th>
+                            <th scope="col">Current Fault Store Location in UPS</th>
+                            <th scope="col">Battery Room Temperature</th>
+                            <th scope="col">Traceback bit Read</th>
+                            <th scope="col">Battery Backup AH (BMS Module)</th>
+                            <th scope="col">Battery Backup Time (BMS Module)</th>
+                            <th scope="col">Battery Life (Discharge Cycle)</th>
+                            <th scope="col">Battery Life (In Month)</th>
+                            <th scope="col">UPS Model</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+
+
                   </div>
                 </div>
 
