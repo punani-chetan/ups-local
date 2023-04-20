@@ -57,7 +57,62 @@
             <div class="row justify-content-center flex-grow-1 main-bgcolor">
               <div class="w-100">
                 <div class="mt-5">
-                  <h4>Configuration Page Under Construction ....</h4>
+                  <div class="d-flex justify-content-center">
+                    <div class="card mx-3" style="width: 50%">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">
+                          Data Logging Interval
+                        </h5>
+                        <form class="mt-3">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              value="1"
+                              class="form-control"
+                              id="textDataLoggingInterval"
+                              aria-describedby="textDataLoggingInterval"
+                              placeholder="Enter Data Logging Interval (Minute)"
+                            />
+                            <small
+                              id="textDataLoggingInterval"
+                              class="form-text text-muted"
+                              >Note: Enter Interval in Minute.</small
+                            >
+                          </div>
+
+                          <div class="d-grid gap-2 mx-auto mt-3">
+                            <button type="submit" class="btn btn-primary">
+                              Set Interval
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+
+                    <div class="card mx-3" style="width: 50%">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">SNMP TRAP IP</h5>
+
+                        <form class="mt-3">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              value="255.255.255.255"
+                              class="form-control"
+                              id="textSnmpTrapIp"
+                              aria-describedby="textSnmpTrapIp"
+                              placeholder="Enter SNMP TRAP IP"
+                            />
+                          </div>
+                          <div class="d-grid gap-2 mx-auto mt-3">
+                            <button type="submit" class="btn btn-primary">
+                              Set TRAP IP
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
