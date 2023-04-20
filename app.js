@@ -112,6 +112,8 @@ function connect() {
 
   var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
+  let serialNoAlarm = 0;
+  let serialNoDataLog = 0;
 
   window.addEventListener("online", function () {
     console.log("I am connected to the internet");
@@ -190,11 +192,11 @@ function connect() {
 
         // Create a table in HTML
         const tableBody = document.querySelector('#alarm-table tbody');
-        let i = 0;
+        // let i = 0;
         for (const item of arr) {
           const row = document.createElement('tr');
           const cell0 = document.createElement('td');
-          cell0.textContent = ++i;
+          cell0.textContent = ++serialNoAlarm;
           row.appendChild(cell0);
           const cell1 = document.createElement('td');
           cell1.textContent = item.Alarm_Number;
@@ -399,13 +401,13 @@ function connect() {
 
         // Create a table in HTML
         const tableBody = document.querySelector('#data-log-table tbody');
-        let i = 0;
+        // let i = 0;
         for (let item of arr) {
           console.log(item[0]);
           console.log(item[1]);
           const row = document.createElement('tr');
           const cell0 = document.createElement('td');
-          cell0.textContent = ++i;
+          cell0.textContent = ++serialNoDataLog;
           row.appendChild(cell0);
           const cell1 = document.createElement('td');
           cell1.textContent = item.Date;
@@ -1352,14 +1354,19 @@ window.addEventListener("load", (event) => {
   tabs();
 });
 
+// (function() {
+//   setInterval(() => {
+//     window.scrollTo({ top: 0 });
+//   }, 100);
+// })();
+
+
 function tabs() {
   let hashTag = new URL(document.URL).hash;
   // let tagName;
   if (!hashTag || hashTag == '#status') {
     tagName = 'status';
-    setTimeout(() => {
-      window.scrollTo({ top: 0 });
-    }, 1000);
+
   }
   else if (hashTag == '#metering') {
     tagName = 'metering';
@@ -1368,13 +1375,14 @@ function tabs() {
   else if (hashTag == '#alarmlog') tagName = 'alarmlog';
   else if (hashTag == '#datalog') tagName = 'datalog';
   changeUrlParams(tagName)
+
 }
 
 // })();
 
 function changeUrlParams(tabName) {
+  
   makeTabActive(tabName);
-
   // if (deviceId) {
   //   var url = 'ws://localhost:8080';
   //   var ws = new WebSocket(url);
@@ -1401,9 +1409,7 @@ function changeUrlParams(tabName) {
 function showTab(tabName) {
   changeUrlParams('metering');
 
-  setTimeout(() => {
-    window.scrollTo({ top: 0 });
-  }, 100);
+  
 }
 
 
