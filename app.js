@@ -2,48 +2,10 @@
 connect();
 var deviceId;
 var tagName;
-// let text = "'AAAA01' 003,04-05-0006,09:08:07,RESERVED UI - 2@\n000,00-00-0000,01:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n000,00-00-0000,00:00:00,SC COMM. FAIL@\n025,70-27-0098,60:55:29,SMPS FAIL@\n017,18-19-0020,23:22:21,RECT OVER TEMP@\n009,10-11-0012,15:14:13,RECTIFIER FAIL'5555'";
-
-// // Remove 'AAAA01' and '5555' from the text
-// text = text.replace(/'AAAA01'\s|\s'5555'/g, '');
-
-// // Split the text into an array of alarms
-// const alarms = text.split('@\n');
-
-// // Convert the array of alarms into an array of objects
-// const arr = alarms.map(alarm => {
-//   const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
-//   return {
-//     Alarm_Number,
-//     Date,
-//     Time,
-//     Alarm_Name
-//   }
-// })
+var sentMsgAlarm = true;
+var sentMsgData = true;
 
 
-// // Create a table in HTML
-// const tableBody = document.querySelector('#alarm-table tbody');
-// let i = 0;
-// for (const item of arr) {
-//   const row = document.createElement('tr');
-//   const cell0 = document.createElement('td');
-//   cell0.textContent = ++i;
-//   row.appendChild(cell0);
-//   const cell1 = document.createElement('td');
-//   cell1.textContent = item.Alarm_Number;
-//   row.appendChild(cell1);
-//   const cell2 = document.createElement('td');
-//   cell2.textContent = item.Date;
-//   row.appendChild(cell2);
-//   const cell3 = document.createElement('td');
-//   cell3.textContent = item.Time;
-//   row.appendChild(cell3);
-//   const cell4 = document.createElement('td');
-//   cell4.textContent = item.Alarm_Name;
-//   row.appendChild(cell4);
-//   tableBody.appendChild(row);
-// }
 
 function exportToCSV(tableId) {
 
@@ -154,7 +116,10 @@ function connect() {
         obj.msg_id = 2;
         obj.dev_id = deviceId;
         var jsonString = JSON.stringify(obj);
-        ws.send(jsonString);
+        if (sentMsgAlarm) {
+          ws.send(jsonString);
+          sentMsgAlarm = false;
+        }
       }
       else if (tagName === 'datalog') {
         // console.log('in datalog')
@@ -162,7 +127,10 @@ function connect() {
         obj.msg_id = 3;
         obj.dev_id = deviceId;
         var jsonString = JSON.stringify(obj);
-        ws.send(jsonString);
+        if (sentMsgData) {
+          ws.send(jsonString);
+          sentMsgData = false;
+        }
       }
     }
 
@@ -171,14 +139,14 @@ function connect() {
     if (!deviceId) {
 
       // Remove 'AAAA01' and '5555' from the text
-      let compareTxtStr = ups_data.payload.substring(1, 7);
+      let compareTxtStr = ups_data.payload.substring(2, 8);
 
       if (compareTxtStr === 'AAAA02') {
         text = ups_data.payload.replace(/'AAAA02'/g, '');
         text = text.replace(/'5555'/g, '');
 
         // Split the text into an array of alarms
-        const alarms = text.split('@\n');
+        const alarms = text.split('@ \n');
         // Convert the array of alarms into an array of objects
         const arr = alarms.map(alarm => {
           const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
@@ -1381,7 +1349,7 @@ function tabs() {
 // })();
 
 function changeUrlParams(tabName) {
-  
+
   makeTabActive(tabName);
   // if (deviceId) {
   //   var url = 'ws://localhost:8080';
@@ -1409,7 +1377,7 @@ function changeUrlParams(tabName) {
 function showTab(tabName) {
   changeUrlParams('metering');
 
-  
+
 }
 
 
