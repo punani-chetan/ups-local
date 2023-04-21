@@ -72,6 +72,7 @@ function downloadCSVFile(csv_data) {
 function connect() {
   console.log('in connect')
 
+  // var url = 'ws://ups-gateway/ws';
   var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
   let serialNoAlarm = 0;
@@ -139,8 +140,8 @@ function connect() {
     if (!deviceId) {
 
       // Remove 'AAAA01' and '5555' from the text
-      let compareTxtStr = ups_data.payload.substring(2, 8);
-
+      let compareTxtStr = ups_data.payload.substring(1, 7);
+      console.log('compareTxtStr => ', compareTxtStr)
       if (compareTxtStr === 'AAAA02') {
         text = ups_data.payload.replace(/'AAAA02'/g, '');
         text = text.replace(/'5555'/g, '');
