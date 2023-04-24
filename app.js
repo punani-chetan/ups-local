@@ -72,8 +72,8 @@ function downloadCSVFile(csv_data) {
 function connect() {
   console.log('in connect')
 
-  var url = 'ws://ups-gateway/ws';
-  // var url = 'ws://localhost:8080';
+  // var url = 'ws://ups-gateway/ws';
+  var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
   let serialNoAlarm = 0;
   let serialNoDataLog = 0;
@@ -117,10 +117,10 @@ function connect() {
         obj.msg_id = 2;
         obj.dev_id = deviceId;
         var jsonString = JSON.stringify(obj);
-        if (sentMsgAlarm) {
-          ws.send(jsonString);
-          sentMsgAlarm = false;
-        }
+        // if (sentMsgAlarm) {
+        ws.send(jsonString);
+        // sentMsgAlarm = false;
+        // }
       }
       else if (tagName === 'datalog') {
         // console.log('in datalog')
@@ -128,10 +128,10 @@ function connect() {
         obj.msg_id = 3;
         obj.dev_id = deviceId;
         var jsonString = JSON.stringify(obj);
-        if (sentMsgData) {
-          ws.send(jsonString);
-          sentMsgData = false;
-        }
+        // if (sentMsgData) {
+        ws.send(jsonString);
+        // sentMsgData = false;
+        // }
       }
     }
 
