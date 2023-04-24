@@ -72,8 +72,8 @@ function downloadCSVFile(csv_data) {
 function connect() {
   console.log('in connect')
 
-  // var url = 'ws://ups-gateway/ws';
-  var url = 'ws://localhost:8080';
+  var url = 'ws://ups-gateway/ws';
+  // var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
   let serialNoAlarm = 0;
   let serialNoDataLog = 0;
@@ -135,8 +135,6 @@ function connect() {
       }
     }
 
-
-
     if (!deviceId) {
 
       // Remove 'AAAA01' and '5555' from the text
@@ -161,7 +159,6 @@ function connect() {
 
         // Create a table in HTML
         const tableBody = document.querySelector('#alarm-table tbody');
-        // let i = 0;
         for (const item of arr) {
           const row = document.createElement('tr');
           const cell0 = document.createElement('td');
@@ -188,8 +185,6 @@ function connect() {
 
         // Split the text into an array of alarms
         let alarms = text.split('\n');
-
-        // console.log(alarms)
 
         // Convert the array of alarms into an array of objects
         let arr = alarms.map(alarm => {
