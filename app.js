@@ -110,7 +110,7 @@ function connect() {
     if (ups_data) { tabs(); }
 
     if (deviceId) {
-      console.log(deviceId)
+      // console.log(deviceId)
       if (tagName === 'alarmlog') {
         // console.log('in alarmlog')
         var obj = {};
@@ -186,538 +186,39 @@ function connect() {
         // Split the text into an array of alarms
         let alarms = text.split('\n');
 
-        // console.log('alarms')
-        // console.log(alarms)
-
         // Convert the array of alarms into an array of objects
         let arr = alarms.map(alarm => {
           let tmpSplitArr = alarm.split(',');
-          // console.log('tmpSplitArr');
-          // console.log(tmpSplitArr);
-          // console.log(tmpSplitArr.length);
-
           return tmpSplitArr;
-
-          // let [
-          //   Date,
-          //   Time,
-          //   UI_Alarm,
-          //   Rectifier_Alarm1,
-          //   Rectifier_Alarm2,
-          //   Inverter_Alarm1,
-          //   Inverter_Alarm2,
-          //   Battery_Alarm1,
-          //   Inverter_Alarm3,
-          //   Can_Alarm1,
-          //   Input_Alarm_0,
-          //   Rectifier_Status1,
-          //   Inverter_Status1,
-          //   Battery_Status1,
-          //   R_Y_Phase_Input_Voltage,
-          //   R_Phase_Input_Current,
-          //   Y_B_Phase_Input_Voltage,
-          //   Y_Phase_Input_Current,
-          //   B_R_Phase_Input_Voltage,
-          //   B_Phase_Input_Current,
-          //   Mains_Input_Freq,
-          //   DC_Link_Voltage,
-          //   Charger_O_P_Voltage,
-          //   R_Phase_Output_Voltage,
-          //   Y_Phase_Output_Voltage,
-          //   B_Phase_Output_Voltage,
-          //   R_Phase_Output_Current,
-          //   Y_Phase_Output_Current,
-          //   B_Phase_Output_Current,
-          //   Output_Freq,
-          //   R_Phase_Bypass_Voltage,
-          //   Y_Phase_Bypass_Voltage,
-          //   B_Phase_Bypass_Voltage,
-          //   R_Phase_Alternate_Current,
-          //   Y_Phase_Alternate_Current,
-          //   B_Phase_Alternate_Current,
-          //   Bypass_Freq,
-          //   R_Phase_Inverter_Voltage,
-          //   Y_Phase_Inverter_Voltage,
-          //   B_Phase_Inverter_Voltage,
-          //   R_Phase_Inverter_Current,
-          //   Y_Phase_Inverter_Current,
-          //   B_Phase_Inverter_Current,
-          //   Inverter_Frequency,
-          //   Battery_Voltage,
-          //   Battery_Current,
-          //   Battery_Status,
-          //   R_Phase_Output_Power_KVA,
-          //   R_Phase_Output_Power_KW,
-          //   R_Phase_Output_Power_Factor,
-          //   Y_Phase_Output_Power_KVA,
-          //   Y_Phase_Output_Power_KW,
-          //   Y_Phase_Output_Power_Factor,
-          //   B_Phase_Output_Power_KVA,
-          //   B_Phase_Output_Power_KW,
-          //   B_Phase_Output_Power_Factor,
-          //   Total_Output_Power_KVA,
-          //   Total_Output_Power_KW,
-          //   Total_Output_Power_PF,
-          //   R_Phase_UPS_Power_KVA,
-          //   R_Phase_UPS_Power_KW,
-          //   R_Phase_UPS_Power_Factor,
-          //   Y_Phase_UPS_Power_KVA,
-          //   Y_Phase_UPS_Power_KW,
-          //   Y_Phase_UPS_Power_Factor,
-          //   B_Phase_UPS_Power_KVA,
-          //   B_Phase_UPS_Power_KW,
-          //   B_Phase_UPS_Power_Factor,
-          //   Total_UPS_Power_KVA,
-          //   Total_UPS_Power_KW,
-          //   Total_UPS_Power_PF,
-          //   System_Control_Card_Software_Version,
-          //   User_Interface_Card_Software_Version,
-          //   Total_Number_of_Faults_Store_in_UPS,
-          //   Current_Fault_Store_Location_in_UPS,
-          //   Battery_Room_Temperature,
-          //   Traceback_bit_Read,
-          //   Battery_Backup_AH_BMS_Module,
-          //   Battery_Backup_Time_BMS_Module,
-          //   Battery_Life_Discharge_Cycle,
-          //   Battery_Life_In_Month,
-          //   UPS_Model
-          // ] = tmpSplitArr;
-
-          // return {
-          //   Date,
-          //   Time,
-          //   UI_Alarm,
-          //   Rectifier_Alarm1,
-          //   Rectifier_Alarm2,
-          //   Inverter_Alarm1,
-          //   Inverter_Alarm2,
-          //   Battery_Alarm1,
-          //   Inverter_Alarm3,
-          //   Can_Alarm1,
-
-          //   Input_Alarm_0,
-          //   Rectifier_Status1,
-          //   Inverter_Status1,
-          //   Battery_Status1,
-          //   R_Y_Phase_Input_Voltage,
-          //   R_Phase_Input_Current,
-          //   Y_B_Phase_Input_Voltage,
-          //   Y_Phase_Input_Current,
-          //   B_R_Phase_Input_Voltage,
-          //   B_Phase_Input_Current,
-
-          //   Mains_Input_Freq,
-          //   DC_Link_Voltage,
-          //   Charger_O_P_Voltage,
-          //   R_Phase_Output_Voltage,
-          //   Y_Phase_Output_Voltage,
-          //   B_Phase_Output_Voltage,
-          //   R_Phase_Output_Current,
-          //   Y_Phase_Output_Current,
-          //   B_Phase_Output_Current,
-          //   Output_Freq,
-
-          //   R_Phase_Bypass_Voltage,
-          //   Y_Phase_Bypass_Voltage,
-          //   B_Phase_Bypass_Voltage,
-          //   R_Phase_Alternate_Current,
-          //   Y_Phase_Alternate_Current,
-          //   B_Phase_Alternate_Current,
-          //   Bypass_Freq,
-          //   R_Phase_Inverter_Voltage,
-          //   Y_Phase_Inverter_Voltage,
-          //   B_Phase_Inverter_Voltage,
-
-          //   R_Phase_Inverter_Current,
-          //   Y_Phase_Inverter_Current,
-          //   B_Phase_Inverter_Current,
-          //   Inverter_Frequency,
-          //   Battery_Voltage,
-          //   Battery_Current,
-          //   Battery_Status,
-          //   R_Phase_Output_Power_KVA,
-          //   R_Phase_Output_Power_KW,
-          //   R_Phase_Output_Power_Factor,
-
-          //   Y_Phase_Output_Power_KVA,
-          //   Y_Phase_Output_Power_KW,
-          //   Y_Phase_Output_Power_Factor,
-          //   B_Phase_Output_Power_KVA,
-          //   B_Phase_Output_Power_KW,
-          //   B_Phase_Output_Power_Factor,
-          //   Total_Output_Power_KVA,
-          //   Total_Output_Power_KW,
-          //   Total_Output_Power_PF,
-          //   R_Phase_UPS_Power_KVA,
-
-          //   R_Phase_UPS_Power_KW,
-          //   R_Phase_UPS_Power_Factor,
-          //   Y_Phase_UPS_Power_KVA,
-          //   Y_Phase_UPS_Power_KW,
-          //   Y_Phase_UPS_Power_Factor,
-          //   B_Phase_UPS_Power_KVA,
-          //   B_Phase_UPS_Power_KW,
-          //   B_Phase_UPS_Power_Factor,
-          //   Total_UPS_Power_KVA,
-          //   Total_UPS_Power_KW,
-
-          //   Total_UPS_Power_PF,
-          //   System_Control_Card_Software_Version,
-          //   User_Interface_Card_Software_Version,
-          //   Total_Number_of_Faults_Store_in_UPS,
-          //   Current_Fault_Store_Location_in_UPS,
-          //   Battery_Room_Temperature,
-          //   Traceback_bit_Read,
-          //   Battery_Backup_AH_BMS_Module,
-          //   Battery_Backup_Time_BMS_Module,
-          //   Battery_Life_Discharge_Cycle,
-
-          //   Battery_Life_In_Month,
-          //   UPS_Model
-          // }
         });
 
-        // let arrLen = (arr[0].length) / 82;
-        // console.log(parseInt(arrLen));
 
-        // const tableBody = document.querySelector('#data-log-table tbody');
+        let tmpArrNew = arr[0].slice(0, -1);
+        let chunk_size = 82;
+        let num_chunks = Math.ceil(tmpArrNew.length / chunk_size);
 
-        // let startLen;
-        // let endLen;
-        // let tmp;
-        // for (let i = 0; i < parseInt(arrLen); i++) {
-        //   // let rowi = document.createElement('tr');
-        //   // let celli = document.createElement('td');
-        //   // celli.textContent = ++serialNoDataLog;
-        //   // rowi.appendChild(celli);
-        //   // console.log(arr[0]);
-        //   console.log('here = >', i)
-        //   tmp = ++i
-        //   if (i = 0) {
-        //     startLen = 0;
-        //   }
-        //   else {
-        //     startLen = endLen + 1;
-        //   }
-        //   endLen = 82 * tmp;
-        //   for (let j = startLen; j < endLen; j++) {
+        const tableBody = document.querySelector('#data-log-table tbody');
 
-        //     console.log('i => ', i, 'j => ', j);
-        //     // console.log()
+        for (let i = 0; i < num_chunks; i++) {
+          let start_index = i * chunk_size;
+          let end_index = start_index + chunk_size;
+          let chunk = tmpArrNew.slice(start_index, end_index);
 
-        //     // let cellj = document.createElement('td');',j)
+          let rowi = document.createElement('tr');
+          let celli = document.createElement('td');
+          celli.textContent = ++serialNoDataLog;
+          rowi.appendChild(celli);
 
-        //     // let cellj = document.createElement('td');
-        //     // cellj.textContent = arr[0][j];
-        //     // rowi.appendChild(cellj);
-        //   }
+          for (let j = 0; j < chunk.length; j++) {
+            let index_in_original_array = start_index + j;
 
-        //   // tableBody.appendChild(rowi);
-        //   // startLen = endLen + 1;
-        // }
+            let cellj = document.createElement('td');
+            cellj.textContent = tmpArrNew[index_in_original_array];
+            rowi.appendChild(cellj);
+          }
+          tableBody.appendChild(rowi);
+        }
 
-        // console.log(arr[0].length)
-        // console.log(arr[0].length/82);
-
-        // let arr = [];
-
-        // for (let i = 1; i <= 328; i++) {
-        //   arr.push(i.toString());
-        // }
-
-        // let chunk_size = 82;
-        // let num_chunks = Math.ceil(arr[0].length / chunk_size);
-
-        // for (let i = 0; i < num_chunks; i++) {
-        //   let start_index = i * chunk_size;
-        //   let end_index = start_index + chunk_size;
-        //   let chunk = arr.slice(start_index, end_index);
-
-        //   for (let j = 0; j < chunk.length; j++) {
-        //     let index_in_original_array = start_index + j + 1;
-        //     console.log(`i=${i}, j=${index_in_original_array}`);
-        //   }
-        // }
-
-
-        // console.log(tableBody)
-        return
-
-        // total = 240
-
-        // 240/80 = 3
-
-        // console.log('arr')
-        // console.log(arr.length/82);
-        // console.log(arr);
-        // return
-
-        // Create a table in HTML
-        // const tableBody = document.querySelector('#data-log-table tbody');
-        // for (let item of arr) {
-        //   const row = document.createElement('tr');
-
-        //   const cell0 = document.createElement('td');
-        //   cell0.textContent = ++serialNoDataLog;
-        //   row.appendChild(cell0);
-
-        //   const cell1 = document.createElement('td');
-        //   cell1.textContent = item.Date;
-        //   row.appendChild(cell1);
-        //   const cell2 = document.createElement('td');
-        //   cell2.textContent = item.Time;
-        //   row.appendChild(cell2);
-        //   const cell3 = document.createElement('td');
-        //   cell3.textContent = item.UI_Alarm;
-        //   row.appendChild(cell3);
-        //   const cell4 = document.createElement('td');
-        //   cell4.textContent = item.Rectifier_Alarm1;
-        //   row.appendChild(cell4);
-        //   const cell5 = document.createElement('td');
-        //   cell5.textContent = item.Rectifier_Alarm2;
-        //   row.appendChild(cell5);
-        //   const cell6 = document.createElement('td');
-        //   cell6.textContent = item.Inverter_Alarm1;
-        //   row.appendChild(cell6);
-        //   const cell7 = document.createElement('td');
-        //   cell7.textContent = item.Inverter_Alarm2;
-        //   row.appendChild(cell7);
-        //   const cell8 = document.createElement('td');
-        //   cell8.textContent = item.Battery_Alarm1;
-        //   row.appendChild(cell8);
-        //   const cell9 = document.createElement('td');
-        //   cell9.textContent = item.Inverter_Alarm3;
-        //   row.appendChild(cell9);
-        //   const cell10 = document.createElement('td');
-        //   cell10.textContent = item.Can_Alarm1;
-        //   row.appendChild(cell10);
-
-        //   const cell11 = document.createElement('td');
-        //   cell11.textContent = item.Input_Alarm_0;
-        //   row.appendChild(cell11);
-        //   const cell12 = document.createElement('td');
-        //   cell12.textContent = item.Rectifier_Status1;
-        //   row.appendChild(cell12);
-        //   const cell13 = document.createElement('td');
-        //   cell13.textContent = item.Inverter_Status1;
-        //   row.appendChild(cell13);
-        //   const cell14 = document.createElement('td');
-        //   cell14.textContent = item.Battery_Status1;
-        //   row.appendChild(cell14);
-        //   const cell15 = document.createElement('td');
-        //   cell15.textContent = item.R_Y_Phase_Input_Voltage;
-        //   row.appendChild(cell15);
-        //   const cell16 = document.createElement('td');
-        //   cell16.textContent = item.R_Phase_Input_Current;
-        //   row.appendChild(cell16);
-        //   const cell17 = document.createElement('td');
-        //   cell17.textContent = item.Y_B_Phase_Input_Voltage;
-        //   row.appendChild(cell17);
-        //   const cell18 = document.createElement('td');
-        //   cell18.textContent = item.Y_Phase_Input_Current;
-        //   row.appendChild(cell18);
-        //   const cell19 = document.createElement('td');
-        //   cell19.textContent = item.B_R_Phase_Input_Voltage;
-        //   row.appendChild(cell19);
-        //   const cell20 = document.createElement('td');
-        //   cell20.textContent = item.B_Phase_Input_Current;
-        //   row.appendChild(cell20);
-
-        //   const cell21 = document.createElement('td');
-        //   cell21.textContent = item.Mains_Input_Freq;
-        //   row.appendChild(cell21);
-        //   const cell22 = document.createElement('td');
-        //   cell22.textContent = item.DC_Link_Voltage;
-        //   row.appendChild(cell22);
-        //   const cell23 = document.createElement('td');
-        //   cell23.textContent = item.Charger_O_P_Voltage;
-        //   row.appendChild(cell23);
-        //   const cell24 = document.createElement('td');
-        //   cell24.textContent = item.R_Phase_Output_Voltage;
-        //   row.appendChild(cell24);
-        //   const cell25 = document.createElement('td');
-        //   cell25.textContent = item.Y_Phase_Output_Voltage;
-        //   row.appendChild(cell25);
-        //   const cell26 = document.createElement('td');
-        //   cell26.textContent = item.B_Phase_Output_Voltage;
-        //   row.appendChild(cell26);
-        //   const cell27 = document.createElement('td');
-        //   cell27.textContent = item.R_Phase_Output_Current;
-        //   row.appendChild(cell27);
-        //   const cell28 = document.createElement('td');
-        //   cell28.textContent = item.Y_Phase_Output_Current;
-        //   row.appendChild(cell28);
-        //   const cell29 = document.createElement('td');
-        //   cell29.textContent = item.B_Phase_Output_Current;
-        //   row.appendChild(cell29);
-        //   const cell30 = document.createElement('td');
-        //   cell30.textContent = item.Output_Freq;
-        //   row.appendChild(cell30);
-
-        //   const cell31 = document.createElement('td');
-        //   cell31.textContent = item.R_Phase_Bypass_Voltage;
-        //   row.appendChild(cell31);
-        //   const cell32 = document.createElement('td');
-        //   cell32.textContent = item.Y_Phase_Bypass_Voltage;
-        //   row.appendChild(cell32);
-        //   const cell33 = document.createElement('td');
-        //   cell33.textContent = item.B_Phase_Bypass_Voltage;
-        //   row.appendChild(cell33);
-        //   const cell34 = document.createElement('td');
-        //   cell34.textContent = item.R_Phase_Alternate_Current;
-        //   row.appendChild(cell34);
-        //   const cell35 = document.createElement('td');
-        //   cell35.textContent = item.Y_Phase_Alternate_Current;
-        //   row.appendChild(cell35);
-        //   const cell36 = document.createElement('td');
-        //   cell36.textContent = item.B_Phase_Alternate_Current;
-        //   row.appendChild(cell36);
-        //   const cell37 = document.createElement('td');
-        //   cell37.textContent = item.Bypass_Freq;
-        //   row.appendChild(cell37);
-        //   const cell38 = document.createElement('td');
-        //   cell38.textContent = item.R_Phase_Inverter_Voltage;
-        //   row.appendChild(cell38);
-        //   const cell39 = document.createElement('td');
-        //   cell39.textContent = item.Y_Phase_Inverter_Voltage;
-        //   row.appendChild(cell39);
-        //   const cell40 = document.createElement('td');
-        //   cell40.textContent = item.B_Phase_Inverter_Voltage;
-        //   row.appendChild(cell40);
-
-        //   const cell41 = document.createElement('td');
-        //   cell41.textContent = item.R_Phase_Inverter_Current;
-        //   row.appendChild(cell41);
-        //   const cell42 = document.createElement('td');
-        //   cell42.textContent = item.Y_Phase_Inverter_Current;
-        //   row.appendChild(cell42);
-        //   const cell43 = document.createElement('td');
-        //   cell43.textContent = item.B_Phase_Inverter_Current;
-        //   row.appendChild(cell43);
-        //   const cell44 = document.createElement('td');
-        //   cell44.textContent = item.Inverter_Frequency;
-        //   row.appendChild(cell44);
-        //   const cell45 = document.createElement('td');
-        //   cell45.textContent = item.Battery_Voltage;
-        //   row.appendChild(cell45);
-        //   const cell46 = document.createElement('td');
-        //   cell46.textContent = item.Battery_Current;
-        //   row.appendChild(cell46);
-        //   const cell47 = document.createElement('td');
-        //   cell47.textContent = item.Battery_Status;
-        //   row.appendChild(cell47);
-        //   const cell48 = document.createElement('td');
-        //   cell48.textContent = item.R_Phase_Output_Power_KVA;
-        //   row.appendChild(cell48);
-        //   const cell49 = document.createElement('td');
-        //   cell49.textContent = item.R_Phase_Output_Power_KW;
-        //   row.appendChild(cell49);
-        //   const cell50 = document.createElement('td');
-        //   cell50.textContent = item.R_Phase_Output_Power_Factor;
-        //   row.appendChild(cell50);
-
-        //   const cell51 = document.createElement('td');
-        //   cell51.textContent = item.Y_Phase_Output_Power_KVA;
-        //   row.appendChild(cell51);
-        //   const cell52 = document.createElement('td');
-        //   cell52.textContent = item.Y_Phase_Output_Power_KW;
-        //   row.appendChild(cell52);
-        //   const cell53 = document.createElement('td');
-        //   cell53.textContent = item.Y_Phase_Output_Power_Factor;
-        //   row.appendChild(cell53);
-        //   const cell54 = document.createElement('td');
-        //   cell54.textContent = item.B_Phase_Output_Power_KVA;
-        //   row.appendChild(cell54);
-        //   const cell55 = document.createElement('td');
-        //   cell55.textContent = item.B_Phase_Output_Power_KW;
-        //   row.appendChild(cell55);
-        //   const cell56 = document.createElement('td');
-        //   cell56.textContent = item.B_Phase_Output_Power_Factor;
-        //   row.appendChild(cell56);
-        //   const cell57 = document.createElement('td');
-        //   cell57.textContent = item.Total_Output_Power_KVA;
-        //   row.appendChild(cell57);
-        //   const cell58 = document.createElement('td');
-        //   cell58.textContent = item.Total_Output_Power_KW;
-        //   row.appendChild(cell58);
-        //   const cell59 = document.createElement('td');
-        //   cell59.textContent = item.Total_Output_Power_PF;
-        //   row.appendChild(cell59);
-        //   const cell60 = document.createElement('td');
-        //   cell60.textContent = item.R_Phase_UPS_Power_KVA;
-        //   row.appendChild(cell60);
-
-        //   const cell61 = document.createElement('td');
-        //   cell61.textontent = item.R_Phase_UPS_Power_KW;
-        //   row.appendChild(cell61);
-        //   const cell62 = document.createElement('td');
-        //   cell62.textContent = item.R_Phase_UPS_Power_Factor;
-        //   row.appendChild(cell62);
-        //   const cell63 = document.createElement('td');
-        //   cell63.textContent = item.Y_Phase_UPS_Power_KVA;
-        //   row.appendChild(cell63);
-        //   const cell64 = document.createElement('td');
-        //   cell64.textContent = item.Y_Phase_UPS_Power_KW;
-        //   row.appendChild(cell64);
-        //   const cell65 = document.createElement('td');
-        //   cell65.textContent = item.Y_Phase_UPS_Power_Factor;
-        //   row.appendChild(cell65);
-        //   const cell66 = document.createElement('td');
-        //   cell66.textContent = item.B_Phase_UPS_Power_KVA;
-        //   row.appendChild(cell66);
-        //   const cell67 = document.createElement('td');
-        //   cell67.textContent = item.B_Phase_UPS_Power_KW;
-        //   row.appendChild(cell67);
-        //   const cell68 = document.createElement('td');
-        //   cell68.textContent = item.B_Phase_UPS_Power_Factor;
-        //   row.appendChild(cell68);
-        //   const cell69 = document.createElement('td');
-        //   cell69.textContent = item.Total_UPS_Power_KVA;
-        //   row.appendChild(cell69);
-        //   const cell70 = document.createElement('td');
-        //   cell70.textContent = item.Total_UPS_Power_KW;
-        //   row.appendChild(cell70);
-
-        //   const cell71 = document.createElement('td');
-        //   cell71.textContent = item.Total_UPS_Power_PF;
-        //   row.appendChild(cell71);
-        //   const cell72 = document.createElement('td');
-        //   cell72.textContent = item.System_Control_Card_Software_Version;
-        //   row.appendChild(cell72);
-        //   const cell73 = document.createElement('td');
-        //   cell73.textContent = item.User_Interface_Card_Software_Version;
-        //   row.appendChild(cell73);
-        //   const cell74 = document.createElement('td');
-        //   cell74.textContent = item.Total_Number_of_Faults_Store_in_UPS;
-        //   row.appendChild(cell74);
-        //   const cell75 = document.createElement('td');
-        //   cell75.textContent = item.Current_Fault_Store_Location_in_UPS;
-        //   row.appendChild(cell75);
-        //   const cell76 = document.createElement('td');
-        //   cell76.textContent = item.Battery_Room_Temperature;
-        //   row.appendChild(cell76);
-        //   const cell77 = document.createElement('td');
-        //   cell77.textContent = item.Traceback_bit_Read;
-        //   row.appendChild(cell77);
-        //   const cell78 = document.createElement('td');
-        //   cell78.textContent = item.Battery_Backup_AH_BMS_Module;
-        //   row.appendChild(cell78);
-        //   const cell79 = document.createElement('td');
-        //   cell79.textContent = item.Battery_Backup_Time_BMS_Module;
-        //   row.appendChild(cell79);
-        //   const cell80 = document.createElement('td');
-        //   cell80.textContent = item.Battery_Life_Discharge_Cycle;
-        //   row.appendChild(cell80);
-
-        //   const cell81 = document.createElement('td');
-        //   cell81.textContent = item.Battery_Life_In_Month;
-        //   row.appendChild(cell81);
-        //   const cell82 = document.createElement('td');
-        //   cell82.textContent = item.UPS_Model;
-        //   row.appendChild(cell82);
-
-        //   tableBody.appendChild(row);
-        // }
       }
     }
 
@@ -1404,8 +905,6 @@ function connect() {
         pf_cells[i].innerHTML = POWER_FACTOR[i] + " PF";
       }
     }
-
-
   }
 }
 
@@ -1444,35 +943,11 @@ function tabs() {
 // })();
 
 function changeUrlParams(tabName) {
-
   makeTabActive(tabName);
-  // if (deviceId) {
-  //   var url = 'ws://localhost:8080';
-  //   var ws = new WebSocket(url);
-  //   console.log(deviceId)
-  //   if (tabName === 'alarmlog') {
-  //     // console.log('in alarmlog')
-  //     var obj = {};
-  //     obj.msg_id = 2;
-  //     obj.dev_id = deviceId;
-  //     var jsonString = JSON.stringify(obj);
-  //     ws.send(jsonString);
-  //   }
-  //   else if (tabName === 'datalog') {
-  //     // console.log('in datalog')
-  //     var obj = {};
-  //     obj.msg_id = 3;
-  //     obj.dev_id = deviceId;
-  //     var jsonString = JSON.stringify(obj);
-  //     ws.send(jsonString);
-  //   }
-  // }
 }
 
 function showTab(tabName) {
   changeUrlParams('metering');
-
-
 }
 
 
