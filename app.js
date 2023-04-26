@@ -73,8 +73,8 @@ function downloadCSVFile(csv_data) {
 function connect() {
   console.log('in connect')
 
-  // var url = 'ws://ups-gateway:80/ws';
-  var url = 'ws://localhost:8080';
+  var url = 'ws://ups-gateway:80/ws';
+  // var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
   let serialNoAlarm = 0;
   let serialNoDataLog = 0;
