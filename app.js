@@ -1,4 +1,5 @@
-
+let socket = null;
+let retryInterval = 1000; // initial retry interval
 connect();
 var deviceId;
 var tagName;
@@ -89,14 +90,33 @@ function connect() {
   ws.onopen = function () {
     ws.send('Status WS Started');
     console.log("Web socket is connected");
+    retryInterval = 1000;
+    // ws.onclose = function (event) {
+    //   console.log("WebSocket is closed now.");
 
-    ws.onclose = function (event) {
-      console.log("WebSocket is closed now.");
-      setInterval(() => {
-        connect();
-      }, 500);
-    };
+    //   // attempt to reconnect
+    //   setTimeout(function () {
+    //     console.log('Attempting to reconnect...');
+    //     connect();
+    //     retryInterval *= 2; // exponential backoff
+    //   }, retryInterval);
+    // };
   };
+
+  ws.onclose = function (event) {
+    console.log("WebSocket is closed now.");
+
+    // attempt to reconnect
+    setTimeout(function () {
+      console.log('Attempting to reconnect...');
+      connect();
+      retryInterval *= 2; // exponential backoff
+      console.log(retryInterval);
+    }, retryInterval);
+  };
+
+
+
 
   ws.onmessage = async function (evt) {
 
