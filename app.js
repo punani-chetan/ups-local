@@ -219,25 +219,50 @@ function connect() {
 
         const tableBody = document.querySelector('#data-log-table tbody');
 
+
         for (let i = 0; i < num_chunks; i++) {
-          let start_index = i * chunk_size;
+          let start_index;
+          if (i > 0) { start_index = i * (chunk_size + 6); }
+          else { start_index = i * chunk_size; }
           let end_index = start_index + chunk_size;
           let chunk = tmpArrNew.slice(start_index, end_index);
-
+          console.log(chunk)
           let rowi = document.createElement('tr');
           let celli = document.createElement('td');
           celli.textContent = ++serialNoDataLog;
           rowi.appendChild(celli);
+          if (chunk.length) {
+            for (let j = 0; j < chunk.length; j++) {
+              let index_in_original_array = start_index + j;
 
-          for (let j = 0; j < chunk.length; j++) {
-            let index_in_original_array = start_index + j;
-
-            let cellj = document.createElement('td');
-            cellj.textContent = tmpArrNew[index_in_original_array];
-            rowi.appendChild(cellj);
+              let cellj = document.createElement('td');
+              cellj.textContent = tmpArrNew[index_in_original_array];
+              rowi.appendChild(cellj);
+            }
+            tableBody.appendChild(rowi);
           }
-          tableBody.appendChild(rowi);
         }
+
+
+        // for (let i = 0; i < num_chunks; i++) {
+        //   let start_index = i * chunk_size;
+        //   let end_index = start_index + chunk_size;
+        //   let chunk = tmpArrNew.slice(start_index, end_index);
+
+        //   let rowi = document.createElement('tr');
+        //   let celli = document.createElement('td');
+        //   celli.textContent = ++serialNoDataLog;
+        //   rowi.appendChild(celli);
+
+        //   for (let j = 0; j < chunk.length; j++) {
+        //     let index_in_original_array = start_index + j;
+
+        //     let cellj = document.createElement('td');
+        //     cellj.textContent = tmpArrNew[index_in_original_array];
+        //     rowi.appendChild(cellj);
+        //   }
+        //   tableBody.appendChild(rowi);
+        // }
 
       }
     }
