@@ -212,10 +212,12 @@ function connect() {
         // Convert the array of alarms into an array of objects
         let arr = alarms.map(alarm => {
           let tmpSplitArr = alarm.split(',');
+          // console.log('tmpSplitArr')
+          // console.log(tmpSplitArr)
           return tmpSplitArr;
         });
 
-        console.log(arr[0])
+        // console.log(arr[0])
 
         let tmpArrNew = arr[0].slice(0, -1);
         let chunk_size = 88;
@@ -254,6 +256,9 @@ function connect() {
           let start_index = i * chunk_size;
           let end_index = start_index + chunk_size;
           let chunk = tmpArrNew.slice(start_index, end_index);
+
+          console.log('chunk')
+          console.log(chunk)
 
           let rowi = document.createElement('tr');
           let celli = document.createElement('td');
