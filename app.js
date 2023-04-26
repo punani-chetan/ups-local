@@ -73,8 +73,8 @@ function downloadCSVFile(csv_data) {
 function connect() {
   console.log('in connect')
 
-  // var url = 'ws://ups-gateway/ws';
-  var url = 'ws://localhost:8080';
+  var url = 'ws://ups-gateway:80/ws';
+  // var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
   let serialNoAlarm = 0;
   let serialNoDataLog = 0;
@@ -166,6 +166,9 @@ function connect() {
 
         // Split the text into an array of alarms
         const alarms = text.split('@ \n');
+
+        console.log(alarms)
+
         // Convert the array of alarms into an array of objects
         const arr = alarms.map(alarm => {
           const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
@@ -226,12 +229,14 @@ function connect() {
           else { start_index = i * chunk_size; }
           let end_index = start_index + chunk_size;
           let chunk = tmpArrNew.slice(start_index, end_index);
-          console.log(chunk)
-          let rowi = document.createElement('tr');
-          let celli = document.createElement('td');
-          celli.textContent = ++serialNoDataLog;
-          rowi.appendChild(celli);
+          // console.log('chunk')
+          // console.log(chunk)
           if (chunk.length) {
+            let rowi = document.createElement('tr');
+            let celli = document.createElement('td');
+            celli.textContent = ++serialNoDataLog;
+            rowi.appendChild(celli);
+
             for (let j = 0; j < chunk.length; j++) {
               let index_in_original_array = start_index + j;
 
