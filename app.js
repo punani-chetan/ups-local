@@ -73,8 +73,8 @@ function downloadCSVFile(csv_data) {
 function connect() {
   console.log('in connect')
 
-  var url = 'ws://ups-gateway:80/ws';
-  // var url = 'ws://localhost:8080';
+  // var url = 'ws://ups-gateway:80/ws';
+  var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
   let serialNoAlarm = 0;
   let serialNoDataLog = 0;
@@ -167,8 +167,6 @@ function connect() {
         // Split the text into an array of alarms
         const alarms = text.split('@ \n');
 
-        console.log(alarms)
-
         // Convert the array of alarms into an array of objects
         const arr = alarms.map(alarm => {
           const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
@@ -197,7 +195,7 @@ function connect() {
           cell3.textContent = item.Time;
           row.appendChild(cell3);
           const cell4 = document.createElement('td');
-          cell4.textContent = item.Alarm_Name;
+          cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
           row.appendChild(cell4);
           tableBody.appendChild(row);
         }
@@ -207,7 +205,7 @@ function connect() {
         text = text.replace(/'5555'/g, '');
 
         // Split the text into an array of alarms
-        let alarms = text.split('\n');
+        let alarms = text.split('@ \n');
 
         // Convert the array of alarms into an array of objects
         let arr = alarms.map(alarm => {
