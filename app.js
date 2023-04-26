@@ -205,13 +205,11 @@ function connect() {
         text = text.replace(/'5555'/g, '');
 
         // Split the text into an array of alarms
-        let alarms = text.split('@ \n');
+        let alarms = text.split(' @ \n');
 
         // Convert the array of alarms into an array of objects
         let arr = alarms.map(alarm => {
           let tmpSplitArr = alarm.split(',');
-          // console.log('tmpSplitArr')
-          // console.log(tmpSplitArr)
           return tmpSplitArr;
         });
 
@@ -267,7 +265,7 @@ function connect() {
             let index_in_original_array = start_index + j;
 
             let cellj = document.createElement('td');
-            cellj.textContent = tmpArrNew[index_in_original_array];
+            cellj.textContent = tmpArrNew[index_in_original_array].includes('@') ? tmpArrNew[index_in_original_array].split('@')[1] : tmpArrNew[index_in_original_array];
             rowi.appendChild(cellj);
           }
           tableBody.appendChild(rowi);
