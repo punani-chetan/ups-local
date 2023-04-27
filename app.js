@@ -73,8 +73,8 @@ function downloadCSVFile(csv_data) {
 function connect() {
   console.log('in connect')
 
-  // var url = 'ws://ups-gateway:80/ws';
-  var url = 'ws://localhost:8080';
+  var url = 'ws://ups-gateway:80/ws';
+  // var url = 'ws://localhost:8080';
   var ws = new WebSocket(url);
   let serialNoAlarm = 0;
   let serialNoDataLog = 0;
@@ -213,13 +213,41 @@ function connect() {
           return tmpSplitArr;
         });
 
-        // console.log(arr[0])
+        console.log(arr)
 
-        let tmpArrNew = arr[0].slice(0, -1);
+        // let tmpArrNew = arr[0].slice(0, -1);
+        // let chunk_size = 88;
+        // let num_chunks = Math.ceil(tmpArrNew.length / chunk_size);
+
+        let tmpArrNew = arr;
         let chunk_size = 88;
-        let num_chunks = Math.ceil(tmpArrNew.length / chunk_size);
+        let num_chunks = tmpArrNew.length;
 
         const tableBody = document.querySelector('#data-log-table tbody');
+
+        for (let i = 0; i < num_chunks; i++) {
+          // let start_index = i * chunk_size;
+          // let end_index = start_index + chunk_size;
+          // let chunk = tmpArrNew.slice(start_index, end_index);
+
+          // console.log('chunk')
+          // console.log(chunk)
+
+          let rowi = document.createElement('tr');
+          let celli = document.createElement('td');
+          celli.textContent = ++serialNoDataLog;
+          rowi.appendChild(celli);
+
+          for (let j = 0; j < chunk_size; j++) {
+            // let index_in_original_array = start_index + j;
+
+            let cellj = document.createElement('td');
+            cellj.textContent = tmpArrNew[i][j].includes('@') ? tmpArrNew[i][j].split('@')[1] : tmpArrNew[i][j];
+            rowi.appendChild(cellj);
+          }
+          tableBody.appendChild(rowi);
+        }
+
 
 
         // for (let i = 0; i < num_chunks; i++) {
@@ -247,29 +275,30 @@ function connect() {
         //   }
         // }
 
+        // console.log(num_chunks)
 
-        for (let i = 0; i < num_chunks; i++) {
-          let start_index = i * chunk_size;
-          let end_index = start_index + chunk_size;
-          let chunk = tmpArrNew.slice(start_index, end_index);
+        // for (let i = 0; i < num_chunks; i++) {
+        //   let start_index = i * chunk_size;
+        //   let end_index = start_index + chunk_size;
+        //   let chunk = tmpArrNew.slice(start_index, end_index);
 
-          console.log('chunk')
-          console.log(chunk)
+        //   console.log('chunk')
+        //   console.log(chunk)
 
-          let rowi = document.createElement('tr');
-          let celli = document.createElement('td');
-          celli.textContent = ++serialNoDataLog;
-          rowi.appendChild(celli);
+        //   let rowi = document.createElement('tr');
+        //   let celli = document.createElement('td');
+        //   celli.textContent = ++serialNoDataLog;
+        //   rowi.appendChild(celli);
 
-          for (let j = 0; j < chunk.length; j++) {
-            let index_in_original_array = start_index + j;
+        //   for (let j = 0; j < chunk.length; j++) {
+        //     let index_in_original_array = start_index + j;
 
-            let cellj = document.createElement('td');
-            cellj.textContent = tmpArrNew[index_in_original_array].includes('@') ? tmpArrNew[index_in_original_array].split('@')[1] : tmpArrNew[index_in_original_array];
-            rowi.appendChild(cellj);
-          }
-          tableBody.appendChild(rowi);
-        }
+        //     let cellj = document.createElement('td');
+        //     cellj.textContent = tmpArrNew[index_in_original_array].includes('@') ? tmpArrNew[index_in_original_array].split('@')[1] : tmpArrNew[index_in_original_array];
+        //     rowi.appendChild(cellj);
+        //   }
+        //   tableBody.appendChild(rowi);
+        // }
 
       }
     }
