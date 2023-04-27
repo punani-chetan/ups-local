@@ -115,9 +115,6 @@ function connect() {
     }, retryInterval);
   };
 
-
-
-
   ws.onmessage = async function (evt) {
 
     var ups_data = await UPS_MSG(evt.data);
@@ -155,152 +152,160 @@ function connect() {
       }
     }
 
-    if (!deviceId) {
+    // if (!deviceId) {
+    if (ups_data.DATA_NAME === 'datalog') {
+
+      // console.log(ups_data.DATA_NAME)
+      // console.log(ups_data.dataLog.Battery_Status1)
+      // return
 
       // Remove 'AAAA01' and '5555' from the text
-      let compareTxtStr = ups_data.payload.substring(1, 7);
-      console.log('compareTxtStr => ', compareTxtStr)
-      if (compareTxtStr === 'AAAA02') {
-        text = ups_data.payload.replace(/'AAAA02'/g, '');
-        text = text.replace(/'5555'/g, '');
+      // let compareTxtStr = ups_data.payload.substring(1, 7);
+      // console.log('compareTxtStr => ', compareTxtStr)
+      // if (compareTxtStr === 'AAAA02') {
+      // text = ups_data.payload.replace(/'AAAA02'/g, '');
+      // text = text.replace(/'5555'/g, '');
 
-        // Split the text into an array of alarms
-        const alarms = text.split('@ \n');
+      // // Split the text into an array of alarms
+      // const alarms = text.split('@ \n');
 
-        // Convert the array of alarms into an array of objects
-        const arr = alarms.map(alarm => {
-          const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
-          return {
-            Alarm_Number,
-            Date,
-            Time,
-            Alarm_Name
-          }
-        });
+      // // Convert the array of alarms into an array of objects
+      // const arr = alarms.map(alarm => {
+      //   const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
+      //   return {
+      //     Alarm_Number,
+      //     Date,
+      //     Time,
+      //     Alarm_Name
+      //   }
+      // });
 
-        // Create a table in HTML
-        const tableBody = document.querySelector('#alarm-table tbody');
-        for (const item of arr) {
-          const row = document.createElement('tr');
-          const cell0 = document.createElement('td');
-          cell0.textContent = ++serialNoAlarm;
-          row.appendChild(cell0);
-          const cell1 = document.createElement('td');
-          cell1.textContent = item.Alarm_Number;
-          row.appendChild(cell1);
-          const cell2 = document.createElement('td');
-          cell2.textContent = item.Date;
-          row.appendChild(cell2);
-          const cell3 = document.createElement('td');
-          cell3.textContent = item.Time;
-          row.appendChild(cell3);
-          const cell4 = document.createElement('td');
-          cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
-          row.appendChild(cell4);
-          tableBody.appendChild(row);
+      // // Create a table in HTML
+      // const tableBody = document.querySelector('#alarm-table tbody');
+      // for (const item of arr) {
+      //   const row = document.createElement('tr');
+      //   const cell0 = document.createElement('td');
+      //   cell0.textContent = ++serialNoAlarm;
+      //   row.appendChild(cell0);
+      //   const cell1 = document.createElement('td');
+      //   cell1.textContent = item.Alarm_Number;
+      //   row.appendChild(cell1);
+      //   const cell2 = document.createElement('td');
+      //   cell2.textContent = item.Date;
+      //   row.appendChild(cell2);
+      //   const cell3 = document.createElement('td');
+      //   cell3.textContent = item.Time;
+      //   row.appendChild(cell3);
+      //   const cell4 = document.createElement('td');
+      //   cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
+      //   row.appendChild(cell4);
+      //   tableBody.appendChild(row);
+      // }
+      // } else if (compareTxtStr === 'AAAA03') {
+
+      // text = ups_data.payload.replace(/'AAAA03'/g, '');
+      // text = text.replace(/'5555'/g, '');
+
+      // Split the text into an array of alarms
+      let alarms = ups_data.dataLog.Battery_Status1.split(' @ \n');
+
+      console.log('alarms')
+      console.log(alarms)
+
+      // Convert the array of alarms into an array of objects
+      let arr = alarms.map(alarm => {
+        let tmpSplitArr = alarm.split(',');
+        return tmpSplitArr;
+      });
+
+      console.log(arr)
+
+      // let tmpArrNew = arr[0].slice(0, -1);
+      // let chunk_size = 88;
+      // let num_chunks = Math.ceil(tmpArrNew.length / chunk_size);
+
+      let tmpArrNew = arr;
+      let chunk_size = 88;
+      let num_chunks = tmpArrNew.length;
+
+      const tableBody = document.querySelector('#data-log-table tbody');
+
+      for (let i = 0; i < num_chunks; i++) {
+        // let start_index = i * chunk_size;
+        // let end_index = start_index + chunk_size;
+        // let chunk = tmpArrNew.slice(start_index, end_index);
+
+        // console.log('chunk')
+        // console.log(chunk)
+
+        let rowi = document.createElement('tr');
+        let celli = document.createElement('td');
+        celli.textContent = ++serialNoDataLog;
+        rowi.appendChild(celli);
+
+        for (let j = 0; j < chunk_size; j++) {
+          // let index_in_original_array = start_index + j;
+
+          let cellj = document.createElement('td');
+          cellj.textContent = tmpArrNew[i][j].includes('@') ? tmpArrNew[i][j].split('@')[1] : tmpArrNew[i][j];
+          rowi.appendChild(cellj);
         }
-      } else if (compareTxtStr === 'AAAA03') {
-
-        text = ups_data.payload.replace(/'AAAA03'/g, '');
-        text = text.replace(/'5555'/g, '');
-
-        // Split the text into an array of alarms
-        let alarms = text.split(' @ \n');
-
-        // Convert the array of alarms into an array of objects
-        let arr = alarms.map(alarm => {
-          let tmpSplitArr = alarm.split(',');
-          return tmpSplitArr;
-        });
-
-        console.log(arr)
-
-        // let tmpArrNew = arr[0].slice(0, -1);
-        // let chunk_size = 88;
-        // let num_chunks = Math.ceil(tmpArrNew.length / chunk_size);
-
-        let tmpArrNew = arr;
-        let chunk_size = 88;
-        let num_chunks = tmpArrNew.length;
-
-        const tableBody = document.querySelector('#data-log-table tbody');
-
-        for (let i = 0; i < num_chunks; i++) {
-          // let start_index = i * chunk_size;
-          // let end_index = start_index + chunk_size;
-          // let chunk = tmpArrNew.slice(start_index, end_index);
-
-          // console.log('chunk')
-          // console.log(chunk)
-
-          let rowi = document.createElement('tr');
-          let celli = document.createElement('td');
-          celli.textContent = ++serialNoDataLog;
-          rowi.appendChild(celli);
-
-          for (let j = 0; j < chunk_size; j++) {
-            // let index_in_original_array = start_index + j;
-
-            let cellj = document.createElement('td');
-            cellj.textContent = tmpArrNew[i][j].includes('@') ? tmpArrNew[i][j].split('@')[1] : tmpArrNew[i][j];
-            rowi.appendChild(cellj);
-          }
-          tableBody.appendChild(rowi);
-        }
-
-
-
-        // for (let i = 0; i < num_chunks; i++) {
-        //   let start_index;
-        //   if (i > 0) { start_index = i * (chunk_size + 6); }
-        //   else { start_index = i * chunk_size; }
-        //   let end_index = start_index + chunk_size;
-        //   let chunk = tmpArrNew.slice(start_index, end_index);
-        //   // console.log('chunk')
-        //   // console.log(chunk)
-        //   if (chunk.length) {
-        //     let rowi = document.createElement('tr');
-        //     let celli = document.createElement('td');
-        //     celli.textContent = ++serialNoDataLog;
-        //     rowi.appendChild(celli);
-
-        //     for (let j = 0; j < chunk.length; j++) {
-        //       let index_in_original_array = start_index + j;
-
-        //       let cellj = document.createElement('td');
-        //       cellj.textContent = tmpArrNew[index_in_original_array];
-        //       rowi.appendChild(cellj);
-        //     }
-        //     tableBody.appendChild(rowi);
-        //   }
-        // }
-
-        // console.log(num_chunks)
-
-        // for (let i = 0; i < num_chunks; i++) {
-        //   let start_index = i * chunk_size;
-        //   let end_index = start_index + chunk_size;
-        //   let chunk = tmpArrNew.slice(start_index, end_index);
-
-        //   console.log('chunk')
-        //   console.log(chunk)
-
-        //   let rowi = document.createElement('tr');
-        //   let celli = document.createElement('td');
-        //   celli.textContent = ++serialNoDataLog;
-        //   rowi.appendChild(celli);
-
-        //   for (let j = 0; j < chunk.length; j++) {
-        //     let index_in_original_array = start_index + j;
-
-        //     let cellj = document.createElement('td');
-        //     cellj.textContent = tmpArrNew[index_in_original_array].includes('@') ? tmpArrNew[index_in_original_array].split('@')[1] : tmpArrNew[index_in_original_array];
-        //     rowi.appendChild(cellj);
-        //   }
-        //   tableBody.appendChild(rowi);
-        // }
-
+        tableBody.appendChild(rowi);
       }
+
+
+
+      // for (let i = 0; i < num_chunks; i++) {
+      //   let start_index;
+      //   if (i > 0) { start_index = i * (chunk_size + 6); }
+      //   else { start_index = i * chunk_size; }
+      //   let end_index = start_index + chunk_size;
+      //   let chunk = tmpArrNew.slice(start_index, end_index);
+      //   // console.log('chunk')
+      //   // console.log(chunk)
+      //   if (chunk.length) {
+      //     let rowi = document.createElement('tr');
+      //     let celli = document.createElement('td');
+      //     celli.textContent = ++serialNoDataLog;
+      //     rowi.appendChild(celli);
+
+      //     for (let j = 0; j < chunk.length; j++) {
+      //       let index_in_original_array = start_index + j;
+
+      //       let cellj = document.createElement('td');
+      //       cellj.textContent = tmpArrNew[index_in_original_array];
+      //       rowi.appendChild(cellj);
+      //     }
+      //     tableBody.appendChild(rowi);
+      //   }
+      // }
+
+      // console.log(num_chunks)
+
+      // for (let i = 0; i < num_chunks; i++) {
+      //   let start_index = i * chunk_size;
+      //   let end_index = start_index + chunk_size;
+      //   let chunk = tmpArrNew.slice(start_index, end_index);
+
+      //   console.log('chunk')
+      //   console.log(chunk)
+
+      //   let rowi = document.createElement('tr');
+      //   let celli = document.createElement('td');
+      //   celli.textContent = ++serialNoDataLog;
+      //   rowi.appendChild(celli);
+
+      //   for (let j = 0; j < chunk.length; j++) {
+      //     let index_in_original_array = start_index + j;
+
+      //     let cellj = document.createElement('td');
+      //     cellj.textContent = tmpArrNew[index_in_original_array].includes('@') ? tmpArrNew[index_in_original_array].split('@')[1] : tmpArrNew[index_in_original_array];
+      //     rowi.appendChild(cellj);
+      //   }
+      //   tableBody.appendChild(rowi);
+      // }
+
+      // }
     }
 
     /******************** status code ******************/

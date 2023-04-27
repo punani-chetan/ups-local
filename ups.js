@@ -224,9 +224,14 @@ const UPS_MSG = async (payload) => {
     let id = {};
     let jsonValues = {};
     let jsonValuesStatus = {};
+    let jsonValuesDataLog = {};
 
     if (isJson(payload)) {
         parsedPayload = JSON.parse(payload);
+
+        // console.log('parsedPayload');
+        // console.log(parsedPayload);
+        // return
 
         // let jsonValues = {};
         // let jsonValuesStatus = {};
@@ -252,7 +257,18 @@ const UPS_MSG = async (payload) => {
                 jsonValuesStatus = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
             }
         }
-        json = { ...id, ...jsonValues, ...jsonValuesStatus };
+
+        if (parsedPayload.msg_id === 3) {
+            // console.log('parsedPayload.properties for datalog');
+            // console.log(parsedPayload.properties);
+            jsonValuesDataLog = {
+                dataLog: parsedPayload.properties,
+                DATA_NAME: 'datalog'
+            };
+        }
+
+
+        json = { ...id, ...jsonValues, ...jsonValuesStatus, ...jsonValuesDataLog };
     }
 
     if (!isJson(payload)) {
@@ -260,6 +276,11 @@ const UPS_MSG = async (payload) => {
     }
     return json;
 };
+
+
+// const alarmDataLogData = async (payload) => {
+
+// };
 
 const isJson = (str) => {
     try {
