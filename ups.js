@@ -267,6 +267,15 @@ const UPS_MSG = async (payload) => {
             };
         }
 
+        if (parsedPayload.msg_id === 2) {
+            // console.log('parsedPayload.properties for datalog');
+            // console.log(parsedPayload.properties);
+            jsonValuesDataLog = {
+                alarmLog: parsedPayload.properties,
+                DATA_NAME: 'alarmlog'
+            };
+        }
+
 
         json = { ...id, ...jsonValues, ...jsonValuesStatus, ...jsonValuesDataLog };
     }
