@@ -8,7 +8,7 @@ var sentMsgData = true;
 
 
 
-function exportToCSV(tableId) {
+function exportToCSV(tableId, exportType) {
 
   // Variable to store the final csv data
   var csv_data = [];
@@ -38,11 +38,11 @@ function exportToCSV(tableId) {
   csv_data = csv_data.join('\n');
 
   // Call this function to download csv file
-  downloadCSVFile(csv_data);
+  downloadCSVFile(csv_data, exportType);
 
 }
 
-function downloadCSVFile(csv_data) {
+function downloadCSVFile(csv_data, exportType) {
 
   // Create CSV file object and feed
   // our csv_data into it
@@ -55,7 +55,7 @@ function downloadCSVFile(csv_data) {
   var temp_link = document.createElement('a');
 
   // Download csv file
-  temp_link.download = "alarmlog.csv";
+  temp_link.download = exportType + ".csv";
   var url = window.URL.createObjectURL(CSVFile);
   temp_link.href = url;
 
