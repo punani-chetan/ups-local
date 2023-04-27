@@ -6,8 +6,6 @@ var tagName;
 var sentMsgAlarm = true;
 var sentMsgData = true;
 
-
-
 function exportToCSV(tableId, exportType) {
 
   // Variable to store the final csv data
@@ -69,9 +67,7 @@ function downloadCSVFile(csv_data, exportType) {
   document.body.removeChild(temp_link);
 }
 
-
 function connect() {
-  console.log('in connect')
 
   var url = 'ws://ups-gateway:80/ws';
   // var url = 'ws://localhost:8080';
@@ -81,7 +77,7 @@ function connect() {
 
   window.addEventListener("online", function () {
     console.log("I am connected to the internet");
-    console.log('navigator.onLine ==> ', navigator.onLine)
+    // console.log('navigator.onLine ==> ', navigator.onLine)
     if (navigator.onLine) {
       connect();
     }
@@ -209,8 +205,8 @@ function connect() {
       // Split the text into an array of alarms
       let alarms = ups_data.dataLog.File_payload.split(' @ \n');
 
-      console.log('alarms')
-      console.log(alarms)
+      // console.log('alarms')
+      // console.log(alarms)
 
       // Convert the array of alarms into an array of objects
       let arr = alarms.map(alarm => {
@@ -221,7 +217,7 @@ function connect() {
         }
       });
 
-      console.log(arr)
+      // console.log(arr)
 
       // let tmpArrNew = arr[0].slice(0, -1);
       // let chunk_size = 88;
@@ -347,7 +343,7 @@ function connect() {
         cell0.textContent = ++serialNoAlarm;
         row.appendChild(cell0);
         const cell1 = document.createElement('td');
-        cell1.textContent = item.Alarm_Number;
+        cell1.textContent = item.Alarm_Number.includes('\n') ? item.Alarm_Number.replace(/[\r\n]/gm, '') : item.Alarm_Number;
         row.appendChild(cell1);
         const cell2 = document.createElement('td');
         cell2.textContent = item.Date;
