@@ -216,74 +216,77 @@ const threePhasevalues = async (threePhaseVars) => {
     return threePhaseJson;
 }
 
-const UPS_MSG = async (payload) => {
-    // console.log(payload)
-    // console.log(typeof payload)
-    let parsedPayload;
-    let json = {};
-    let id = {};
-    let jsonValues = {};
-    let jsonValuesStatus = {};
-    let jsonValuesDataLog = {};
+const UPS_MSG = payload => {
 
-    if (isJson(payload)) {
-        parsedPayload = JSON.parse(payload);
+    return new Promise(async (resolve, reject) => {
 
-        // console.log('parsedPayload');
-        // console.log(parsedPayload);
-        // return
+        try {
+            // console.log(payload)
+            // console.log(typeof payload)
+            let parsedPayload;
+            let json = {};
+            let id = {};
+            let jsonValues = {};
+            let jsonValuesStatus = {};
+            let jsonValuesDataLog = {};
 
-        // let jsonValues = {};
-        // let jsonValuesStatus = {};
-        id = {
-            dev_id: parsedPayload.dev_id
-        }
-        if (parsedPayload.ph_type === 1) {
-            // single phase
-            if (parsedPayload.msg_id === 1) {
-                jsonValues = await singlePhaseValues(parsedPayload.properties);
+            if (isJson(payload)) {
+                parsedPayload = JSON.parse(payload);
+
+                id = {
+                    dev_id: parsedPayload.dev_id
+                }
+                if (parsedPayload.ph_type === 1) {
+                    // single phase
+                    if (parsedPayload.msg_id === 1) {
+                        jsonValues = await singlePhaseValues(parsedPayload.properties);
+                    }
+                    if (parsedPayload.msg_id === 7) {
+                        // jsonValues = await singlePhaseStatusValues(parsedPayload.properties);
+                        jsonValuesStatus = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
+                    }
+                }
+                else if (parsedPayload.ph_type === 0) {
+                    // three phase
+                    if (parsedPayload.msg_id === 1) {
+                        jsonValues = await threePhasevalues(parsedPayload.properties);
+                    }
+                    if (parsedPayload.msg_id === 7) {
+                        jsonValuesStatus = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
+                    }
+                }
+
+                if (parsedPayload.msg_id === 3) {
+                    // console.log('parsedPayload.properties for datalog');
+                    // console.log(parsedPayload.properties);
+                    jsonValuesDataLog = {
+                        dataLog: parsedPayload.properties,
+                        DATA_NAME: 'datalog'
+                    };
+                }
+
+                if (parsedPayload.msg_id === 2) {
+                    // console.log('parsedPayload.properties for datalog');
+                    // console.log(parsedPayload.properties);
+                    jsonValuesDataLog = {
+                        alarmLog: parsedPayload.properties,
+                        DATA_NAME: 'alarmlog'
+                    };
+                }
+
+
+                json = { ...id, ...jsonValues, ...jsonValuesStatus, ...jsonValuesDataLog };
             }
-            if (parsedPayload.msg_id === 7) {
-                // jsonValues = await singlePhaseStatusValues(parsedPayload.properties);
-                jsonValuesStatus = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
+
+            if (!isJson(payload)) {
+                json = { payload };
             }
+            // return json;
+            resolve(json);
+        } catch (error) {
+            reject(error.message);
         }
-        else if (parsedPayload.ph_type === 0) {
-            // three phase
-            if (parsedPayload.msg_id === 1) {
-                jsonValues = await threePhasevalues(parsedPayload.properties);
-            }
-            if (parsedPayload.msg_id === 7) {
-                jsonValuesStatus = await mapAlarmData(parsedPayload.properties, parsedPayload.ph_type);
-            }
-        }
-
-        if (parsedPayload.msg_id === 3) {
-            // console.log('parsedPayload.properties for datalog');
-            // console.log(parsedPayload.properties);
-            jsonValuesDataLog = {
-                dataLog: parsedPayload.properties,
-                DATA_NAME: 'datalog'
-            };
-        }
-
-        if (parsedPayload.msg_id === 2) {
-            // console.log('parsedPayload.properties for datalog');
-            // console.log(parsedPayload.properties);
-            jsonValuesDataLog = {
-                alarmLog: parsedPayload.properties,
-                DATA_NAME: 'alarmlog'
-            };
-        }
-
-
-        json = { ...id, ...jsonValues, ...jsonValuesStatus, ...jsonValuesDataLog };
-    }
-
-    if (!isJson(payload)) {
-        json = { payload };
-    }
-    return json;
+    });
 };
 
 

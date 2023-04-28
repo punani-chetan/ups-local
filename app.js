@@ -1,5 +1,7 @@
 let socket = null;
 let retryInterval = 1000; // initial retry interval
+var url = 'ws://localhost:8080';
+const ws = new WebSocket(url);
 connect();
 var deviceId;
 var tagName;
@@ -67,11 +69,13 @@ function downloadCSVFile(csv_data, exportType) {
   document.body.removeChild(temp_link);
 }
 
+
+
 function connect() {
 
-  var url = 'ws://ups-gateway:80/ws';
+  // var url = 'ws://ups-gateway:80/ws';
   // var url = 'ws://localhost:8080';
-  var ws = new WebSocket(url);
+  // var ws = new WebSocket(url);
   let serialNoAlarm = 0;
   let serialNoDataLog = 0;
 
@@ -106,7 +110,7 @@ function connect() {
     setTimeout(function () {
       console.log('Attempting to reconnect...');
       connect();
-      retryInterval *= 2; // exponential backoff
+      retryInterval += 2000; // exponential backoff
       console.log(retryInterval);
     }, retryInterval);
   };
@@ -118,35 +122,38 @@ function connect() {
     console.log("ups_data in index");
     console.log(ups_data);
 
-    deviceId = ups_data.dev_id;
+    deviceId = await ups_data.dev_id;
 
-    if (ups_data) { tabs(); }
-
-    if (deviceId) {
-      // console.log(deviceId)
-      if (tagName === 'alarmlog') {
-        // console.log('in alarmlog')
-        var obj = {};
-        obj.msg_id = 2;
-        obj.dev_id = deviceId;
-        var jsonString = JSON.stringify(obj);
-        // if (sentMsgAlarm) {
-        ws.send(jsonString);
-        // sentMsgAlarm = false;
-        // }
-      }
-      else if (tagName === 'datalog') {
-        // console.log('in datalog')
-        var obj = {};
-        obj.msg_id = 3;
-        obj.dev_id = deviceId;
-        var jsonString = JSON.stringify(obj);
-        // if (sentMsgData) {
-        ws.send(jsonString);
-        // sentMsgData = false;
-        // }
-      }
+    if (ups_data) {
+      console.log('ups_data received')
+      tabs();
     }
+
+    // if (deviceId) {
+    //   // console.log(deviceId)
+    //   if (tagName === 'alarmlog') {
+    //     // console.log('in alarmlog')
+    //     var obj = {};
+    //     obj.msg_id = 2;
+    //     obj.dev_id = deviceId;
+    //     var jsonString = JSON.stringify(obj);
+    //     // if (sentMsgAlarm) {
+    //     ws.send(jsonString);
+    //     // sentMsgAlarm = false;
+    //     // }
+    //   }
+    //   else if (tagName === 'datalog') {
+    //     // console.log('in datalog')
+    //     var obj = {};
+    //     obj.msg_id = 3;
+    //     obj.dev_id = deviceId;
+    //     var jsonString = JSON.stringify(obj);
+    //     // if (sentMsgData) {
+    //     ws.send(jsonString);
+    //     // sentMsgData = false;
+    //     // }
+    //   }
+    // }
 
     // if (!deviceId) {
     if (ups_data.DATA_NAME === 'datalog') {
@@ -217,8 +224,6 @@ function connect() {
         }
       });
 
-      // console.log(arr)
-
       // let tmpArrNew = arr[0].slice(0, -1);
       // let chunk_size = 88;
       // let num_chunks = Math.ceil(tmpArrNew.length / chunk_size);
@@ -230,20 +235,17 @@ function connect() {
       const tableBody = document.querySelector('#data-log-table tbody');
 
       for (let i = 0; i < num_chunks; i++) {
-        // let start_index = i * chunk_size;
-        // let end_index = start_index + chunk_size;
-        // let chunk = tmpArrNew.slice(start_index, end_index);
-
         let rowi = document.createElement('tr');
         let celli = document.createElement('td');
         celli.textContent = ++serialNoDataLog;
         rowi.appendChild(celli);
 
-        for (let j = 0; j < chunk_size; j++) {
-          // let index_in_original_array = start_index + j;
+        tmpArrNew[i].splice(82)
+        // tmpArrNew[i].splice(-7)
+
+        for (let j = 0; j < tmpArrNew[i].length; j++) {
           let cellj = document.createElement('td');
           cellj.textContent = tmpArrNew[i][j];
-          // cellj.textContent = tmpArrNew[i][j].includes('@') ? tmpArrNew[i][j].split('@')[1] : tmpArrNew[i][j];
           rowi.appendChild(cellj);
         }
         tableBody.appendChild(rowi);
@@ -1062,6 +1064,7 @@ window.addEventListener("load", (event) => {
 
 
 function tabs() {
+  console.log('tab called');
   let hashTag = new URL(document.URL).hash;
   // let tagName;
   if (!hashTag || hashTag == '#status') {
@@ -1074,7 +1077,7 @@ function tabs() {
   }
   else if (hashTag == '#alarmlog') tagName = 'alarmlog';
   else if (hashTag == '#datalog') tagName = 'datalog';
-  changeUrlParams(tagName)
+  changeUrlParams(tagName);
 
 }
 
@@ -1082,6 +1085,35 @@ function tabs() {
 
 function changeUrlParams(tabName) {
   makeTabActive(tabName);
+
+  console.log(deviceId);
+  console.log(tabName);
+
+  if (deviceId) {
+    // console.log(deviceId)
+    if (tagName === 'alarmlog') {
+      // console.log('in alarmlog')
+      var obj = {};
+      obj.msg_id = 2;
+      obj.dev_id = deviceId;
+      var jsonString = JSON.stringify(obj);
+      // if (sentMsgAlarm) {
+      ws.send(jsonString);
+      // sentMsgAlarm = false;
+      // }
+    }
+    else if (tagName === 'datalog') {
+      // console.log('in datalog')
+      var obj = {};
+      obj.msg_id = 3;
+      obj.dev_id = deviceId;
+      var jsonString = JSON.stringify(obj);
+      // if (sentMsgData) {
+      ws.send(jsonString);
+      // sentMsgData = false;
+      // }
+    }
+  }
 }
 
 function showTab(tabName) {
