@@ -1,11 +1,12 @@
 let socket = null;
 let retryInterval = 1000; // initial retry interval
-var url = 'ws://ups-gateway:80/ws';
-// var url = 'ws://localhost:8080';
-const ws = new WebSocket(url);
+let alarmsLogData;
+let dataLogData;
+// var url = 'ws://ups-gateway:80/ws';
+var url = 'ws://localhost:8080';
+var ws = new WebSocket(url);
 connect();
 var deviceId;
-var tagName;
 var sentMsgAlarm = true;
 var sentMsgData = true;
 
@@ -92,16 +93,6 @@ function connect() {
     ws.send('Status WS Started');
     console.log("Web socket is connected");
     retryInterval = 1000;
-    // ws.onclose = function (event) {
-    //   console.log("WebSocket is closed now.");
-
-    //   // attempt to reconnect
-    //   setTimeout(function () {
-    //     console.log('Attempting to reconnect...');
-    //     connect();
-    //     retryInterval *= 2; // exponential backoff
-    //   }, retryInterval);
-    // };
   };
 
   ws.onclose = function (event) {
@@ -110,6 +101,11 @@ function connect() {
     // attempt to reconnect
     setTimeout(function () {
       console.log('Attempting to reconnect...');
+
+      ws.close();
+      // var url = 'ws://ups-gateway:80/ws';
+      url = 'ws://localhost:8080';
+      ws = new WebSocket(url);
       connect();
       retryInterval += 2000; // exponential backoff
       console.log(retryInterval);
@@ -125,243 +121,212 @@ function connect() {
 
     deviceId = await ups_data.dev_id;
 
-    if (ups_data) {
-      console.log('ups_data received')
-      tabs();
+    let tabNm = getActiveTagName();
+    // console.log(tabNm)
+    if (tabNm === 'alarmlog' || tabNm === 'datalog') {
+      if (ups_data.DATA_NAME === 'datalog') {
+
+        // console.log(ups_data.DATA_NAME)
+        // console.log(ups_data.dataLog.Battery_Status1)
+        // return
+
+        // Remove 'AAAA01' and '5555' from the text
+        // let compareTxtStr = ups_data.payload.substring(1, 7);
+        // console.log('compareTxtStr => ', compareTxtStr)
+        // if (compareTxtStr === 'AAAA02') {
+        // text = ups_data.payload.replace(/'AAAA02'/g, '');
+        // text = text.replace(/'5555'/g, '');
+
+        // // Split the text into an array of alarms
+        // const alarms = text.split('@ \n');
+
+        // // Convert the array of alarms into an array of objects
+        // const arr = alarms.map(alarm => {
+        //   const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
+        //   return {
+        //     Alarm_Number,
+        //     Date,
+        //     Time,
+        //     Alarm_Name
+        //   }
+        // });
+
+        // // Create a table in HTML
+        // const tableBody = document.querySelector('#alarm-table tbody');
+        // for (const item of arr) {
+        //   const row = document.createElement('tr');
+        //   const cell0 = document.createElement('td');
+        //   cell0.textContent = ++serialNoAlarm;
+        //   row.appendChild(cell0);
+        //   const cell1 = document.createElement('td');
+        //   cell1.textContent = item.Alarm_Number;
+        //   row.appendChild(cell1);
+        //   const cell2 = document.createElement('td');
+        //   cell2.textContent = item.Date;
+        //   row.appendChild(cell2);
+        //   const cell3 = document.createElement('td');
+        //   cell3.textContent = item.Time;
+        //   row.appendChild(cell3);
+        //   const cell4 = document.createElement('td');
+        //   cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
+        //   row.appendChild(cell4);
+        //   tableBody.appendChild(row);
+        // }
+        // } else if (compareTxtStr === 'AAAA03') {
+
+        // text = ups_data.payload.replace(/'AAAA03'/g, '');
+        // text = text.replace(/'5555'/g, '');
+
+        // Split the text into an array of alarms
+        dataLogData = ups_data.dataLog.File_payload.split(' @ \n');
+
+        // Convert the array of datalog data into an array of objects
+        let arr = dataLogData.map(alarm => {
+          // console.log(alarm)
+          if (alarm) {
+            let tmpSplitArr = alarm.split(',');
+            return tmpSplitArr;
+          }
+        });
+
+        // let tmpArrNew = arr[0].slice(0, -1);
+        // let chunk_size = 88;
+        // let num_chunks = Math.ceil(tmpArrNew.length / chunk_size);
+        arr.splice(-1, 1);
+        let tmpArrNew = arr;
+        let chunk_size = 88;
+        let num_chunks = tmpArrNew.length;
+
+        const tableBody = document.querySelector('#data-log-table tbody');
+
+        for (let i = 0; i < num_chunks; i++) {
+          let rowi = document.createElement('tr');
+          let celli = document.createElement('td');
+          celli.textContent = ++serialNoDataLog;
+          rowi.appendChild(celli);
+
+          tmpArrNew[i].splice(82)
+          // tmpArrNew[i].splice(-7)
+
+          for (let j = 0; j < tmpArrNew[i].length; j++) {
+            let cellj = document.createElement('td');
+            cellj.textContent = tmpArrNew[i][j];
+            rowi.appendChild(cellj);
+          }
+          tableBody.appendChild(rowi);
+        }
+
+
+
+        // for (let i = 0; i < num_chunks; i++) {
+        //   let start_index;
+        //   if (i > 0) { start_index = i * (chunk_size + 6); }
+        //   else { start_index = i * chunk_size; }
+        //   let end_index = start_index + chunk_size;
+        //   let chunk = tmpArrNew.slice(start_index, end_index);
+        //   // console.log('chunk')
+        //   // console.log(chunk)
+        //   if (chunk.length) {
+        //     let rowi = document.createElement('tr');
+        //     let celli = document.createElement('td');
+        //     celli.textContent = ++serialNoDataLog;
+        //     rowi.appendChild(celli);
+
+        //     for (let j = 0; j < chunk.length; j++) {
+        //       let index_in_original_array = start_index + j;
+
+        //       let cellj = document.createElement('td');
+        //       cellj.textContent = tmpArrNew[index_in_original_array];
+        //       rowi.appendChild(cellj);
+        //     }
+        //     tableBody.appendChild(rowi);
+        //   }
+        // }
+
+        // console.log(num_chunks)
+
+        // for (let i = 0; i < num_chunks; i++) {
+        //   let start_index = i * chunk_size;
+        //   let end_index = start_index + chunk_size;
+        //   let chunk = tmpArrNew.slice(start_index, end_index);
+
+        //   console.log('chunk')
+        //   console.log(chunk)
+
+        //   let rowi = document.createElement('tr');
+        //   let celli = document.createElement('td');
+        //   celli.textContent = ++serialNoDataLog;
+        //   rowi.appendChild(celli);
+
+        //   for (let j = 0; j < chunk.length; j++) {
+        //     let index_in_original_array = start_index + j;
+
+        //     let cellj = document.createElement('td');
+        //     cellj.textContent = tmpArrNew[index_in_original_array].includes('@') ? tmpArrNew[index_in_original_array].split('@')[1] : tmpArrNew[index_in_original_array];
+        //     rowi.appendChild(cellj);
+        //   }
+        //   tableBody.appendChild(rowi);
+        // }
+
+        // }
+      }
+
+      if (ups_data.DATA_NAME === 'alarmlog') {
+
+        // console.log(ups_data.DATA_NAME)
+        // console.log(ups_data.dataLog.File_payload)
+        // return
+
+        // Remove 'AAAA01' and '5555' from the text
+        // let compareTxtStr = ups_data.payload.substring(1, 7);
+        // console.log('compareTxtStr => ', compareTxtStr)
+        // if (compareTxtStr === 'AAAA02') {
+        // text = ups_data.payload.replace(/'AAAA02'/g, '');
+        // text = text.replace(/'5555'/g, '');
+
+        // Split the text into an array of alarms
+        alarmsLogData = ups_data.alarmLog.File_payload.split('@ \n');
+
+        // Convert the array of alarmslog data into an array of objects
+        const arr = alarmsLogData.map(alarm => {
+          const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
+          return {
+            Alarm_Number,
+            Date,
+            Time,
+            Alarm_Name
+          }
+        });
+
+        arr.splice(-1, 1);
+
+        // Create a table in HTML
+        const tableBody = document.querySelector('#alarm-table tbody');
+        for (const item of arr) {
+          const row = document.createElement('tr');
+          const cell0 = document.createElement('td');
+          cell0.textContent = ++serialNoAlarm;
+          row.appendChild(cell0);
+          const cell1 = document.createElement('td');
+          cell1.textContent = item.Alarm_Number.includes('\n') ? item.Alarm_Number.replace(/[\r\n]/gm, '') : item.Alarm_Number;
+          row.appendChild(cell1);
+          const cell2 = document.createElement('td');
+          cell2.textContent = item.Date;
+          row.appendChild(cell2);
+          const cell3 = document.createElement('td');
+          cell3.textContent = item.Time;
+          row.appendChild(cell3);
+          const cell4 = document.createElement('td');
+          cell4.textContent = item.Alarm_Name;
+          // cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
+          row.appendChild(cell4);
+          tableBody.appendChild(row);
+        }
+
+      }
     }
-
-    // if (deviceId) {
-    //   // console.log(deviceId)
-    //   if (tagName === 'alarmlog') {
-    //     // console.log('in alarmlog')
-    //     var obj = {};
-    //     obj.msg_id = 2;
-    //     obj.dev_id = deviceId;
-    //     var jsonString = JSON.stringify(obj);
-    //     // if (sentMsgAlarm) {
-    //     ws.send(jsonString);
-    //     // sentMsgAlarm = false;
-    //     // }
-    //   }
-    //   else if (tagName === 'datalog') {
-    //     // console.log('in datalog')
-    //     var obj = {};
-    //     obj.msg_id = 3;
-    //     obj.dev_id = deviceId;
-    //     var jsonString = JSON.stringify(obj);
-    //     // if (sentMsgData) {
-    //     ws.send(jsonString);
-    //     // sentMsgData = false;
-    //     // }
-    //   }
-    // }
-
     // if (!deviceId) {
-    if (ups_data.DATA_NAME === 'datalog') {
 
-      // console.log(ups_data.DATA_NAME)
-      // console.log(ups_data.dataLog.Battery_Status1)
-      // return
-
-      // Remove 'AAAA01' and '5555' from the text
-      // let compareTxtStr = ups_data.payload.substring(1, 7);
-      // console.log('compareTxtStr => ', compareTxtStr)
-      // if (compareTxtStr === 'AAAA02') {
-      // text = ups_data.payload.replace(/'AAAA02'/g, '');
-      // text = text.replace(/'5555'/g, '');
-
-      // // Split the text into an array of alarms
-      // const alarms = text.split('@ \n');
-
-      // // Convert the array of alarms into an array of objects
-      // const arr = alarms.map(alarm => {
-      //   const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
-      //   return {
-      //     Alarm_Number,
-      //     Date,
-      //     Time,
-      //     Alarm_Name
-      //   }
-      // });
-
-      // // Create a table in HTML
-      // const tableBody = document.querySelector('#alarm-table tbody');
-      // for (const item of arr) {
-      //   const row = document.createElement('tr');
-      //   const cell0 = document.createElement('td');
-      //   cell0.textContent = ++serialNoAlarm;
-      //   row.appendChild(cell0);
-      //   const cell1 = document.createElement('td');
-      //   cell1.textContent = item.Alarm_Number;
-      //   row.appendChild(cell1);
-      //   const cell2 = document.createElement('td');
-      //   cell2.textContent = item.Date;
-      //   row.appendChild(cell2);
-      //   const cell3 = document.createElement('td');
-      //   cell3.textContent = item.Time;
-      //   row.appendChild(cell3);
-      //   const cell4 = document.createElement('td');
-      //   cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
-      //   row.appendChild(cell4);
-      //   tableBody.appendChild(row);
-      // }
-      // } else if (compareTxtStr === 'AAAA03') {
-
-      // text = ups_data.payload.replace(/'AAAA03'/g, '');
-      // text = text.replace(/'5555'/g, '');
-
-      // Split the text into an array of alarms
-      let alarms = ups_data.dataLog.File_payload.split(' @ \n');
-
-      // console.log('alarms')
-      // console.log(alarms)
-
-      // Convert the array of alarms into an array of objects
-      let arr = alarms.map(alarm => {
-        // console.log(alarm)
-        if (alarm) {
-          let tmpSplitArr = alarm.split(',');
-          return tmpSplitArr;
-        }
-      });
-
-      // let tmpArrNew = arr[0].slice(0, -1);
-      // let chunk_size = 88;
-      // let num_chunks = Math.ceil(tmpArrNew.length / chunk_size);
-      arr.splice(-1, 1);
-      let tmpArrNew = arr;
-      let chunk_size = 88;
-      let num_chunks = tmpArrNew.length;
-
-      const tableBody = document.querySelector('#data-log-table tbody');
-
-      for (let i = 0; i < num_chunks; i++) {
-        let rowi = document.createElement('tr');
-        let celli = document.createElement('td');
-        celli.textContent = ++serialNoDataLog;
-        rowi.appendChild(celli);
-
-        tmpArrNew[i].splice(82)
-        // tmpArrNew[i].splice(-7)
-
-        for (let j = 0; j < tmpArrNew[i].length; j++) {
-          let cellj = document.createElement('td');
-          cellj.textContent = tmpArrNew[i][j];
-          rowi.appendChild(cellj);
-        }
-        tableBody.appendChild(rowi);
-      }
-
-
-
-      // for (let i = 0; i < num_chunks; i++) {
-      //   let start_index;
-      //   if (i > 0) { start_index = i * (chunk_size + 6); }
-      //   else { start_index = i * chunk_size; }
-      //   let end_index = start_index + chunk_size;
-      //   let chunk = tmpArrNew.slice(start_index, end_index);
-      //   // console.log('chunk')
-      //   // console.log(chunk)
-      //   if (chunk.length) {
-      //     let rowi = document.createElement('tr');
-      //     let celli = document.createElement('td');
-      //     celli.textContent = ++serialNoDataLog;
-      //     rowi.appendChild(celli);
-
-      //     for (let j = 0; j < chunk.length; j++) {
-      //       let index_in_original_array = start_index + j;
-
-      //       let cellj = document.createElement('td');
-      //       cellj.textContent = tmpArrNew[index_in_original_array];
-      //       rowi.appendChild(cellj);
-      //     }
-      //     tableBody.appendChild(rowi);
-      //   }
-      // }
-
-      // console.log(num_chunks)
-
-      // for (let i = 0; i < num_chunks; i++) {
-      //   let start_index = i * chunk_size;
-      //   let end_index = start_index + chunk_size;
-      //   let chunk = tmpArrNew.slice(start_index, end_index);
-
-      //   console.log('chunk')
-      //   console.log(chunk)
-
-      //   let rowi = document.createElement('tr');
-      //   let celli = document.createElement('td');
-      //   celli.textContent = ++serialNoDataLog;
-      //   rowi.appendChild(celli);
-
-      //   for (let j = 0; j < chunk.length; j++) {
-      //     let index_in_original_array = start_index + j;
-
-      //     let cellj = document.createElement('td');
-      //     cellj.textContent = tmpArrNew[index_in_original_array].includes('@') ? tmpArrNew[index_in_original_array].split('@')[1] : tmpArrNew[index_in_original_array];
-      //     rowi.appendChild(cellj);
-      //   }
-      //   tableBody.appendChild(rowi);
-      // }
-
-      // }
-    }
-
-    if (ups_data.DATA_NAME === 'alarmlog') {
-
-      // console.log(ups_data.DATA_NAME)
-      // console.log(ups_data.dataLog.File_payload)
-      // return
-
-      // Remove 'AAAA01' and '5555' from the text
-      // let compareTxtStr = ups_data.payload.substring(1, 7);
-      // console.log('compareTxtStr => ', compareTxtStr)
-      // if (compareTxtStr === 'AAAA02') {
-      // text = ups_data.payload.replace(/'AAAA02'/g, '');
-      // text = text.replace(/'5555'/g, '');
-
-      // Split the text into an array of alarms
-      const alarms = ups_data.alarmLog.File_payload.split('@ \n');
-
-      // Convert the array of alarms into an array of objects
-      const arr = alarms.map(alarm => {
-        const [Alarm_Number, Date, Time, Alarm_Name] = alarm.split(',');
-        return {
-          Alarm_Number,
-          Date,
-          Time,
-          Alarm_Name
-        }
-      });
-
-      // console.log(arr)
-
-      arr.splice(-1, 1);
-
-      // Create a table in HTML
-      const tableBody = document.querySelector('#alarm-table tbody');
-      for (const item of arr) {
-        const row = document.createElement('tr');
-        const cell0 = document.createElement('td');
-        cell0.textContent = ++serialNoAlarm;
-        row.appendChild(cell0);
-        const cell1 = document.createElement('td');
-        cell1.textContent = item.Alarm_Number.includes('\n') ? item.Alarm_Number.replace(/[\r\n]/gm, '') : item.Alarm_Number;
-        row.appendChild(cell1);
-        const cell2 = document.createElement('td');
-        cell2.textContent = item.Date;
-        row.appendChild(cell2);
-        const cell3 = document.createElement('td');
-        cell3.textContent = item.Time;
-        row.appendChild(cell3);
-        const cell4 = document.createElement('td');
-        cell4.textContent = item.Alarm_Name;
-        // cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
-        row.appendChild(cell4);
-        tableBody.appendChild(row);
-      }
-      // } 
-    }
 
     /******************** status code ******************/
     let titleStr;
@@ -1050,77 +1015,71 @@ function connect() {
 }
 
 
-// (function () {
-
 window.addEventListener("load", (event) => {
   console.log("page is fully loaded");
   tabs();
 });
 
-// (function() {
-//   setInterval(() => {
-//     window.scrollTo({ top: 0 });
-//   }, 100);
-// })();
-
 
 function tabs() {
   console.log('tab called');
-  let hashTag = new URL(document.URL).hash;
-  // let tagName;
-  if (!hashTag || hashTag == '#status') {
-    tagName = 'status';
 
-  }
-  else if (hashTag == '#metering') {
-    tagName = 'metering';
-    showTab(tagName);
-  }
-  else if (hashTag == '#alarmlog') tagName = 'alarmlog';
-  else if (hashTag == '#datalog') tagName = 'datalog';
+  let tagName = getActiveTagName();
   changeUrlParams(tagName);
-
 }
 
-// })();
+function getActiveTagName() {
+  let hashTag = new URL(document.URL).hash;
+  console.log('hashTag in getactivetabs => ', hashTag)
+
+  if (!hashTag || hashTag == '#status') tagName = 'status';
+  else if (hashTag == '#metering') tagName = 'metering';
+  else if (hashTag == '#alarmlog') tagName = 'alarmlog';
+  else if (hashTag == '#datalog') tagName = 'datalog';
+
+  return tagName;
+}
 
 function changeUrlParams(tabName) {
   makeTabActive(tabName);
+
+  // to scroll to top of the page
+  setInterval(() => {
+    window.scrollTo({ top: 0 });
+  }, 50);
 
   console.log(deviceId);
   console.log(tabName);
 
   if (deviceId) {
-    // console.log(deviceId)
-    if (tagName === 'alarmlog') {
-      // console.log('in alarmlog')
+    if (tabName === 'alarmlog') {
+      console.log('in alarmlog')
       var obj = {};
       obj.msg_id = 2;
       obj.dev_id = deviceId;
       var jsonString = JSON.stringify(obj);
-      // if (sentMsgAlarm) {
+
+      if (alarmsLogData && alarmsLogData.length > 0) {
+        console.log('alarmsLogData empty')
+        alarmsLogData = [];
+      }
       ws.send(jsonString);
-      // sentMsgAlarm = false;
-      // }
     }
-    else if (tagName === 'datalog') {
-      // console.log('in datalog')
+    else if (tabName === 'datalog') {
+      console.log('in datalog')
       var obj = {};
       obj.msg_id = 3;
       obj.dev_id = deviceId;
       var jsonString = JSON.stringify(obj);
-      // if (sentMsgData) {
+
+      if (dataLogData && dataLogData.length > 0) {
+        console.log('dataLogData empty')
+        dataLogData = [];
+      }
       ws.send(jsonString);
-      // sentMsgData = false;
-      // }
     }
   }
 }
-
-function showTab(tabName) {
-  changeUrlParams('metering');
-}
-
 
 /********************** Date & Time --- start ****************/
 var today = new Date();
@@ -1142,7 +1101,6 @@ setInterval(function () {
 document.getElementById('ups_date').innerHTML = curr_date;
 /********************** Date & Time --- end ****************/
 
-var hashTagValue;
 var hashTagCss;
 
 function makeTabActive(tagNam) {
