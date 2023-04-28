@@ -1,6 +1,7 @@
 let socket = null;
 let retryInterval = 1000; // initial retry interval
-var url = 'ws://localhost:8080';
+var url = 'ws://ups-gateway:80/ws';
+// var url = 'ws://localhost:8080';
 const ws = new WebSocket(url);
 connect();
 var deviceId;
