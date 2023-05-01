@@ -148,8 +148,18 @@ function connect() {
       let chunk_size = 88;
       let num_chunks = tmpArrNew.length;
 
+
+      var dataTable = document.getElementById('dataLogTable');
+      var tbody = dataTable.getElementsByTagName("tbody")[0];
+      var rows = tbody.getElementsByTagName("tr");
+      for (var i = rows.length - 1; i >= 0; i--) {
+        tbody.removeChild(rows[i]);
+      }
+
+      serialNoDataLog = 0;
+
       const tableBody = document.querySelector('#dataLogTable tbody');
-      
+
       for (let i = 0; i < num_chunks; i++) {
         let rowi = document.createElement('tr');
         let celli = document.createElement('td');
@@ -164,6 +174,7 @@ function connect() {
           cellj.textContent = tmpArrNew[i][j];
           rowi.appendChild(cellj);
         }
+        console.log(rowi)
         tableBody.appendChild(rowi);
       }
     }
@@ -187,9 +198,17 @@ function connect() {
 
       arr.splice(-1, 1);
 
+      var alaramTable = document.getElementById("alarmTable");
+      var tbody = alaramTable.getElementsByTagName("tbody")[0];
+      var rows = tbody.getElementsByTagName("tr");
+      for (var i = rows.length - 1; i >= 0; i--) {
+        tbody.removeChild(rows[i]);
+      }
+      serialNoAlarm = 0;
+
       // Create a table in HTML
       const tableBody = document.querySelector('#alarmTable tbody');
-    
+
       for (const item of arr) {
         const row = document.createElement('tr');
         const cell0 = document.createElement('td');
@@ -208,6 +227,8 @@ function connect() {
         cell4.textContent = item.Alarm_Name;
         // cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
         row.appendChild(cell4);
+
+        console.log(row)
         tableBody.appendChild(row);
       }
 
@@ -916,7 +937,6 @@ function tabs() {
 
 function getActiveTagName() {
   let hashTag = new URL(document.URL).hash;
-  console.log('hashTag in getactivetabs => ', hashTag)
 
   if (!hashTag || hashTag == '#status') tagName = 'status';
   else if (hashTag == '#metering') tagName = 'metering';
@@ -937,10 +957,9 @@ function changeUrlParams(tabName) {
 
   console.log(deviceId);
   console.log(tabName);
-  
-  serialNoAlarm = 0;
-  serialNoDataLog = 0;
-  // document.getElementById('data-log-table').remove();
+
+  // serialNoAlarm = 0;
+  // serialNoDataLog = 0;
 
   if (deviceId) {
     if (tabName === 'alarmlog') {
@@ -955,15 +974,15 @@ function changeUrlParams(tabName) {
       alarmsLogData = [];
       // }
       ws.send(jsonString);
-    
 
-      var alaramTable = document.getElementById("alarmTable");
-    var tbody = alaramTable.getElementsByTagName("tbody")[0];
-    var rows = tbody.getElementsByTagName("tr");
-    for (var i = rows.length - 1; i >= 0; i--) {
-      tbody.removeChild(rows[i]);
-    }
-  
+
+      // var alaramTable = document.getElementById("alarmTable");
+      // var tbody = alaramTable.getElementsByTagName("tbody")[0];
+      // var rows = tbody.getElementsByTagName("tr");
+      // for (var i = rows.length - 1; i >= 0; i--) {
+      //   tbody.removeChild(rows[i]);
+      // }
+
     }
     else if (tabName === 'datalog') {
       console.log('in datalog')
@@ -977,14 +996,14 @@ function changeUrlParams(tabName) {
       dataLogData = [];
       // }
 
-    
+
       ws.send(jsonString);
-      var dataTable = document.getElementById('dataLogTable');
-      var tbody = dataTable.getElementsByTagName("tbody")[0];
-    var rows = tbody.getElementsByTagName("tr");
-    for (var i = rows.length - 1; i >= 0; i--) {
-      tbody.removeChild(rows[i]);
-    }
+      // var dataTable = document.getElementById('dataLogTable');
+      // var tbody = dataTable.getElementsByTagName("tbody")[0];
+      // var rows = tbody.getElementsByTagName("tr");
+      // for (var i = rows.length - 1; i >= 0; i--) {
+      //   tbody.removeChild(rows[i]);
+      // }
     }
   }
 }
