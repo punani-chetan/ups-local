@@ -2,6 +2,8 @@ let socket = null;
 let retryInterval = 1000; // initial retry interval
 let alarmsLogData;
 let dataLogData;
+let serialNoAlarm = 0;
+let serialNoDataLog = 0;
 var url = 'ws://ups-gateway:80/ws';
 // var url = 'ws://localhost:8080';
 var ws = new WebSocket(url);
@@ -78,8 +80,8 @@ function connect() {
   // var url = 'ws://ups-gateway:80/ws';
   // var url = 'ws://localhost:8080';
   // var ws = new WebSocket(url);
-  let serialNoAlarm = 0;
-  let serialNoDataLog = 0;
+  // let serialNoAlarm = 0;
+  // let serialNoDataLog = 0;
 
   window.addEventListener("online", function () {
     console.log("I am connected to the internet");
@@ -149,14 +151,14 @@ function connect() {
       let num_chunks = tmpArrNew.length;
 
 
-      var dataTable = document.getElementById('dataLogTable');
-      var tbody = dataTable.getElementsByTagName("tbody")[0];
-      var rows = tbody.getElementsByTagName("tr");
-      for (var i = rows.length - 1; i >= 0; i--) {
-        tbody.removeChild(rows[i]);
-      }
+      // var dataTable = document.getElementById('dataLogTable');
+      // var tbody = dataTable.getElementsByTagName("tbody")[0];
+      // var rows = tbody.getElementsByTagName("tr");
+      // for (var i = rows.length - 1; i >= 0; i--) {
+      //   tbody.removeChild(rows[i]);
+      // }
 
-      serialNoDataLog = 0;
+      // serialNoDataLog = 0;
 
       const tableBody = document.querySelector('#dataLogTable tbody');
 
@@ -198,13 +200,13 @@ function connect() {
 
       arr.splice(-1, 1);
 
-      var alaramTable = document.getElementById("alarmTable");
-      var tbody = alaramTable.getElementsByTagName("tbody")[0];
-      var rows = tbody.getElementsByTagName("tr");
-      for (var i = rows.length - 1; i >= 0; i--) {
-        tbody.removeChild(rows[i]);
-      }
-      serialNoAlarm = 0;
+      // var alaramTable = document.getElementById("alarmTable");
+      // var tbody = alaramTable.getElementsByTagName("tbody")[0];
+      // var rows = tbody.getElementsByTagName("tr");
+      // for (var i = rows.length - 1; i >= 0; i--) {
+      //   tbody.removeChild(rows[i]);
+      // }
+      // serialNoAlarm = 0;
 
       // Create a table in HTML
       const tableBody = document.querySelector('#alarmTable tbody');
@@ -922,11 +924,14 @@ function connect() {
 }
 
 
-window.addEventListener("load", (event) => {
-  console.log("page is fully loaded");
-  tabs();
-});
+// window.addEventListener("load", (event) => {
+//   console.log("page is fully loaded");
+//   tabs();
+// });
 
+(function () {
+  tabs();
+})();
 
 function tabs() {
   console.log('tab called');
@@ -958,12 +963,11 @@ function changeUrlParams(tabName) {
   console.log(deviceId);
   console.log(tabName);
 
-  // serialNoAlarm = 0;
-  // serialNoDataLog = 0;
-
   if (deviceId) {
     if (tabName === 'alarmlog') {
       console.log('in alarmlog')
+      serialNoAlarm = 0;
+
       var obj = {};
       obj.msg_id = 2;
       obj.dev_id = deviceId;
@@ -975,10 +979,17 @@ function changeUrlParams(tabName) {
       // }
       ws.send(jsonString);
 
+      var alaramTable = document.getElementById("alarmTable");
+      var tbody = alaramTable.getElementsByTagName("tbody")[0];
+      var rows = tbody.getElementsByTagName("tr");
 
-      // var alaramTable = document.getElementById("alarmTable");
-      // var tbody = alaramTable.getElementsByTagName("tbody")[0];
-      // var rows = tbody.getElementsByTagName("tr");
+      console.log('rows.length => ', rows.length)
+
+      // Remove all rows from the tbody
+      while (tbody.hasChildNodes()) {
+        tbody.removeChild(tbody.firstChild);
+      }
+
       // for (var i = rows.length - 1; i >= 0; i--) {
       //   tbody.removeChild(rows[i]);
       // }
@@ -986,6 +997,7 @@ function changeUrlParams(tabName) {
     }
     else if (tabName === 'datalog') {
       console.log('in datalog')
+      serialNoDataLog = 0;
       var obj = {};
       obj.msg_id = 3;
       obj.dev_id = deviceId;
@@ -998,12 +1010,12 @@ function changeUrlParams(tabName) {
 
 
       ws.send(jsonString);
-      // var dataTable = document.getElementById('dataLogTable');
-      // var tbody = dataTable.getElementsByTagName("tbody")[0];
-      // var rows = tbody.getElementsByTagName("tr");
-      // for (var i = rows.length - 1; i >= 0; i--) {
-      //   tbody.removeChild(rows[i]);
-      // }
+      var dataTable = document.getElementById('dataLogTable');
+      var tbody = dataTable.getElementsByTagName("tbody")[0];
+      var rows = tbody.getElementsByTagName("tr");
+      for (var i = rows.length - 1; i >= 0; i--) {
+        tbody.removeChild(rows[i]);
+      }
     }
   }
 }
