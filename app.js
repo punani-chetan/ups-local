@@ -130,6 +130,7 @@ function connect() {
     // if (tabNm === 'alarmlog' || tabNm === 'datalog') {
     if (ups_data.DATA_NAME === 'datalog') {
 
+      dataLogData = [];
       // Split the text into an array of alarms
       dataLogData = ups_data.dataLog.File_payload.split(' @ \n');
 
@@ -169,6 +170,7 @@ function connect() {
 
     if (ups_data.DATA_NAME === 'alarmlog') {
 
+      alarmsLogData = [];
       // Split the text into an array of alarms
       alarmsLogData = ups_data.alarmLog.File_payload.split('@ \n');
 
@@ -943,10 +945,10 @@ function changeUrlParams(tabName) {
       obj.dev_id = deviceId;
       var jsonString = JSON.stringify(obj);
 
-      if (alarmsLogData && alarmsLogData.length > 0) {
-        console.log('alarmsLogData empty')
-        alarmsLogData = [];
-      }
+      // if (alarmsLogData && alarmsLogData.length > 0) {
+      console.log('alarmsLogData empty')
+      alarmsLogData = [];
+      // }
       ws.send(jsonString);
     }
     else if (tabName === 'datalog') {
@@ -956,10 +958,10 @@ function changeUrlParams(tabName) {
       obj.dev_id = deviceId;
       var jsonString = JSON.stringify(obj);
 
-      if (dataLogData && dataLogData.length > 0) {
-        console.log('dataLogData empty')
-        dataLogData = [];
-      }
+      // if (dataLogData && dataLogData.length > 0) {
+      console.log('dataLogData empty')
+      dataLogData = [];
+      // }
       ws.send(jsonString);
     }
   }
