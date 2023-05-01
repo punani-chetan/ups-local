@@ -290,10 +290,6 @@ const UPS_MSG = payload => {
 };
 
 
-// const alarmDataLogData = async (payload) => {
-
-// };
-
 const isJson = (str) => {
     try {
         JSON.parse(str);
