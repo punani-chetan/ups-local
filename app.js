@@ -148,8 +148,8 @@ function connect() {
       let chunk_size = 88;
       let num_chunks = tmpArrNew.length;
 
-      const tableBody = document.querySelector('#data-log-table tbody');
-
+      const tableBody = document.querySelector('#dataLogTable tbody');
+      
       for (let i = 0; i < num_chunks; i++) {
         let rowi = document.createElement('tr');
         let celli = document.createElement('td');
@@ -188,7 +188,8 @@ function connect() {
       arr.splice(-1, 1);
 
       // Create a table in HTML
-      const tableBody = document.querySelector('#alarm-table tbody');
+      const tableBody = document.querySelector('#alarmTable tbody');
+    
       for (const item of arr) {
         const row = document.createElement('tr');
         const cell0 = document.createElement('td');
@@ -936,6 +937,10 @@ function changeUrlParams(tabName) {
 
   console.log(deviceId);
   console.log(tabName);
+  
+  serialNoAlarm = 0;
+  serialNoDataLog = 0;
+  // document.getElementById('data-log-table').remove();
 
   if (deviceId) {
     if (tabName === 'alarmlog') {
@@ -950,6 +955,15 @@ function changeUrlParams(tabName) {
       alarmsLogData = [];
       // }
       ws.send(jsonString);
+    
+
+      var alaramTable = document.getElementById("alarmTable");
+    var tbody = alaramTable.getElementsByTagName("tbody")[0];
+    var rows = tbody.getElementsByTagName("tr");
+    for (var i = rows.length - 1; i >= 0; i--) {
+      tbody.removeChild(rows[i]);
+    }
+  
     }
     else if (tabName === 'datalog') {
       console.log('in datalog')
@@ -962,7 +976,15 @@ function changeUrlParams(tabName) {
       console.log('dataLogData empty')
       dataLogData = [];
       // }
+
+    
       ws.send(jsonString);
+      var dataTable = document.getElementById('dataLogTable');
+      var tbody = dataTable.getElementsByTagName("tbody")[0];
+    var rows = tbody.getElementsByTagName("tr");
+    for (var i = rows.length - 1; i >= 0; i--) {
+      tbody.removeChild(rows[i]);
+    }
     }
   }
 }
