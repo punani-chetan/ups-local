@@ -2,8 +2,8 @@ let socket = null;
 let retryInterval = 1000; // initial retry interval
 let alarmsLogData;
 let dataLogData;
-// var url = 'ws://ups-gateway:80/ws';
-var url = 'ws://localhost:8080';
+var url = 'ws://ups-gateway:80/ws';
+// var url = 'ws://localhost:8080';
 var ws = new WebSocket(url);
 connect();
 var deviceId;
@@ -103,8 +103,8 @@ function connect() {
       console.log('Attempting to reconnect...');
 
       ws.close();
-      // var url = 'ws://ups-gateway:80/ws';
-      url = 'ws://localhost:8080';
+      var url = 'ws://ups-gateway:80/ws';
+      // url = 'ws://localhost:8080';
       ws = new WebSocket(url);
       connect();
       retryInterval += 2000; // exponential backoff
