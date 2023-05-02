@@ -203,7 +203,7 @@ table.table-bordered > tbody > tr > td {
   display: inline-block;
   border-width: 8px;
   border-color: rgba(255, 255, 255, 0.05);
-  border-top-color: #000;
+  border-top-color: #0d66d0;
   animation: spin 1s infinite linear;
   border-radius: 100%;
   border-style: solid;
