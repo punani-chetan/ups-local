@@ -198,8 +198,8 @@ table.table-bordered > tbody > tr > td {
 }
 
 .spinner {
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
   display: inline-block;
   border-width: 8px;
   border-color: rgba(255, 255, 255, 0.05);
