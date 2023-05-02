@@ -4,6 +4,7 @@ let alarmsLogData;
 let dataLogData;
 let serialNoAlarm = 0;
 let serialNoDataLog = 0;
+let isFirstTimeLoad = false;
 var url = 'ws://ups-gateway:80/ws';
 // var url = 'ws://localhost:8080';
 var ws = new WebSocket(url);
@@ -127,6 +128,9 @@ function connect() {
 
     deviceId = await ups_data.dev_id;
 
+    if (!isFirstTimeLoad)
+      tabs();
+
     let tabNm = getActiveTagName();
     // console.log(tabNm)
     // if (tabNm === 'alarmlog' || tabNm === 'datalog') {
@@ -199,14 +203,6 @@ function connect() {
       });
 
       arr.splice(-1, 1);
-
-      // var alaramTable = document.getElementById("alarmTable");
-      // var tbody = alaramTable.getElementsByTagName("tbody")[0];
-      // var rows = tbody.getElementsByTagName("tr");
-      // for (var i = rows.length - 1; i >= 0; i--) {
-      //   tbody.removeChild(rows[i]);
-      // }
-      // serialNoAlarm = 0;
 
       // Create a table in HTML
       const tableBody = document.querySelector('#alarmTable tbody');
@@ -923,17 +919,9 @@ function connect() {
   }
 }
 
-
-// window.addEventListener("load", (event) => {
-//   console.log("page is fully loaded");
-//   tabs();
-// });
-
-(function () {
-  tabs();
-})();
-
 function tabs() {
+
+  isFirstTimeLoad = true;
   console.log('tab called');
 
   let tagName = getActiveTagName();
@@ -955,13 +943,9 @@ function changeUrlParams(tabName) {
   makeTabActive(tabName);
 
   // to scroll to top of the page
-
   setTimeout(() => {
     window.scrollTo({ top: 0 });
   }, 50);
-
-  console.log(deviceId);
-  console.log(tabName);
 
   if (deviceId) {
     if (tabName === 'alarmlog') {
@@ -982,8 +966,6 @@ function changeUrlParams(tabName) {
       var alaramTable = document.getElementById("alarmTable");
       var tbody = alaramTable.getElementsByTagName("tbody")[0];
       var rows = tbody.getElementsByTagName("tr");
-
-      console.log('rows.length => ', rows.length)
 
       // Remove all rows from the tbody
       while (tbody.hasChildNodes()) {
