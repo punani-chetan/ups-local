@@ -5,10 +5,13 @@ let dataLogData;
 let serialNoAlarm = 0;
 let serialNoDataLog = 0;
 let isFirstTimeLoad = false;
-var url = 'ws://ups-gateway:80/ws';
-// var url = 'ws://localhost:8080';
+
+// var url = 'ws://ups-gateway:80/ws';
+var url = 'ws://localhost:8080';
 var ws = new WebSocket(url);
+
 connect();
+
 var deviceId;
 var sentMsgAlarm = true;
 var sentMsgData = true;
@@ -74,15 +77,7 @@ function downloadCSVFile(csv_data, exportType) {
   document.body.removeChild(temp_link);
 }
 
-
-
 function connect() {
-
-  // var url = 'ws://ups-gateway:80/ws';
-  // var url = 'ws://localhost:8080';
-  // var ws = new WebSocket(url);
-  // let serialNoAlarm = 0;
-  // let serialNoDataLog = 0;
 
   window.addEventListener("online", function () {
     console.log("I am connected to the internet");
@@ -106,10 +101,12 @@ function connect() {
       console.log('Attempting to reconnect...');
 
       ws.close();
-      var url = 'ws://ups-gateway:80/ws';
-      // url = 'ws://localhost:8080';
+      // var url = 'ws://ups-gateway:80/ws';
+      url = 'ws://localhost:8080';
       ws = new WebSocket(url);
+
       connect();
+
       if (retryInterval > 40000) {
         retryInterval = 1000;
       } else {
@@ -126,14 +123,18 @@ function connect() {
     console.log("ups_data in index");
     console.log(ups_data);
 
+    if (ups_data) {
+      document.getElementsByClassName('overlay')[0].classList.add('d-none')
+    }
+
     deviceId = await ups_data.dev_id;
 
     if (!isFirstTimeLoad)
       tabs();
 
-    let tabNm = getActiveTagName();
+    // let tabNm = getActiveTagName();
     // console.log(tabNm)
-    // if (tabNm === 'alarmlog' || tabNm === 'datalog') {
+
     if (ups_data.DATA_NAME === 'datalog') {
 
       dataLogData = [];
@@ -949,7 +950,7 @@ function changeUrlParams(tabName) {
 
   if (deviceId) {
     if (tabName === 'alarmlog') {
-      console.log('in alarmlog')
+      // console.log('in alarmlog')
       serialNoAlarm = 0;
 
       var obj = {};
@@ -958,7 +959,7 @@ function changeUrlParams(tabName) {
       var jsonString = JSON.stringify(obj);
 
       // if (alarmsLogData && alarmsLogData.length > 0) {
-      console.log('alarmsLogData empty')
+      // console.log('alarmsLogData empty')
       alarmsLogData = [];
       // }
       ws.send(jsonString);
@@ -978,7 +979,7 @@ function changeUrlParams(tabName) {
 
     }
     else if (tabName === 'datalog') {
-      console.log('in datalog')
+      // console.log('in datalog')
       serialNoDataLog = 0;
       var obj = {};
       obj.msg_id = 3;
@@ -986,7 +987,7 @@ function changeUrlParams(tabName) {
       var jsonString = JSON.stringify(obj);
 
       // if (dataLogData && dataLogData.length > 0) {
-      console.log('dataLogData empty')
+      // console.log('dataLogData empty')
       dataLogData = [];
       // }
 

@@ -273,8 +273,6 @@ const UPS_MSG = payload => {
                         DATA_NAME: 'alarmlog'
                     };
                 }
-
-
                 json = { ...id, ...jsonValues, ...jsonValuesStatus, ...jsonValuesDataLog };
             }
 
