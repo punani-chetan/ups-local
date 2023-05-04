@@ -229,6 +229,7 @@ const UPS_MSG = payload => {
             let jsonValues = {};
             let jsonValuesStatus = {};
             let jsonValuesDataLog = {};
+            let jsonValuesConfiguration = {};
 
             if (isJson(payload)) {
                 parsedPayload = JSON.parse(payload);
@@ -257,8 +258,6 @@ const UPS_MSG = payload => {
                 }
 
                 if (parsedPayload.msg_id === 3) {
-                    // console.log('parsedPayload.properties for datalog');
-                    // console.log(parsedPayload.properties);
                     jsonValuesDataLog = {
                         dataLog: parsedPayload.properties,
                         DATA_NAME: 'datalog'
@@ -266,14 +265,20 @@ const UPS_MSG = payload => {
                 }
 
                 if (parsedPayload.msg_id === 2) {
-                    // console.log('parsedPayload.properties for datalog');
-                    // console.log(parsedPayload.properties);
                     jsonValuesDataLog = {
                         alarmLog: parsedPayload.properties,
                         DATA_NAME: 'alarmlog'
                     };
                 }
-                json = { ...id, ...jsonValues, ...jsonValuesStatus, ...jsonValuesDataLog };
+
+                if (parsedPayload.msg_id === 8) {
+                    jsonValuesConfiguration = {
+                        configData: parsedPayload.properties,
+                        DATA_NAME: 'configuration'
+                    };
+                }
+
+                json = { ...id, ...jsonValues, ...jsonValuesStatus, ...jsonValuesDataLog, ...jsonValuesConfiguration };
             }
 
             if (!isJson(payload)) {

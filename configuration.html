@@ -36,6 +36,15 @@
             </nav>
           </div>
           <div class="row justify-content-center flex-grow-1 main-bgcolor">
+
+            <!-- spinner with overlay -->
+            <div class="overlay">
+              <div class="overlay__content">
+                <span class="spinner"></span>
+              </div>
+            </div>
+            <!-- spinner with overlay -->
+
             <div class="w-100">
               <div class="mt-5">
                 <div class="d-flex justify-content-center">
@@ -140,10 +149,11 @@
       });
     })();
 
-
-    var url = 'ws://localhost:8080';
+    var url = 'ws://ups-gateway/ws';
+    // var url = 'ws://localhost:8080';
     var configurationWS = new WebSocket(url);
     var deviceId;
+    var callOnce = true;
 
     configurationWS.onopen = function () {
       configurationWS.send('Status WS Started');
@@ -154,6 +164,30 @@
 
       var ups_data = await UPS_MSG(evt.data);
       deviceId = ups_data.dev_id;
+
+      if (ups_data) {
+        document.getElementsByClassName('overlay')[0].classList.add('d-none')
+      }
+
+      if (callOnce) {
+        callOnce = false;
+        if (deviceId) {
+          let obj = {};
+          obj.msg_id = 8;
+          obj.dev_id = deviceId;
+          let jsonString = JSON.stringify(obj);
+          configurationWS.send(jsonString);
+        }
+      }
+
+      if (ups_data.DATA_NAME == 'configuration') {
+
+        let configData = ups_data.configData;
+
+        document.getElementById('textDataLoggingInterval').value = configData.Data_LOGtime;
+        document.getElementById('textSnmpTrapIp').value = configData.Dest_Trapip;
+      }
+
     }
 
     var IntervalForm = document.getElementById("setIntervalForm");
@@ -193,8 +227,6 @@
         console.log(jsonString)
         configurationWS.send(jsonString);
       }
-
-
     }
 
     function SetSnmpTrapIpFunction(event) {
@@ -204,21 +236,6 @@
         "SNMP TRAP IP : ",
         document.getElementById("textSnmpTrapIp").value
       );
-
-
-      // var url = 'ws://ups-gateway/ws';
-      // let url = 'ws://localhost:8080';
-      // let snmpWS = new WebSocket(url);
-
-      // ws.onopen = function () {
-      //   ws.send('Status WS Started');
-      //   console.log("Web socket is connected");
-      // };
-
-      // ws.onmessage = async function (evt) {
-
-      //   var ups_data = await UPS_MSG(evt.data);
-      //   let deviceId = ups_data.dev_id;
 
       if (deviceId) {
         let objInterval = {
