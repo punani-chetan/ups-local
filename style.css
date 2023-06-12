@@ -214,3 +214,7 @@ table.table-bordered > tbody > tr > td {
     transform: rotate(360deg);
   }
 }
+
+.font-weight-bold {
+  font-weight: 700 !important;
+}
