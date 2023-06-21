@@ -27,23 +27,29 @@
     <div class="row justify-content-center h-100">
       <div class="col">
         <div class="h-100 d-flex flex-column">
-          <div class="row justify-content-center">
+          <div class="row justify-content-center bg-grey">
             <nav class="navbar">
               <div class="w-100">
                 <div class="mx-5 text-white d-flex flex-row">
-                  <h3><b>HITACHI</b></h3>
                   <div class="d-flex justify-content-center align-items-center w-100">
-                    <span class="mx-4 active-tab-border"><a href="index.html" class="header-main-menu"></a>
-                      Home</a></span>
-                    <span class="mx-4"><a href="configuration.html" class="header-main-menu">Configuration</a></span>
-                    <span class="mx-4"><a href="https://www.hitachi-hirel.com/contact-us"
+                    <span class="mx-2 p-2 active-tab-border">
+                      <a href="index.html" class="header-main-menu">
+                        Home
+                      </a>
+                    </span>
+                    <span class="mx-2 p-2 inactive-tab"><a href="configuration.html"
+                        class="header-main-menu">Configuration</a></span>
+                    <span class="mx-2 p-2 inactive-tab"><a href="https://www.hitachi-hirel.com/contact-us"
                         class="header-main-menu">Contact</a></span>
+                  </div>
+                  <div>
+                    <img src="./asset/img/logo_01_01.png" style="width: 150px; height: 35px;">
                   </div>
                 </div>
               </div>
             </nav>
           </div>
-          <div class="row justify-content-center flex-grow-1 main-bgcolor">
+          <div class="row justify-content-center flex-grow-1 bg-white">
             <div class="w-100">
               <div class="mx-5">
                 <div class="mt-4 d-flex justify-content-between">
@@ -108,7 +114,8 @@
                                   <thead>
                                     <tr class="mt-5">
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="statusImage" />
                                       </th>
                                       <th scope="col" colspan="3">Model Name</th>
                                     </tr>
@@ -275,1009 +282,14 @@
                           </div>
                         </div>
 
-                        <div class="row my-4">
+                        <div class="row my-4 d-none" id="activeAlarmRow">
                           <div class="col-12">
                             <div class="card">
                               <div class="card-body">
                                 <h3 class="card-title text-center">Active Alarms</h3>
                                 <hr>
 
-                                <div id="activeAlarmDiv">
-                                </div>
-
-                                <!-- <div class="row mt-3">
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        UI Alarm
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            <b>
-                                              SC COMM. FAIL
-                                            </b>
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            CHG COMM. FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RESERVED UI - 1
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RESERVED UI - 2
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            <b>
-                                              HEAR RUN MODE
-                                            </b>
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BATTERY MCCB OFF
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            DC GROUND
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RESERVED UI-5
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BAT. DISCHARGING
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RECTIFIER FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BATT.LIFE DETORA
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            CHARGER FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            <b>
-                                              BOOST CHARGING
-                                            </b>
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RESERVED UI - 5
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RESERVED UI - 6
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RESERVED UI - 7
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        Rectifier Alarm1
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RECT SAT TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RECT OVER TEMP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            <b>
-                                              MAIN'S HIGH
-                                            </b>
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MAIN'S LOW
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MAIN'S HIGH TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            <b>
-                                              MAIN'S LOW TRIP
-                                            </b>
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MAIN'S FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MAIN'S FREQ O TOL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            <b>
-                                              I/P PHASE REV
-                                            </b>
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            SMPS FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            PRE-CHARG FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RECT OVERLOAD
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            HI-I/P SLEW RATE
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            I/P I-PEAK TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            CBI OFF
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            CNT POWER ON
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        Rectifier Alarm2
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            I/P I-LEAK I T
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BAT I-LEAK B T
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            REC SAT TRP3 I T
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            REC / BST SWT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BAT TOO LOW I & B TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            LOW DC I&B TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            CHG HIGH DC B T
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            REC HIGH DC I&BT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            <b>
-                                              B/B SAT TRP3 B T
-                                            </b>
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            I/P BREAKER TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BATT BREAKER TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RECT DC LOW TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            B/B FUSE FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            <b>
-                                              BOOSTER ON
-                                            </b>
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            CHARGER ON
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-gray" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RECTIFIER ON
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="row mt-3">
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        Inverter Alarm1
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INVERTER LOW
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INVERTER HIGH
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            ALTERNATE LOW
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            ALTERNATE HIGH
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            OUTPUT LOW
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            OUTPUT HIGH
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INV SAT TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INV NOT OK
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            ALT NOT OK
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            OUT NOT OK
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INV OVER TEMP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            SSW OVER TEMP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS OVERLOAD
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            OVERLOAD TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INV CL ACT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            ALT IS ANTICLOCK
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        Inverter Alarm3
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            R-Ph INV SSW ERROR
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Y-Ph INV SSW ERROR
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            B-Ph INV SSW ERROR
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            R-Ph ALT SSW ERROR
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Y-Ph ALT SSW ERROR
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            B-Ph ALT SSW ERROR
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            O/P CT FB OPEN
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            I/P CT FB OPEN
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INV SAT TRIP -3 I & B T
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BOOST UNDER VOLT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            SMPS FUSE FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            EMERGENCY STOP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            LOAD ON INVERTER (ONLY IN ECO MODE)
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INV DC LOW INS
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            HIGH ALT SLEW RATE
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INV VOLT FB OPEN
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        Inverter Alarm2
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            ALT FO
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            INV CL TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            ECO MODE ON
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            NO SYNC
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            DC HIGH TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            DC LOW TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MIS OFF
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MAN TRAN TO BYPASS
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MBS ON
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            LOAD ON BYPASS
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            STOP COMMAND
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            NEG POWER TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            TRANSFOMER OT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            TRANSFOMER OT TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            SYSTEM OVERLOAD
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            SYSTEM OL TRIP
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="row mt-3">
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        Battery Alarm1
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            LOW BATTERY
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RECT /BOOST CHOKE OT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            LOW BATTERY TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BATT I-PEAK TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BUCK SAT TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BOOSTER SAT TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            CBB OFF
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BUCK / BOOST OT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BOOST OVER VOLT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BUCK UNDER VOLT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            BUCK OVER VOLT
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MANUAL BOOST ON
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS MASTER (ONLY FOR ALARM LOG)
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS SLAVE (ONLY FOR ALARM LOG)
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            B/B CHOKE OVER TEMP TRIP
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            RECT CHOKE OT TRIP
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        Input Alarm0
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-01 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-02 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-03 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-04 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-05 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-06 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-07 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-08 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-09 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-10 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-11 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-12 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-13 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-14 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-15 Sort
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            Digital Input-16 Sort
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-4">
-                                    <div class="card text-center shadow">
-                                      <div class="card-header bg-primary text-white font-weight-bold">
-                                        Can Alarm1
-                                      </div>
-                                      <div class="card-body">
-
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-1 CAN-A FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-2 CAN-A FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-3 CAN-A FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-4 CAN-A FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-5 CAN-A FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-6 CAN-A FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-7 CAN-A FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-8 CAN-A FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-1 SUPPLY FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-2 SUPPLY FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-3 SUPPLY FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-4 SUPPLY FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            UPS-5 SUPPLY FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            CAN-A COMM FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            MASTER CAN-B FAIL
-                                          </span>
-                                        </div>
-                                        <div class="d-flex">
-                                          <div class="dot-red" id="common_alarm_input_css"></div>
-                                          <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                            SLAVE CAN-B FAIL
-                                          </span>
-                                        </div>
-
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div> -->
+                                <div id="activeAlarmDiv"> </div>
 
                               </div>
                             </div>
@@ -1300,7 +312,8 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="main-input-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Main's Input
@@ -1343,7 +356,8 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="alternate-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Alternate
@@ -1390,7 +404,8 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="inverter-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Inverter
@@ -1421,12 +436,12 @@
                                       <td>-</td>
                                       <td>-</td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                       <th scope="row">&nbsp;</th>
                                       <td>&nbsp;</td>
                                       <td>&nbsp;</td>
                                       <td>&nbsp;</td>
-                                    </tr>
+                                    </tr> -->
                                   </tbody>
                                 </table>
                               </div>
@@ -1439,22 +454,23 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="battery-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Battery
                                       </th>
                                     </tr>
                                     <tr>
-                                      <th class="border-bottom">Value</th>
-                                      <th class="border-bottom"></th>
-                                      <th class="border-bottom"></th>
+                                      <th class=""></th>
+                                      <th class=""></th>
+                                      <th class=""></th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr>
-                                      <th scope="row">Charger O/P Voltage</th>
-                                      <td>-</td>
+                                      <!-- <th scope="row">Charger O/P Voltage</th>
+                                      <td>-</td> -->
                                       <!-- <td>0 Volt</td> -->
                                       <!-- <td>0 Volt</td> -->
                                     </tr>
@@ -1476,6 +492,12 @@
                                       <!-- <td>0 Volt</td> -->
                                       <!-- <td>0 Volt</td> -->
                                     </tr>
+                                    <!-- <tr>
+                                      <th scope="row">&nbsp;</th>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                    </tr> -->
                                   </tbody>
                                 </table>
                               </div>
@@ -1492,7 +514,8 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="ups-totalload" />
                                       </th>
                                       <th scope="col" colspan="2" class="border-bottom">
                                         UPS & Total Load
@@ -1531,7 +554,8 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="output-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Output
@@ -1577,8 +601,22 @@
                                 <table class="table table-borderless" id="rectifier">
                                   <thead>
                                     <tr>
-                                      <th scope="col" colspan="3">Rectifier</th>
-                                      <th scope="row">DC Link Voltage</th>
+                                      <!-- <th scope="col">Rectifier</th> -->
+                                      <th scope="row" colspan="3">DC Link Voltage</th>
+                                      <td scope="row">-</td>
+                                    </tr>
+                                  </thead>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6 p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="rectifier-output-voltage-three">
+                                  <thead>
+                                    <tr>
+                                      <th scope="row" colspan="3">Charger O/P Voltage</th>
                                       <td scope="row">-</td>
                                     </tr>
                                   </thead>
@@ -1600,7 +638,8 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="main-input-single-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Main's Input
@@ -1643,14 +682,15 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="alternate-single-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Alternate
                                       </th>
                                     </tr>
                                     <tr>
-                                      <th class="border-bottom">Value</th>
+                                      <th class=""></th>
                                       <!-- <th class="border-bottom">Y-B Phase</th>
                   <th class="border-bottom">B-R Phase</th> -->
                                     </tr>
@@ -1686,14 +726,15 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="inverter-single" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Inverter
                                       </th>
                                     </tr>
                                     <tr>
-                                      <th class="border-bottom">Value</th>
+                                      <th class=""></th>
                                       <!-- <th class="border-bottom">Y-B Phase</th>
                   <th class="border-bottom">B-R Phase</th> -->
                                     </tr>
@@ -1729,7 +770,8 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="ups-totalload-single-img" />
                                       </th>
                                       <th scope="col" colspan="2" class="border-bottom">
                                         UPS & Total Load
@@ -1770,14 +812,15 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="output-single-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Output
                                       </th>
                                     </tr>
                                     <tr>
-                                      <th class="border-bottom">Value</th>
+                                      <th class=""></th>
                                       <!-- <th class="border-bottom">Y-B Phase</th>
                   <th class="border-bottom">B-R Phase</th> -->
                                     </tr>
@@ -1811,23 +854,24 @@
                                   <thead>
                                     <tr>
                                       <th scope="col" rowspan="2" class="align-middle">
-                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img" />
+                                        <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="battery-single-img" />
                                       </th>
                                       <th scope="col" colspan="3" class="border-bottom">
                                         Battery
                                       </th>
                                     </tr>
                                     <tr>
-                                      <th class="border-bottom">Value</th>
-                                      <!-- <th class="border-bottom"></th>
-                  <th class="border-bottom"></th> -->
+                                      <th class=""></th>
+                                      <th class=""></th>
+                                      <th class=""></th>
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                       <th scope="row">Charger O/P Voltage</th>
                                       <td>-</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                       <th scope="row">Voltage</th>
                                       <td>-</td>
@@ -1840,6 +884,10 @@
                                       <th scope="row">Status</th>
                                       <td>-</td>
                                     </tr>
+                                    <tr>
+                                      <th scope="row">&nbsp;</th>
+                                      <td>&nbsp;</td>
+                                    </tr>
                                   </tbody>
                                 </table>
                               </div>
@@ -1848,21 +896,39 @@
                         </div>
                       </div>
                       <div class="mt-3 container-fluid d-none" id="row7">
-                        <div class="col-4 p-2">
-                          <div class="card shadow rounded">
-                            <div class="card-body">
-                              <table class="table table-borderless" id="rectifier-single">
-                                <thead>
-                                  <tr>
-                                    <th scope="col" colspan="3">Rectifier</th>
-                                    <th scope="row">DC Link Voltage</th>
-                                    <td scope="row">-</td>
-                                  </tr>
-                                </thead>
-                              </table>
+                        <div class="row">
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="rectifier-single">
+                                  <thead>
+                                    <tr>
+                                      <!-- <th scope="col" colspan="3">Rectifier</th> -->
+                                      <th scope="row" colspan="3">DC Link Voltage</th>
+                                      <td scope="row">-</td>
+                                    </tr>
+                                  </thead>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="rectifier-output-voltage-single">
+                                  <thead>
+                                    <tr>
+                                      <!-- <th scope="col" colspan="3">Rectifier</th> -->
+                                      <th scope="row" colspan="3">Charger O/P Voltage</th>
+                                      <td scope="row">-</td>
+                                    </tr>
+                                  </thead>
+                                </table>
+                              </div>
                             </div>
                           </div>
                         </div>
+
                       </div>
                       <!------------ for 1 phase end ---------------->
 

@@ -3,36 +3,78 @@ body {
   height: 100%;
 }
 
+/* a {
+  color: #333;
+} */
+
 a:hover {
   text-decoration: none;
   color: #fff;
-  border-bottom: 1px #fff solid;
+  /* border-bottom: 1px #fff solid; */
+  /* border-bottom: 1px #333 solid; */
 }
 
 .active-tab-border {
   border: 1px white solid;
   padding: 7px;
+  background-color: #b1000e;
+  cursor: pointer;
 }
 
-.header-main-menu {
-  text-decoration: none;
+.active-tab-border a {
+  color: #fff !important;
+}
+
+span.active-tab-border:hover {
+  background-color: #282828;
+  /* color: #fff; */
+}
+
+span.active-tab-border a:hover {
   color: #fff;
 }
 
-.navbar {
-  background-color: #0d66d0;
+.inactive-tab {
+  background-color: transparent;
+  cursor: pointer;
 }
+
+.inactive-tab a {
+  color: #fff;
+}
+
+span.inactive-tab:hover {
+  background-color: #333;
+}
+
+span a.header-main-menu:hover {
+  color: #fff;
+}
+
+span a.header-main-menu {
+  text-decoration: none;
+  color: #333;
+}
+
+/* ************************************************* */
 
 .main-bgcolor {
   background-color: #f0f0f0;
 }
 .nav-tabs .nav-link.active {
-  background-color: #0d66d0;
+  /* background-color: #0d66d0; */
+  background-color: #737373;
   color: #f0f0f0;
 }
 
+.nav-link,
+.nav-link:hover {
+  color: #333;
+}
+
 .tab-pane {
-  border-top: 4px solid #0d66d0;
+  /* border-top: 4px solid #0d66d0; */
+  border-top: 4px solid #737373;
   padding: 0;
 }
 
@@ -217,4 +259,12 @@ table.table-bordered > tbody > tr > td {
 
 .font-weight-bold {
   font-weight: 700 !important;
+}
+
+.bg-grey {
+  background-color: #f2f2f2;
+}
+
+.txt-dark {
+  color: #333;
 }
