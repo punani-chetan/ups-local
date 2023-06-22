@@ -278,7 +278,7 @@ function connect() {
     let battery_mccb_Input_text;
     let battery_mccb_Input_text_class;
 
-    let statusDataForMetering;
+    var statusDataForMetering;
 
     // console.log('ups_data.DATA_NAME => ', ups_data.DATA_NAME)
     // console.log('ups_data.data_type => ', ups_data.DATA_TYPE)
@@ -286,9 +286,9 @@ function connect() {
 
     if (ups_data.DATA_NAME === 'status') {
 
-      // console.log('here in status')
-      // statusDataForMetering = ups_data;
-      // console.log(statusDataForMetering)
+      console.log('here in status')
+      statusDataForMetering = ups_data;
+      console.log(statusDataForMetering)
 
 
       let activeAlarmData = [];
@@ -1554,8 +1554,8 @@ function connect() {
     if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === "metering") {
 
       // console.log('here')
-      // console.log('statusDataForMetering single')
-      // console.log(statusDataForMetering)
+      console.log('statusDataForMetering single')
+      console.log(statusDataForMetering)
       /*********************** for 1 phase ******************************/
 
       // need to do show hide when get data
@@ -1785,8 +1785,8 @@ function connect() {
       ups_data.DATA_NAME === "metering"
     ) {
 
-      // console.log('statusDataForMetering three')
-      // console.log(statusDataForMetering)
+      console.log('statusDataForMetering three')
+      console.log(statusDataForMetering)
 
       /*********************** for 3 phase ******************************/
 

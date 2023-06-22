@@ -19,42 +19,46 @@ a:hover {
   padding: 7px;
   background-color: #b1000e;
   cursor: pointer;
+  text-decoration: none;
+  color: #fff;
 }
 
 .active-tab-border a {
   color: #fff !important;
 }
 
-span.active-tab-border:hover {
+.active-tab-border:hover {
   background-color: #282828;
   /* color: #fff; */
 }
 
-span.active-tab-border a:hover {
+.active-tab-border a:hover {
   color: #fff;
 }
 
 .inactive-tab {
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
+  color: #333;
 }
 
 .inactive-tab a {
   color: #fff;
 }
 
-span.inactive-tab:hover {
+.inactive-tab:hover {
   background-color: #333;
 }
 
-span a.header-main-menu:hover {
+/* span a.header-main-menu:hover {
   color: #fff;
-}
+} */
 
-span a.header-main-menu {
+/* span a.header-main-menu {
   text-decoration: none;
   color: #333;
-}
+} */
 
 /* ************************************************* */
 
@@ -87,9 +91,14 @@ span a.header-main-menu {
 } */
 
 .btn-color {
-  background-color: #0d66d0;
+  background-color: #cc0000;
   color: white;
 }
+.btn-color:hover {
+  background-color: #b1000e;
+  color: white;
+}
+
 .img-setup {
   height: 100px;
   width: 120px;
@@ -100,16 +109,16 @@ span a.header-main-menu {
 }
 
 table.table-bordered {
-  border: 1px solid #0d66d0;
+  border: 1px solid #737373;
   margin-top: 20px;
 }
 table.table-bordered > thead > tr > th {
   border: 1px solid white;
-  background-color: #0d66d0;
+  background-color: #737373;
   color: white;
 }
 table.table-bordered > tbody > tr > td {
-  border: 1px solid #0d66d0;
+  border: 1px solid #737373;
 }
 
 .dot-red {
