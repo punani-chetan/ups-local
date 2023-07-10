@@ -277,3 +277,44 @@ table.table-bordered > tbody > tr > td {
 .txt-dark {
   color: #333;
 }
+
+.w-80 {
+  width: 80%;
+}
+
+.title-p {
+  padding: 12px 20px;
+  background-color: #f2f2f2;
+}
+
+table th,
+table td {
+  padding: 10px 15px;
+  border: solid 1px #ddd;
+  font-size: 83%;
+  text-align: left;
+  line-height: 140%;
+}
+
+table td {
+  background-color: #fff;
+}
+
+.b-radius-0 {
+  border-radius: 0px;
+}
+
+.Column1andHalf {
+  float: left;
+  /* width: 45%; */
+  /* margin: 0 0 0 24px; */
+}
+
+.clear-both {
+  clear: both;
+}
+
+.empty-div {
+  float: left;
+  width: 50px;
+}
