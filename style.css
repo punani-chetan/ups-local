@@ -342,3 +342,12 @@ table td {
 .nav-pills .show > .nav-link {
   background-color: #b1000e;
 }
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.metering-card-header {
+  text-align: center;
+  font-size: 25px;
+}
