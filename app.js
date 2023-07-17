@@ -286,9 +286,9 @@ function connect() {
 
     if (ups_data.DATA_NAME === 'status') {
 
-      console.log('here in status')
-      statusDataForMetering = ups_data;
-      console.log(statusDataForMetering)
+      // console.log('here in status')
+      // statusDataForMetering = ups_data;
+      // console.log(statusDataForMetering)
 
 
       let activeAlarmData = [];
@@ -1353,15 +1353,13 @@ function connect() {
 
       /********************Alarm code************************/
 
-
-
-
-
       titleStr = (ups_data.DATA_TYPE === 1) ? 'i4ET (1-PHASE UPS)' : 'i6ET (3-PHASE UPS)';
       document.getElementById('titleStr').innerText = titleStr;
 
-      statusImage = (ups_data.DATA_TYPE === 1) ? 'asset/img/i4Plus.JPG' : 'asset/img/i6.jpg';
-      document.getElementById('statusImage').setAttribute('src', statusImage);
+      // statusImage = (ups_data.DATA_TYPE === 1) ? 'asset/img/i4Plus.JPG' : 'asset/img/i6.jpg';
+      statusImage = (ups_data.DATA_TYPE === 1) ? 'i4+ Series' : 'i6 Series';
+      // document.getElementById('statusImage').setAttribute('src', statusImage);
+      document.getElementById('statusImage').innerText = statusImage;
 
 
       /******************** bypass input **************************/
@@ -1554,8 +1552,8 @@ function connect() {
     if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === "metering") {
 
       // console.log('here')
-      console.log('statusDataForMetering single')
-      console.log(statusDataForMetering)
+      // console.log('statusDataForMetering single')
+      // console.log(statusDataForMetering)
       /*********************** for 1 phase ******************************/
 
       // need to do show hide when get data
@@ -1785,8 +1783,8 @@ function connect() {
       ups_data.DATA_NAME === "metering"
     ) {
 
-      console.log('statusDataForMetering three')
-      console.log(statusDataForMetering)
+      // console.log('statusDataForMetering three')
+      // console.log(statusDataForMetering)
 
       /*********************** for 3 phase ******************************/
 

@@ -287,13 +287,27 @@ table.table-bordered > tbody > tr > td {
   background-color: #f2f2f2;
 }
 
-table th,
-table td {
+/* .statusTable table th,
+.statusTable table td {
   padding: 10px 15px;
-  border: solid 1px #ddd;
+  border: none !important;
   font-size: 83%;
   text-align: left;
   line-height: 140%;
+} */
+
+table th,
+table td {
+  padding: 10px 15px;
+  /* border: solid 1px #ddd; */
+  font-size: 83%;
+  text-align: left;
+  line-height: 140%;
+}
+
+table.TableStyle2 th,
+table.TableStyle2 td {
+  border: solid 1px #ddd;
 }
 
 table td {
@@ -317,4 +331,14 @@ table td {
 .empty-div {
   float: left;
   width: 50px;
+}
+
+.status-heading {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #b1000e;
 }
