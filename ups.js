@@ -54,25 +54,17 @@ const singlePhaseValues = async (singlePhaseVars) => {
         Battery_Voltage: Battery_Voltage,
         Battery_Current: Battery_Current,
         Battery_Status: Battery_Status,
+
         Total_Output_Power_In_KVA: Total_Output_Power_In_KVA,
         Total_Output_Power_In_KW: Total_Output_Power_In_KW,
         Total_Output_Power_PF: Total_Output_Power_PF,
+
         Total_UPS_Power_In_KVA: Total_UPS_Power_In_KVA,
         Total_UPS_Power_In_KW: Total_UPS_Power_In_KW,
         Total_UPS_Power_PF: Total_UPS_Power_PF,
+        
         DATA_TYPE: 1,
         DATA_NAME: 'metering'
-
-        // System_Control_Card_Software_Version: convertToDecimal(
-        //     System_Control_Card_Software_Version
-        // ),
-        // User_Interface_Card_Software_Version: convertToDecimal(
-        //     User_Interface_Card_Software_Version
-        // ),
-        // Reserved_for_Future_Use1: convertToDecimal(Reserved_for_Future_Use1),
-        // Reserved_for_Future_Use2: convertToDecimal(Reserved_for_Future_Use2),
-        // Battery_Room_Temperature: convertToDecimal(Battery_Room_Temperature),
-        // Traceback_bit_Read: convertToDecimal(Traceback_bit_Read),
     };
 
     return singlePhaseJson;
@@ -88,6 +80,7 @@ const threePhasevalues = async (threePhaseVars) => {
     let Y_Phase_Alternate_Current = threePhaseVars.Y_Ph_Alt_Cur;
     let B_Phase_Alternate_Current = threePhaseVars.B_Ph_Alt_Cur;
     let Bypass_Freq = threePhaseVars.By_Freq;
+
     let R_Phase_Inverter_Voltage = threePhaseVars.R_Ph_Invt_Vol;
     let Y_Phase_Inverter_Voltage = threePhaseVars.Y_Ph_Invt_Vol;
     let B_Phase_Inverter_Voltage = threePhaseVars.B_Ph_Invt_Vol;
@@ -95,9 +88,11 @@ const threePhasevalues = async (threePhaseVars) => {
     let Y_Phase_Inverter_Current = threePhaseVars.Y_Ph_Invt_Cur;
     let B_Phase_Inverter_Current = threePhaseVars.B_Ph_Invt_Cur;
     let Inverter_Frequency = threePhaseVars.Inverter_Freq;
+
     let Battery_Voltage = threePhaseVars.Bat_Vol;
     let Battery_Current = threePhaseVars.Bat_Cur;
     let Battery_Status = threePhaseVars.Bat_Stat;
+    
     let R_Phase_UPS_Power_In_KVA = threePhaseVars.R_Ph_UPS_KVAp;
     let R_Phase_UPS_Power_In_KW = threePhaseVars.R_Ph_UPS_KWp;
     let R_Phase_UPS_Power_Factor = threePhaseVars.R_Ph_UPS_pf;
@@ -175,6 +170,7 @@ const threePhasevalues = async (threePhaseVars) => {
         Battery_Voltage: Battery_Voltage,
         Battery_Current: Battery_Current,
         Battery_Status: Battery_Status,
+
         R_Phase_Output_Power_In_KVA: R_Phase_Output_Power_In_KVA,
         R_Phase_Output_Power_In_KW: R_Phase_Output_Power_In_KW,
         R_Phase_Output_Power_Factor: R_Phase_Output_Power_Factor,
@@ -184,9 +180,11 @@ const threePhasevalues = async (threePhaseVars) => {
         B_Phase_Output_Power_In_KVA: B_Phase_Output_Power_In_KVA,
         B_Phase_Output_Power_In_KW: B_Phase_Output_Power_In_KW,
         B_Phase_Output_Power_Factor: B_Phase_Output_Power_Factor,
+
         Total_Output_Power_In_KVA: Total_Output_Power_In_KVA,
         Total_Output_Power_In_KW: Total_Output_Power_In_KW,
         Total_Output_Power_PF: Total_Output_Power_PF,
+
         R_Phase_UPS_Power_In_KVA: R_Phase_UPS_Power_In_KVA,
         R_Phase_UPS_Power_In_KW: R_Phase_UPS_Power_In_KW,
         R_Phase_UPS_Power_Factor: R_Phase_UPS_Power_Factor,
@@ -196,21 +194,13 @@ const threePhasevalues = async (threePhaseVars) => {
         B_Phase_UPS_Power_In_KVA: B_Phase_UPS_Power_In_KVA,
         B_Phase_UPS_Power_In_KW: B_Phase_UPS_Power_In_KW,
         B_Phase_UPS_Power_Factor: B_Phase_UPS_Power_Factor,
+
         Total_UPS_Power_In_KVA: Total_UPS_Power_In_KVA,
         Total_UPS_Power_In_KW: Total_UPS_Power_In_KW,
         Total_UPS_Power_PF: Total_UPS_Power_PF,
+
         DATA_TYPE: 3,
         DATA_NAME: 'metering'
-        // System_Control_Card_Software_Version: convertToDecimal(
-        //     System_Control_Card_Software_Version
-        // ),
-        // User_Interface_Card_Software_Version: convertToDecimal(
-        //     User_Interface_Card_Software_Version
-        // ),
-        // Reserved_for_Future_Use1: convertToDecimal(Reserved_for_Future_Use1),
-        // Reserved_for_Future_Use2: convertToDecimal(Reserved_for_Future_Use2),
-        // Battery_Room_Temperature: convertToDecimal(Battery_Room_Temperature),
-        // Traceback_bit_Read: convertToDecimal(Traceback_bit_Read),
     };
 
     return threePhaseJson;

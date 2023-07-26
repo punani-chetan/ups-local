@@ -1548,12 +1548,12 @@ function connect() {
     }
 
 
+
+
+
     /********************** metering code ********************/
     if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === "metering") {
 
-      // console.log('here')
-      // console.log('statusDataForMetering single')
-      // console.log(statusDataForMetering)
       /*********************** for 1 phase ******************************/
 
       // need to do show hide when get data
@@ -1764,7 +1764,16 @@ function connect() {
       var kw_Row = tableRef.rows[1];
       var pf_Row = tableRef.rows[2];
 
+
+      
       var kva_cells = kva_Row.getElementsByTagName("td");
+      
+      console.log(kva_Row)
+      console.log(kva_cells)
+      console.log(LOAD_IN_KVA)
+      console.log(LOAD_IN_KW)
+
+
       for (let i = 0; i < kva_cells.length; i++) {
         kva_cells[i].innerHTML = LOAD_IN_KVA[i] + " KVA";
       }
@@ -1778,13 +1787,14 @@ function connect() {
       for (let i = 0; i < pf_cells.length; i++) {
         pf_cells[i].innerHTML = POWER_FACTOR[i] + " PF";
       }
+
+
+
+
     } else if (
       ups_data.DATA_TYPE === 3 &&
       ups_data.DATA_NAME === "metering"
     ) {
-
-      // console.log('statusDataForMetering three')
-      // console.log(statusDataForMetering)
 
       /*********************** for 3 phase ******************************/
 
@@ -1841,18 +1851,47 @@ function connect() {
         ups_data?.Y_Phase_Output_Current,
         ups_data?.B_Phase_Output_Current,
       ];
-      const LOAD_IN_KVA = [
+
+
+      const LOAD_IN_KVA_UPS = [
+        ups_data?.R_Phase_UPS_Power_In_KVA,
+        ups_data?.Y_Phase_UPS_Power_In_KVA,
+        ups_data?.B_Phase_UPS_Power_In_KVA,
         ups_data?.Total_UPS_Power_In_KVA,
+      ];
+      const LOAD_IN_KW_UPS = [
+        ups_data?.R_Phase_UPS_Power_In_KW,
+        ups_data?.Y_Phase_UPS_Power_In_KW,
+        ups_data?.B_Phase_UPS_Power_In_KW,
+        ups_data?.Total_UPS_Power_In_KW,
+      ];
+      const POWER_FACTOR_UPS = [
+        ups_data?.R_Phase_UPS_Power_Factor,
+        ups_data?.Y_Phase_UPS_Power_Factor,
+        ups_data?.B_Phase_UPS_Power_Factor,
+        ups_data?.Total_UPS_Power_PF,
+      ];
+
+      const LOAD_IN_KVA_TOTAL_OUTPUT = [
+        ups_data?.R_Phase_Output_Power_In_KVA,
+        ups_data?.Y_Phase_Output_Power_In_KVA,
+        ups_data?.B_Phase_Output_Power_In_KVA,
         ups_data?.Total_Output_Power_In_KVA,
       ];
-      const LOAD_IN_KW = [
-        ups_data?.Total_UPS_Power_In_KW,
+      const LOAD_IN_KW_TOTAL_OUTPUT = [
+        ups_data?.R_Phase_Output_Power_In_KW,
+        ups_data?.Y_Phase_Output_Power_In_KW,
+        ups_data?.B_Phase_Output_Power_In_KW,
         ups_data?.Total_Output_Power_In_KW,
       ];
-      const POWER_FACTOR = [
-        ups_data?.Total_UPS_Power_PF,
+      const POWER_FACTOR_TOTAL_OUTPUT = [
+        ups_data?.R_Phase_Output_Power_Factor,
+        ups_data?.Y_Phase_Output_Power_Factor,
+        ups_data?.B_Phase_Output_Power_Factor,
         ups_data?.Total_Output_Power_PF,
       ];
+
+
 
       const BATTERY_DATA = [
         ups_data?.Battery_Voltage,
@@ -1951,11 +1990,12 @@ function connect() {
         freq_cells[i].innerHTML = ups_data?.Output_Freq + " Hz";
       }
 
-      var battery_table = document
-        .getElementById("rectifier-output-voltage-three")
-        .getElementsByTagName("thead")[0]
-        .rows[0].getElementsByTagName("td");
-      battery_table[0].innerHTML = ups_data?.Charger_OUTPUT_Voltage + " Volt";
+      var rectifier_table = document
+      .getElementById("rectifier-output-voltage-three")
+      .getElementsByTagName("thead")[0]
+      .rows[0].getElementsByTagName("td");
+      rectifier_table[0].innerHTML = ups_data?.Charger_OUTPUT_Voltage + " Volt";
+
 
       document
         .getElementById("battery")
@@ -1985,7 +2025,7 @@ function connect() {
           .rows[3].getElementsByTagName("td")[0].innerHTML = "DISCHARGING";
       }
 
-      var load_table = document.getElementById("ups-totalload");
+      var load_table = document.getElementById("totalload-three");
       tableRef = load_table.getElementsByTagName("tbody")[0];
       var kva_Row = tableRef.rows[0];
       var kw_Row = tableRef.rows[1];
@@ -1993,18 +2033,43 @@ function connect() {
 
       var kva_cells = kva_Row.getElementsByTagName("td");
       for (let i = 0; i < kva_cells.length; i++) {
-        kva_cells[i].innerHTML = LOAD_IN_KVA[i] + " KVA";
+        kva_cells[i].innerHTML = LOAD_IN_KVA_TOTAL_OUTPUT[i] + " KVA";
       }
 
       var kw_cells = kw_Row.getElementsByTagName("td");
       for (let i = 0; i < kw_cells.length; i++) {
-        kw_cells[i].innerHTML = LOAD_IN_KW[i] + " KW";
+        kw_cells[i].innerHTML = LOAD_IN_KW_TOTAL_OUTPUT[i] + " KW";
       }
 
       var pf_cells = pf_Row.getElementsByTagName("td");
       for (let i = 0; i < pf_cells.length; i++) {
-        pf_cells[i].innerHTML = POWER_FACTOR[i] + " PF";
+        pf_cells[i].innerHTML = POWER_FACTOR_TOTAL_OUTPUT[i] + " PF";
       }
+
+
+
+      var load_table = document.getElementById("upsload-three");
+      tableRef = load_table.getElementsByTagName("tbody")[0];
+      var kva_Row = tableRef.rows[0];
+      var kw_Row = tableRef.rows[1];
+      var pf_Row = tableRef.rows[2];
+
+      var kva_cells = kva_Row.getElementsByTagName("td");
+      for (let i = 0; i < kva_cells.length; i++) {
+        kva_cells[i].innerHTML = LOAD_IN_KVA_UPS[i] + " KVA";
+      }
+
+      var kw_cells = kw_Row.getElementsByTagName("td");
+      for (let i = 0; i < kw_cells.length; i++) {
+        kw_cells[i].innerHTML = LOAD_IN_KW_UPS[i] + " KW";
+      }
+
+      var pf_cells = pf_Row.getElementsByTagName("td");
+      for (let i = 0; i < pf_cells.length; i++) {
+        pf_cells[i].innerHTML = POWER_FACTOR_UPS[i] + " PF";
+      }
+
+
     }
   }
 }
