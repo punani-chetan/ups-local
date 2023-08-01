@@ -6,6 +6,11 @@ let serialNoAlarm = 0;
 let serialNoDataLog = 0;
 let isFirstTimeLoad = false;
 
+// to refresh page in 5 sec
+setTimeout(function() { 
+  window.location=window.location;
+},10000);
+
 // var url = 'ws://ups-gateway:80/ws';
 var url = 'ws://localhost:8080';
 var ws = new WebSocket(url);
@@ -80,7 +85,7 @@ function downloadCSVFile(csv_data, exportType) {
 function connect() {
 
   window.addEventListener("online", function () {
-    console.log("I am connected to the internet");
+    // console.log("I am connected to the internet");
     // console.log('navigator.onLine ==> ', navigator.onLine)
     if (navigator.onLine) {
       connect();
@@ -141,7 +146,7 @@ function connect() {
 
       // Convert the array of datalog data into an array of objects
       let arr = dataLogData.map(alarm => {
-        // console.log(alarm)
+        
         if (alarm) {
           let tmpSplitArr = alarm.split(',');
           return tmpSplitArr;
@@ -179,7 +184,7 @@ function connect() {
           cellj.textContent = tmpArrNew[i][j];
           rowi.appendChild(cellj);
         }
-        // console.log(rowi)
+
         tableBody.appendChild(rowi);
       }
     }
@@ -225,7 +230,7 @@ function connect() {
         // cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
         row.appendChild(cell4);
 
-        // console.log(row)
+        
         tableBody.appendChild(row);
       }
 
@@ -278,18 +283,7 @@ function connect() {
     let battery_mccb_Input_text;
     let battery_mccb_Input_text_class;
 
-    var statusDataForMetering;
-
-    // console.log('ups_data.DATA_NAME => ', ups_data.DATA_NAME)
-    // console.log('ups_data.data_type => ', ups_data.DATA_TYPE)
-
-
     if (ups_data.DATA_NAME === 'status') {
-
-      // console.log('here in status')
-      // statusDataForMetering = ups_data;
-      // console.log(statusDataForMetering)
-
 
       let activeAlarmData = [];
       let activeAlarmCnt = 0;
@@ -1629,10 +1623,8 @@ function connect() {
         ups_data?.Battery_Status,
       ];
 
-      // console.log(ups_data?.DC_Link_Voltage + ' Volt');
-
       var rectifier_table = document.getElementById("rectifier-single");
-      // console.log(rectifier_table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0].getElementsByTagName('td'));
+      
       rectifier_table
         .getElementsByTagName("thead")[0]
         .getElementsByTagName("tr")[0]
@@ -1767,12 +1759,6 @@ function connect() {
 
       
       var kva_cells = kva_Row.getElementsByTagName("td");
-      
-      console.log(kva_Row)
-      console.log(kva_cells)
-      console.log(LOAD_IN_KVA)
-      console.log(LOAD_IN_KW)
-
 
       for (let i = 0; i < kva_cells.length; i++) {
         kva_cells[i].innerHTML = LOAD_IN_KVA[i] + " KVA";
@@ -2104,7 +2090,6 @@ function changeUrlParams(tabName) {
 
   if (deviceId) {
     if (tabName === 'alarmlog') {
-      // console.log('in alarmlog')
       serialNoAlarm = 0;
 
       var obj = {};
@@ -2113,7 +2098,7 @@ function changeUrlParams(tabName) {
       var jsonString = JSON.stringify(obj);
 
       // if (alarmsLogData && alarmsLogData.length > 0) {
-      // console.log('alarmsLogData empty')
+      
       alarmsLogData = [];
       // }
       ws.send(jsonString);
@@ -2133,7 +2118,7 @@ function changeUrlParams(tabName) {
 
     }
     else if (tabName === 'datalog') {
-      // console.log('in datalog')
+      
       serialNoDataLog = 0;
       var obj = {};
       obj.msg_id = 3;
@@ -2141,7 +2126,7 @@ function changeUrlParams(tabName) {
       var jsonString = JSON.stringify(obj);
 
       // if (dataLogData && dataLogData.length > 0) {
-      // console.log('dataLogData empty')
+      
       dataLogData = [];
       // }
 
