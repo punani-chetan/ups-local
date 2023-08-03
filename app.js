@@ -129,8 +129,10 @@ function connect() {
 
     if (!isFirstTimeLoad) tabs();
 
+    /*****************datalog data*****************/
     if (ups_data.DATA_NAME === "datalog") {
       dataLogData = [];
+
       // Split the text into an array of alarms
       dataLogData = ups_data.dataLog.File_payload.split(" @ \n");
 
@@ -177,8 +179,16 @@ function connect() {
       }
     }
 
+    /*****************alarm data*****************/
     if (ups_data.DATA_NAME === "alarmlog") {
-      alarmsLogData = [];
+      // alarmsLogData = [];
+
+      // Get the table body element
+      const alarmTableBody = document.getElementById("alarmTableBody");
+
+      // Clear the existing table data
+      alarmTableBody.innerHTML = "";
+
       // Split the text into an array of alarms
       alarmsLogData = ups_data.alarmLog.File_payload.split("@ \n");
 
