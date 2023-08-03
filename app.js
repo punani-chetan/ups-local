@@ -1,7 +1,7 @@
 let socket = null;
 let retryInterval = 1000; // initial retry interval
-let alarmsLogData;
-let dataLogData;
+// let alarmsLogData;
+// let dataLogData;
 let serialNoAlarm = 0;
 let serialNoDataLog = 0;
 let isFirstTimeLoad = false;
@@ -11,8 +11,8 @@ setTimeout(function () {
   window.location = window.location;
 }, 10000);
 
-// var url = 'ws://ups-gateway:80/ws';
-var url = "ws://localhost:8080";
+var url = "ws://ups-gateway:80/ws";
+// var url = "ws://localhost:8080";
 var ws = new WebSocket(url);
 
 connect();
@@ -100,8 +100,8 @@ function connect() {
       console.log("Attempting to reconnect...");
 
       ws.close();
-      // var url = 'ws://ups-gateway:80/ws';
-      url = "ws://localhost:8080";
+      var url = "ws://ups-gateway:80/ws";
+      // url = "ws://localhost:8080";
       ws = new WebSocket(url);
 
       connect();
@@ -127,14 +127,16 @@ function connect() {
 
     deviceId = await ups_data.dev_id;
 
-    if (!isFirstTimeLoad) tabs();
+    if (!isFirstTimeLoad) {
+      tabs();
+    }
 
     /*****************datalog data*****************/
     if (ups_data.DATA_NAME === "datalog") {
-      dataLogData = [];
+      // dataLogData = [];
 
       // Split the text into an array of alarms
-      dataLogData = ups_data.dataLog.File_payload.split(" @ \n");
+      const dataLogData = ups_data.dataLog.File_payload.split(" @ \n");
 
       // Convert the array of datalog data into an array of objects
       let arr = dataLogData.map((alarm) => {
@@ -181,19 +183,15 @@ function connect() {
 
     /*****************alarm data*****************/
     if (ups_data.DATA_NAME === "alarmlog") {
-      // alarmsLogData = [];
-
-      // Get the table body element
-      const alarmTableBody = document.getElementById("alarmTableBody");
-
-      // Clear the existing table data
-      alarmTableBody.innerHTML = "";
-
       // Split the text into an array of alarms
-      alarmsLogData = ups_data.alarmLog.File_payload.split("@ \n");
+      const alarmsLogData = ups_data.alarmLog.File_payload.split("@ \n");
 
       // Convert the array of alarmslog data into an array of objects
-      const arr = alarmsLogData.map((alarm) => {
+      let arr = [];
+      if (arr.length > 0) {
+        arr = [];
+      }
+      arr = alarmsLogData.map((alarm) => {
         const [Status, Alarm_Number, Date, Time, Alarm_Name] = alarm.split(",");
         return {
           Status,
@@ -2410,6 +2408,7 @@ function getActiveTagName() {
 }
 
 function changeUrlParams(tabName) {
+  console.log("changeUrlPpppp");
   makeTabActive(tabName);
 
   // to scroll to top of the page
@@ -2426,20 +2425,22 @@ function changeUrlParams(tabName) {
       obj.dev_id = deviceId;
       var jsonString = JSON.stringify(obj);
 
-      // if (alarmsLogData && alarmsLogData.length > 0) {
+      // Get the table body element
+      const alarmTableBody = document.getElementById("alarmTableBody");
+      // Clear the existing table data
+      alarmTableBody.innerHTML = "";
 
-      alarmsLogData = [];
-      // }
+      document.getElementsByClassName("overlay")[0].classList.remove("d-none");
       ws.send(jsonString);
 
-      var alaramTable = document.getElementById("alarmTable");
-      var tbody = alaramTable.getElementsByTagName("tbody")[0];
-      var rows = tbody.getElementsByTagName("tr");
+      // var alaramTable = document.getElementById("alarmTable");
+      // var tbody = alaramTable.getElementsByTagName("tbody")[0];
+      // var rows = tbody.getElementsByTagName("tr");
 
-      // Remove all rows from the tbody
-      while (tbody.hasChildNodes()) {
-        tbody.removeChild(tbody.firstChild);
-      }
+      // // Remove all rows from the tbody
+      // while (tbody.hasChildNodes()) {
+      //   tbody.removeChild(tbody.firstChild);
+      // }
 
       // for (var i = rows.length - 1; i >= 0; i--) {
       //   tbody.removeChild(rows[i]);
@@ -2451,18 +2452,21 @@ function changeUrlParams(tabName) {
       obj.dev_id = deviceId;
       var jsonString = JSON.stringify(obj);
 
-      // if (dataLogData && dataLogData.length > 0) {
+      // Get the table body element
+      const dataTableBody = document.getElementById("dataTableBody");
 
-      dataLogData = [];
-      // }
+      // Clear the existing table data
+      dataTableBody.innerHTML = "";
 
+      document.getElementsByClassName("overlay")[0].classList.remove("d-none");
       ws.send(jsonString);
-      var dataTable = document.getElementById("dataLogTable");
-      var tbody = dataTable.getElementsByTagName("tbody")[0];
-      var rows = tbody.getElementsByTagName("tr");
-      for (var i = rows.length - 1; i >= 0; i--) {
-        tbody.removeChild(rows[i]);
-      }
+
+      // var dataTable = document.getElementById("dataLogTable");
+      // var tbody = dataTable.getElementsByTagName("tbody")[0];
+      // var rows = tbody.getElementsByTagName("tr");
+      // for (var i = rows.length - 1; i >= 0; i--) {
+      //   tbody.removeChild(rows[i]);
+      // }
     }
   }
 }
