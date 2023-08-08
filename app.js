@@ -287,1196 +287,1348 @@ function connect() {
       let activeAlarmCnt = 0;
 
       /********************active Alarm code************************/
-      if (
-        UI_Alarm.BIT_0 === 1 ||
-        UI_Alarm.BIT_1 === 1 ||
-        UI_Alarm.BIT_2 === 1 ||
-        UI_Alarm.BIT_3 === 1 ||
-        UI_Alarm.BIT_4 === 1 ||
-        UI_Alarm.BIT_5 === 1 ||
-        UI_Alarm.BIT_6 === 1 ||
-        UI_Alarm.BIT_7 === 1 ||
-        UI_Alarm.BIT_8 === 1 ||
-        UI_Alarm.BIT_9 === 1 ||
-        UI_Alarm.BIT_10 === 1 ||
-        UI_Alarm.BIT_11 === 1 ||
-        UI_Alarm.BIT_12 === 1 ||
-        UI_Alarm.BIT_13 === 1 ||
-        UI_Alarm.BIT_14 === 1 ||
-        UI_Alarm.BIT_15.BIT_15 === 1
-      ) {
-        if (UI_Alarm.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("SC COMM. FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("CHG COMM. FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RESERVED UI - 1");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RESERVED UI - 2");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("HEAR RUN MODE");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BATTERY MCCB OFF");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("DC GROUND");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RESERVED UI-5");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BAT. DISCHARGING");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RECTIFIER FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BATT.LIFE DETORA");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("CHARGER FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BOOST CHARGING");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RESERVED UI - 5");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RESERVED UI - 6");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (UI_Alarm.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RESERVED UI - 7");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-      }
 
       if (
-        Rectifier_Alarm1.BIT_0 === 1 ||
-        Rectifier_Alarm1.BIT_1 === 1 ||
-        Rectifier_Alarm1.BIT_2 === 1 ||
-        Rectifier_Alarm1.BIT_3 === 1 ||
-        Rectifier_Alarm1.BIT_4 === 1 ||
-        Rectifier_Alarm1.BIT_5 === 1 ||
-        Rectifier_Alarm1.BIT_6 === 1 ||
-        Rectifier_Alarm1.BIT_7 === 1 ||
-        Rectifier_Alarm1.BIT_8 === 1 ||
-        Rectifier_Alarm1.BIT_9 === 1 ||
-        Rectifier_Alarm1.BIT_10 === 1 ||
-        Rectifier_Alarm1.BIT_11 === 1 ||
-        Rectifier_Alarm1.BIT_12 === 1 ||
-        Rectifier_Alarm1.BIT_13 === 1 ||
-        Rectifier_Alarm1.BIT_14 === 1 ||
-        Rectifier_Alarm1.BIT_15 === 1
+        UI_Alarm.BIT_0 === 0 &&
+        UI_Alarm.BIT_1 === 0 &&
+        UI_Alarm.BIT_2 === 0 &&
+        UI_Alarm.BIT_3 === 0 &&
+        UI_Alarm.BIT_4 === 0 &&
+        UI_Alarm.BIT_5 === 0 &&
+        UI_Alarm.BIT_6 === 0 &&
+        UI_Alarm.BIT_7 === 0 &&
+        UI_Alarm.BIT_8 === 0 &&
+        UI_Alarm.BIT_9 === 0 &&
+        UI_Alarm.BIT_10 === 0 &&
+        UI_Alarm.BIT_11 === 0 &&
+        UI_Alarm.BIT_12 === 0 &&
+        UI_Alarm.BIT_13 === 0 &&
+        UI_Alarm.BIT_14 === 0 &&
+        UI_Alarm.BIT_15 === 0 &&
+        Rectifier_Alarm1.BIT_0 === 0 &&
+        Rectifier_Alarm1.BIT_1 === 0 &&
+        Rectifier_Alarm1.BIT_2 === 0 &&
+        Rectifier_Alarm1.BIT_3 === 0 &&
+        Rectifier_Alarm1.BIT_4 === 0 &&
+        Rectifier_Alarm1.BIT_5 === 0 &&
+        Rectifier_Alarm1.BIT_6 === 0 &&
+        Rectifier_Alarm1.BIT_7 === 0 &&
+        Rectifier_Alarm1.BIT_8 === 0 &&
+        Rectifier_Alarm1.BIT_9 === 0 &&
+        Rectifier_Alarm1.BIT_10 === 0 &&
+        Rectifier_Alarm1.BIT_11 === 0 &&
+        Rectifier_Alarm1.BIT_12 === 0 &&
+        Rectifier_Alarm1.BIT_13 === 0 &&
+        Rectifier_Alarm1.BIT_14 === 0 &&
+        Rectifier_Alarm1.BIT_15 === 0 &&
+        Rectifier_Alarm2.BIT_0 === 0 &&
+        Rectifier_Alarm2.BIT_1 === 0 &&
+        Rectifier_Alarm2.BIT_2 === 0 &&
+        Rectifier_Alarm2.BIT_3 === 0 &&
+        Rectifier_Alarm2.BIT_4 === 0 &&
+        Rectifier_Alarm2.BIT_5 === 0 &&
+        Rectifier_Alarm2.BIT_6 === 0 &&
+        Rectifier_Alarm2.BIT_7 === 0 &&
+        Rectifier_Alarm2.BIT_8 === 0 &&
+        Rectifier_Alarm2.BIT_9 === 0 &&
+        Rectifier_Alarm2.BIT_10 === 0 &&
+        Rectifier_Alarm2.BIT_11 === 0 &&
+        Rectifier_Alarm2.BIT_12 === 0 &&
+        Rectifier_Alarm2.BIT_13 === 0 &&
+        Rectifier_Alarm2.BIT_14 === 0 &&
+        Rectifier_Alarm2.BIT_15 === 0 &&
+        Inverter_Alarm1.BIT_0 === 0 &&
+        Inverter_Alarm1.BIT_1 === 0 &&
+        Inverter_Alarm1.BIT_2 === 0 &&
+        Inverter_Alarm1.BIT_3 === 0 &&
+        Inverter_Alarm1.BIT_4 === 0 &&
+        Inverter_Alarm1.BIT_5 === 0 &&
+        Inverter_Alarm1.BIT_6 === 0 &&
+        Inverter_Alarm1.BIT_7 === 0 &&
+        Inverter_Alarm1.BIT_8 === 0 &&
+        Inverter_Alarm1.BIT_9 === 0 &&
+        Inverter_Alarm1.BIT_10 === 0 &&
+        Inverter_Alarm1.BIT_11 === 0 &&
+        Inverter_Alarm1.BIT_12 === 0 &&
+        Inverter_Alarm1.BIT_13 === 0 &&
+        Inverter_Alarm1.BIT_14 === 0 &&
+        Inverter_Alarm1.BIT_15 === 0 &&
+        Inverter_Alarm2.BIT_0 === 0 &&
+        Inverter_Alarm2.BIT_1 === 0 &&
+        Inverter_Alarm2.BIT_2 === 0 &&
+        Inverter_Alarm2.BIT_3 === 0 &&
+        Inverter_Alarm2.BIT_4 === 0 &&
+        Inverter_Alarm2.BIT_5 === 0 &&
+        Inverter_Alarm2.BIT_6 === 0 &&
+        Inverter_Alarm2.BIT_7 === 0 &&
+        Inverter_Alarm2.BIT_8 === 0 &&
+        Inverter_Alarm2.BIT_9 === 0 &&
+        Inverter_Alarm2.BIT_10 === 0 &&
+        Inverter_Alarm2.BIT_11 === 0 &&
+        Inverter_Alarm2.BIT_12 === 0 &&
+        Inverter_Alarm2.BIT_13 === 0 &&
+        Inverter_Alarm2.BIT_14 === 0 &&
+        Inverter_Alarm2.BIT_15 === 0 &&
+        Battery_Alarm1.BIT_0 === 0 &&
+        Battery_Alarm1.BIT_1 === 0 &&
+        Battery_Alarm1.BIT_2 === 0 &&
+        Battery_Alarm1.BIT_3 === 0 &&
+        Battery_Alarm1.BIT_4 === 0 &&
+        Battery_Alarm1.BIT_5 === 0 &&
+        Battery_Alarm1.BIT_6 === 0 &&
+        Battery_Alarm1.BIT_7 === 0 &&
+        Battery_Alarm1.BIT_8 === 0 &&
+        Battery_Alarm1.BIT_9 === 0 &&
+        Battery_Alarm1.BIT_10 === 0 &&
+        Battery_Alarm1.BIT_11 === 0 &&
+        Battery_Alarm1.BIT_12 === 0 &&
+        Battery_Alarm1.BIT_13 === 0 &&
+        Battery_Alarm1.BIT_14 === 0 &&
+        Battery_Alarm1.BIT_15 === 0 &&
+        Inverter_Alarm3.BIT_0 === 0 &&
+        Inverter_Alarm3.BIT_1 === 0 &&
+        Inverter_Alarm3.BIT_2 === 0 &&
+        Inverter_Alarm3.BIT_3 === 0 &&
+        Inverter_Alarm3.BIT_4 === 0 &&
+        Inverter_Alarm3.BIT_5 === 0 &&
+        Inverter_Alarm3.BIT_6 === 0 &&
+        Inverter_Alarm3.BIT_7 === 0 &&
+        Inverter_Alarm3.BIT_8 === 0 &&
+        Inverter_Alarm3.BIT_9 === 0 &&
+        Inverter_Alarm3.BIT_10 === 0 &&
+        Inverter_Alarm3.BIT_11 === 0 &&
+        Inverter_Alarm3.BIT_12 === 0 &&
+        Inverter_Alarm3.BIT_13 === 0 &&
+        Inverter_Alarm3.BIT_14 === 0 &&
+        Inverter_Alarm3.BIT_15 === 0 &&
+        Input_Alarm_0.BIT_0 === 0 &&
+        Input_Alarm_0.BIT_1 === 0 &&
+        Input_Alarm_0.BIT_2 === 0 &&
+        Input_Alarm_0.BIT_3 === 0 &&
+        Input_Alarm_0.BIT_4 === 0 &&
+        Input_Alarm_0.BIT_5 === 0 &&
+        Input_Alarm_0.BIT_6 === 0 &&
+        Input_Alarm_0.BIT_7 === 0 &&
+        Input_Alarm_0.BIT_8 === 0 &&
+        Input_Alarm_0.BIT_9 === 0 &&
+        Input_Alarm_0.BIT_10 === 0 &&
+        Input_Alarm_0.BIT_11 === 0 &&
+        Input_Alarm_0.BIT_12 === 0 &&
+        Input_Alarm_0.BIT_13 === 0 &&
+        Input_Alarm_0.BIT_14 === 0 &&
+        Input_Alarm_0.BIT_15 === 0 &&
+        Can_Alarm1.BIT_0 === 0 &&
+        Can_Alarm1.BIT_1 === 0 &&
+        Can_Alarm1.BIT_2 === 0 &&
+        Can_Alarm1.BIT_3 === 0 &&
+        Can_Alarm1.BIT_4 === 0 &&
+        Can_Alarm1.BIT_5 === 0 &&
+        Can_Alarm1.BIT_6 === 0 &&
+        Can_Alarm1.BIT_7 === 0 &&
+        Can_Alarm1.BIT_8 === 0 &&
+        Can_Alarm1.BIT_9 === 0 &&
+        Can_Alarm1.BIT_10 === 0 &&
+        Can_Alarm1.BIT_11 === 0 &&
+        Can_Alarm1.BIT_12 === 0 &&
+        Can_Alarm1.BIT_13 === 0 &&
+        Can_Alarm1.BIT_14 === 0 &&
+        Can_Alarm1.BIT_15 === 0
       ) {
-        if (Rectifier_Alarm1.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RECT SAT TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+        document.getElementById("activeAlarmRow").classList.add("d-none");
+        activeAlarmData = [];
+        activeAlarmCnt = 0;
+      } else {
+        if (
+          UI_Alarm.BIT_0 === 1 ||
+          UI_Alarm.BIT_1 === 1 ||
+          UI_Alarm.BIT_2 === 1 ||
+          UI_Alarm.BIT_3 === 1 ||
+          UI_Alarm.BIT_4 === 1 ||
+          UI_Alarm.BIT_5 === 1 ||
+          UI_Alarm.BIT_6 === 1 ||
+          UI_Alarm.BIT_7 === 1 ||
+          UI_Alarm.BIT_8 === 1 ||
+          UI_Alarm.BIT_9 === 1 ||
+          UI_Alarm.BIT_10 === 1 ||
+          UI_Alarm.BIT_11 === 1 ||
+          UI_Alarm.BIT_12 === 1 ||
+          UI_Alarm.BIT_13 === 1 ||
+          UI_Alarm.BIT_14 === 1 ||
+          UI_Alarm.BIT_15.BIT_15 === 1
+        ) {
+          if (UI_Alarm.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("SC COMM. FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("CHG COMM. FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RESERVED UI - 1");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RESERVED UI - 2");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("HEAR RUN MODE");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BATTERY MCCB OFF");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("DC GROUND");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RESERVED UI-5");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BAT. DISCHARGING");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RECTIFIER FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BATT.LIFE DETORA");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("CHARGER FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BOOST CHARGING");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RESERVED UI - 5");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RESERVED UI - 6");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (UI_Alarm.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RESERVED UI - 7");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Rectifier_Alarm1.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RECT OVER TEMP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MAIN'S HIGH");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MAIN'S LOW");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MAIN'S HIGH TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MAIN'S LOW TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MAIN'S FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MAIN'S FREQ O TOL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("I/P PHASE REV");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("SMPS FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("PRE-CHARG FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RECT OVERLOAD");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("HI-I/P SLEW RATE");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("I/P I-PEAK TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("CBI OFF");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm1.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("CNT POWER ON");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-      }
-
-      if (
-        Rectifier_Alarm2.BIT_0 === 1 ||
-        Rectifier_Alarm2.BIT_1 === 1 ||
-        Rectifier_Alarm2.BIT_2 === 1 ||
-        Rectifier_Alarm2.BIT_3 === 1 ||
-        Rectifier_Alarm2.BIT_4 === 1 ||
-        Rectifier_Alarm2.BIT_5 === 1 ||
-        Rectifier_Alarm2.BIT_6 === 1 ||
-        Rectifier_Alarm2.BIT_7 === 1 ||
-        Rectifier_Alarm2.BIT_8 === 1 ||
-        Rectifier_Alarm2.BIT_9 === 1 ||
-        Rectifier_Alarm2.BIT_10 === 1 ||
-        Rectifier_Alarm2.BIT_11 === 1 ||
-        Rectifier_Alarm2.BIT_12 === 1 ||
-        Rectifier_Alarm2.BIT_13 === 1 ||
-        Rectifier_Alarm2.BIT_14 === 1 ||
-        Rectifier_Alarm2.BIT_15 === 1
-      ) {
-        if (Rectifier_Alarm2.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("I/P I-LEAK I T");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BAT I-LEAK B T");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("REC SAT TRP3 I T");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("REC / BST SWT");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BAT TOO LOW I & B TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("LOW DC I&B TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("CHG HIGH DC B T");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("REC HIGH DC I&BT");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("B/B SAT TRP3 B T");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("I/P BREAKER TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BATT BREAKER TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RECT DC LOW TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("B/B FUSE FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BOOSTER ON");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("CHARGER ON");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Rectifier_Alarm2.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RECTIFIER ON");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-      }
-
-      if (
-        Inverter_Alarm1.BIT_0 === 1 ||
-        Inverter_Alarm1.BIT_1 === 1 ||
-        Inverter_Alarm1.BIT_2 === 1 ||
-        Inverter_Alarm1.BIT_3 === 1 ||
-        Inverter_Alarm1.BIT_4 === 1 ||
-        Inverter_Alarm1.BIT_5 === 1 ||
-        Inverter_Alarm1.BIT_6 === 1 ||
-        Inverter_Alarm1.BIT_7 === 1 ||
-        Inverter_Alarm1.BIT_8 === 1 ||
-        Inverter_Alarm1.BIT_9 === 1 ||
-        Inverter_Alarm1.BIT_10 === 1 ||
-        Inverter_Alarm1.BIT_11 === 1 ||
-        Inverter_Alarm1.BIT_12 === 1 ||
-        Inverter_Alarm1.BIT_13 === 1 ||
-        Inverter_Alarm1.BIT_14 === 1 ||
-        Inverter_Alarm1.BIT_15 === 1
-      ) {
-        if (Inverter_Alarm1.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INVERTER LOW");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INVERTER HIGH");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("ALTERNATE LOW");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("ALTERNATE HIGH");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("OUTPUT LOW");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("OUTPUT HIGH");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INV SAT TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+        }
+
+        if (
+          Rectifier_Alarm1.BIT_0 === 1 ||
+          Rectifier_Alarm1.BIT_1 === 1 ||
+          Rectifier_Alarm1.BIT_2 === 1 ||
+          Rectifier_Alarm1.BIT_3 === 1 ||
+          Rectifier_Alarm1.BIT_4 === 1 ||
+          Rectifier_Alarm1.BIT_5 === 1 ||
+          Rectifier_Alarm1.BIT_6 === 1 ||
+          Rectifier_Alarm1.BIT_7 === 1 ||
+          Rectifier_Alarm1.BIT_8 === 1 ||
+          Rectifier_Alarm1.BIT_9 === 1 ||
+          Rectifier_Alarm1.BIT_10 === 1 ||
+          Rectifier_Alarm1.BIT_11 === 1 ||
+          Rectifier_Alarm1.BIT_12 === 1 ||
+          Rectifier_Alarm1.BIT_13 === 1 ||
+          Rectifier_Alarm1.BIT_14 === 1 ||
+          Rectifier_Alarm1.BIT_15 === 1
+        ) {
+          if (Rectifier_Alarm1.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RECT SAT TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Inverter_Alarm1.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INV NOT OK");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("ALT NOT OK");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("OUT NOT OK");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INV OVER TEMP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
 
-        if (Inverter_Alarm1.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("SSW OVER TEMP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS OVERLOAD");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("OVERLOAD TRIP");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INV CL ACT");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-
-        if (Inverter_Alarm1.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("ALT IS ANTICLOCK");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-      }
-
-      if (
-        Inverter_Alarm2.BIT_0 === 1 ||
-        Inverter_Alarm2.BIT_1 === 1 ||
-        Inverter_Alarm2.BIT_2 === 1 ||
-        Inverter_Alarm2.BIT_3 === 1 ||
-        Inverter_Alarm2.BIT_4 === 1 ||
-        Inverter_Alarm2.BIT_5 === 1 ||
-        Inverter_Alarm2.BIT_6 === 1 ||
-        Inverter_Alarm2.BIT_7 === 1 ||
-        Inverter_Alarm2.BIT_8 === 1 ||
-        Inverter_Alarm2.BIT_9 === 1 ||
-        Inverter_Alarm2.BIT_10 === 1 ||
-        Inverter_Alarm2.BIT_11 === 1 ||
-        Inverter_Alarm2.BIT_12 === 1 ||
-        Inverter_Alarm2.BIT_13 === 1 ||
-        Inverter_Alarm2.BIT_14 === 1 ||
-        Inverter_Alarm2.BIT_15 === 1
-      ) {
-        if (Inverter_Alarm2.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("ALT FO");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Rectifier_Alarm1.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RECT OVER TEMP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INV CL TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Rectifier_Alarm1.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MAIN'S HIGH");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("ECO MODE ON");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Rectifier_Alarm1.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MAIN'S LOW");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MAIN'S HIGH TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MAIN'S LOW TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MAIN'S FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MAIN'S FREQ O TOL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("I/P PHASE REV");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("SMPS FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("PRE-CHARG FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RECT OVERLOAD");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("HI-I/P SLEW RATE");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("I/P I-PEAK TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm1.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("CBI OFF");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Inverter_Alarm2.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("NO SYNC");
-            activeAlarmCnt = activeAlarmData.length;
+
+          if (Rectifier_Alarm1.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("CNT POWER ON");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
         }
-
-        if (Inverter_Alarm2.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("DC HIGH TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+
+        if (
+          Rectifier_Alarm2.BIT_0 === 1 ||
+          Rectifier_Alarm2.BIT_1 === 1 ||
+          Rectifier_Alarm2.BIT_2 === 1 ||
+          Rectifier_Alarm2.BIT_3 === 1 ||
+          Rectifier_Alarm2.BIT_4 === 1 ||
+          Rectifier_Alarm2.BIT_5 === 1 ||
+          Rectifier_Alarm2.BIT_6 === 1 ||
+          Rectifier_Alarm2.BIT_7 === 1 ||
+          Rectifier_Alarm2.BIT_8 === 1 ||
+          Rectifier_Alarm2.BIT_9 === 1 ||
+          Rectifier_Alarm2.BIT_10 === 1 ||
+          Rectifier_Alarm2.BIT_11 === 1 ||
+          Rectifier_Alarm2.BIT_12 === 1 ||
+          Rectifier_Alarm2.BIT_13 === 1 ||
+          Rectifier_Alarm2.BIT_14 === 1 ||
+          Rectifier_Alarm2.BIT_15 === 1
+        ) {
+          if (Rectifier_Alarm2.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("I/P I-LEAK I T");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("DC LOW TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Rectifier_Alarm2.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BAT I-LEAK B T");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MIS OFF");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Rectifier_Alarm2.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("REC SAT TRP3 I T");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MAN TRAN TO BYPASS");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Rectifier_Alarm2.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("REC / BST SWT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BAT TOO LOW I & B TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("LOW DC I&B TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("CHG HIGH DC B T");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("REC HIGH DC I&BT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("B/B SAT TRP3 B T");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("I/P BREAKER TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BATT BREAKER TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RECT DC LOW TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("B/B FUSE FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Rectifier_Alarm2.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BOOSTER ON");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Inverter_Alarm2.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MBS ON");
-            activeAlarmCnt = activeAlarmData.length;
+
+          if (Rectifier_Alarm2.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("CHARGER ON");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("LOAD ON BYPASS");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Rectifier_Alarm2.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RECTIFIER ON");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
         }
 
-        if (Inverter_Alarm2.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("STOP COMMAND");
-            activeAlarmCnt = activeAlarmData.length;
+        if (
+          Inverter_Alarm1.BIT_0 === 1 ||
+          Inverter_Alarm1.BIT_1 === 1 ||
+          Inverter_Alarm1.BIT_2 === 1 ||
+          Inverter_Alarm1.BIT_3 === 1 ||
+          Inverter_Alarm1.BIT_4 === 1 ||
+          Inverter_Alarm1.BIT_5 === 1 ||
+          Inverter_Alarm1.BIT_6 === 1 ||
+          Inverter_Alarm1.BIT_7 === 1 ||
+          Inverter_Alarm1.BIT_8 === 1 ||
+          Inverter_Alarm1.BIT_9 === 1 ||
+          Inverter_Alarm1.BIT_10 === 1 ||
+          Inverter_Alarm1.BIT_11 === 1 ||
+          Inverter_Alarm1.BIT_12 === 1 ||
+          Inverter_Alarm1.BIT_13 === 1 ||
+          Inverter_Alarm1.BIT_14 === 1 ||
+          Inverter_Alarm1.BIT_15 === 1
+        ) {
+          if (Inverter_Alarm1.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INVERTER LOW");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("NEG POWER TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm1.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INVERTER HIGH");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("TRANSFOMER OT");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm1.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("ALTERNATE LOW");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("TRANSFOMER OT TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm1.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("ALTERNATE HIGH");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("OUTPUT LOW");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("OUTPUT HIGH");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INV SAT TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INV NOT OK");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("ALT NOT OK");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("OUT NOT OK");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INV OVER TEMP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("SSW OVER TEMP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm1.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS OVERLOAD");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Inverter_Alarm2.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("SYSTEM OVERLOAD");
-            activeAlarmCnt = activeAlarmData.length;
+
+          if (Inverter_Alarm1.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("OVERLOAD TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm2.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("SYSTEM OL TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm1.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INV CL ACT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-      }
-
-      if (
-        Battery_Alarm1.BIT_0 === 1 ||
-        Battery_Alarm1.BIT_1 === 1 ||
-        Battery_Alarm1.BIT_2 === 1 ||
-        Battery_Alarm1.BIT_3 === 1 ||
-        Battery_Alarm1.BIT_4 === 1 ||
-        Battery_Alarm1.BIT_5 === 1 ||
-        Battery_Alarm1.BIT_6 === 1 ||
-        Battery_Alarm1.BIT_7 === 1 ||
-        Battery_Alarm1.BIT_8 === 1 ||
-        Battery_Alarm1.BIT_9 === 1 ||
-        Battery_Alarm1.BIT_10 === 1 ||
-        Battery_Alarm1.BIT_11 === 1 ||
-        Battery_Alarm1.BIT_12 === 1 ||
-        Battery_Alarm1.BIT_13 === 1 ||
-        Battery_Alarm1.BIT_14 === 1 ||
-        Battery_Alarm1.BIT_15 === 1
-      ) {
-        if (Battery_Alarm1.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("LOW BATTERY");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
 
-        if (Battery_Alarm1.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RECT /BOOST CHOKE OT");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm1.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("ALT IS ANTICLOCK");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
         }
 
-        if (Battery_Alarm1.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("LOW BATTERY TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+        if (
+          Inverter_Alarm2.BIT_0 === 1 ||
+          Inverter_Alarm2.BIT_1 === 1 ||
+          Inverter_Alarm2.BIT_2 === 1 ||
+          Inverter_Alarm2.BIT_3 === 1 ||
+          Inverter_Alarm2.BIT_4 === 1 ||
+          Inverter_Alarm2.BIT_5 === 1 ||
+          Inverter_Alarm2.BIT_6 === 1 ||
+          Inverter_Alarm2.BIT_7 === 1 ||
+          Inverter_Alarm2.BIT_8 === 1 ||
+          Inverter_Alarm2.BIT_9 === 1 ||
+          Inverter_Alarm2.BIT_10 === 1 ||
+          Inverter_Alarm2.BIT_11 === 1 ||
+          Inverter_Alarm2.BIT_12 === 1 ||
+          Inverter_Alarm2.BIT_13 === 1 ||
+          Inverter_Alarm2.BIT_14 === 1 ||
+          Inverter_Alarm2.BIT_15 === 1
+        ) {
+          if (Inverter_Alarm2.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("ALT FO");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BATT I-PEAK TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm2.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INV CL TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BUCK SAT TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm2.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("ECO MODE ON");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BOOSTER SAT TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm2.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("NO SYNC");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Battery_Alarm1.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("CBB OFF");
-            activeAlarmCnt = activeAlarmData.length;
+
+          if (Inverter_Alarm2.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("DC HIGH TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm2.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("DC LOW TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm2.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MIS OFF");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm2.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MAN TRAN TO BYPASS");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm2.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MBS ON");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm2.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("LOAD ON BYPASS");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm2.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("STOP COMMAND");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm2.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("NEG POWER TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Battery_Alarm1.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BUCK / BOOST OT");
-            activeAlarmCnt = activeAlarmData.length;
+
+          if (Inverter_Alarm2.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("TRANSFOMER OT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BOOST OVER VOLT");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm2.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("TRANSFOMER OT TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BUCK UNDER VOLT");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm2.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("SYSTEM OVERLOAD");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BUCK OVER VOLT");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm2.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("SYSTEM OL TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
         }
 
-        if (Battery_Alarm1.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MANUAL BOOST ON");
-            activeAlarmCnt = activeAlarmData.length;
+        if (
+          Battery_Alarm1.BIT_0 === 1 ||
+          Battery_Alarm1.BIT_1 === 1 ||
+          Battery_Alarm1.BIT_2 === 1 ||
+          Battery_Alarm1.BIT_3 === 1 ||
+          Battery_Alarm1.BIT_4 === 1 ||
+          Battery_Alarm1.BIT_5 === 1 ||
+          Battery_Alarm1.BIT_6 === 1 ||
+          Battery_Alarm1.BIT_7 === 1 ||
+          Battery_Alarm1.BIT_8 === 1 ||
+          Battery_Alarm1.BIT_9 === 1 ||
+          Battery_Alarm1.BIT_10 === 1 ||
+          Battery_Alarm1.BIT_11 === 1 ||
+          Battery_Alarm1.BIT_12 === 1 ||
+          Battery_Alarm1.BIT_13 === 1 ||
+          Battery_Alarm1.BIT_14 === 1 ||
+          Battery_Alarm1.BIT_15 === 1
+        ) {
+          if (Battery_Alarm1.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("LOW BATTERY");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS MASTER (ONLY FOR ALARM LOG)");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Battery_Alarm1.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RECT /BOOST CHOKE OT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS SLAVE (ONLY FOR ALARM LOG)");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Battery_Alarm1.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("LOW BATTERY TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("B/B CHOKE OVER TEMP TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Battery_Alarm1.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BATT I-PEAK TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Battery_Alarm1.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("RECT CHOKE OT TRIP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Battery_Alarm1.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BUCK SAT TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Battery_Alarm1.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BOOSTER SAT TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Battery_Alarm1.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("CBB OFF");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Battery_Alarm1.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BUCK / BOOST OT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Battery_Alarm1.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BOOST OVER VOLT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Battery_Alarm1.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BUCK UNDER VOLT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Battery_Alarm1.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BUCK OVER VOLT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-      }
-
-      if (
-        Inverter_Alarm3.BIT_0 === 1 ||
-        Inverter_Alarm3.BIT_1 === 1 ||
-        Inverter_Alarm3.BIT_2 === 1 ||
-        Inverter_Alarm3.BIT_3 === 1 ||
-        Inverter_Alarm3.BIT_4 === 1 ||
-        Inverter_Alarm3.BIT_5 === 1 ||
-        Inverter_Alarm3.BIT_6 === 1 ||
-        Inverter_Alarm3.BIT_7 === 1 ||
-        Inverter_Alarm3.BIT_8 === 1 ||
-        Inverter_Alarm3.BIT_9 === 1 ||
-        Inverter_Alarm3.BIT_10 === 1 ||
-        Inverter_Alarm3.BIT_11 === 1 ||
-        Inverter_Alarm3.BIT_12 === 1 ||
-        Inverter_Alarm3.BIT_13 === 1 ||
-        Inverter_Alarm3.BIT_14 === 1 ||
-        Inverter_Alarm3.BIT_15 === 1
-      ) {
-        if (Inverter_Alarm3.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("R-Ph INV SSW ERROR");
-            activeAlarmCnt = activeAlarmData.length;
+
+          if (Battery_Alarm1.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MANUAL BOOST ON");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Y-Ph INV SSW ERROR");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Battery_Alarm1.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS MASTER (ONLY FOR ALARM LOG)");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("B-Ph INV SSW ERROR");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Battery_Alarm1.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS SLAVE (ONLY FOR ALARM LOG)");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("R-Ph ALT SSW ERROR");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Battery_Alarm1.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("B/B CHOKE OVER TEMP TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Y-Ph ALT SSW ERROR");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Battery_Alarm1.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("RECT CHOKE OT TRIP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
         }
 
-        if (Inverter_Alarm3.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("B-Ph ALT SSW ERROR");
-            activeAlarmCnt = activeAlarmData.length;
+        if (
+          Inverter_Alarm3.BIT_0 === 1 ||
+          Inverter_Alarm3.BIT_1 === 1 ||
+          Inverter_Alarm3.BIT_2 === 1 ||
+          Inverter_Alarm3.BIT_3 === 1 ||
+          Inverter_Alarm3.BIT_4 === 1 ||
+          Inverter_Alarm3.BIT_5 === 1 ||
+          Inverter_Alarm3.BIT_6 === 1 ||
+          Inverter_Alarm3.BIT_7 === 1 ||
+          Inverter_Alarm3.BIT_8 === 1 ||
+          Inverter_Alarm3.BIT_9 === 1 ||
+          Inverter_Alarm3.BIT_10 === 1 ||
+          Inverter_Alarm3.BIT_11 === 1 ||
+          Inverter_Alarm3.BIT_12 === 1 ||
+          Inverter_Alarm3.BIT_13 === 1 ||
+          Inverter_Alarm3.BIT_14 === 1 ||
+          Inverter_Alarm3.BIT_15 === 1
+        ) {
+          if (Inverter_Alarm3.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("R-Ph INV SSW ERROR");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("O/P CT FB OPEN");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Y-Ph INV SSW ERROR");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("I/P CT FB OPEN");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("B-Ph INV SSW ERROR");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INV SAT TRIP -3 I & B T");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("R-Ph ALT SSW ERROR");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("BOOST UNDER VOLT");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Y-Ph ALT SSW ERROR");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm3.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("B-Ph ALT SSW ERROR");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm3.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("O/P CT FB OPEN");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm3.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("I/P CT FB OPEN");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm3.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INV SAT TRIP -3 I & B T");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Inverter_Alarm3.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("BOOST UNDER VOLT");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Inverter_Alarm3.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("SMPS FUSE FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+
+          if (Inverter_Alarm3.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("SMPS FUSE FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("EMERGENCY STOP");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("EMERGENCY STOP");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("LOAD ON INVERTER (ONLY IN  ECO  MODE)");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("LOAD ON INVERTER (ONLY IN  ECO  MODE)");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INV DC LOW INS");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INV DC LOW INS");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("HIGH ALT SLEW RATE");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("HIGH ALT SLEW RATE");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Inverter_Alarm3.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("INV VOLT FB OPEN");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
-      }
-
-      if (
-        Input_Alarm_0.BIT_0 === 1 ||
-        Input_Alarm_0.BIT_1 === 1 ||
-        Input_Alarm_0.BIT_2 === 1 ||
-        Input_Alarm_0.BIT_3 === 1 ||
-        Input_Alarm_0.BIT_4 === 1 ||
-        Input_Alarm_0.BIT_5 === 1 ||
-        Input_Alarm_0.BIT_6 === 1 ||
-        Input_Alarm_0.BIT_7 === 1 ||
-        Input_Alarm_0.BIT_8 === 1 ||
-        Input_Alarm_0.BIT_9 === 1 ||
-        Input_Alarm_0.BIT_10 === 1 ||
-        Input_Alarm_0.BIT_11 === 1 ||
-        Input_Alarm_0.BIT_12 === 1 ||
-        Input_Alarm_0.BIT_13 === 1 ||
-        Input_Alarm_0.BIT_14 === 1 ||
-        Input_Alarm_0.BIT_15 === 1
-      ) {
-        if (Input_Alarm_0.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-01 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Inverter_Alarm3.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("INV VOLT FB OPEN");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
         }
 
-        if (Input_Alarm_0.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-02 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+        if (
+          Input_Alarm_0.BIT_0 === 1 ||
+          Input_Alarm_0.BIT_1 === 1 ||
+          Input_Alarm_0.BIT_2 === 1 ||
+          Input_Alarm_0.BIT_3 === 1 ||
+          Input_Alarm_0.BIT_4 === 1 ||
+          Input_Alarm_0.BIT_5 === 1 ||
+          Input_Alarm_0.BIT_6 === 1 ||
+          Input_Alarm_0.BIT_7 === 1 ||
+          Input_Alarm_0.BIT_8 === 1 ||
+          Input_Alarm_0.BIT_9 === 1 ||
+          Input_Alarm_0.BIT_10 === 1 ||
+          Input_Alarm_0.BIT_11 === 1 ||
+          Input_Alarm_0.BIT_12 === 1 ||
+          Input_Alarm_0.BIT_13 === 1 ||
+          Input_Alarm_0.BIT_14 === 1 ||
+          Input_Alarm_0.BIT_15 === 1
+        ) {
+          if (Input_Alarm_0.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-01 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-03 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-02 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-04 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-03 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-05 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-04 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-06 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-05 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Input_Alarm_0.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-06 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Input_Alarm_0.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-07 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Input_Alarm_0.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-08 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
+          }
+
+          if (Input_Alarm_0.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-09 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-
-        if (Input_Alarm_0.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-07 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+
+          if (Input_Alarm_0.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-10 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-08 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-11 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-09 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-12 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-10 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-13 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-11 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-14 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-12 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-15 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-13 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Input_Alarm_0.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("Digital Input-16 Sort");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
         }
 
-        if (Input_Alarm_0.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-14 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+        if (
+          Can_Alarm1.BIT_0 === 1 ||
+          Can_Alarm1.BIT_1 === 1 ||
+          Can_Alarm1.BIT_2 === 1 ||
+          Can_Alarm1.BIT_3 === 1 ||
+          Can_Alarm1.BIT_4 === 1 ||
+          Can_Alarm1.BIT_5 === 1 ||
+          Can_Alarm1.BIT_6 === 1 ||
+          Can_Alarm1.BIT_7 === 1 ||
+          Can_Alarm1.BIT_8 === 1 ||
+          Can_Alarm1.BIT_9 === 1 ||
+          Can_Alarm1.BIT_10 === 1 ||
+          Can_Alarm1.BIT_11 === 1 ||
+          Can_Alarm1.BIT_12 === 1 ||
+          Can_Alarm1.BIT_13 === 1 ||
+          Can_Alarm1.BIT_14 === 1 ||
+          Can_Alarm1.BIT_15 === 1
+        ) {
+          if (Can_Alarm1.BIT_0 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-1 CAN-A FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-15 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_1 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-2 CAN-A FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Input_Alarm_0.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("Digital Input-16 Sort");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_2 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-3 CAN-A FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
-      }
-
-      if (
-        Can_Alarm1.BIT_0 === 1 ||
-        Can_Alarm1.BIT_1 === 1 ||
-        Can_Alarm1.BIT_2 === 1 ||
-        Can_Alarm1.BIT_3 === 1 ||
-        Can_Alarm1.BIT_4 === 1 ||
-        Can_Alarm1.BIT_5 === 1 ||
-        Can_Alarm1.BIT_6 === 1 ||
-        Can_Alarm1.BIT_7 === 1 ||
-        Can_Alarm1.BIT_8 === 1 ||
-        Can_Alarm1.BIT_9 === 1 ||
-        Can_Alarm1.BIT_10 === 1 ||
-        Can_Alarm1.BIT_11 === 1 ||
-        Can_Alarm1.BIT_12 === 1 ||
-        Can_Alarm1.BIT_13 === 1 ||
-        Can_Alarm1.BIT_14 === 1 ||
-        Can_Alarm1.BIT_15 === 1
-      ) {
-        if (Can_Alarm1.BIT_0 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-1 CAN-A FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
 
-        if (Can_Alarm1.BIT_1 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-2 CAN-A FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_3 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-4 CAN-A FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_2 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-3 CAN-A FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_4 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-5 CAN-A FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_3 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-4 CAN-A FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_5 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-6 CAN-A FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_4 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-5 CAN-A FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_6 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-7 CAN-A FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_5 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-6 CAN-A FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_7 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-8 CAN-A FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_6 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-7 CAN-A FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_8 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-1 SUPPLY FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_7 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-8 CAN-A FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_9 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-2 SUPPLY FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_8 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-1 SUPPLY FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_10 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-3 SUPPLY FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_9 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-2 SUPPLY FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_11 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-4 SUPPLY FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_10 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-3 SUPPLY FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_12 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("UPS-5 SUPPLY FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_11 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-4 SUPPLY FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_13 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("CAN-A COMM FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_12 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("UPS-5 SUPPLY FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_14 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("MASTER CAN-B FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
-        }
 
-        if (Can_Alarm1.BIT_13 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("CAN-A COMM FAIL");
-            activeAlarmCnt = activeAlarmData.length;
+          if (Can_Alarm1.BIT_15 === 1) {
+            if (activeAlarmCnt < 24) {
+              activeAlarmData.push("SLAVE CAN-B FAIL");
+              activeAlarmCnt = activeAlarmData.length;
+            }
           }
         }
 
-        if (Can_Alarm1.BIT_14 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("MASTER CAN-B FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
-        }
+        if (activeAlarmData.length > 0) {
+          // document.getElementById('activeAlarmRow').style.display = 'block';
+          document.getElementById("activeAlarmRow").classList.remove("d-none");
+          let divStr = '<div class="row justify-content-center">';
+          activeAlarmData.forEach(function (value, index) {
+            // divStr += `<div class="activeAlarmDiv_css">${value}</div>`;
+            divStr += `<div class="col-3 card m-1 p-2 shadow d-flex flex-row"> <span class="dot-red align-self-center m-2"></span> <span class="align-items-center d-flex">${value}</span> </div>`;
+          });
+          divStr += "<div>";
 
-        if (Can_Alarm1.BIT_15 === 1) {
-          if (activeAlarmCnt < 24) {
-            activeAlarmData.push("SLAVE CAN-B FAIL");
-            activeAlarmCnt = activeAlarmData.length;
-          }
+          document.getElementById("activeAlarmDiv").innerHTML = divStr;
         }
-      }
-
-      if (activeAlarmData.length > 0) {
-        // document.getElementById('activeAlarmRow').style.display = 'block';
-        document.getElementById("activeAlarmRow").classList.remove("d-none");
-        let divStr = '<div class="row justify-content-center">';
-        activeAlarmData.forEach(function (value, index) {
-          // divStr += `<div class="activeAlarmDiv_css">${value}</div>`;
-          divStr += `<div class="col-3 card m-1 p-2 shadow d-flex flex-row"> <span class="dot-red align-self-center m-2"></span> <span class="align-items-center d-flex">${value}</span> </div>`;
-        });
-        divStr += "<div>";
-
-        document.getElementById("activeAlarmDiv").innerHTML = divStr;
       }
 
       /********************Alarm code************************/
@@ -2408,7 +2560,7 @@ function getActiveTagName() {
 }
 
 function changeUrlParams(tabName) {
-  console.log("changeUrlPpppp");
+  // console.log("changeUrlPpppp");
   makeTabActive(tabName);
 
   // to scroll to top of the page
