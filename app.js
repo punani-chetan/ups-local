@@ -7,9 +7,9 @@ let serialNoDataLog = 0;
 let isFirstTimeLoad = false;
 
 // to refresh page in 5 sec
-// setTimeout(function () {
-//   window.location = window.location;
-// }, 10000);
+setTimeout(function () {
+  window.location = window.location;
+}, 10000);
 
 // var url = "ws://ups-gateway:80/ws";
 var url = "ws://localhost:8080";
