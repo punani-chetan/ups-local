@@ -11,8 +11,11 @@ setTimeout(function () {
   window.location = window.location;
 }, 10000);
 
+var localIP = location.hostname;
+
 // var url = "ws://ups-gateway:80/ws";
-var url = "ws://localhost:8080";
+var url = localIP + ":80";
+// var url = "ws://localhost:8080";
 var ws = new WebSocket(url);
 
 connect();
@@ -78,6 +81,9 @@ function downloadCSVFile(csv_data, exportType) {
 }
 
 function connect() {
+  // var ip = location.host;
+  // alert(ip);
+
   window.addEventListener("online", function () {
     // console.log("I am connected to the internet");
     // console.log('navigator.onLine ==> ', navigator.onLine)
@@ -100,8 +106,11 @@ function connect() {
       console.log("Attempting to reconnect...");
 
       ws.close();
+
+      var localIP = location.hostname;
+      var url = localIP + ":80";
       // var url = "ws://ups-gateway:80/ws";
-      url = "ws://localhost:8080";
+      // url = "ws://localhost:8080";
       ws = new WebSocket(url);
 
       connect();

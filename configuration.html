@@ -156,7 +156,9 @@
       });
     })();
 
-    var url = 'ws://ups-gateway/ws';
+    var localIP = location.hostname;
+    var url = localIP;
+    // var url = 'ws://ups-gateway/ws';
     // var url = 'ws://localhost:8080';
     var configurationWS = new WebSocket(url);
     var deviceId;
