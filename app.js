@@ -12,7 +12,6 @@ setTimeout(function () {
 }, 10000);
 
 var localIP = location.hostname;
-
 // var url = "ws://ups-gateway:80/ws";
 var url = "ws://" + localIP + ":80/ws";
 // var url = "ws://localhost:8080";

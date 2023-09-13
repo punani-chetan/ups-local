@@ -65,6 +65,7 @@ a:hover {
 .main-bgcolor {
   background-color: #f0f0f0;
 }
+
 .nav-tabs .nav-link.active {
   /* background-color: #0d66d0; */
   background-color: #737373;
@@ -94,6 +95,7 @@ a:hover {
   background-color: #cc0000;
   color: white;
 }
+
 .btn-color:hover {
   background-color: #b1000e;
   color: white;
@@ -112,12 +114,14 @@ table.table-bordered {
   border: 1px solid #737373;
   margin-top: 20px;
 }
-table.table-bordered > thead > tr > th {
+
+table.table-bordered>thead>tr>th {
   border: 1px solid white;
   background-color: #737373;
   color: white;
 }
-table.table-bordered > tbody > tr > td {
+
+table.table-bordered>tbody>tr>td {
   border: 1px solid #737373;
 }
 
@@ -339,7 +343,7 @@ table td {
 }
 
 .nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
+.nav-pills .show>.nav-link {
   background-color: #b1000e;
 }
 
