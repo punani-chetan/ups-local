@@ -6,13 +6,12 @@ let serialNoAlarm = 0;
 let serialNoDataLog = 0;
 let isFirstTimeLoad = false;
 
-// to refresh page in 5 sec
-setTimeout(function () {
-  window.location = window.location;
-}, 10000);
+// // to refresh page in 5 sec
+// setTimeout(function () {
+//   window.location = window.location;
+// }, 10000);
 
 var localIP = location.hostname;
-// var url = "ws://ups-gateway:80/ws";
 var url = "ws://" + localIP + ":80/ws";
 // var url = "ws://localhost:8080";
 var ws = new WebSocket(url);
@@ -108,7 +107,6 @@ function connect() {
 
       var localIP = location.hostname;
       var url = "ws://" + localIP + ":80/ws";
-      // var url = "ws://ups-gateway:80/ws";
       // url = "ws://localhost:8080";
       ws = new WebSocket(url);
 
@@ -128,9 +126,16 @@ function connect() {
 
     // console.log("ups_data in index");
     // console.log(ups_data);
+    // console.log("123");
 
     if (ups_data) {
       document.getElementsByClassName("overlay")[0].classList.add("d-none");
+
+      // console.log("before refresh after response");
+      // to refresh page in 10 sec
+      setTimeout(function () {
+        window.location = window.location;
+      }, 10000);
     }
 
     deviceId = await ups_data.dev_id;
