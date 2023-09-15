@@ -124,14 +124,9 @@ function connect() {
   ws.onmessage = async function (evt) {
     var ups_data = await UPS_MSG(evt.data);
 
-    // console.log("ups_data in index");
-    // console.log(ups_data);
-    // console.log("123");
-
     if (ups_data) {
       document.getElementsByClassName("overlay")[0].classList.add("d-none");
 
-      // console.log("before refresh after response");
       // to refresh page in 10 sec
       setTimeout(function () {
         window.location = window.location;
@@ -2577,9 +2572,10 @@ function changeUrlParams(tabName) {
   makeTabActive(tabName);
 
   // to scroll to top of the page
-  setTimeout(() => {
-    window.scrollTo({ top: 0 });
-  }, 50);
+  // setTimeout(() => {
+  //   console.log("called");
+  //   window.scrollTo({ top: 0 });
+  // }, 5);
 
   if (deviceId) {
     if (tabName === "alarmlog") {
@@ -2678,3 +2674,9 @@ function makeTabActive(tagNam) {
   document.getElementById("nav-" + tagNam + "-tab").classList.add("active");
   document.getElementById(tagNam).classList.add("show", "active");
 }
+
+$(".nav-tabs a").click(function (e) {
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  $(this).tab("show");
+});
