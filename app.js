@@ -12,8 +12,8 @@ let isFirstTimeLoad = false;
 // }, 10000);
 
 var localIP = location.hostname;
-var url = "ws://" + localIP + ":80/ws";
-// var url = "ws://localhost:8080";
+// var url = "ws://" + localIP + ":80/ws";
+var url = "ws://localhost:8080";
 var ws = new WebSocket(url);
 
 connect();
@@ -106,8 +106,8 @@ function connect() {
       ws.close();
 
       var localIP = location.hostname;
-      var url = "ws://" + localIP + ":80/ws";
-      // url = "ws://localhost:8080";
+      // var url = "ws://" + localIP + ":80/ws";
+      url = "ws://localhost:8080";
       ws = new WebSocket(url);
 
       connect();
