@@ -12,8 +12,8 @@ let isFirstTimeLoad = false;
 // }, 10000);
 
 var localIP = location.hostname;
-var url = "ws://" + localIP + ":80/ws";
-// var url = "ws://localhost:8080";
+// var url = "ws://" + localIP + ":80/ws";
+var url = "ws://localhost:8080";
 var ws = new WebSocket(url);
 
 connect();
@@ -106,8 +106,8 @@ function connect() {
       ws.close();
 
       var localIP = location.hostname;
-      var url = "ws://" + localIP + ":80/ws";
-      // url = "ws://localhost:8080";
+      // var url = "ws://" + localIP + ":80/ws";
+      url = "ws://localhost:8080";
       ws = new WebSocket(url);
 
       connect();
@@ -2568,7 +2568,6 @@ function getActiveTagName() {
 }
 
 function changeUrlParams(tabName) {
-  // console.log("changeUrlPpppp");
   makeTabActive(tabName);
 
   // to scroll to top of the page
@@ -2675,8 +2674,15 @@ function makeTabActive(tagNam) {
   document.getElementById(tagNam).classList.add("show", "active");
 }
 
-$(".nav-tabs a").click(function (e) {
-  e.preventDefault();
-  e.stopImmediatePropagation();
-  $(this).tab("show");
+$("a[href='#metering']").click(function () {
+  $("html, body").animate({ scrollTop: 0 }, 800);
+  return false;
+});
+$("a[href='#alarmlog']").click(function () {
+  $("html, body").animate({ scrollTop: 0 }, 800);
+  // return false;
+});
+$("a[href='#datalog']").click(function () {
+  $("html, body").animate({ scrollTop: 0 }, 800);
+  // return false;
 });
