@@ -355,3 +355,13 @@ table td {
   text-align: center;
   font-size: 25px;
 }
+
+.fixTableHead {
+  overflow-y: auto;
+  height: 455px;
+}
+
+.fixTableHead thead th {
+  position: sticky;
+  top: 0;
+}
