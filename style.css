@@ -125,6 +125,35 @@ table.table-bordered>tbody>tr>td {
   border: 1px solid #737373;
 }
 
+.fixTableHead {
+  overflow-y: auto;
+  height: 467px;
+}
+
+.fixTableHead thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.fixTableHead thead th:after,
+.fixTableHead thead th:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.fixTableHead thead th:before {
+  top: 0;
+  border-top: 3px solid #737373;
+}
+
+.fixTableHead thead th:after {
+  bottom: 0;
+  border-bottom: 3px solid #737373;
+}
+
 .dot-red {
   background: red;
   width: 18px;
@@ -300,6 +329,11 @@ table.table-bordered>tbody>tr>td {
   line-height: 140%;
 } */
 
+table {
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+
 table th,
 table td {
   padding: 10px 15px;
@@ -354,14 +388,4 @@ table td {
 .metering-card-header {
   text-align: center;
   font-size: 25px;
-}
-
-.fixTableHead {
-  overflow-y: auto;
-  height: 467px;
-}
-
-.fixTableHead thead th {
-  position: sticky;
-  top: 0;
 }
