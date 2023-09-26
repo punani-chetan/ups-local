@@ -1,7 +1,5 @@
 let socket = null;
 let retryInterval = 1000; // initial retry interval
-// let alarmsLogData;
-// let dataLogData;
 let serialNoAlarm = 0;
 let serialNoDataLog = 0;
 let isFirstTimeLoad = false;
@@ -12,8 +10,8 @@ let isFirstTimeLoad = false;
 // }, 10000);
 
 var localIP = location.hostname;
-// var url = "ws://" + localIP + ":80/ws";
-var url = "ws://localhost:8080";
+var url = "ws://" + localIP + ":80/ws";
+// var url = "ws://localhost:8080";
 var ws = new WebSocket(url);
 
 connect();
@@ -106,8 +104,8 @@ function connect() {
       ws.close();
 
       var localIP = location.hostname;
-      // var url = "ws://" + localIP + ":80/ws";
-      url = "ws://localhost:8080";
+      var url = "ws://" + localIP + ":80/ws";
+      // url = "ws://localhost:8080";
       ws = new WebSocket(url);
 
       connect();
@@ -125,7 +123,9 @@ function connect() {
     var ups_data = await UPS_MSG(evt.data);
 
     if (ups_data) {
-      document.getElementsByClassName("overlay")[0].classList.add("d-none");
+      if (!ups_data.dataLog && !ups_data.alarmLog) {
+        document.getElementsByClassName("overlay")[0].classList.add("d-none");
+      }
 
       // to refresh page in 10 sec
       setTimeout(function () {
@@ -141,106 +141,114 @@ function connect() {
 
     /*****************datalog data*****************/
     if (ups_data.DATA_NAME === "datalog") {
-      // dataLogData = [];
+      if (ups_data.dataLog.status == 0) {
+        document.getElementsByClassName("overlay")[0].classList.add("d-none");
+      } else if (ups_data.dataLog && !ups_data.dataLog.status) {
+        // Split the text into an array of alarms
+        const dataLogData = ups_data.dataLog.File_payload.split(" @ \n");
 
-      // Split the text into an array of alarms
-      const dataLogData = ups_data.dataLog.File_payload.split(" @ \n");
+        // Convert the array of datalog data into an array of objects
+        let arr = dataLogData.map((alarm) => {
+          if (alarm) {
+            let tmpSplitArr = alarm.split(",");
+            return tmpSplitArr;
+          }
+        });
 
-      // Convert the array of datalog data into an array of objects
-      let arr = dataLogData.map((alarm) => {
-        if (alarm) {
-          let tmpSplitArr = alarm.split(",");
-          return tmpSplitArr;
+        arr.splice(-1, 1);
+        let tmpArrNew = arr;
+        let chunk_size = 88;
+        let num_chunks = tmpArrNew.length;
+
+        // var dataTable = document.getElementById('dataLogTable');
+        // var tbody = dataTable.getElementsByTagName("tbody")[0];
+        // var rows = tbody.getElementsByTagName("tr");
+        // for (var i = rows.length - 1; i >= 0; i--) {
+        //   tbody.removeChild(rows[i]);
+        // }
+
+        // serialNoDataLog = 0;
+
+        const tableBody = document.querySelector("#dataLogTable tbody");
+
+        for (let i = 0; i < num_chunks; i++) {
+          let rowi = document.createElement("tr");
+          let celli = document.createElement("td");
+          celli.textContent = ++serialNoDataLog;
+          rowi.appendChild(celli);
+
+          tmpArrNew[i].splice(82);
+          // tmpArrNew[i].splice(-7)
+
+          for (let j = 0; j < tmpArrNew[i].length; j++) {
+            let cellj = document.createElement("td");
+            cellj.textContent = tmpArrNew[i][j];
+            rowi.appendChild(cellj);
+          }
+
+          tableBody.appendChild(rowi);
         }
-      });
-
-      arr.splice(-1, 1);
-      let tmpArrNew = arr;
-      let chunk_size = 88;
-      let num_chunks = tmpArrNew.length;
-
-      // var dataTable = document.getElementById('dataLogTable');
-      // var tbody = dataTable.getElementsByTagName("tbody")[0];
-      // var rows = tbody.getElementsByTagName("tr");
-      // for (var i = rows.length - 1; i >= 0; i--) {
-      //   tbody.removeChild(rows[i]);
-      // }
-
-      // serialNoDataLog = 0;
-
-      const tableBody = document.querySelector("#dataLogTable tbody");
-
-      for (let i = 0; i < num_chunks; i++) {
-        let rowi = document.createElement("tr");
-        let celli = document.createElement("td");
-        celli.textContent = ++serialNoDataLog;
-        rowi.appendChild(celli);
-
-        tmpArrNew[i].splice(82);
-        // tmpArrNew[i].splice(-7)
-
-        for (let j = 0; j < tmpArrNew[i].length; j++) {
-          let cellj = document.createElement("td");
-          cellj.textContent = tmpArrNew[i][j];
-          rowi.appendChild(cellj);
-        }
-
-        tableBody.appendChild(rowi);
       }
     }
 
     /*****************alarm data*****************/
     if (ups_data.DATA_NAME === "alarmlog") {
-      // Split the text into an array of alarms
-      const alarmsLogData = ups_data.alarmLog.File_payload.split("@ \n");
+      if (ups_data.alarmLog.status == 0) {
+        document.getElementsByClassName("overlay")[0].classList.add("d-none");
+      } else if (ups_data.alarmLog && !ups_data.alarmLog.status) {
+        // Split the text into an array of alarms
+        let alarmsLogData = ups_data.alarmLog.File_payload.split("@ \n");
+        // console.log(alarmsLogData);
 
-      // Convert the array of alarmslog data into an array of objects
-      let arr = [];
-      if (arr.length > 0) {
-        arr = [];
-      }
-      arr = alarmsLogData.map((alarm) => {
-        const [Status, Alarm_Number, Date, Time, Alarm_Name] = alarm.split(",");
-        return {
-          Status,
-          Alarm_Number,
-          Date,
-          Time,
-          Alarm_Name,
-        };
-      });
+        // Convert the array of alarmslog data into an array of objects
+        let arr = [];
+        if (arr.length > 0) {
+          arr = [];
+        }
+        arr = alarmsLogData.map((alarm) => {
+          const [Status, Alarm_Number, Date, Time, Alarm_Name] =
+            alarm.split(",");
+          return {
+            Status,
+            Alarm_Number,
+            Date,
+            Time,
+            Alarm_Name,
+          };
+        });
 
-      arr.splice(-1, 1);
+        arr.splice(-1, 1);
 
-      // Create a table in HTML
-      const tableBody = document.querySelector("#alarmTable tbody");
+        // Create a table in HTML
+        let tableBody = document.querySelector("#alarmTable tbody");
 
-      for (const item of arr) {
-        const row = document.createElement("tr");
-        const cell0 = document.createElement("td");
-        cell0.textContent = ++serialNoAlarm;
-        row.appendChild(cell0);
-        const cell1 = document.createElement("td");
-        cell1.textContent =
-          item.Status == 0 ? "Alarm Occurred" : "Alarm Released";
-        row.appendChild(cell1);
-        const cell2 = document.createElement("td");
-        cell2.textContent = item.Alarm_Number.includes("\n")
-          ? item.Alarm_Number.replace(/[\r\n]/gm, "")
-          : item.Alarm_Number;
-        row.appendChild(cell2);
-        const cell3 = document.createElement("td");
-        cell3.textContent = item.Date;
-        row.appendChild(cell3);
-        const cell4 = document.createElement("td");
-        cell4.textContent = item.Time;
-        row.appendChild(cell4);
-        const cell5 = document.createElement("td");
-        cell5.textContent = item.Alarm_Name;
-        // cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
-        row.appendChild(cell5);
+        for (const item of arr) {
+          const row = document.createElement("tr");
+          const cell0 = document.createElement("td");
+          cell0.textContent = ++serialNoAlarm;
+          row.appendChild(cell0);
+          const cell1 = document.createElement("td");
+          cell1.textContent =
+            item.Status == 0 ? "Alarm Occurred" : "Alarm Released";
+          row.appendChild(cell1);
+          const cell2 = document.createElement("td");
+          cell2.textContent = item.Alarm_Number.includes("\n")
+            ? item.Alarm_Number.replace(/[\r\n]/gm, "")
+            : item.Alarm_Number;
+          row.appendChild(cell2);
+          const cell3 = document.createElement("td");
+          cell3.textContent = item.Date;
+          row.appendChild(cell3);
+          const cell4 = document.createElement("td");
+          cell4.textContent = item.Time;
+          row.appendChild(cell4);
+          const cell5 = document.createElement("td");
+          cell5.textContent = item.Alarm_Name;
+          // cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
+          row.appendChild(cell5);
 
-        tableBody.appendChild(row);
+          tableBody.appendChild(row);
+        }
       }
     }
 
@@ -2590,7 +2598,7 @@ function changeUrlParams(tabName) {
       // Clear the existing table data
       alarmTableBody.innerHTML = "";
 
-      document.getElementsByClassName("overlay")[0].classList.remove("d-none");
+      document.getElementsByClassName("overlay")[0].classList.remove("d-none"); //loading start
       ws.send(jsonString);
 
       // var alaramTable = document.getElementById("alarmTable");
@@ -2618,6 +2626,7 @@ function changeUrlParams(tabName) {
       // Clear the existing table data
       dataTableBody.innerHTML = "";
 
+      //loading start
       document.getElementsByClassName("overlay")[0].classList.remove("d-none");
       ws.send(jsonString);
 

@@ -136,7 +136,7 @@ table.table-bordered>tbody>tr>td {
   z-index: 2;
 }
 
-.fixTableHead thead th:after,
+/* .fixTableHead thead th:after,
 .fixTableHead thead th:before {
   content: '';
   position: absolute;
@@ -152,7 +152,7 @@ table.table-bordered>tbody>tr>td {
 .fixTableHead thead th:after {
   bottom: 0;
   border-bottom: 3px solid #737373;
-}
+} */
 
 .dot-red {
   background: red;
