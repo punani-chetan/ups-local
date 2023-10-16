@@ -126,11 +126,6 @@ function connect() {
       if (!ups_data.dataLog && !ups_data.alarmLog) {
         document.getElementsByClassName("overlay")[0].classList.add("d-none");
       }
-
-      // to refresh page in 10 sec
-      setTimeout(function () {
-        window.location = window.location;
-      }, 10000);
     }
 
     deviceId = await ups_data.dev_id;
@@ -193,8 +188,11 @@ function connect() {
 
     /*****************alarm data*****************/
     if (ups_data.DATA_NAME === "alarmlog") {
+      console.log(ups_data.alarmLog);
       if (ups_data.alarmLog.status == 0) {
         document.getElementsByClassName("overlay")[0].classList.add("d-none");
+        // document.getElementsByClassName("overlay")[0].classList.add("d-none");
+        // document.getElementsByClassName("progress")[0].classList.add("d-none");
       } else if (ups_data.alarmLog && !ups_data.alarmLog.status) {
         // Split the text into an array of alarms
         let alarmsLogData = ups_data.alarmLog.File_payload.split("@ \n");
@@ -2599,6 +2597,9 @@ function changeUrlParams(tabName) {
       alarmTableBody.innerHTML = "";
 
       document.getElementsByClassName("overlay")[0].classList.remove("d-none"); //loading start
+      // document.getElementsByClassName("progress")[0].classList.remove("d-none"); //loading start
+      // document.getElementsByClassName("spinner")[0].classList.add("d-none"); //loading start
+
       ws.send(jsonString);
 
       // var alaramTable = document.getElementById("alarmTable");
@@ -2628,6 +2629,8 @@ function changeUrlParams(tabName) {
 
       //loading start
       document.getElementsByClassName("overlay")[0].classList.remove("d-none");
+      // document.getElementsByClassName("progress")[0].classList.add("d-none"); //loading start
+      // document.getElementsByClassName("spinner")[0].classList.remove("d-none"); //loading start
       ws.send(jsonString);
 
       // var dataTable = document.getElementById("dataLogTable");
@@ -2685,7 +2688,7 @@ function makeTabActive(tagNam) {
 
 $("a[href='#metering']").click(function () {
   $("html, body").animate({ scrollTop: 0 }, 800);
-  return false;
+  // return false;
 });
 $("a[href='#alarmlog']").click(function () {
   $("html, body").animate({ scrollTop: 0 }, 800);
