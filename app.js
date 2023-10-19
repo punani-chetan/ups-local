@@ -88,7 +88,7 @@ function connect() {
     }
   });
 
-  ws.onopen = function () {
+  ws.onopen = function (stat) {
     ws.send("Status WS Started");
     console.log("Web socket is connected");
     retryInterval = 1000;
@@ -119,15 +119,41 @@ function connect() {
     }, retryInterval);
   };
 
-  ws.onmessage = async function (evt) {
-    var ups_data = await UPS_MSG(evt.data);
 
-    if (ups_data) {
-      if (!ups_data.dataLog && !ups_data.alarmLog) {
-        document.getElementsByClassName("overlay")[0].classList.add("d-none");
+
+/***********************************/
+// Listen for the beforeunload or unload event on the window
+window.addEventListener('beforeunload', () => {
+  // Close the WebSocket connection
+  console.log('Close the WebSocket connection')
+  ws.close();
+});
+
+// You can also listen for the close event on the socket to handle it properly
+ws.addEventListener('close', (event) => {
+  if (event.wasClean) {
+    console.log(`WebSocket connection closed cleanly, code: ${event.code}, reason: ${event.reason}`);
+  } else {
+    console.error(`WebSocket connection closed unexpectedly`);
+  }
+});
+/***********************************/
+
+
+
+
+  ws.onmessage = async function (evt) {
+    if (ws.readyState !== WebSocket.CLOSED) {
+      console.log('inside before function')
+      var ups_data = await UPS_MSG(evt.data);
+
+      // console.log(ups_data)
+      if (ups_data) {
+        if (!ups_data.dataLog && !ups_data.alarmLog) {
+          document.getElementsByClassName("overlay")[0].classList.add("d-none");
+        }
       }
     }
-
     deviceId = await ups_data.dev_id;
 
     if (!isFirstTimeLoad) {
@@ -188,7 +214,7 @@ function connect() {
 
     /*****************alarm data*****************/
     if (ups_data.DATA_NAME === "alarmlog") {
-      console.log(ups_data.alarmLog);
+      // console.log(ups_data.alarmLog);
       if (ups_data.alarmLog.status == 0) {
         document.getElementsByClassName("overlay")[0].classList.add("d-none");
         // document.getElementsByClassName("overlay")[0].classList.add("d-none");
