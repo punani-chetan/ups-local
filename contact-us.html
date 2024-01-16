@@ -7,17 +7,731 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UPS</title>
 
-  <link href="asset/bootstrap-5.3.1/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <!-- Option 1: Include in HTML -->
-  <link rel="stylesheet" href="asset/bootstrap-icons-1.10.5/font/bootstrap-icons.min.css" />
-  <script type="text/JavaScript" src="asset/js/momentjs.com_downloads_moment.min.js"></script>
 
-  <style type="">
-    iframe {
-      width: 100%;
-      border: none;
+  <style>
+    /* ***************** bootstrap css ************************ */
+    :root {
+      --bs-blue: #0d6efd;
+      --bs-indigo: #6610f2;
+      --bs-purple: #6f42c1;
+      --bs-pink: #d63384;
+      --bs-red: #dc3545;
+      --bs-orange: #fd7e14;
+      --bs-yellow: #ffc107;
+      --bs-green: #198754;
+      --bs-teal: #20c997;
+      --bs-cyan: #0dcaf0;
+      --bs-black: #000;
+      --bs-white: #fff;
+      --bs-gray: #6c757d;
+      --bs-gray-dark: #343a40;
+      --bs-gray-100: #f8f9fa;
+      --bs-gray-200: #e9ecef;
+      --bs-gray-300: #dee2e6;
+      --bs-gray-400: #ced4da;
+      --bs-gray-500: #adb5bd;
+      --bs-gray-600: #6c757d;
+      --bs-gray-700: #495057;
+      --bs-gray-800: #343a40;
+      --bs-gray-900: #212529;
+      --bs-primary: #0d6efd;
+      --bs-secondary: #6c757d;
+      --bs-success: #198754;
+      --bs-info: #0dcaf0;
+      --bs-warning: #ffc107;
+      --bs-danger: #dc3545;
+      --bs-light: #f8f9fa;
+      --bs-dark: #212529;
+      --bs-primary-rgb: 13, 110, 253;
+      --bs-secondary-rgb: 108, 117, 125;
+      --bs-success-rgb: 25, 135, 84;
+      --bs-info-rgb: 13, 202, 240;
+      --bs-warning-rgb: 255, 193, 7;
+      --bs-danger-rgb: 220, 53, 69;
+      --bs-light-rgb: 248, 249, 250;
+      --bs-dark-rgb: 33, 37, 41;
+      --bs-white-rgb: 255, 255, 255;
+      --bs-black-rgb: 0, 0, 0;
+      --bs-body-color-rgb: 33, 37, 41;
+      --bs-body-bg-rgb: 255, 255, 255;
+      --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+      --bs-body-font-family: var(--bs-font-sans-serif);
+      --bs-body-font-size: 1rem;
+      --bs-body-font-weight: 400;
+      --bs-body-line-height: 1.5;
+      --bs-body-color: #212529;
+      --bs-body-bg: #fff;
+      --bs-border-width: 1px;
+      --bs-border-style: solid;
+      --bs-border-color: #dee2e6;
+      --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+      --bs-border-radius: 0.375rem;
+      --bs-border-radius-sm: 0.25rem;
+      --bs-border-radius-lg: 0.5rem;
+      --bs-border-radius-xl: 1rem;
+      --bs-border-radius-2xl: 2rem;
+      --bs-border-radius-pill: 50rem;
+      --bs-link-color: #0d6efd;
+      --bs-link-hover-color: #0a58ca;
+      --bs-code-color: #d63384;
+      --bs-highlight-bg: #fff3cd
     }
+
+    .container,
+    .container-fluid,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+      width: 100%;
+      padding-right: calc(var(--bs-gutter-x) * .5);
+      padding-left: calc(var(--bs-gutter-x) * .5);
+      margin-right: auto;
+      margin-left: auto
+    }
+
+    .h-100 {
+      height: 100% !important
+    }
+
+    .row {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: calc(-1 * var(--bs-gutter-y));
+      margin-right: calc(-.5 * var(--bs-gutter-x));
+      margin-left: calc(-.5 * var(--bs-gutter-x))
+    }
+
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0px;
+    }
+
+    .row>* {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 100%;
+      padding-right: calc(var(--bs-gutter-x) * .5);
+      padding-left: calc(var(--bs-gutter-x) * .5);
+      margin-top: var(--bs-gutter-y)
+    }
+
+    .justify-content-center {
+      justify-content: center !important
+    }
+
+    .col {
+      flex: 1 0 0%
+    }
+
+    .d-flex {
+      display: flex !important
+    }
+
+    .flex-column {
+      flex-direction: column !important
+    }
+
+    .navbar {
+      --bs-navbar-padding-x: 0;
+      --bs-navbar-padding-y: 0.5rem;
+      --bs-navbar-color: rgba(0, 0, 0, 0.55);
+      --bs-navbar-hover-color: rgba(0, 0, 0, 0.7);
+      --bs-navbar-disabled-color: rgba(0, 0, 0, 0.3);
+      --bs-navbar-active-color: rgba(0, 0, 0, 0.9);
+      --bs-navbar-brand-padding-y: 0.3125rem;
+      --bs-navbar-brand-margin-end: 1rem;
+      --bs-navbar-brand-font-size: 1.25rem;
+      --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
+      --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
+      --bs-navbar-nav-link-padding-x: 0.5rem;
+      --bs-navbar-toggler-padding-y: 0.25rem;
+      --bs-navbar-toggler-padding-x: 0.75rem;
+      --bs-navbar-toggler-font-size: 1.25rem;
+      /* --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); */
+      --bs-navbar-toggler-border-color: rgba(0, 0, 0, 0.1);
+      --bs-navbar-toggler-border-radius: 0.375rem;
+      --bs-navbar-toggler-focus-width: 0.25rem;
+      --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x)
+    }
+
+    .w-100 {
+      width: 100% !important
+    }
+
+    .mx-5 {
+      margin-right: 3rem !important;
+      margin-left: 3rem !important
+    }
+
+    .text-white {
+      --bs-text-opacity: 1;
+      color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important
+    }
+
+    .flex-row {
+      flex-direction: row !important
+    }
+
+    .align-items-center {
+      align-items: center !important
+    }
+
+    .mx-2 {
+      margin-right: .5rem !important;
+      margin-left: .5rem !important
+    }
+
+    .p-2 {
+      padding: .5rem !important
+    }
+
+    .flex-grow-1 {
+      flex-grow: 1 !important
+    }
+
+    .bg-white {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important
+    }
+
+    .mt-5 {
+      margin-top: 3rem !important
+    }
+
+    .card {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+    }
+
+    .card-body {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      padding: 1.25rem;
+    }
+
+    .card-title {
+      margin-bottom: 0.75rem;
+    }
+
+    .mx-3 {
+      margin-right: 1rem !important;
+      margin-left: 1rem !important
+    }
+
+    .bg-light {
+      background-color: #f8f9fa !important;
+    }
+
+    @media (min-width: 1200px) {
+
+      h4,
+      .h4 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .mt-3 {
+      margin-top: 1rem !important;
+    }
+
+    .px-1 {
+      padding-right: 0.25rem !important;
+      padding-left: 0.25rem !important;
+    }
+
+    .nav {
+      --bs-nav-link-padding-x: 1rem;
+      --bs-nav-link-padding-y: 0.5rem;
+      --bs-nav-link-font-weight: ;
+      --bs-nav-link-color: var(--bs-link-color);
+      --bs-nav-link-hover-color: var(--bs-link-hover-color);
+      --bs-nav-link-disabled-color: #6c757d;
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none
+    }
+
+    .nav-link {
+      display: block;
+      padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+      font-size: var(--bs-nav-link-font-size);
+      font-weight: var(--bs-nav-link-font-weight);
+      color: var(--bs-nav-link-color);
+      text-decoration: none;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .nav-link {
+        transition: none
+      }
+    }
+
+    .nav-link:focus,
+    .nav-link:hover {
+      color: var(--bs-nav-link-hover-color)
+    }
+
+    .nav-link.disabled {
+      color: var(--bs-nav-link-disabled-color);
+      pointer-events: none;
+      cursor: default
+    }
+
+    .nav-pills {
+      --bs-nav-pills-border-radius: 0.375rem;
+      --bs-nav-pills-link-active-color: #fff;
+      --bs-nav-pills-link-active-bg: #0d6efd
+    }
+
+    .nav-pills .nav-link {
+      border-radius: var(--bs-nav-pills-border-radius)
+    }
+
+    .justify-content-between {
+      justify-content: space-between !important;
+    }
+
+    .mt-4 {
+      margin-top: 1.5rem !important;
+    }
+
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: inherit;
+    }
+
+    .my-3 {
+      margin-top: 1rem !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .mx-0 {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+
+    .px-0 {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    @media (min-width: 768px) {
+      .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+      }
+    }
+
+    .col-6 {
+      flex: 0 0 auto;
+      width: 50%;
+    }
+
+    /* ***************** bootstrap css ************************ */
+  </style>
+
+  <style async>
+    /*************************** style.css************************************ */
+    .active-tab-border,
+    .inactive-tab {
+      cursor: pointer;
+      text-decoration: none
+    }
+
+    .active-tab-border,
+    .inactive-tab,
+    a:hover {
+      text-decoration: none
+    }
+
+    .Column1andHalf,
+    .empty-div {
+      float: left
+    }
+
+    body,
+    html {
+      height: 100%
+    }
+
+    a:hover {
+      color: #fff
+    }
+
+    .active-tab-border {
+      border: 1px solid #fff;
+      padding: 7px;
+      background-color: #b1000e;
+      color: #fff
+    }
+
+    .active-tab-border a {
+      color: #fff !important
+    }
+
+    .active-tab-border:hover {
+      background-color: #282828
+    }
+
+    .active-tab-border a:hover,
+    .inactive-tab a {
+      color: #fff
+    }
+
+    .inactive-tab {
+      background-color: transparent;
+      color: #333
+    }
+
+    .inactive-tab:hover {
+      background-color: #333
+    }
+
+    .main-bgcolor {
+      background-color: #f0f0f0
+    }
+
+    .nav-tabs .nav-link.active {
+      background-color: #737373;
+      color: #f0f0f0
+    }
+
+    .btn-color:hover,
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+      background-color: #b1000e;
+      color: #fff;
+    }
+
+    .nav-link,
+    .nav-link:hover,
+    .txt-dark {
+      color: #333
+    }
+
+    .nav-tabs .nav-link {
+      /* margin-bottom: -1px; */
+      /* background: 0 0; */
+      border: 1px solid transparent;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+    }
+
+    .tab-pane {
+      border-top: 4px solid #737373;
+      padding: 0
+    }
+
+    .nav-tabs {
+      margin-bottom: 0
+    }
+
+    .btn-color {
+      background-color: #c00;
+      color: #fff
+    }
+
+    .btn-color:hover {
+      color: #fff
+    }
+
+    .img-setup {
+      height: 100px;
+      width: 120px
+    }
+
+    .status-card-text-space {
+      padding-left: 5px
+    }
+
+    table.table-bordered {
+      border: 1px solid #737373;
+      margin-top: 20px
+    }
+
+    table.table-bordered>thead>tr>th {
+      border: 1px solid #fff;
+      background-color: #737373;
+      color: #fff
+    }
+
+    table.table-bordered>tbody>tr>td {
+      border: 1px solid #737373
+    }
+
+    .fixTableHead {
+      overflow-y: auto;
+      height: 467px
+    }
+
+    .blinking-green,
+    .blinking-red,
+    .blinking-yellow,
+    .dot-gray,
+    .dot-green,
+    .dot-red,
+    .dot-yellow {
+      width: 18px;
+      height: 18px;
+      border-radius: 100%
+    }
+
+    .fixTableHead thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2
+    }
+
+    .dot-red {
+      background: red
+    }
+
+    .dot-green {
+      background: green
+    }
+
+    .dot-yellow {
+      background: #ff0
+    }
+
+    .dot-gray {
+      background: #ccc9c9
+    }
+
+    .blinking-red {
+      animation: 1s infinite blink-red
+    }
+
+    @keyframes blink-red {
+
+      0%,
+      100% {
+        opacity: 0;
+        background-color: red
+      }
+
+      50% {
+        opacity: 1;
+        background-color: red
+      }
+    }
+
+    .blinking-green {
+      animation: 1s infinite blink-green
+    }
+
+    @keyframes blink-green {
+
+      0%,
+      100% {
+        opacity: 0;
+        background-color: green
+      }
+
+      50% {
+        opacity: 1;
+        background-color: green
+      }
+    }
+
+    .blinking-yellow {
+      animation: 1s infinite blink-yellow
+    }
+
+    .overlay,
+    .overlay__inner {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%
+    }
+
+    @keyframes blink-yellow {
+
+      0%,
+      100% {
+        opacity: 0;
+        background-color: #ff0
+      }
+
+      50% {
+        opacity: 1;
+        background-color: #ff0
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      background: #55505082;
+      z-index: 10
+    }
+
+    .bg-grey,
+    .title-p {
+      background-color: #f2f2f2
+    }
+
+    .overlay__inner {
+      position: absolute
+    }
+
+    .overlay__content {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%)
+    }
+
+    .spinner {
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+      border-width: 8px;
+      border-color: rgba(255, 255, 255, .05);
+      border-top-color: #0d66d0;
+      animation: 1s linear infinite spin;
+      border-radius: 100%;
+      border-style: solid
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+
+    .font-weight-bold {
+      font-weight: 700 !important
+    }
+
+    .w-80 {
+      width: 80%
+    }
+
+    .title-p {
+      padding: 12px 20px
+    }
+
+    table {
+      border-collapse: unset !important;
+      border-spacing: 0px
+    }
+
+    table td,
+    table th {
+      padding: 10px 15px;
+      font-size: 83%;
+      text-align: left;
+      line-height: 140%
+    }
+
+    table.TableStyle2 td,
+    table.TableStyle2 th {
+      border: 1px solid #ddd
+    }
+
+    table td {
+      background-color: #fff
+    }
+
+    .b-radius-0 {
+      border-radius: 0
+    }
+
+    .clear-both {
+      clear: both
+    }
+
+    .empty-div {
+      width: 50px
+    }
+
+    .status-heading {
+      margin: 0 0 6px;
+      font-size: 18px
+    }
+
+    .fs-18 {
+      font-size: 18px
+    }
+
+    .metering-card-header {
+      text-align: center;
+      font-size: 25px
+    }
+
+
+    .tab-content>.active {
+      display: block !important;
+    }
+
+    .tab-content>.tab-pane {
+      display: none;
+    }
+
+    .fade {
+      opacity: 0;
+      transition: opacity 0.15s linear;
+    }
+
+    .fade.show {
+      opacity: 1;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /*************************** style.css************************************ */
   </style>
 </head>
 
@@ -60,8 +774,6 @@
                 </div>
                 <div class="mt-3">
 
-
-
                   <nav id="navbar-example2" class="navbar navbar-light bg-light px-1">
                     <ul class="nav nav-pills">
                       <li class="nav-item">
@@ -89,15 +801,7 @@
 
                     <table class="TableStyle2 my-3" width="100%">
                       <tbody>
-                        <!-- <tr>
-                          <td colspan="2">
-                            <a title="Show on Google Map"
-                              href="https://maps.google.com/maps?hl=en&amp;q=23.0385723114,72.5128097534&amp;ll=23.0385723114,72.5128097534"
-                              target="_blank"><img
-                                src="https://maps.googleapis.com/maps/api/staticmap?center=23.0385723114%2C72.5128097534&amp;zoom=15&amp;size=894x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                alt="B-52, 5th Floor, Corporate House,, Judges Bungalow Road, Bodakdev, Ahmedabad, 380054, Gujarat, India"></a>
-                          </td>
-                        </tr> -->
+
                         <tr>
                           <th scope="row">Business Name:</th>
                           <td><strong>Hitachi Hi-Rel Power Electronics Private Limited</strong></td>
@@ -137,15 +841,7 @@
 
                     <table class="TableStyle2 my-3" width="100%">
                       <tbody>
-                        <!-- <tr>
-                          <td colspan="2">
-                            <a title="Show on Google Map"
-                              href="https://maps.google.com/maps?hl=en&amp;q=23.0378684998,72.51171875&amp;ll=23.0378684998,72.51171875"
-                              target="_blank"><img
-                                src="https://maps.googleapis.com/maps/api/staticmap?center=23.0378684998%2C72.51171875&amp;zoom=15&amp;size=894x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                alt="B-62, 6th Floor, Corporate House, Judges Bungalow Road, Bodakdev, Ahmedabad, 380054, Gujarat, India"></a>
-                          </td>
-                        </tr> -->
+
                         <tr>
                           <th width="30%">Address:</th>
                           <td width="70%">B-62, 6th Floor, Corporate House, Judges Bungalow Road, Bodakdev, Ahmedabad,
@@ -180,16 +876,6 @@
                             <div class="col-12"><strong>Sanand Works</strong></div>
                           </div>
 
-
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=22.9960975647,72.2579650879&amp;ll=22.9960975647,72.2579650879"
-                                target="_blank"><img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=22.9960975647%2C72.2579650879&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="Plot No. SM 3 &amp; 4, Sanand - II GIDC, Industrial Estate, Bol Village, Sanand - 382 110, Gujarat, India"></a>
-                            </div>
-                          </div> -->
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -216,15 +902,7 @@
                           <div class="row py-2">
                             <div class="col-12"><strong>Gandhinagar Facility</strong></div>
                           </div>
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=23.2511863708,72.6329040527&amp;ll=23.2511863708,72.6329040527"
-                                target="_blank"><img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=23.2511863708%2C72.6329040527&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="B - 14/1 &amp; 171, GIDC Electronics Zone, Sector-25, Gandhinagar - 382028"></a>
-                            </div>
-                          </div> -->
+
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -264,17 +942,6 @@
                             <div class="col-12"><strong>Mumbai</strong></div>
                           </div>
 
-
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=19.0972900391,72.8462142944&amp;ll=19.0972900391,72.8462142944"
-                                target="_blank">
-                                <img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=19.0972900391%2C72.8462142944&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="#907 &amp; 908, 9th Floor, Krushal Commercial Complex, M.G. Road, Amar Mahal, Chembur (w), Mumbai – 400 089, Maharashtra, India"></a>
-                            </div>
-                          </div> -->
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -301,15 +968,7 @@
                           <div class="row py-2">
                             <div class="col-12"><strong>Pune</strong></div>
                           </div>
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=18.574292439936,73.850972726941&amp;ll=18.574292439936,73.850972726941"
-                                target="_blank"><img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=18.574292439936%2C73.850972726941&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="Survey No. 273, Office No.5, 3rd Floor, Shreeniwas Classic, Main Baner Road, Above Union Bank, Baner, Pune - 411 045, Maharashtra, India"></a>
-                            </div>
-                          </div> -->
+
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -338,16 +997,6 @@
                             <div class="col-12"><strong>Bangalore</strong></div>
                           </div>
 
-
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=14.802057089088,75.077146100194&amp;ll=14.802057089088,75.077146100194"
-                                target="_blank"><img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=14.802057089088%2C75.077146100194&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="# 63/154, 2nd Floor, M. N. Plaza, Dr. Rajkumar Road, Rajajinagar, Bengaluru - 560 010, Karnataka, India"></a>
-                            </div>
-                          </div> -->
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -370,15 +1019,7 @@
                           <div class="row py-2">
                             <div class="col-12"><strong>Chennai</strong></div>
                           </div>
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=13.0045433044,80.2516479492&amp;ll=13.0045433044,80.2516479492"
-                                target="_blank"><img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=13.0045433044%2C80.2516479492&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="#10A &amp; 10B, 1st Floor, 25th Cross Street, Indira Nagar, Adyar, Chennai - 600 020, Tamil Nadu, India"></a>
-                            </div>
-                          </div> -->
+
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -407,16 +1048,6 @@
                             <div class="col-12"><strong>Hyderabad</strong></div>
                           </div>
 
-
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=16.425140560429,76.815961178721&amp;ll=16.425140560429,76.815961178721"
-                                target="_blank"><img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=16.425140560429%2C76.815961178721&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="Plot No. 10, Gruhalaxmi Colony, Kakaguda, Secunderabad - 500 015, Telangana, India"></a>
-                            </div>
-                          </div> -->
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -439,15 +1070,7 @@
                           <div class="row py-2">
                             <div class="col-12"><strong>Kolkata</strong></div>
                           </div>
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=22.471954507739,88.330078125&amp;ll=22.471954507739,88.330078125"
-                                target="_blank"><img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=22.471954507739%2C88.330078125&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="#902, 9th Floor, Shaila Tower,, J1/16 EP Block, Salt Lake, Sector - V, Kolkata, 700091, West Bengal, India"></a>
-                            </div>
-                          </div> -->
+
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -476,16 +1099,6 @@
                             <div class="col-12"><strong>Noida</strong></div>
                           </div>
 
-
-                          <!-- <div class="row">
-                            <div class="col-12 p-2">
-                              <a title="Show on Google Map"
-                                href="https://maps.google.com/maps?hl=en&amp;q=27.75160768755,79.396820068359&amp;ll=27.75160768755,79.396820068359"
-                                target="_blank"><img
-                                  src="https://maps.googleapis.com/maps/api/staticmap?center=27.75160768755%2C79.396820068359&amp;zoom=15&amp;size=432x200&amp;scale=1&amp;language=en&amp;region%5B0%5D=www&amp;region%5B1%5D=hitachi-hirel&amp;region%5B2%5D=com&amp;key=AIzaSyA_EokRTnoop1bUKUKDlBDdEZgvkgiZLMs&amp;maptype=roadmap"
-                                  alt="B-23, 1st Floor, Sector - 2, G.B. Nagar, Noida - 201 301, Uttar Pradesh, India"></a>
-                            </div>
-                          </div> -->
                           <div class="row">
                             <div class="col-12">
                               <table class="TableStyle2" width="100%">
@@ -514,66 +1127,6 @@
               </div>
             </div>
 
-            <!-- <div class="col-4 mt-4">
-
-              <section>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-8"
-                      style="background-color: #737373;padding: 12px 15px;border-bottom: solid 1px #fff;">
-                      <span>
-                        <a href="https://www.hitachi-hirel.com/inquiry" title="Inquiry"
-                          style="text-decoration: none; color: white;">Inquiry</a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-8"
-                      style="background-color: #737373;padding: 12px 15px;border-bottom: solid 1px #fff;">
-                      <span>
-                        <a href="https://www.hitachi-hirel.com/inquiry" title="Inquiry"
-                          style="text-decoration: none; color: white;">Inquiry</a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-8"
-                      style="background-color: #737373;padding: 12px 15px;border-bottom: solid 1px #fff;">
-                      <span>
-                        <a href="https://www.hitachi-hirel.com/inquiry" title="Inquiry"
-                          style="text-decoration: none; color: white;">Inquiry</a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-8"
-                      style="background-color: #737373;padding: 12px 15px;border-bottom: solid 1px #fff;">
-                      <span>
-                        <a href="https://www.hitachi-hirel.com/inquiry" title="Inquiry"
-                          style="text-decoration: none; color: white;">Inquiry</a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-            </div> -->
-
           </div>
         </div>
       </div>
@@ -583,7 +1136,3 @@
 </body>
 
 </html>
-
-<!-- <script type="text/javascript" src="./app.js"></script> -->
-<!-- <script type="text/javascript" src="./ups.js"></script> -->
-<script src="asset/bootstrap-5.3.1/js/bootstrap.bundle.min.js"></script>
