@@ -2816,28 +2816,32 @@
 
             if (UI_Alarm.BIT_2 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("RESERVED UI - 1");
+                // activeAlarmData.push("RESERVED UI - 1");
+                activeAlarmData.push("CHG COMM. FAIL");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (UI_Alarm.BIT_3 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("RESERVED UI - 2");
+                // activeAlarmData.push("RESERVED UI - 2");
+                activeAlarmData.push("DC-DC COMM FAIL");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (UI_Alarm.BIT_4 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("HEAR RUN MODE");
+                // activeAlarmData.push("HEAR RUN MODE");
+                activeAlarmData.push("HEAT RUN MODE");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (UI_Alarm.BIT_5 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("BATTERY MCCB OFF");
+                // activeAlarmData.push("BATTERY MCCB OFF");
+                activeAlarmData.push("BATT MCCB OFF UI");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -2851,14 +2855,16 @@
 
             if (UI_Alarm.BIT_7 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("RESERVED UI-5");
+                // activeAlarmData.push("RESERVED UI-5");
+                activeAlarmData.push("UI RES-1");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (UI_Alarm.BIT_8 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("BAT. DISCHARGING");
+                // activeAlarmData.push("BAT. DISCHARGING");
+                activeAlarmData.push("BATT DISCHARGE");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -2893,21 +2899,23 @@
 
             if (UI_Alarm.BIT_13 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("RESERVED UI - 5");
+                // activeAlarmData.push("RESERVED UI - 5");
+                activeAlarmData.push("UI RES-2");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (UI_Alarm.BIT_14 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("RESERVED UI - 6");
+                // activeAlarmData.push("RESERVED UI - 6");
+                activeAlarmData.push("MAINS HIGH TRIP");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (UI_Alarm.BIT_15 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("RESERVED UI - 7");
+                activeAlarmData.push("CHG CAN FAIL");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -2940,7 +2948,8 @@
 
             if (Rectifier_Alarm1.BIT_1 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("RECT OVER TEMP");
+                // activeAlarmData.push("RECT OVER TEMP");
+                activeAlarmData.push("RECT OT I&B T");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -3017,7 +3026,8 @@
 
             if (Rectifier_Alarm1.BIT_12 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("HI-I/P SLEW RATE");
+                // activeAlarmData.push("HI-I/P SLEW RATE");
+                activeAlarmData.push("RECT DC UNBALANCE");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -3265,7 +3275,8 @@
 
             if (Inverter_Alarm1.BIT_10 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("INV OVER TEMP");
+                // activeAlarmData.push("INV OVER TEMP");
+                activeAlarmData.push("INV OT I&B T");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -3555,7 +3566,8 @@
 
             if (Battery_Alarm1.BIT_14 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("B/B CHOKE OVER TEMP TRIP");
+                // activeAlarmData.push("B/B CHOKE OVER TEMP TRIP");
+                activeAlarmData.push("B/B CHOKE OT TRIP ");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -3588,42 +3600,48 @@
           ) {
             if (Inverter_Alarm3.BIT_0 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("R-Ph INV SSW ERROR");
+                // activeAlarmData.push("R-Ph INV SSW ERROR");
+                activeAlarmData.push("R-Ph INV SSW ERR");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (Inverter_Alarm3.BIT_1 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("Y-Ph INV SSW ERROR");
+                // activeAlarmData.push("Y-Ph INV SSW ERROR");
+                activeAlarmData.push("Y-Ph INV SSW ERR");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (Inverter_Alarm3.BIT_2 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("B-Ph INV SSW ERROR");
+                // activeAlarmData.push("B-Ph INV SSW ERROR");
+                activeAlarmData.push("B-Ph INV SSW ERR");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (Inverter_Alarm3.BIT_3 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("R-Ph ALT SSW ERROR");
+                // activeAlarmData.push("R-Ph ALT SSW ERROR");
+                activeAlarmData.push("R-Ph ALT SSW ERR");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (Inverter_Alarm3.BIT_4 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("Y-Ph ALT SSW ERROR");
+                // activeAlarmData.push("Y-Ph ALT SSW ERROR");
+                activeAlarmData.push("Y-Ph ALT SSW ERR");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
 
             if (Inverter_Alarm3.BIT_5 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("B-Ph ALT SSW ERROR");
+                // activeAlarmData.push("B-Ph ALT SSW ERROR");
+                activeAlarmData.push("B-Ph ALT SSW ERR");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -3644,7 +3662,7 @@
 
             if (Inverter_Alarm3.BIT_8 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("INV SAT TRIP -3 I & B T");
+                activeAlarmData.push("INV SAT TRIP 3 I & B T");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
@@ -3686,7 +3704,8 @@
 
             if (Inverter_Alarm3.BIT_14 === 1) {
               if (activeAlarmCnt < 24) {
-                activeAlarmData.push("HIGH ALT SLEW RATE");
+                // activeAlarmData.push("HIGH ALT SLEW RATE");
+                activeAlarmData.push("HI-ALT SLEW RATE");
                 activeAlarmCnt = activeAlarmData.length;
               }
             }
