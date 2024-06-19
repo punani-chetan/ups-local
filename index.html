@@ -2150,263 +2150,537 @@
           activeAlarmCnt = 0;
         } else {
 
-          if (isAlarmActive(UI_Alarm)) {
-            if (UI_Alarm.BIT_0 === 1 && activeAlarmCnt < 24) activeAlarmData.push("SC COMM. FAIL");
-            if (UI_Alarm.BIT_1 === 1 && activeAlarmCnt < 24) activeAlarmData.push("CHG COMM. FAIL");
-            if (UI_Alarm.BIT_2 === 1 && activeAlarmCnt < 24) activeAlarmData.push("CHG COMM. FAIL");
-            if (UI_Alarm.BIT_3 === 1 && activeAlarmCnt < 24) activeAlarmData.push("DC-DC COMM FAIL");
-            if (UI_Alarm.BIT_4 === 1 && activeAlarmCnt < 24) activeAlarmData.push("HEAT RUN MODE");
-            if (UI_Alarm.BIT_5 === 1 && activeAlarmCnt < 24) activeAlarmData.push("BATT MCCB OFF UI");
-            if (UI_Alarm.BIT_6 === 1 && activeAlarmCnt < 24) activeAlarmData.push("DC GROUND");
-            if (UI_Alarm.BIT_7 === 1 && activeAlarmCnt < 24) activeAlarmData.push("UI RES-1");
-            if (UI_Alarm.BIT_8 === 1 && activeAlarmCnt < 24) activeAlarmData.push("BATT DISCHARGE");
-            if (UI_Alarm.BIT_9 === 1 && activeAlarmCnt < 24) activeAlarmData.push("RECTIFIER FAIL");
-            if (UI_Alarm.BIT_10 === 1 && activeAlarmCnt < 24) activeAlarmData.push("BATT.LIFE DETORA");
-            if (UI_Alarm.BIT_11 === 1 && activeAlarmCnt < 24) activeAlarmData.push("CHARGER FAIL");
-            if (UI_Alarm.BIT_12 === 1 && activeAlarmCnt < 24) activeAlarmData.push("BOOST CHARGING");
-            if (UI_Alarm.BIT_13 === 1 && activeAlarmCnt < 24) activeAlarmData.push("UI RES-2");
-            if (UI_Alarm.BIT_14 === 1 && activeAlarmCnt < 24) activeAlarmData.push("MAINS HIGH TRIP");
-            if (UI_Alarm.BIT_15 === 1 && activeAlarmCnt < 24) activeAlarmData.push("CHG CAN FAIL");
+
+          if (ups_data.DATA_TYPE === 1) {
+            // single phase
+
+            if (isAlarmActive(UI_Alarm)) {
+              if (UI_Alarm.BIT_0 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("SC COMM. FAIL");
+              if (UI_Alarm.BIT_1 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 1");
+              if (UI_Alarm.BIT_2 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 2");
+              if (UI_Alarm.BIT_3 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 3");
+              if (UI_Alarm.BIT_4 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 4");
+              if (UI_Alarm.BIT_5 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 5");
+              if (UI_Alarm.BIT_6 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 6");
+              if (UI_Alarm.BIT_7 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 7");
+              if (UI_Alarm.BIT_8 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("BAT. DISCHARGING");
+              if (UI_Alarm.BIT_9 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("CHARGER FAIL");
+              if (UI_Alarm.BIT_10 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("INVERTER FAIL");
+              if (UI_Alarm.BIT_11 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 11");
+              if (UI_Alarm.BIT_12 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("MAN TRANS TO ALT");
+              if (UI_Alarm.BIT_13 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("RESERVED UI - 13");
+              if (UI_Alarm.BIT_14 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("BATT LIFE DETORA");
+              if (UI_Alarm.BIT_15 === 1 && activeAlarmCnt < 24)
+                activeAlarmData.push("COMMON ALARM");
+            }
+
+            if (isAlarmActive(Rectifier_Alarm1)) {
+              const alarms = [
+                { bit: Rectifier_Alarm1.BIT_0, message: "INPUT OV" },
+                { bit: Rectifier_Alarm1.BIT_1, message: "INPUT UV" },
+                { bit: Rectifier_Alarm1.BIT_2, message: "RECT FRC OPEN" },
+                { bit: Rectifier_Alarm1.BIT_3, message: "RECT DC HIGH" },
+                { bit: Rectifier_Alarm1.BIT_4, message: "MAIN'S FAIL" },
+                { bit: Rectifier_Alarm1.BIT_5, message: "RECT OVER TEMP" },
+                { bit: Rectifier_Alarm1.BIT_6, message: "MANUAL BOOST" },
+                { bit: Rectifier_Alarm1.BIT_7, message: "CAPACITOR FAIL" },
+                { bit: Rectifier_Alarm1.BIT_8, message: "RECT SAT TRIP" },
+                { bit: Rectifier_Alarm1.BIT_9, message: "PRE F/B FAIL" },
+                { bit: Rectifier_Alarm1.BIT_10, message: "PMI FAIL" },
+                { bit: Rectifier_Alarm1.BIT_11, message: "RECT I/P NO SYNC" },
+                { bit: Rectifier_Alarm1.BIT_12, message: "MAIN'S LOW TRIP" },
+                { bit: Rectifier_Alarm1.BIT_13, message: "MAIN'S HIGH TRIP" },
+                { bit: Rectifier_Alarm1.BIT_14, message: "CAN COMM FAIL" },
+                { bit: Rectifier_Alarm1.BIT_15, message: "MAG OT I/P" },
+              ];
+
+              alarms.forEach((alarm) => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+            if (isAlarmActive(Rectifier_Alarm2)) {
+              const alarms = [
+                { bit: Rectifier_Alarm2.BIT_0, message: "INV FRC OPEN" },
+                { bit: Rectifier_Alarm2.BIT_1, message: "INV CT F/B OPEN" },
+                { bit: Rectifier_Alarm2.BIT_2, message: "INV-V F/B OPEN" },
+                { bit: Rectifier_Alarm2.BIT_3, message: "PS FAIL" },
+                { bit: Rectifier_Alarm2.BIT_4, message: "INV HIGH DC" },
+
+                { bit: Rectifier_Alarm2.BIT_5, message: "I/P CURR FB FAIL" },
+                { bit: Rectifier_Alarm2.BIT_6, message: "OUT CURR FB FAIL" },
+                { bit: Rectifier_Alarm2.BIT_7, message: "DC FB OPEN" },
+                { bit: Rectifier_Alarm2.BIT_8, message: "OUTPUT FB OPEN" },
+
+                { bit: Rectifier_Alarm2.BIT_9, message: "MIS OFF" },
+                { bit: Rectifier_Alarm2.BIT_10, message: "MAG OT O/P" },
+                { bit: Rectifier_Alarm2.BIT_11, message: "RECT OVERLOAD" },
+                { bit: Rectifier_Alarm2.BIT_12, message: "LOW BATTERY TRIP" },
+                { bit: Rectifier_Alarm2.BIT_13, message: "INV SAT TRIP" },
+                { bit: Rectifier_Alarm2.BIT_14, message: "INPUT I-PEAK" },
+                { bit: Rectifier_Alarm2.BIT_15, message: "LOAD ON BYPASS" },
+              ];
+
+              alarms.forEach((alarm) => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+            if (isAlarmActive(Inverter_Alarm1)) {
+              const alarms = [
+                { bit: Inverter_Alarm1.BIT_0, message: "INVERTER LOW" },
+                { bit: Inverter_Alarm1.BIT_1, message: "INVERTER HIGH" },
+                { bit: Inverter_Alarm1.BIT_2, message: "ALTERNATE LOW" },
+                { bit: Inverter_Alarm1.BIT_3, message: "ALTERNATE HIGH" },
+                { bit: Inverter_Alarm1.BIT_4, message: "OUTPUT LOW" },
+                { bit: Inverter_Alarm1.BIT_5, message: "OUTPUT HIGH" },
+                { bit: Inverter_Alarm1.BIT_6, message: "INV TRIP" },
+                { bit: Inverter_Alarm1.BIT_7, message: "ALT FO" },
+                { bit: Inverter_Alarm1.BIT_8, message: "NO SYNC" },
+                { bit: Inverter_Alarm1.BIT_9, message: "OVERLOAD" },
+                { bit: Inverter_Alarm1.BIT_10, message: "OVERLOAD TRIP" }, // Changed message
+                { bit: Inverter_Alarm1.BIT_11, message: "OUTPUT CL ACT" },
+                { bit: Inverter_Alarm1.BIT_12, message: "INV OVER TEMP" },
+                { bit: Inverter_Alarm1.BIT_13, message: "INV SSW ERROR" },
+                { bit: Inverter_Alarm1.BIT_14, message: "ALT SSW ERROR" },
+                { bit: Inverter_Alarm1.BIT_15, message: "BATTERY LOW" },
+              ];
+
+              alarms.forEach((alarm) => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+            if (isAlarmActive(Inverter_Alarm2)) {
+              const alarms = [
+                { bit: Inverter_Alarm2.BIT_0, message: "RESERVED SC-64" },
+                { bit: Inverter_Alarm2.BIT_1, message: "RESERVED SC-65" },
+                { bit: Inverter_Alarm2.BIT_2, message: "RESERVED SC-66" },
+                { bit: Inverter_Alarm2.BIT_3, message: "RESERVED SC-67" },
+                { bit: Inverter_Alarm2.BIT_4, message: "RESERVED SC-68" },
+                { bit: Inverter_Alarm2.BIT_5, message: "RESERVED SC-69" },
+                { bit: Inverter_Alarm2.BIT_6, message: "RESERVED SC-70" },
+                { bit: Inverter_Alarm2.BIT_7, message: "RESERVED SC-71" },
+                { bit: Inverter_Alarm2.BIT_8, message: "RESERVED SC-72" },
+                { bit: Inverter_Alarm2.BIT_9, message: "RESERVED SC-73" },
+                { bit: Inverter_Alarm2.BIT_10, message: "RESERVED SC-74" },
+                { bit: Inverter_Alarm2.BIT_11, message: "RESERVED SC-75" },
+                { bit: Inverter_Alarm2.BIT_12, message: "RESERVED SC-76" },
+                { bit: Inverter_Alarm2.BIT_13, message: "RESERVED SC-77" },
+                { bit: Inverter_Alarm2.BIT_14, message: "RESERVED SC-78" },
+                { bit: Inverter_Alarm2.BIT_15, message: "RESERVED SC-79" },
+              ];
+
+              alarms.forEach((alarm) => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+            if (isAlarmActive(Battery_Alarm1)) {
+              const alarms = [
+                { bit: Battery_Alarm1.BIT_0, message: "RESERVED SC-80" },
+                { bit: Battery_Alarm1.BIT_1, message: "RESERVED SC-81" },
+                { bit: Battery_Alarm1.BIT_2, message: "RESERVED SC-82" },
+                { bit: Battery_Alarm1.BIT_3, message: "RESERVED SC-83" },
+                { bit: Battery_Alarm1.BIT_4, message: "RESERVED SC-84" },
+                { bit: Battery_Alarm1.BIT_5, message: "RESERVED SC-85" },
+                { bit: Battery_Alarm1.BIT_6, message: "RESERVED SC-86" },
+                { bit: Battery_Alarm1.BIT_7, message: "RESERVED SC-87" },
+                { bit: Battery_Alarm1.BIT_8, message: "RESERVED SC-88" },
+                { bit: Battery_Alarm1.BIT_9, message: "RESERVED SC-89" },
+                { bit: Battery_Alarm1.BIT_10, message: "RESERVED SC-90" },
+                { bit: Battery_Alarm1.BIT_11, message: "RESERVED SC-91" },
+                { bit: Battery_Alarm1.BIT_12, message: "RESERVED SC-92" },
+                { bit: Battery_Alarm1.BIT_13, message: "RESERVED SC-93" },
+                { bit: Battery_Alarm1.BIT_14, message: "RESERVED SC-94" },
+                { bit: Battery_Alarm1.BIT_15, message: "RESERVED SC-95" },
+              ];
+
+              alarms.forEach((alarm) => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+            if (isAlarmActive(Inverter_Alarm3)) {
+              const alarms = [
+                { bit: Inverter_Alarm3.BIT_0, message: "RESERVED SC-96" },
+                { bit: Inverter_Alarm3.BIT_1, message: "RESERVED SC-97" },
+                { bit: Inverter_Alarm3.BIT_2, message: "RESERVED SC-98" },
+                { bit: Inverter_Alarm3.BIT_3, message: "RESERVED SC-99" },
+                { bit: Inverter_Alarm3.BIT_4, message: "RESERVED SC-100" },
+                { bit: Inverter_Alarm3.BIT_5, message: "RESERVED SC-101" },
+                { bit: Inverter_Alarm3.BIT_6, message: "RESERVED SC-102" },
+                { bit: Inverter_Alarm3.BIT_7, message: "RESERVED SC-103" },
+                { bit: Inverter_Alarm3.BIT_8, message: "RESERVED SC-104" },
+                { bit: Inverter_Alarm3.BIT_9, message: "RESERVED SC-105" },
+                { bit: Inverter_Alarm3.BIT_10, message: "RESERVED SC-106" },
+                { bit: Inverter_Alarm3.BIT_11, message: "RESERVED SC-107" },
+                { bit: Inverter_Alarm3.BIT_12, message: "RESERVED SC-108" },
+                { bit: Inverter_Alarm3.BIT_13, message: "RESERVED SC-109" },
+                { bit: Inverter_Alarm3.BIT_14, message: "RESERVED SC-110" },
+                { bit: Inverter_Alarm3.BIT_15, message: "RESERVED SC-111" },
+              ];
+
+              alarms.forEach((alarm) => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+            if (isAlarmActive(Input_Alarm_0)) {
+              const alarms = [
+                { bit: Input_Alarm_0.BIT_0, message: "DIG I/P-01 SHORT" },
+                { bit: Input_Alarm_0.BIT_1, message: "DIG I/P-02 SHORT" },
+                { bit: Input_Alarm_0.BIT_2, message: "DIG I/P-03 SHORT" },
+                { bit: Input_Alarm_0.BIT_3, message: "DIG I/P-04 SHORT" },
+                { bit: Input_Alarm_0.BIT_4, message: "DIG I/P-05 SHORT" },
+                { bit: Input_Alarm_0.BIT_5, message: "DIG I/P-06 SHORT" },
+                { bit: Input_Alarm_0.BIT_6, message: "DIG I/P-07 SHORT" },
+                { bit: Input_Alarm_0.BIT_7, message: "DIG I/P-08 SHORT" },
+                { bit: Input_Alarm_0.BIT_8, message: "DIG I/P-09 SHORT" },
+                { bit: Input_Alarm_0.BIT_9, message: "DIG I/P-10 SHORT" },
+                { bit: Input_Alarm_0.BIT_10, message: "DIG I/P-11 SHORT" },
+                { bit: Input_Alarm_0.BIT_11, message: "DIG I/P-12 SHORT" },
+                { bit: Input_Alarm_0.BIT_12, message: "DIG I/P-13 SHORT" },
+                { bit: Input_Alarm_0.BIT_13, message: "DIG I/P-14 SHORT" },
+                { bit: Input_Alarm_0.BIT_14, message: "DIG I/P-15 SHORT" },
+                { bit: Input_Alarm_0.BIT_15, message: "DIG I/P-16 SHORT" },
+              ];
+
+              alarms.forEach((alarm) => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+            if (isAlarmActive(Can_Alarm1)) {
+              const alarms = [
+                { bit: Can_Alarm1.BIT_0, message: "RESERVED SC-112" },
+                { bit: Can_Alarm1.BIT_1, message: "RESERVED SC-113" },
+                { bit: Can_Alarm1.BIT_2, message: "RESERVED SC-114" },
+                { bit: Can_Alarm1.BIT_3, message: "RESERVED SC-115" },
+                { bit: Can_Alarm1.BIT_4, message: "RESERVED SC-116" },
+                { bit: Can_Alarm1.BIT_5, message: "RESERVED SC-117" },
+                { bit: Can_Alarm1.BIT_6, message: "RESERVED SC-118" },
+                { bit: Can_Alarm1.BIT_7, message: "RESERVED SC-119" },
+                { bit: Can_Alarm1.BIT_8, message: "RESERVED SC-120" },
+                { bit: Can_Alarm1.BIT_9, message: "RESERVED SC-121" },
+                { bit: Can_Alarm1.BIT_10, message: "RESERVED SC-122" },
+                { bit: Can_Alarm1.BIT_11, message: "RESERVED SC-123" },
+                { bit: Can_Alarm1.BIT_12, message: "RESERVED SC-124" },
+                { bit: Can_Alarm1.BIT_13, message: "RESERVED SC-125" },
+                { bit: Can_Alarm1.BIT_14, message: "RESERVED SC-126" },
+                { bit: Can_Alarm1.BIT_15, message: "RESERVED SC-127" },
+              ];
+
+              alarms.forEach((alarm) => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+          }
+          else {
+            // three phase
+
+
+            if (isAlarmActive(UI_Alarm)) {
+              if (UI_Alarm.BIT_0 === 1 && activeAlarmCnt < 24) activeAlarmData.push("SC COMM. FAIL");
+              if (UI_Alarm.BIT_1 === 1 && activeAlarmCnt < 24) activeAlarmData.push("CHG COMM. FAIL");
+              if (UI_Alarm.BIT_2 === 1 && activeAlarmCnt < 24) activeAlarmData.push("CHG COMM. FAIL");
+              if (UI_Alarm.BIT_3 === 1 && activeAlarmCnt < 24) activeAlarmData.push("DC-DC COMM FAIL");
+              if (UI_Alarm.BIT_4 === 1 && activeAlarmCnt < 24) activeAlarmData.push("HEAT RUN MODE");
+              if (UI_Alarm.BIT_5 === 1 && activeAlarmCnt < 24) activeAlarmData.push("BATT MCCB OFF UI");
+              if (UI_Alarm.BIT_6 === 1 && activeAlarmCnt < 24) activeAlarmData.push("DC GROUND");
+              if (UI_Alarm.BIT_7 === 1 && activeAlarmCnt < 24) activeAlarmData.push("UI RES-1");
+              if (UI_Alarm.BIT_8 === 1 && activeAlarmCnt < 24) activeAlarmData.push("BATT DISCHARGE");
+              if (UI_Alarm.BIT_9 === 1 && activeAlarmCnt < 24) activeAlarmData.push("RECTIFIER FAIL");
+              if (UI_Alarm.BIT_10 === 1 && activeAlarmCnt < 24) activeAlarmData.push("BATT.LIFE DETORA");
+              if (UI_Alarm.BIT_11 === 1 && activeAlarmCnt < 24) activeAlarmData.push("CHARGER FAIL");
+              if (UI_Alarm.BIT_12 === 1 && activeAlarmCnt < 24) activeAlarmData.push("BOOST CHARGING");
+              if (UI_Alarm.BIT_13 === 1 && activeAlarmCnt < 24) activeAlarmData.push("UI RES-2");
+              if (UI_Alarm.BIT_14 === 1 && activeAlarmCnt < 24) activeAlarmData.push("MAINS HIGH TRIP");
+              if (UI_Alarm.BIT_15 === 1 && activeAlarmCnt < 24) activeAlarmData.push("CHG CAN FAIL");
+            }
+
+            if (isAlarmActive(Rectifier_Alarm1)) {
+
+              const alarms = [
+                { bit: Rectifier_Alarm1.BIT_0, message: "RECT SAT TRIP" },
+                { bit: Rectifier_Alarm1.BIT_1, message: "RECT OT I&B T" },
+                { bit: Rectifier_Alarm1.BIT_2, message: "MAIN'S HIGH" },
+                { bit: Rectifier_Alarm1.BIT_3, message: "MAIN'S LOW" },
+                { bit: Rectifier_Alarm1.BIT_4, message: "MAIN'S HIGH TRIP" },
+                { bit: Rectifier_Alarm1.BIT_5, message: "MAIN'S LOW TRIP" },
+                { bit: Rectifier_Alarm1.BIT_6, message: "MAIN'S FAIL" },
+                { bit: Rectifier_Alarm1.BIT_7, message: "MAIN'S FREQ O TOL" },
+                { bit: Rectifier_Alarm1.BIT_8, message: "I/P PHASE REV" },
+                { bit: Rectifier_Alarm1.BIT_9, message: "SMPS FAIL" },
+                { bit: Rectifier_Alarm1.BIT_10, message: "PRE-CHARG FAIL" },
+                { bit: Rectifier_Alarm1.BIT_11, message: "RECT OVERLOAD" },
+                { bit: Rectifier_Alarm1.BIT_12, message: "RECT DC UNBALANCE" },
+                { bit: Rectifier_Alarm1.BIT_13, message: "I/P I-PEAK TRIP" },
+                { bit: Rectifier_Alarm1.BIT_14, message: "CBI OFF" },
+                { bit: Rectifier_Alarm1.BIT_15, message: "CNT POWER ON" }
+              ];
+
+              alarms.forEach(alarm => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+
+            }
+
+
+            if (isAlarmActive(Rectifier_Alarm2)) {
+              const alarms = [
+                { bit: Rectifier_Alarm1.BIT_0, message: "I/P I-LEAK I T" },
+                { bit: Rectifier_Alarm1.BIT_1, message: "BAT I-LEAK B T" },
+                { bit: Rectifier_Alarm1.BIT_2, message: "REC SAT TRP3 I T" },
+                { bit: Rectifier_Alarm1.BIT_3, message: "REC / BST SWT" },
+                { bit: Rectifier_Alarm1.BIT_4, message: "BAT TOO LOW I & B TRIP" },
+
+                { bit: Rectifier_Alarm1.BIT_5, message: "LOW DC I&B TRIP" },
+                { bit: Rectifier_Alarm1.BIT_6, message: "CHG HIGH DC B T" },
+                { bit: Rectifier_Alarm1.BIT_7, message: "REC HIGH DC I&BT" },
+                { bit: Rectifier_Alarm1.BIT_8, message: "B/B SAT TRP3 B T" },
+
+                { bit: Rectifier_Alarm1.BIT_9, message: "I/P BREAKER TRIP" },
+                { bit: Rectifier_Alarm1.BIT_10, message: "BATT BREAKER TRIP" },
+                { bit: Rectifier_Alarm1.BIT_11, message: "RECT DC LOW TRIP" },
+                { bit: Rectifier_Alarm1.BIT_12, message: "B/B FUSE FAIL" },
+                { bit: Rectifier_Alarm1.BIT_13, message: "BOOSTER ON" },
+                { bit: Rectifier_Alarm1.BIT_14, message: "CHARGER ON" },
+                { bit: Rectifier_Alarm1.BIT_15, message: "RECTIFIER ON" }
+              ];
+
+              alarms.forEach(alarm => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+
+            }
+
+            if (isAlarmActive(Inverter_Alarm1)) {
+              const alarms = [
+                { bit: Inverter_Alarm1.BIT_0, message: "INVERTER LOW" },
+                { bit: Inverter_Alarm1.BIT_1, message: "INVERTER HIGH" },
+                { bit: Inverter_Alarm1.BIT_2, message: "ALTERNATE LOW" },
+                { bit: Inverter_Alarm1.BIT_3, message: "ALTERNATE HIGH" },
+                { bit: Inverter_Alarm1.BIT_4, message: "OUTPUT LOW" },
+                { bit: Inverter_Alarm1.BIT_5, message: "OUTPUT HIGH" },
+                { bit: Inverter_Alarm1.BIT_6, message: "INV SAT TRIP" },
+                { bit: Inverter_Alarm1.BIT_7, message: "INV NOT OK" },
+                { bit: Inverter_Alarm1.BIT_8, message: "ALT NOT OK" },
+                { bit: Inverter_Alarm1.BIT_9, message: "OUT NOT OK" },
+                { bit: Inverter_Alarm1.BIT_10, message: "INV OT I&B T" }, // Changed message
+                { bit: Inverter_Alarm1.BIT_11, message: "SSW OVER TEMP" },
+                { bit: Inverter_Alarm1.BIT_12, message: "UPS OVERLOAD" },
+                { bit: Inverter_Alarm1.BIT_13, message: "OVERLOAD TRIP" },
+                { bit: Inverter_Alarm1.BIT_14, message: "INV CL ACT" },
+                { bit: Inverter_Alarm1.BIT_15, message: "ALT IS ANTICLOCK" }
+              ];
+
+              alarms.forEach(alarm => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+
+            if (isAlarmActive(Inverter_Alarm2)) {
+              const alarms = [
+                { bit: Inverter_Alarm2.BIT_0, message: "ALT FO" },
+                { bit: Inverter_Alarm2.BIT_1, message: "INV CL TRIP" },
+                { bit: Inverter_Alarm2.BIT_2, message: "ECO MODE ON" },
+                { bit: Inverter_Alarm2.BIT_3, message: "NO SYNC" },
+                { bit: Inverter_Alarm2.BIT_4, message: "DC HIGH TRIP" },
+                { bit: Inverter_Alarm2.BIT_5, message: "DC LOW TRIP" },
+                { bit: Inverter_Alarm2.BIT_6, message: "MIS OFF" },
+                { bit: Inverter_Alarm2.BIT_7, message: "MAN TRAN TO BYPASS" },
+                { bit: Inverter_Alarm2.BIT_8, message: "MBS ON" },
+                { bit: Inverter_Alarm2.BIT_9, message: "LOAD ON BYPASS" },
+                { bit: Inverter_Alarm2.BIT_10, message: "STOP COMMAND" },
+                { bit: Inverter_Alarm2.BIT_11, message: "NEG POWER TRIP" },
+                { bit: Inverter_Alarm2.BIT_12, message: "TRANSFOMER OT" },
+                { bit: Inverter_Alarm2.BIT_13, message: "TRANSFOMER OT TRIP" },
+                { bit: Inverter_Alarm2.BIT_14, message: "SYSTEM OVERLOAD" },
+                { bit: Inverter_Alarm2.BIT_15, message: "SYSTEM OL TRIP" }
+              ];
+
+              alarms.forEach(alarm => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+
+
+            if (isAlarmActive(Battery_Alarm1)) {
+              const alarms = [
+                { bit: Battery_Alarm1.BIT_0, message: "LOW BATTERY" },
+                { bit: Battery_Alarm1.BIT_1, message: "RECT /BOOST CHOKE OT" },
+                { bit: Battery_Alarm1.BIT_2, message: "LOW BATTERY TRIP" },
+                { bit: Battery_Alarm1.BIT_3, message: "BATT I-PEAK TRIP" },
+                { bit: Battery_Alarm1.BIT_4, message: "BUCK SAT TRIP" },
+                { bit: Battery_Alarm1.BIT_5, message: "BOOSTER SAT TRIP" },
+                { bit: Battery_Alarm1.BIT_6, message: "CBB OFF" },
+                { bit: Battery_Alarm1.BIT_7, message: "BUCK / BOOST OT" },
+                { bit: Battery_Alarm1.BIT_8, message: "BOOST OVER VOLT" },
+                { bit: Battery_Alarm1.BIT_9, message: "BUCK UNDER VOLT" },
+                { bit: Battery_Alarm1.BIT_10, message: "BUCK OVER VOLT" },
+                { bit: Battery_Alarm1.BIT_11, message: "MANUAL BOOST ON" },
+                { bit: Battery_Alarm1.BIT_12, message: "UPS MASTER (ONLY FOR ALARM LOG)" },
+                { bit: Battery_Alarm1.BIT_13, message: "UPS SLAVE (ONLY FOR ALARM LOG)" },
+                { bit: Battery_Alarm1.BIT_14, message: "B/B CHOKE OT TRIP" },
+                { bit: Battery_Alarm1.BIT_15, message: "RECT CHOKE OT TRIP" }
+              ];
+
+              alarms.forEach(alarm => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+
+
+
+            if (isAlarmActive(Inverter_Alarm3)) {
+              const alarms = [
+                { bit: Inverter_Alarm3.BIT_0, message: "R-Ph INV SSW ERR" },
+                { bit: Inverter_Alarm3.BIT_1, message: "Y-Ph INV SSW ERR" },
+                { bit: Inverter_Alarm3.BIT_2, message: "B-Ph INV SSW ERR" },
+                { bit: Inverter_Alarm3.BIT_3, message: "R-Ph ALT SSW ERR" },
+                { bit: Inverter_Alarm3.BIT_4, message: "Y-Ph ALT SSW ERR" },
+                { bit: Inverter_Alarm3.BIT_5, message: "B-Ph ALT SSW ERR" },
+                { bit: Inverter_Alarm3.BIT_6, message: "O/P CT FB OPEN" },
+                { bit: Inverter_Alarm3.BIT_7, message: "I/P CT FB OPEN" },
+                { bit: Inverter_Alarm3.BIT_8, message: "INV SAT TRIP 3 I & B T" },
+                { bit: Inverter_Alarm3.BIT_9, message: "BOOST UNDER VOLT" },
+                { bit: Inverter_Alarm3.BIT_10, message: "SMPS FUSE FAIL" },
+                { bit: Inverter_Alarm3.BIT_11, message: "EMERGENCY STOP" },
+                { bit: Inverter_Alarm3.BIT_12, message: "LOAD ON INVERTER (ONLY IN ECO MODE)" },
+                { bit: Inverter_Alarm3.BIT_13, message: "INV DC LOW INS" },
+                { bit: Inverter_Alarm3.BIT_14, message: "HI-ALT SLEW RATE" },
+                { bit: Inverter_Alarm3.BIT_15, message: "INV VOLT FB OPEN" }
+              ];
+
+              alarms.forEach(alarm => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+
+            if (isAlarmActive(Input_Alarm_0)) {
+              const alarms = [
+                { bit: Input_Alarm_0.BIT_0, message: "Digital Input-01 Sort" },
+                { bit: Input_Alarm_0.BIT_1, message: "Digital Input-02 Sort" },
+                { bit: Input_Alarm_0.BIT_2, message: "Digital Input-03 Sort" },
+                { bit: Input_Alarm_0.BIT_3, message: "Digital Input-04 Sort" },
+                { bit: Input_Alarm_0.BIT_4, message: "Digital Input-05 Sort" },
+                { bit: Input_Alarm_0.BIT_5, message: "Digital Input-06 Sort" },
+                { bit: Input_Alarm_0.BIT_6, message: "Digital Input-07 Sort" },
+                { bit: Input_Alarm_0.BIT_7, message: "Digital Input-08 Sort" },
+                { bit: Input_Alarm_0.BIT_8, message: "Digital Input-09 Sort" },
+                { bit: Input_Alarm_0.BIT_9, message: "Digital Input-10 Sort" },
+                { bit: Input_Alarm_0.BIT_10, message: "Digital Input-11 Sort" },
+                { bit: Input_Alarm_0.BIT_11, message: "Digital Input-12 Sort" },
+                { bit: Input_Alarm_0.BIT_12, message: "Digital Input-13 Sort" },
+                { bit: Input_Alarm_0.BIT_13, message: "Digital Input-14 Sort" },
+                { bit: Input_Alarm_0.BIT_14, message: "Digital Input-15 Sort" },
+                { bit: Input_Alarm_0.BIT_15, message: "Digital Input-16 Sort" }
+              ];
+
+              alarms.forEach(alarm => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
+
+
+
+            if (isAlarmActive(Can_Alarm1)) {
+              const alarms = [
+                { bit: Can_Alarm1.BIT_0, message: "UPS-1 CAN-A FAIL" },
+                { bit: Can_Alarm1.BIT_1, message: "UPS-2 CAN-A FAIL" },
+                { bit: Can_Alarm1.BIT_2, message: "UPS-3 CAN-A FAIL" },
+                { bit: Can_Alarm1.BIT_3, message: "UPS-4 CAN-A FAIL" },
+                { bit: Can_Alarm1.BIT_4, message: "UPS-5 CAN-A FAIL" },
+                { bit: Can_Alarm1.BIT_5, message: "UPS-6 CAN-A FAIL" },
+                { bit: Can_Alarm1.BIT_6, message: "UPS-7 CAN-A FAIL" },
+                { bit: Can_Alarm1.BIT_7, message: "UPS-8 CAN-A FAIL" },
+                { bit: Can_Alarm1.BIT_8, message: "UPS-1 SUPPLY FAIL" },
+                { bit: Can_Alarm1.BIT_9, message: "UPS-2 SUPPLY FAIL" },
+                { bit: Can_Alarm1.BIT_10, message: "UPS-3 SUPPLY FAIL" },
+                { bit: Can_Alarm1.BIT_11, message: "UPS-4 SUPPLY FAIL" },
+                { bit: Can_Alarm1.BIT_12, message: "UPS-5 SUPPLY FAIL" },
+                { bit: Can_Alarm1.BIT_13, message: "CAN-A COMM FAIL" },
+                { bit: Can_Alarm1.BIT_14, message: "MASTER CAN-B FAIL" },
+                { bit: Can_Alarm1.BIT_15, message: "SLAVE CAN-B FAIL" }
+              ];
+
+              alarms.forEach(alarm => {
+                if (alarm.bit === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(alarm.message);
+                  activeAlarmCnt = activeAlarmData.length;
+                }
+              });
+            }
           }
 
-          if (isAlarmActive(Rectifier_Alarm1)) {
-
-            const alarms = [
-              { bit: Rectifier_Alarm1.BIT_0, message: "RECT SAT TRIP" },
-              { bit: Rectifier_Alarm1.BIT_1, message: "RECT OT I&B T" },
-              { bit: Rectifier_Alarm1.BIT_2, message: "MAIN'S HIGH" },
-              { bit: Rectifier_Alarm1.BIT_3, message: "MAIN'S LOW" },
-              { bit: Rectifier_Alarm1.BIT_4, message: "MAIN'S HIGH TRIP" },
-              { bit: Rectifier_Alarm1.BIT_5, message: "MAIN'S LOW TRIP" },
-              { bit: Rectifier_Alarm1.BIT_6, message: "MAIN'S FAIL" },
-              { bit: Rectifier_Alarm1.BIT_7, message: "MAIN'S FREQ O TOL" },
-              { bit: Rectifier_Alarm1.BIT_8, message: "I/P PHASE REV" },
-              { bit: Rectifier_Alarm1.BIT_9, message: "SMPS FAIL" },
-              { bit: Rectifier_Alarm1.BIT_10, message: "PRE-CHARG FAIL" },
-              { bit: Rectifier_Alarm1.BIT_11, message: "RECT OVERLOAD" },
-              { bit: Rectifier_Alarm1.BIT_12, message: "RECT DC UNBALANCE" },
-              { bit: Rectifier_Alarm1.BIT_13, message: "I/P I-PEAK TRIP" },
-              { bit: Rectifier_Alarm1.BIT_14, message: "CBI OFF" },
-              { bit: Rectifier_Alarm1.BIT_15, message: "CNT POWER ON" }
-            ];
-
-            alarms.forEach(alarm => {
-              if (alarm.bit === 1 && activeAlarmCnt < 24) {
-                activeAlarmData.push(alarm.message);
-                activeAlarmCnt = activeAlarmData.length;
-              }
-            });
-
-          }
 
 
-          if (isAlarmActive(Rectifier_Alarm2)) {
-            const alarms = [
-              { bit: Rectifier_Alarm1.BIT_0, message: "I/P I-LEAK I T" },
-              { bit: Rectifier_Alarm1.BIT_1, message: "BAT I-LEAK B T" },
-              { bit: Rectifier_Alarm1.BIT_2, message: "REC SAT TRP3 I T" },
-              { bit: Rectifier_Alarm1.BIT_3, message: "REC / BST SWT" },
-              { bit: Rectifier_Alarm1.BIT_4, message: "BAT TOO LOW I & B TRIP" },
-
-              { bit: Rectifier_Alarm1.BIT_5, message: "LOW DC I&B TRIP" },
-              { bit: Rectifier_Alarm1.BIT_6, message: "CHG HIGH DC B T" },
-              { bit: Rectifier_Alarm1.BIT_7, message: "REC HIGH DC I&BT" },
-              { bit: Rectifier_Alarm1.BIT_8, message: "B/B SAT TRP3 B T" },
-
-              { bit: Rectifier_Alarm1.BIT_9, message: "I/P BREAKER TRIP" },
-              { bit: Rectifier_Alarm1.BIT_10, message: "BATT BREAKER TRIP" },
-              { bit: Rectifier_Alarm1.BIT_11, message: "RECT DC LOW TRIP" },
-              { bit: Rectifier_Alarm1.BIT_12, message: "B/B FUSE FAIL" },
-              { bit: Rectifier_Alarm1.BIT_13, message: "BOOSTER ON" },
-              { bit: Rectifier_Alarm1.BIT_14, message: "CHARGER ON" },
-              { bit: Rectifier_Alarm1.BIT_15, message: "RECTIFIER ON" }
-            ];
-
-            alarms.forEach(alarm => {
-              if (alarm.bit === 1 && activeAlarmCnt < 24) {
-                activeAlarmData.push(alarm.message);
-                activeAlarmCnt = activeAlarmData.length;
-              }
-            });
-
-          }
-
-          if (isAlarmActive(Inverter_Alarm1)) {
-            const alarms = [
-              { bit: Inverter_Alarm1.BIT_0, message: "INVERTER LOW" },
-              { bit: Inverter_Alarm1.BIT_1, message: "INVERTER HIGH" },
-              { bit: Inverter_Alarm1.BIT_2, message: "ALTERNATE LOW" },
-              { bit: Inverter_Alarm1.BIT_3, message: "ALTERNATE HIGH" },
-              { bit: Inverter_Alarm1.BIT_4, message: "OUTPUT LOW" },
-              { bit: Inverter_Alarm1.BIT_5, message: "OUTPUT HIGH" },
-              { bit: Inverter_Alarm1.BIT_6, message: "INV SAT TRIP" },
-              { bit: Inverter_Alarm1.BIT_7, message: "INV NOT OK" },
-              { bit: Inverter_Alarm1.BIT_8, message: "ALT NOT OK" },
-              { bit: Inverter_Alarm1.BIT_9, message: "OUT NOT OK" },
-              { bit: Inverter_Alarm1.BIT_10, message: "INV OT I&B T" }, // Changed message
-              { bit: Inverter_Alarm1.BIT_11, message: "SSW OVER TEMP" },
-              { bit: Inverter_Alarm1.BIT_12, message: "UPS OVERLOAD" },
-              { bit: Inverter_Alarm1.BIT_13, message: "OVERLOAD TRIP" },
-              { bit: Inverter_Alarm1.BIT_14, message: "INV CL ACT" },
-              { bit: Inverter_Alarm1.BIT_15, message: "ALT IS ANTICLOCK" }
-            ];
-
-            alarms.forEach(alarm => {
-              if (alarm.bit === 1 && activeAlarmCnt < 24) {
-                activeAlarmData.push(alarm.message);
-                activeAlarmCnt = activeAlarmData.length;
-              }
-            });
-          }
-
-
-          if (isAlarmActive(Inverter_Alarm2)) {
-            const alarms = [
-              { bit: Inverter_Alarm2.BIT_0, message: "ALT FO" },
-              { bit: Inverter_Alarm2.BIT_1, message: "INV CL TRIP" },
-              { bit: Inverter_Alarm2.BIT_2, message: "ECO MODE ON" },
-              { bit: Inverter_Alarm2.BIT_3, message: "NO SYNC" },
-              { bit: Inverter_Alarm2.BIT_4, message: "DC HIGH TRIP" },
-              { bit: Inverter_Alarm2.BIT_5, message: "DC LOW TRIP" },
-              { bit: Inverter_Alarm2.BIT_6, message: "MIS OFF" },
-              { bit: Inverter_Alarm2.BIT_7, message: "MAN TRAN TO BYPASS" },
-              { bit: Inverter_Alarm2.BIT_8, message: "MBS ON" },
-              { bit: Inverter_Alarm2.BIT_9, message: "LOAD ON BYPASS" },
-              { bit: Inverter_Alarm2.BIT_10, message: "STOP COMMAND" },
-              { bit: Inverter_Alarm2.BIT_11, message: "NEG POWER TRIP" },
-              { bit: Inverter_Alarm2.BIT_12, message: "TRANSFOMER OT" },
-              { bit: Inverter_Alarm2.BIT_13, message: "TRANSFOMER OT TRIP" },
-              { bit: Inverter_Alarm2.BIT_14, message: "SYSTEM OVERLOAD" },
-              { bit: Inverter_Alarm2.BIT_15, message: "SYSTEM OL TRIP" }
-            ];
-
-            alarms.forEach(alarm => {
-              if (alarm.bit === 1 && activeAlarmCnt < 24) {
-                activeAlarmData.push(alarm.message);
-                activeAlarmCnt = activeAlarmData.length;
-              }
-            });
-          }
-
-
-
-          if (isAlarmActive(Battery_Alarm1)) {
-            const alarms = [
-              { bit: Battery_Alarm1.BIT_0, message: "LOW BATTERY" },
-              { bit: Battery_Alarm1.BIT_1, message: "RECT /BOOST CHOKE OT" },
-              { bit: Battery_Alarm1.BIT_2, message: "LOW BATTERY TRIP" },
-              { bit: Battery_Alarm1.BIT_3, message: "BATT I-PEAK TRIP" },
-              { bit: Battery_Alarm1.BIT_4, message: "BUCK SAT TRIP" },
-              { bit: Battery_Alarm1.BIT_5, message: "BOOSTER SAT TRIP" },
-              { bit: Battery_Alarm1.BIT_6, message: "CBB OFF" },
-              { bit: Battery_Alarm1.BIT_7, message: "BUCK / BOOST OT" },
-              { bit: Battery_Alarm1.BIT_8, message: "BOOST OVER VOLT" },
-              { bit: Battery_Alarm1.BIT_9, message: "BUCK UNDER VOLT" },
-              { bit: Battery_Alarm1.BIT_10, message: "BUCK OVER VOLT" },
-              { bit: Battery_Alarm1.BIT_11, message: "MANUAL BOOST ON" },
-              { bit: Battery_Alarm1.BIT_12, message: "UPS MASTER (ONLY FOR ALARM LOG)" },
-              { bit: Battery_Alarm1.BIT_13, message: "UPS SLAVE (ONLY FOR ALARM LOG)" },
-              { bit: Battery_Alarm1.BIT_14, message: "B/B CHOKE OT TRIP" },
-              { bit: Battery_Alarm1.BIT_15, message: "RECT CHOKE OT TRIP" }
-            ];
-
-            alarms.forEach(alarm => {
-              if (alarm.bit === 1 && activeAlarmCnt < 24) {
-                activeAlarmData.push(alarm.message);
-                activeAlarmCnt = activeAlarmData.length;
-              }
-            });
-          }
-
-
-
-
-          if (isAlarmActive(Inverter_Alarm3)) {
-            const alarms = [
-              { bit: Inverter_Alarm3.BIT_0, message: "R-Ph INV SSW ERR" },
-              { bit: Inverter_Alarm3.BIT_1, message: "Y-Ph INV SSW ERR" },
-              { bit: Inverter_Alarm3.BIT_2, message: "B-Ph INV SSW ERR" },
-              { bit: Inverter_Alarm3.BIT_3, message: "R-Ph ALT SSW ERR" },
-              { bit: Inverter_Alarm3.BIT_4, message: "Y-Ph ALT SSW ERR" },
-              { bit: Inverter_Alarm3.BIT_5, message: "B-Ph ALT SSW ERR" },
-              { bit: Inverter_Alarm3.BIT_6, message: "O/P CT FB OPEN" },
-              { bit: Inverter_Alarm3.BIT_7, message: "I/P CT FB OPEN" },
-              { bit: Inverter_Alarm3.BIT_8, message: "INV SAT TRIP 3 I & B T" },
-              { bit: Inverter_Alarm3.BIT_9, message: "BOOST UNDER VOLT" },
-              { bit: Inverter_Alarm3.BIT_10, message: "SMPS FUSE FAIL" },
-              { bit: Inverter_Alarm3.BIT_11, message: "EMERGENCY STOP" },
-              { bit: Inverter_Alarm3.BIT_12, message: "LOAD ON INVERTER (ONLY IN ECO MODE)" },
-              { bit: Inverter_Alarm3.BIT_13, message: "INV DC LOW INS" },
-              { bit: Inverter_Alarm3.BIT_14, message: "HI-ALT SLEW RATE" },
-              { bit: Inverter_Alarm3.BIT_15, message: "INV VOLT FB OPEN" }
-            ];
-
-            alarms.forEach(alarm => {
-              if (alarm.bit === 1 && activeAlarmCnt < 24) {
-                activeAlarmData.push(alarm.message);
-                activeAlarmCnt = activeAlarmData.length;
-              }
-            });
-          }
-
-
-          if (isAlarmActive(Input_Alarm_0)) {
-            const alarms = [
-              { bit: Input_Alarm_0.BIT_0, message: "Digital Input-01 Sort" },
-              { bit: Input_Alarm_0.BIT_1, message: "Digital Input-02 Sort" },
-              { bit: Input_Alarm_0.BIT_2, message: "Digital Input-03 Sort" },
-              { bit: Input_Alarm_0.BIT_3, message: "Digital Input-04 Sort" },
-              { bit: Input_Alarm_0.BIT_4, message: "Digital Input-05 Sort" },
-              { bit: Input_Alarm_0.BIT_5, message: "Digital Input-06 Sort" },
-              { bit: Input_Alarm_0.BIT_6, message: "Digital Input-07 Sort" },
-              { bit: Input_Alarm_0.BIT_7, message: "Digital Input-08 Sort" },
-              { bit: Input_Alarm_0.BIT_8, message: "Digital Input-09 Sort" },
-              { bit: Input_Alarm_0.BIT_9, message: "Digital Input-10 Sort" },
-              { bit: Input_Alarm_0.BIT_10, message: "Digital Input-11 Sort" },
-              { bit: Input_Alarm_0.BIT_11, message: "Digital Input-12 Sort" },
-              { bit: Input_Alarm_0.BIT_12, message: "Digital Input-13 Sort" },
-              { bit: Input_Alarm_0.BIT_13, message: "Digital Input-14 Sort" },
-              { bit: Input_Alarm_0.BIT_14, message: "Digital Input-15 Sort" },
-              { bit: Input_Alarm_0.BIT_15, message: "Digital Input-16 Sort" }
-            ];
-
-            alarms.forEach(alarm => {
-              if (alarm.bit === 1 && activeAlarmCnt < 24) {
-                activeAlarmData.push(alarm.message);
-                activeAlarmCnt = activeAlarmData.length;
-              }
-            });
-          }
-
-
-
-          if (isAlarmActive(Can_Alarm1)) {
-            const alarms = [
-              { bit: Can_Alarm1.BIT_0, message: "UPS-1 CAN-A FAIL" },
-              { bit: Can_Alarm1.BIT_1, message: "UPS-2 CAN-A FAIL" },
-              { bit: Can_Alarm1.BIT_2, message: "UPS-3 CAN-A FAIL" },
-              { bit: Can_Alarm1.BIT_3, message: "UPS-4 CAN-A FAIL" },
-              { bit: Can_Alarm1.BIT_4, message: "UPS-5 CAN-A FAIL" },
-              { bit: Can_Alarm1.BIT_5, message: "UPS-6 CAN-A FAIL" },
-              { bit: Can_Alarm1.BIT_6, message: "UPS-7 CAN-A FAIL" },
-              { bit: Can_Alarm1.BIT_7, message: "UPS-8 CAN-A FAIL" },
-              { bit: Can_Alarm1.BIT_8, message: "UPS-1 SUPPLY FAIL" },
-              { bit: Can_Alarm1.BIT_9, message: "UPS-2 SUPPLY FAIL" },
-              { bit: Can_Alarm1.BIT_10, message: "UPS-3 SUPPLY FAIL" },
-              { bit: Can_Alarm1.BIT_11, message: "UPS-4 SUPPLY FAIL" },
-              { bit: Can_Alarm1.BIT_12, message: "UPS-5 SUPPLY FAIL" },
-              { bit: Can_Alarm1.BIT_13, message: "CAN-A COMM FAIL" },
-              { bit: Can_Alarm1.BIT_14, message: "MASTER CAN-B FAIL" },
-              { bit: Can_Alarm1.BIT_15, message: "SLAVE CAN-B FAIL" }
-            ];
-
-            alarms.forEach(alarm => {
-              if (alarm.bit === 1 && activeAlarmCnt < 24) {
-                activeAlarmData.push(alarm.message);
-                activeAlarmCnt = activeAlarmData.length;
-              }
-            });
-          }
 
 
 
