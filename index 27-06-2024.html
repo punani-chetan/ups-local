@@ -899,11 +899,8 @@
                                       <th scope="row"></th>
                                       <td>
                                         <div class="d-flex flex-column">
-                                          <span class="status-heading">
-                                            <!-- <b>Booster Operation(Battery
-                                              Discharging)</b> -->
-                                            <b>Battery Operation</b>
-                                          </span>
+                                          <span class="status-heading"><b>Booster Operation(Battery
+                                              Discharging)</b></span>
                                           <div class="d-flex">
                                             <div class="dot-gray" id="battery_input_css"></div>
                                             <span class="status-card-text-space" id="battery_input_css_text">
@@ -912,7 +909,7 @@
                                           </div>
                                         </div>
                                       </td>
-                                      <!-- <td>
+                                      <td>
                                         <div class="d-flex flex-column">
                                           <span class="status-heading"><b>Charger Operation (Battery Charging)</b>
                                           </span>
@@ -923,7 +920,7 @@
                                             </span>
                                           </div>
                                         </div>
-                                      </td> -->
+                                      </td>
                                       <td>
                                         <div class="d-flex flex-column">
                                           <span class="status-heading"><b>Inverter Operation</b></span>
@@ -935,21 +932,10 @@
                                           </div>
                                         </div>
                                       </td>
-                                      <td>
-                                        <div class="d-flex flex-column">
-                                          <span class="status-heading"><b>Static Switch</b></span>
-                                          <div class="d-flex">
-                                            <div class="dot-gray" id="load_bypass_input_css"></div>
-                                            <span class="status-card-text-space" id="load_bypass_input_css_text">
-                                              NA
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </td>
                                     </tr>
                                     <tr>
                                       <th scope="row"></th>
-                                      <!-- <td>
+                                      <td>
                                         <div class="d-flex flex-column">
                                           <span class="status-heading"><b>Load on Inverter</b></span>
                                           <div class="d-flex">
@@ -958,8 +944,18 @@
                                               NA </span>
                                           </div>
                                         </div>
-                                      </td> -->
-
+                                      </td>
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Load on Bypass</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="load_bypass_input_css"></div>
+                                            <span class="status-card-text-space" id="load_bypass_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
                                       <td>
                                         <div class="d-flex flex-column">
                                           <span class="status-heading"><b>Synchronization</b></span>
@@ -971,19 +967,8 @@
                                           </div>
                                         </div>
                                       </td>
-                                      <td>
-                                        <div class="d-flex flex-column">
-                                          <span class="status-heading"><b>Common Alarm Indication</b></span>
-                                          <div class="d-flex">
-                                            <div class="dot-gray" id="common_alarm_input_css"></div>
-                                            <span class="status-card-text-space" id="common_alarm_input_css_text">
-                                              NA
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </td>
                                     </tr>
-                                    <!-- <tr>
+                                    <tr>
                                       <th scope="row"></th>
                                       <td>
                                         <div class="d-flex flex-column">
@@ -1007,8 +992,18 @@
                                           </div>
                                         </div>
                                       </td>
-                                     
-                                    </tr> -->
+                                      <!-- <td>
+                                            <div class="d-flex flex-column">
+                                              <span>Main's Supply</span>
+                                              <div class="d-flex">
+                                                <div class="blinking"></div>
+                                                <span class="status-card-text-space">
+                                                  Ok (Within Limit)
+                                                </span>
+                                              </div>
+                                            </div>
+                                          </td> -->
+                                    </tr>
                                   </tbody>
                                 </table>
                               </div>
@@ -2407,29 +2402,15 @@
 
         /******************** bypass input **************************/
 
-        // if (Inverter_Alarm1.BIT_2 === 1 || Inverter_Alarm1.BIT_3 === 1) {
-        //   Bypass_Input_text = "Out of Range";
-        //   Bypass_Input_text_class = "blinking-red";
-        // } else if (Inverter_Status1.BIT_6 === 0) {
-        //   Bypass_Input_text = "Absent";
-        //   Bypass_Input_text_class = "dot-red";
-        // } else if (Inverter_Status1.BIT_6 === 1) {
-        //   Bypass_Input_text = "Within range";
-        //   Bypass_Input_text_class = "dot-green";
-        // }
-
-        if (Rectifier_Status1.BIT_10 === 1 && Rectifier_Status1.BIT_11 === 1) {
-          Bypass_Input_text = "Normal";
-          Bypass_Input_text_class = "dot-green";
-        } else if (Rectifier_Status1.BIT_10 === 0 && Rectifier_Status1.BIT_11 === 1) {
-          Bypass_Input_text = "Normal";
-          Bypass_Input_text_class = "dot-green";
-        } else if (Rectifier_Status1.BIT_10 === 1 && Rectifier_Status1.BIT_11 === 0) {
+        if (Inverter_Alarm1.BIT_2 === 1 || Inverter_Alarm1.BIT_3 === 1) {
           Bypass_Input_text = "Out of Range";
           Bypass_Input_text_class = "blinking-red";
-        } else if (Rectifier_Status1.BIT_10 === 0 && Rectifier_Status1.BIT_11 === 0) {
+        } else if (Inverter_Status1.BIT_6 === 0) {
           Bypass_Input_text = "Absent";
           Bypass_Input_text_class = "dot-red";
+        } else if (Inverter_Status1.BIT_6 === 1) {
+          Bypass_Input_text = "Within range";
+          Bypass_Input_text_class = "dot-green";
         }
 
         document
@@ -2447,30 +2428,15 @@
 
         /******************** main supply **************************/
 
-        // if (Rectifier_Alarm1.BIT_6 === 1) {
-        //   mainsupply_Input_text = "Absent";
-        //   mainsupply_Input_text_class = "dot-gray";
-        // } else if (Rectifier_Alarm1.BIT_2 === 1 || Rectifier_Alarm1.BIT_3 === 1) {
-        //   mainsupply_Input_text = "Out of Range";
-        //   mainsupply_Input_text_class = "blinking-green";
-        // } else if (Rectifier_Alarm1.BIT_6 === 0) {
-        //   mainsupply_Input_text = "Within range";
-        //   mainsupply_Input_text_class = "dot-green";
-        // }
-
-
-        if (Rectifier_Status1.BIT_9 === 1 && Rectifier_Status1.BIT_8 === 1) {
-          mainsupply_Input_text = "Normal";
-          mainsupply_Input_text_class = "dot-green";
-        } else if (Rectifier_Status1.BIT_9 === 1 && Rectifier_Status1.BIT_8 === 0) {
-          mainsupply_Input_text = "Normal";
-          mainsupply_Input_text_class = "dot-green";
-        } else if (Rectifier_Status1.BIT_9 === 0 && Rectifier_Status1.BIT_8 === 1) {
-          mainsupply_Input_text = "Out of Range";
-          mainsupply_Input_text_class = "blinking-red";
-        } else if (Rectifier_Status1.BIT_9 === 0 && Rectifier_Status1.BIT_8 === 0) {
+        if (Rectifier_Alarm1.BIT_6 === 1) {
           mainsupply_Input_text = "Absent";
-          mainsupply_Input_text_class = "dot-red";
+          mainsupply_Input_text_class = "dot-gray";
+        } else if (Rectifier_Alarm1.BIT_2 === 1 || Rectifier_Alarm1.BIT_3 === 1) {
+          mainsupply_Input_text = "Out of Range";
+          mainsupply_Input_text_class = "blinking-green";
+        } else if (Rectifier_Alarm1.BIT_6 === 0) {
+          mainsupply_Input_text = "Within range";
+          mainsupply_Input_text_class = "dot-green";
         }
 
         document
@@ -2487,29 +2453,15 @@
 
         /******************** rectifier operation **************************/
 
-        // if (Rectifier_Alarm1.BIT_0 === 1) {
-        //   rectifier_Input_text = "Trip";
-        //   rectifier_Input_text_class = "blinking-red";
-        // } else if (Rectifier_Status1.BIT_1 === 0) {
-        //   rectifier_Input_text = "OFF";
-        //   rectifier_Input_text_class = "dot-gray";
-        // } else if (Rectifier_Status1.BIT_1 === 1) {
-        //   rectifier_Input_text = "ON";
-        //   rectifier_Input_text_class = "dot-green";
-        // }
-
-        if (Rectifier_Status1.BIT_13 === 1 && Rectifier_Status1.BIT_12 === 1) {
-          rectifier_Input_text = "ON";
-          rectifier_Input_text_class = "dot-green";
-        } else if (Rectifier_Status1.BIT_13 === 1 && Rectifier_Status1.BIT_12 === 0) {
-          rectifier_Input_text = "ON";
-          rectifier_Input_text_class = "dot-green";
-        } else if (Rectifier_Status1.BIT_13 === 0 && Rectifier_Status1.BIT_12 === 1) {
+        if (Rectifier_Alarm1.BIT_0 === 1) {
           rectifier_Input_text = "Trip";
           rectifier_Input_text_class = "blinking-red";
-        } else if (Rectifier_Status1.BIT_13 === 0 && Rectifier_Status1.BIT_12 === 0) {
+        } else if (Rectifier_Status1.BIT_1 === 0) {
           rectifier_Input_text = "OFF";
-          rectifier_Input_text_class = "dot-red";
+          rectifier_Input_text_class = "dot-gray";
+        } else if (Rectifier_Status1.BIT_1 === 1) {
+          rectifier_Input_text = "ON";
+          rectifier_Input_text_class = "dot-green";
         }
 
         document
@@ -2524,37 +2476,16 @@
           rectifier_Input_text;
         /******************** rectifier operation **************************/
 
-        /******************** battery operation **************************/
-        // if (Battery_Alarm1.BIT_5 === 1) {
-        //   battery_Input_text = "Trip";
-        //   battery_Input_text_class = "blinking-red";
-        // } else if (Battery_Status1.BIT_2 === 0) {
-        //   battery_Input_text = "OFF";
-        //   battery_Input_text_class = "dot-gray";
-        // } else if (Battery_Status1.BIT_2 === 1) {
-        //   battery_Input_text = "ON";
-        //   battery_Input_text_class = "dot-red";
-        // }
-
-
-        if (Battery_Status1.BIT_10 === 1 && Battery_Status1.BIT_9 === 1 && Battery_Status1.BIT_8 === 1) {
-          battery_Input_text = "Float Charging";
-          battery_Input_text_class = "dot-green";
-        } else if (Battery_Status1.BIT_10 === 1 && Battery_Status1.BIT_9 === 1 && Battery_Status1.BIT_8 === 0) {
-          battery_Input_text = "Boost Charging";
-          battery_Input_text_class = "dot-green";
-        } else if (Battery_Status1.BIT_10 === 1 && Battery_Status1.BIT_9 === 0 && Battery_Status1.BIT_8 === 0) {
-          battery_Input_text = "Discharging";
+        /******************** booster operation **************************/
+        if (Battery_Alarm1.BIT_5 === 1) {
+          battery_Input_text = "Trip";
+          battery_Input_text_class = "blinking-red";
+        } else if (Battery_Status1.BIT_2 === 0) {
+          battery_Input_text = "OFF";
+          battery_Input_text_class = "dot-gray";
+        } else if (Battery_Status1.BIT_2 === 1) {
+          battery_Input_text = "ON";
           battery_Input_text_class = "dot-red";
-        } else if (Battery_Status1.BIT_10 === 0 && Battery_Status1.BIT_9 === 1 && Battery_Status1.BIT_8 === 1) {
-          battery_Input_text = "Buck Trip";
-          battery_Input_text_class = "blinking-red";
-        } else if (Battery_Status1.BIT_10 === 0 && Battery_Status1.BIT_9 === 0 && Battery_Status1.BIT_8 === 1) {
-          battery_Input_text = "Booster Trip";
-          battery_Input_text_class = "blinking-red";
-        } else if (Battery_Status1.BIT_10 === 0 && Battery_Status1.BIT_9 === 0 && Battery_Status1.BIT_8 === 0) {
-          battery_Input_text = "MCCB OFF";
-          battery_Input_text_class = "blinking-red";
         }
 
         document
@@ -2567,59 +2498,45 @@
           .classList.add(battery_Input_text_class);
         document.getElementById("battery_input_css_text").innerText =
           battery_Input_text;
-        /******************** battery operation **************************/
+        /******************** booster operation **************************/
 
         /******************** charger operation **************************/
-        // if (Battery_Status1.BIT_3 === 1) {
-        //   battery_charging_Input_text = "Trip";
-        //   battery_charging_Input_text_class = "blinking-red";
-        // } else if (Battery_Status1.BIT_6 === 1) {
-        //   battery_charging_Input_text = "Boost charge";
-        //   battery_charging_Input_text_class = "dot-red";
-        // } else if (Battery_Status1.BIT_5 === 1) {
-        //   battery_charging_Input_text = "Float Charge";
-        //   battery_charging_Input_text_class = "dot-green";
-        // } else if (Battery_Status1.BIT_1 === 0) {
-        //   battery_charging_Input_text = "OFF";
-        //   battery_charging_Input_text_class = "dot-gray";
-        // }
+        if (Battery_Status1.BIT_3 === 1) {
+          battery_charging_Input_text = "Trip";
+          battery_charging_Input_text_class = "blinking-red";
+        } else if (Battery_Status1.BIT_6 === 1) {
+          battery_charging_Input_text = "Boost charge";
+          battery_charging_Input_text_class = "dot-red";
+        } else if (Battery_Status1.BIT_5 === 1) {
+          battery_charging_Input_text = "Float Charge";
+          battery_charging_Input_text_class = "dot-green";
+        } else if (Battery_Status1.BIT_1 === 0) {
+          battery_charging_Input_text = "OFF";
+          battery_charging_Input_text_class = "dot-gray";
+        }
 
-        // document
-        //   .getElementById("battery_charging_input_css")
-        //   .classList.remove(
-        //     ...document.getElementById("battery_charging_input_css").classList
-        //   );
-        // document
-        //   .getElementById("battery_charging_input_css")
-        //   .classList.add(battery_charging_Input_text_class);
-        // document.getElementById("battery_charging_input_css_text").innerText =
-        //   battery_charging_Input_text;
+        document
+          .getElementById("battery_charging_input_css")
+          .classList.remove(
+            ...document.getElementById("battery_charging_input_css").classList
+          );
+        document
+          .getElementById("battery_charging_input_css")
+          .classList.add(battery_charging_Input_text_class);
+        document.getElementById("battery_charging_input_css_text").innerText =
+          battery_charging_Input_text;
         /******************** charger operation **************************/
 
         /******************** inverter operation **************************/
-        // if (Inverter_Alarm1.BIT_6 === 1) {
-        //   inverter_Input_text = "Trip";
-        //   inverter_Input_text_class = "blinking-red";
-        // } else if (Inverter_Status1.BIT_0 === 0) {
-        //   inverter_Input_text = "OFF";
-        //   inverter_Input_text_class = "dot-red";
-        // } else if (Inverter_Status1.BIT_0 === 1) {
-        //   inverter_Input_text = "ON";
-        //   inverter_Input_text_class = "dot-green";
-        // }
-
-        if (Inverter_Status1.BIT_10 === 1 && Inverter_Status1.BIT_11 === 1) {
-          inverter_Input_text = "ON + Power Flow";
-          inverter_Input_text_class = "dot-green";
-        } else if (Inverter_Status1.BIT_10 === 0 && Inverter_Status1.BIT_11 === 1) {
-          inverter_Input_text = "ON";
-          inverter_Input_text_class = "dot-green";
-        } else if (Inverter_Status1.BIT_10 === 1 && Inverter_Status1.BIT_11 === 0) {
+        if (Inverter_Alarm1.BIT_6 === 1) {
           inverter_Input_text = "Trip";
           inverter_Input_text_class = "blinking-red";
-        } else if (Inverter_Status1.BIT_10 === 0 && Inverter_Status1.BIT_11 === 0) {
+        } else if (Inverter_Status1.BIT_0 === 0) {
           inverter_Input_text = "OFF";
           inverter_Input_text_class = "dot-red";
+        } else if (Inverter_Status1.BIT_0 === 1) {
+          inverter_Input_text = "ON";
+          inverter_Input_text_class = "dot-green";
         }
 
         document
@@ -2635,44 +2552,32 @@
         /******************** inverter operation **************************/
 
         /******************** load on inverter operation **************************/
-        // if (Inverter_Status1.BIT_4 === 1) {
-        //   load_inverter_Input_text = "Inverter SSW ON";
-        //   load_inverter_Input_text_class = "dot-green";
-        // } else if (Inverter_Status1.BIT_4 === 0) {
-        //   load_inverter_Input_text = "Inverter SSW OFF";
-        //   load_inverter_Input_text_class = "dot-gray";
-        // }
+        if (Inverter_Status1.BIT_4 === 1) {
+          load_inverter_Input_text = "Inverter SSW ON";
+          load_inverter_Input_text_class = "dot-green";
+        } else if (Inverter_Status1.BIT_4 === 0) {
+          load_inverter_Input_text = "Inverter SSW OFF";
+          load_inverter_Input_text_class = "dot-gray";
+        }
 
-        // document
-        //   .getElementById("load_inverter_input_css")
-        //   .classList.remove(
-        //     ...document.getElementById("load_inverter_input_css").classList
-        //   );
-        // document
-        //   .getElementById("load_inverter_input_css")
-        //   .classList.add(load_inverter_Input_text_class);
-        // document.getElementById("load_inverter_input_css_text").innerText =
-        //   load_inverter_Input_text;
+        document
+          .getElementById("load_inverter_input_css")
+          .classList.remove(
+            ...document.getElementById("load_inverter_input_css").classList
+          );
+        document
+          .getElementById("load_inverter_input_css")
+          .classList.add(load_inverter_Input_text_class);
+        document.getElementById("load_inverter_input_css_text").innerText =
+          load_inverter_Input_text;
         /******************** load on inverter operation **************************/
 
-        /******************** Static Switch operation **************************/
-        // if (Inverter_Status1.BIT_3 === 1) {
-        //   load_bypass_Input_text = "Bypass SSW ON";
-        //   load_bypass_Input_text_class = "dot-red";
-        // } else if (Inverter_Status1.BIT_3 === 0) {
-        //   load_bypass_Input_text = "Bypass SSW OFF";
-        //   load_bypass_Input_text_class = "dot-gray";
-        // }
-
-
-        if (Inverter_Status1.BIT_13 === 1 && Inverter_Status1.BIT_12 === 0) {
-          load_bypass_Input_text = "On Inverter";
-          load_bypass_Input_text_class = "dot-green";
-        } else if (Inverter_Status1.BIT_13 === 0 && Inverter_Status1.BIT_12 === 1) {
-          load_bypass_Input_text = "On Bypass";
+        /******************** load on bypass operation **************************/
+        if (Inverter_Status1.BIT_3 === 1) {
+          load_bypass_Input_text = "Bypass SSW ON";
           load_bypass_Input_text_class = "dot-red";
-        } else if (Inverter_Status1.BIT_13 === 0 && Inverter_Status1.BIT_12 === 0) {
-          load_bypass_Input_text = "Disable";
+        } else if (Inverter_Status1.BIT_3 === 0) {
+          load_bypass_Input_text = "Bypass SSW OFF";
           load_bypass_Input_text_class = "dot-gray";
         }
 
@@ -2686,7 +2591,7 @@
           .classList.add(load_bypass_Input_text_class);
         document.getElementById("load_bypass_input_css_text").innerText =
           load_bypass_Input_text;
-        /******************** Static Switch  operation **************************/
+        /******************** load on bypass operation **************************/
 
         /******************** synchronization **************************/
         if (Inverter_Status1.BIT_8 === 1) {
@@ -2710,24 +2615,24 @@
         /******************** synchronization **************************/
 
         /******************** battery mccb status  **************************/
-        // if (UI_Alarm.BIT_5 === 1) {
-        //   battery_mccb_Input_text = "Battery MCCB is OFF";
-        //   battery_mccb_Input_text_class = "blinking-red";
-        // } else if (UI_Alarm.BIT_5 === 0) {
-        //   battery_mccb_Input_text = "Battery MCCB is ON";
-        //   battery_mccb_Input_text_class = "dot-green";
-        // }
+        if (UI_Alarm.BIT_5 === 1) {
+          battery_mccb_Input_text = "Battery MCCB is OFF";
+          battery_mccb_Input_text_class = "blinking-red";
+        } else if (UI_Alarm.BIT_5 === 0) {
+          battery_mccb_Input_text = "Battery MCCB is ON";
+          battery_mccb_Input_text_class = "dot-green";
+        }
 
-        // document
-        //   .getElementById("battery_mccb_input_css")
-        //   .classList.remove(
-        //     ...document.getElementById("battery_mccb_input_css").classList
-        //   );
-        // document
-        //   .getElementById("battery_mccb_input_css")
-        //   .classList.add(battery_mccb_Input_text_class);
-        // document.getElementById("battery_mccb_input_css_text").innerText =
-        //   battery_mccb_Input_text;
+        document
+          .getElementById("battery_mccb_input_css")
+          .classList.remove(
+            ...document.getElementById("battery_mccb_input_css").classList
+          );
+        document
+          .getElementById("battery_mccb_input_css")
+          .classList.add(battery_mccb_Input_text_class);
+        document.getElementById("battery_mccb_input_css_text").innerText =
+          battery_mccb_Input_text;
         /******************** battery mccb status **************************/
 
         /******************** common alarm indication  **************************/
