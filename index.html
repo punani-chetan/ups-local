@@ -2156,120 +2156,120 @@
         } else {
 
 
-          if (ups_data.DATA_TYPE === 1) {
-            // single phase
+          // if (ups_data.DATA_TYPE === 1) {
+          //   // single phase
 
-            // ---------------------ui_alarm
-            if (isAlarmActive(UI_Alarm)) {
-              const uiAlarms = [
-                "SC COMM. FAIL", "RESERVED UI - 1", "RESERVED UI - 2", "RESERVED UI - 3",
-                "RESERVED UI - 4", "RESERVED UI - 5", "RESERVED UI - 6", "RESERVED UI - 7",
-                "BAT. DISCHARGING", "CHARGER FAIL", "INVERTER FAIL", "RESERVED UI - 11",
-                "MAN TRANS TO ALT", "RESERVED UI - 13", "BATT LIFE DETORA", "COMMON ALARM"
-              ];
+          //   // ---------------------ui_alarm
+          //   if (isAlarmActive(UI_Alarm)) {
+          //     const uiAlarms = [
+          //       "SC COMM. FAIL", "RESERVED UI - 1", "RESERVED UI - 2", "RESERVED UI - 3",
+          //       "RESERVED UI - 4", "RESERVED UI - 5", "RESERVED UI - 6", "RESERVED UI - 7",
+          //       "BAT. DISCHARGING", "CHARGER FAIL", "INVERTER FAIL", "RESERVED UI - 11",
+          //       "MAN TRANS TO ALT", "RESERVED UI - 13", "BATT LIFE DETORA", "COMMON ALARM"
+          //     ];
 
-              handleAlarms(UI_Alarm, uiAlarms);
-            }
+          //     handleAlarms(UI_Alarm, uiAlarms);
+          //   }
 
-            // ---------------------------rectifier alarm1
-            if (isAlarmActive(Rectifier_Alarm1)) {
-              const rectifierAlarms = [
-                "INPUT OV", "INPUT UV", "RECT FRC OPEN", "RECT DC HIGH", "MAIN'S FAIL",
-                "RECT OVER TEMP", "MANUAL BOOST", "CAPACITOR FAIL", "RECT SAT TRIP",
-                "PRE F/B FAIL", "PMI FAIL", "RECT I/P NO SYNC", "MAIN'S LOW TRIP",
-                "MAIN'S HIGH TRIP", "CAN COMM FAIL", "MAG OT I/P"
-              ];
+          //   // ---------------------------rectifier alarm1
+          //   if (isAlarmActive(Rectifier_Alarm1)) {
+          //     const rectifierAlarms = [
+          //       "INPUT OV", "INPUT UV", "RECT FRC OPEN", "RECT DC HIGH", "MAIN'S FAIL",
+          //       "RECT OVER TEMP", "MANUAL BOOST", "CAPACITOR FAIL", "RECT SAT TRIP",
+          //       "PRE F/B FAIL", "PMI FAIL", "RECT I/P NO SYNC", "MAIN'S LOW TRIP",
+          //       "MAIN'S HIGH TRIP", "CAN COMM FAIL", "MAG OT I/P"
+          //     ];
 
-              handleAlarms(Rectifier_Alarm1, rectifierAlarms);
-            }
+          //     handleAlarms(Rectifier_Alarm1, rectifierAlarms);
+          //   }
 
-            if (isAlarmActive(Rectifier_Alarm2)) {
-              const rectifierAlarms2 = [
-                "INV FRC OPEN", "INV CT F/B OPEN", "INV-V F/B OPEN", "PS FAIL", "INV HIGH DC",
-                "I/P CURR FB FAIL", "OUT CURR FB FAIL", "DC FB OPEN", "OUTPUT FB OPEN",
-                "MIS OFF", "MAG OT O/P", "RECT OVERLOAD", "LOW BATTERY TRIP", "INV SAT TRIP",
-                "INPUT I-PEAK", "LOAD ON BYPASS"
-              ];
+          //   if (isAlarmActive(Rectifier_Alarm2)) {
+          //     const rectifierAlarms2 = [
+          //       "INV FRC OPEN", "INV CT F/B OPEN", "INV-V F/B OPEN", "PS FAIL", "INV HIGH DC",
+          //       "I/P CURR FB FAIL", "OUT CURR FB FAIL", "DC FB OPEN", "OUTPUT FB OPEN",
+          //       "MIS OFF", "MAG OT O/P", "RECT OVERLOAD", "LOW BATTERY TRIP", "INV SAT TRIP",
+          //       "INPUT I-PEAK", "LOAD ON BYPASS"
+          //     ];
 
-              handleAlarms(Rectifier_Alarm2, rectifierAlarms2);
-            }
-
-
-            if (isAlarmActive(Inverter_Alarm1)) {
-              const inverterAlarms1 = [
-                "INVERTER LOW", "INVERTER HIGH", "ALTERNATE LOW", "ALTERNATE HIGH", "OUTPUT LOW",
-                "OUTPUT HIGH", "INV TRIP", "ALT FO", "NO SYNC", "OVERLOAD", "OVERLOAD TRIP",
-                "OUTPUT CL ACT", "INV OVER TEMP", "INV SSW ERROR", "ALT SSW ERROR", "BATTERY LOW"
-              ];
-
-              handleAlarms(Inverter_Alarm1, inverterAlarms1);
-            }
+          //     handleAlarms(Rectifier_Alarm2, rectifierAlarms2);
+          //   }
 
 
-            if (isAlarmActive(Inverter_Alarm2)) {
-              const inverterAlarms2 = [
-                "RESERVED SC-64", "RESERVED SC-65", "RESERVED SC-66", "RESERVED SC-67",
-                "RESERVED SC-68", "RESERVED SC-69", "RESERVED SC-70", "RESERVED SC-71",
-                "RESERVED SC-72", "RESERVED SC-73", "RESERVED SC-74", "RESERVED SC-75",
-                "RESERVED SC-76", "RESERVED SC-77", "RESERVED SC-78", "RESERVED SC-79"
-              ];
+          //   if (isAlarmActive(Inverter_Alarm1)) {
+          //     const inverterAlarms1 = [
+          //       "INVERTER LOW", "INVERTER HIGH", "ALTERNATE LOW", "ALTERNATE HIGH", "OUTPUT LOW",
+          //       "OUTPUT HIGH", "INV TRIP", "ALT FO", "NO SYNC", "OVERLOAD", "OVERLOAD TRIP",
+          //       "OUTPUT CL ACT", "INV OVER TEMP", "INV SSW ERROR", "ALT SSW ERROR", "BATTERY LOW"
+          //     ];
 
-              handleAlarms(Inverter_Alarm2, inverterAlarms2);
-            }
+          //     handleAlarms(Inverter_Alarm1, inverterAlarms1);
+          //   }
 
 
-            if (isAlarmActive(Battery_Alarm1)) {
-              const batteryAlarms1 = [
-                "RESERVED SC-80", "RESERVED SC-81", "RESERVED SC-82", "RESERVED SC-83",
-                "RESERVED SC-84", "RESERVED SC-85", "RESERVED SC-86", "RESERVED SC-87",
-                "RESERVED SC-88", "RESERVED SC-89", "RESERVED SC-90", "RESERVED SC-91",
-                "RESERVED SC-92", "RESERVED SC-93", "RESERVED SC-94", "RESERVED SC-95"
-              ];
+          //   if (isAlarmActive(Inverter_Alarm2)) {
+          //     const inverterAlarms2 = [
+          //       "RESERVED SC-64", "RESERVED SC-65", "RESERVED SC-66", "RESERVED SC-67",
+          //       "RESERVED SC-68", "RESERVED SC-69", "RESERVED SC-70", "RESERVED SC-71",
+          //       "RESERVED SC-72", "RESERVED SC-73", "RESERVED SC-74", "RESERVED SC-75",
+          //       "RESERVED SC-76", "RESERVED SC-77", "RESERVED SC-78", "RESERVED SC-79"
+          //     ];
 
-              handleAlarms(Battery_Alarm1, batteryAlarms1);
-            }
+          //     handleAlarms(Inverter_Alarm2, inverterAlarms2);
+          //   }
 
-            if (isAlarmActive(Inverter_Alarm3)) {
-              const inverterAlarms3 = [
-                "RESERVED SC-96", "RESERVED SC-97", "RESERVED SC-98", "RESERVED SC-99",
-                "RESERVED SC-100", "RESERVED SC-101", "RESERVED SC-102", "RESERVED SC-103",
-                "RESERVED SC-104", "RESERVED SC-105", "RESERVED SC-106", "RESERVED SC-107",
-                "RESERVED SC-108", "RESERVED SC-109", "RESERVED SC-110", "RESERVED SC-111"
-              ];
-              handleAlarms(Inverter_Alarm3, inverterAlarms3);
-            }
 
-            if (isAlarmActive(Input_Alarm_0)) {
-              const inputAlarms0 = [
-                "DIG I/P-01 SHORT", "DIG I/P-02 SHORT", "DIG I/P-03 SHORT", "DIG I/P-04 SHORT",
-                "DIG I/P-05 SHORT", "DIG I/P-06 SHORT", "DIG I/P-07 SHORT", "DIG I/P-08 SHORT",
-                "DIG I/P-09 SHORT", "DIG I/P-10 SHORT", "DIG I/P-11 SHORT", "DIG I/P-12 SHORT",
-                "DIG I/P-13 SHORT", "DIG I/P-14 SHORT", "DIG I/P-15 SHORT", "DIG I/P-16 SHORT"
-              ];
-              handleAlarms(Input_Alarm_0, inputAlarms0);
-            }
+          //   if (isAlarmActive(Battery_Alarm1)) {
+          //     const batteryAlarms1 = [
+          //       "RESERVED SC-80", "RESERVED SC-81", "RESERVED SC-82", "RESERVED SC-83",
+          //       "RESERVED SC-84", "RESERVED SC-85", "RESERVED SC-86", "RESERVED SC-87",
+          //       "RESERVED SC-88", "RESERVED SC-89", "RESERVED SC-90", "RESERVED SC-91",
+          //       "RESERVED SC-92", "RESERVED SC-93", "RESERVED SC-94", "RESERVED SC-95"
+          //     ];
 
-            if (isAlarmActive(Can_Alarm1)) {
-              const canAlarms1 = [
-                "RESERVED SC-112", "RESERVED SC-113", "RESERVED SC-114", "RESERVED SC-115",
-                "RESERVED SC-116", "RESERVED SC-117", "RESERVED SC-118", "RESERVED SC-119",
-                "RESERVED SC-120", "RESERVED SC-121", "RESERVED SC-122", "RESERVED SC-123",
-                "RESERVED SC-124", "RESERVED SC-125", "RESERVED SC-126", "RESERVED SC-127"
-              ];
-              handleAlarms(Can_Alarm1, canAlarms1);
-            }
+          //     handleAlarms(Battery_Alarm1, batteryAlarms1);
+          //   }
 
-            const handleAlarms = (alarmObject, alarmMessages) => {
-              alarmMessages.forEach((message, index) => {
-                if (alarmObject[`BIT_${index}`] === 1 && activeAlarmCnt < 24) {
-                  activeAlarmData.push(message);
-                  activeAlarmCnt++;
-                }
-              });
-            };
+          //   if (isAlarmActive(Inverter_Alarm3)) {
+          //     const inverterAlarms3 = [
+          //       "RESERVED SC-96", "RESERVED SC-97", "RESERVED SC-98", "RESERVED SC-99",
+          //       "RESERVED SC-100", "RESERVED SC-101", "RESERVED SC-102", "RESERVED SC-103",
+          //       "RESERVED SC-104", "RESERVED SC-105", "RESERVED SC-106", "RESERVED SC-107",
+          //       "RESERVED SC-108", "RESERVED SC-109", "RESERVED SC-110", "RESERVED SC-111"
+          //     ];
+          //     handleAlarms(Inverter_Alarm3, inverterAlarms3);
+          //   }
 
-          }
-          else {
+          //   if (isAlarmActive(Input_Alarm_0)) {
+          //     const inputAlarms0 = [
+          //       "DIG I/P-01 SHORT", "DIG I/P-02 SHORT", "DIG I/P-03 SHORT", "DIG I/P-04 SHORT",
+          //       "DIG I/P-05 SHORT", "DIG I/P-06 SHORT", "DIG I/P-07 SHORT", "DIG I/P-08 SHORT",
+          //       "DIG I/P-09 SHORT", "DIG I/P-10 SHORT", "DIG I/P-11 SHORT", "DIG I/P-12 SHORT",
+          //       "DIG I/P-13 SHORT", "DIG I/P-14 SHORT", "DIG I/P-15 SHORT", "DIG I/P-16 SHORT"
+          //     ];
+          //     handleAlarms(Input_Alarm_0, inputAlarms0);
+          //   }
+
+          //   if (isAlarmActive(Can_Alarm1)) {
+          //     const canAlarms1 = [
+          //       "RESERVED SC-112", "RESERVED SC-113", "RESERVED SC-114", "RESERVED SC-115",
+          //       "RESERVED SC-116", "RESERVED SC-117", "RESERVED SC-118", "RESERVED SC-119",
+          //       "RESERVED SC-120", "RESERVED SC-121", "RESERVED SC-122", "RESERVED SC-123",
+          //       "RESERVED SC-124", "RESERVED SC-125", "RESERVED SC-126", "RESERVED SC-127"
+          //     ];
+          //     handleAlarms(Can_Alarm1, canAlarms1);
+          //   }
+
+          //   const handleAlarms = (alarmObject, alarmMessages) => {
+          //     alarmMessages.forEach((message, index) => {
+          //       if (alarmObject[`BIT_${index}`] === 1 && activeAlarmCnt < 24) {
+          //         activeAlarmData.push(message);
+          //         activeAlarmCnt++;
+          //       }
+          //     });
+          //   };
+
+          // }
+          // else {
             // three phase
 
             const handleAlarms = (alarmObject, alarmMessages) => {
@@ -2284,10 +2284,10 @@
 
             if (isAlarmActive(UI_Alarm)) {
               const uiAlarmsThreePhase = [
-                "SC COMM. FAIL", "CHG COMM. FAIL", "CHG COMM. FAIL", "DC-DC COMM FAIL",
-                "HEAT RUN MODE", "BATT MCCB OFF UI", "DC GROUND", "UI RES-1",
-                "BATT DISCHARGE", "RECTIFIER FAIL", "BATT.LIFE DETORA", "CHARGER FAIL",
-                "BOOST CHARGING", "UI RES-2", "MAINS HIGH TRIP", "CHG CAN FAIL"
+                "SC COMM. FAIL", "CHG COMM. FAIL", "RESERVED UI-2", "DC-DC COMM FAIL",
+                "HEAT RUN MODE", "BATT MCCB OFF UI", "DC GROUND", "INV FRQ ABNORMAL",
+                "BAT. DISCHARGING", "RECTIFIER FAIL", "BAT. LIFE DETORAT", "CHARGER FAIL",
+                "RESERVED - 12", "RESERVED - 13", "INVERTER FAIL", "RESERVED - 15"
               ];
               handleAlarms(UI_Alarm, uiAlarmsThreePhase);
             }
@@ -2305,19 +2305,19 @@
 
             if (isAlarmActive(Rectifier_Alarm2)) {
               const rectifierAlarms2 = [
-                "I/P I-LEAK I T", "BAT I-LEAK B T", "REC SAT TRP3 I T", "REC / BST SWT", "BAT TOO LOW I & B TRIP",
-                "LOW DC I&B TRIP", "CHG HIGH DC B T", "REC HIGH DC I&BT", "B/B SAT TRP3 B T", "I/P BREAKER TRIP",
-                "BATT BREAKER TRIP", "RECT DC LOW TRIP", "B/B FUSE FAIL", "BOOSTER ON", "CHARGER ON",
-                "RECTIFIER ON"
+                "I/P I-LEAK I T", "BAT I-LEAK B T", "REC SAT TRP3 I T", "REC / BST SWT", "BAT TOO LOW I & B T",
+                "LOW DC I&B T", "CHG HIGH DC B T", "REC HIGH DC I&B T", "B/B SAT TRP3 B T", "I/P BREAKER TRIP",
+                "BAT BREAKER TRIP", "RECT DC LOW TRIP", "BAT FUSE FAIL", "INV SSW ERROR", "ALT SSW ERROR",
+                "PMI FAIL"
               ];
               handleAlarms(Rectifier_Alarm2, rectifierAlarms2);
             }
 
             if (isAlarmActive(Inverter_Alarm1)) {
               const inverterAlarms1 = [
-                "INVERTER LOW", "INVERTER HIGH", "ALTERNATE LOW", "ALTERNATE HIGH", "OUTPUT LOW",
-                "OUTPUT HIGH", "INV SAT TRIP", "INV NOT OK", "ALT NOT OK", "OUT NOT OK",
-                "INV OT I&B T", "SSW OVER TEMP", "UPS OVERLOAD", "OVERLOAD TRIP", "INV CL ACT",
+                "INV LOW", "INV HIGH", "ALT LOW", "ALT HIGH", "OUT LOW",
+                "OUT HIGH", "INV SAT TRIP", "INV NOT OK", "ALT NOT OK", "OUT NOT OK",
+                "INV OT I&B T", "SSW OT", "UPS OVERLOAD", "OVERLOAD TRIP", "INV CL ACT",
                 "ALT IS ANTICLOCK"
               ];
               handleAlarms(Inverter_Alarm1, inverterAlarms1);
@@ -2328,8 +2328,8 @@
             if (isAlarmActive(Inverter_Alarm2)) {
               const alarms = [
                 "ALT FO", "INV CL TRIP", "ECO MODE ON", "NO SYNC", "DC HIGH TRIP", "DC LOW TRIP",
-                "MIS OFF", "MAN TRAN TO BYPASS", "MBS ON", "LOAD ON BYPASS", "STOP COMMAND",
-                "NEG POWER TRIP", "TRANSFOMER OT", "TRANSFOMER OT TRIP", "SYSTEM OVERLOAD", "SYSTEM OL TRIP"
+                "MIS OFF", "MAN TRAN TO ALT", "MBS ON", "LOAD ON ALT", "STOP COMMAND",
+                "NEG POWER TRIP", "OUT MAG. OT", "OUT MAG. OT TRIP", "SYS OVERLOAD", "SYS OVERLOAD TRIP"
               ];
 
               handleAlarms(Inverter_Alarm2, alarms);
@@ -2338,10 +2338,10 @@
 
             if (isAlarmActive(Battery_Alarm1)) {
               const alarms = [
-                "LOW BATTERY", "RECT /BOOST CHOKE OT", "LOW BATTERY TRIP", "BATT I-PEAK TRIP", "BUCK SAT TRIP",
-                "BOOSTER SAT TRIP", "CBB OFF", "BUCK / BOOST OT", "BOOST OVER VOLT", "BUCK UNDER VOLT",
-                "BUCK OVER VOLT", "MANUAL BOOST ON", "UPS MASTER (ONLY FOR ALARM LOG)", "UPS SLAVE (ONLY FOR ALARM LOG)",
-                "B/B CHOKE OT TRIP", "RECT CHOKE OT TRIP"
+                "LOW BATTERY", "RECT /BOOST CHOKE OT", "LOW BATTERY TRIP", "BAT I-PEAK TRIP", "BUCK SAT TRIP",
+                "BOOSTER SAT TRIP", "CBB OFF", "BUCK / BOOSTER OT", "BOOSTER HIGH", "BUCK LOW",
+                "BUCK HIGH", "MANUAL BOOST ON", "RESERVED - 92", "RESERVED - 93",
+                "B/B MAG. OT TRIP", "RECT MAG. OT TRIP"
               ];
 
               handleAlarms(Battery_Alarm1, alarms);
@@ -2351,8 +2351,8 @@
             if (isAlarmActive(Inverter_Alarm3)) {
               const alarms = [
                 "R-Ph INV SSW ERR", "Y-Ph INV SSW ERR", "B-Ph INV SSW ERR", "R-Ph ALT SSW ERR", "Y-Ph ALT SSW ERR",
-                "B-Ph ALT SSW ERR", "O/P CT FB OPEN", "I/P CT FB OPEN", "INV SAT TRIP 3 I & B T", "BOOST UNDER VOLT",
-                "SMPS FUSE FAIL", "EMERGENCY STOP", "LOAD ON INVERTER (ONLY IN ECO MODE)", "INV DC LOW INS", "HI-ALT SLEW RATE",
+                "B-Ph ALT SSW ERR", "O/P CT FB OPEN", "I/P CT FB OPEN", "INV SAT TRIP 3 I & B T", "BOOSTER LOW",
+                "SMPS FUSE FAIL", "EMERGENCY STOP", "LOAD ON INV", "INV DC LOW INS", "HI-ALT SLEW RATE",
                 "INV VOLT FB OPEN"
               ];
 
@@ -2362,10 +2362,10 @@
 
             if (isAlarmActive(Input_Alarm_0)) {
               const alarms = [
-                "Digital Input-01 Sort", "Digital Input-02 Sort", "Digital Input-03 Sort", "Digital Input-04 Sort",
-                "Digital Input-05 Sort", "Digital Input-06 Sort", "Digital Input-07 Sort", "Digital Input-08 Sort",
-                "Digital Input-09 Sort", "Digital Input-10 Sort", "Digital Input-11 Sort", "Digital Input-12 Sort",
-                "Digital Input-13 Sort", "Digital Input-14 Sort", "Digital Input-15 Sort", "Digital Input-16 Sort"
+                "DIG I/P-01 SHORT", "DIG I/P-02 SHORT", "DIG I/P-03 SHORT", "DIG I/P-04 SHORT",
+                "DIG I/P-05 SHORT", "DIG I/P-06 SHORT", "DIG I/P-07 SHORT", "DIG I/P-08 SHORT",
+                "DIG I/P-09 SHORT", "DIG I/P-10 SHORT", "DIG I/P-11 SHORT", "DIG I/P-12 SHORT",
+                "DIG I/P-13 SHORT", "DIG I/P-14 SHORT", "DIG I/P-15 SHORT", "DIG I/P-16 SHORT"
               ];
 
               handleAlarms(Input_Alarm_0, alarms);
@@ -2381,7 +2381,7 @@
 
               handleAlarms(Can_Alarm1, alarms);
             }
-          }
+          // }
 
 
           if (activeAlarmData.length > 0) {
