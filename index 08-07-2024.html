@@ -1,0 +1,3770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UPS</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" loading="lazy">
+  <script>
+  </script>
+
+  <!-- css from bootstrap -->
+  <style async>
+    .container-fluid {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+      width: 100%;
+      padding-right: calc(var(--bs-gutter-x) * .5);
+      padding-left: calc(var(--bs-gutter-x) * .5);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    :root,
+    [data-bs-theme=light] {
+      --bs-white: #fff;
+      --bs-white-rgb: 255, 255, 255;
+      --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --bs-body-font-family: var(--bs-font-sans-serif);
+      --bs-border-width: 1px;
+      --bs-border-style: solid;
+      --bs-border-color: #dee2e6;
+      --bs-border-radius: 0.375rem;
+    }
+
+    @media (min-width:576px) {
+
+      .container {
+        max-width: 540px;
+      }
+    }
+
+    @media (min-width:768px) {
+
+      .container {
+        max-width: 720px;
+      }
+    }
+
+    @media (min-width:992px) {
+
+      .container {
+        max-width: 960px;
+      }
+    }
+
+    @media (min-width:1200px) {
+
+      .container {
+        max-width: 1140px;
+      }
+    }
+
+    @media (min-width:1400px) {
+
+      .container {
+        max-width: 1320px;
+      }
+    }
+
+    .row {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: calc(-1 * var(--bs-gutter-y));
+      margin-right: calc(-.5 * var(--bs-gutter-x));
+      margin-left: calc(-.5 * var(--bs-gutter-x));
+    }
+
+    .row>* {
+      box-sizing: border-box;
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 100%;
+      padding-right: calc(var(--bs-gutter-x) * .5);
+      padding-left: calc(var(--bs-gutter-x) * .5);
+      margin-top: var(--bs-gutter-y);
+    }
+
+    .col {
+      flex: 1 0 0%
+    }
+
+    .col-3 {
+      flex: 0 0 auto;
+      width: 25%
+    }
+
+    .col-4 {
+      flex: 0 0 auto;
+      width: 33.33333333%
+    }
+
+    .col-6 {
+      flex: 0 0 auto;
+      width: 50%
+    }
+
+    .col-12 {
+      flex: 0 0 auto;
+      width: 100%
+    }
+
+    @media (min-width:576px) {}
+
+    @media (min-width:768px) {}
+
+    @media (min-width:992px) {}
+
+    @media (min-width:1200px) {}
+
+    .table {
+      --bs-table-bg: transparent;
+      --bs-table-accent-bg: transparent;
+      --bs-table-striped-color: #212529;
+      --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+      --bs-table-active-color: #212529;
+      --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+      --bs-table-hover-color: #212529;
+      --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529;
+      vertical-align: top;
+      border-color: #dee2e6;
+    }
+
+    .d-flex {
+      display: flex !important;
+    }
+
+    .d-none {
+      display: none !important;
+    }
+
+    .flex-row {
+      flex-direction: row !important;
+    }
+
+    .flex-column {
+      flex-direction: column !important;
+    }
+
+    .justify-content-center {
+      justify-content: center !important;
+    }
+
+    .justify-content-between {
+      justify-content: space-between !important;
+    }
+
+    .align-items-center {
+      align-items: center !important;
+    }
+
+    .align-self-center {
+      align-self: center !important;
+    }
+
+    .mt-0 {
+      margin-top: 0 !important;
+    }
+
+    .mt-2 {
+      margin-top: .5rem !important;
+    }
+
+    .mt-3 {
+      margin-top: 1rem !important;
+    }
+
+    .mt-4 {
+      margin-top: 1.5rem !important;
+    }
+
+    .mt-5 {
+      margin-top: 3rem !important;
+    }
+
+    .mb-4 {
+      margin-bottom: 1.5rem !important;
+    }
+
+    .mb-5 {
+      margin-bottom: 3rem !important;
+    }
+
+    .m-1 {
+      margin: .25rem !important;
+    }
+
+    .m-2 {
+      margin: .5rem !important;
+    }
+
+    .p-2 {
+      padding: .5rem !important;
+    }
+
+    .p-3 {
+      padding: 1rem !important;
+    }
+
+    .pb-0 {
+      padding-bottom: 0 !important;
+    }
+
+    .w-100 {
+      width: 100% !important
+    }
+
+    .h-100 {
+      height: 100% !important
+    }
+
+    .mx-5 {
+      margin-right: 3rem !important;
+      margin-left: 3rem !important;
+    }
+
+    .text-white {
+      --bs-text-opacity: 1;
+      color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important
+    }
+
+    .mx-2 {
+      margin-right: .5rem !important;
+      margin-left: .5rem !important;
+    }
+
+    .bg-white {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important
+    }
+
+    .shadow {
+      box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important
+    }
+
+    .rounded {
+      border-radius: var(--bs-border-radius) !important
+    }
+
+    table {
+      caption-side: bottom;
+      border-collapse: collapse
+    }
+
+    .align-middle {
+      vertical-align: middle !important
+    }
+
+    .border-bottom {
+      border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important
+    }
+
+    .card {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+    }
+
+    .card-body {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      padding: 1.25rem;
+    }
+
+    .card-title {
+      margin-bottom: 0.75rem;
+    }
+
+
+    .tab-content>.tab-pane {
+      display: none;
+    }
+
+    .tab-content>.active {
+      display: block;
+    }
+
+    .navbar {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+    }
+
+
+    hr {
+      margin: 1rem 0;
+      color: inherit;
+      background-color: currentColor;
+      border: 0;
+      opacity: 0.25;
+    }
+
+    hr:not([size]) {
+      height: 1px;
+    }
+
+    h5,
+    .h5,
+    h4,
+    .h4,
+    h3,
+    .h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      /* font-weight: 500; */
+      line-height: 1.2;
+    }
+
+
+    h3,
+    .h3 {
+      font-size: calc(1.3rem + 0.6vw);
+    }
+
+    h4,
+    .h4 {
+      font-size: calc(1.275rem + 0.3vw);
+    }
+
+    @media (min-width: 1200px) {
+
+      h4,
+      .h4 {
+        font-size: 1.5rem;
+      }
+    }
+
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0px;
+    }
+  </style>
+  <!-- css from bootstrap -->
+
+  <style async>
+    /*************************** style.css************************************ */
+    .active-tab-border,
+    .inactive-tab {
+      cursor: pointer;
+      text-decoration: none
+    }
+
+    .active-tab-border,
+    .inactive-tab,
+    a:hover {
+      text-decoration: none
+    }
+
+    .Column1andHalf,
+    .empty-div {
+      float: left
+    }
+
+    body,
+    html {
+      height: 100%
+    }
+
+    a:hover {
+      color: #fff
+    }
+
+    .active-tab-border {
+      border: 1px solid #fff;
+      padding: 7px;
+      background-color: #b1000e;
+      color: #fff
+    }
+
+    .active-tab-border a {
+      color: #fff !important
+    }
+
+    .active-tab-border:hover {
+      background-color: #282828
+    }
+
+    .active-tab-border a:hover,
+    .inactive-tab a {
+      color: #fff
+    }
+
+    .inactive-tab {
+      background-color: transparent;
+      color: #333
+    }
+
+    .inactive-tab:hover {
+      background-color: #333
+    }
+
+    .main-bgcolor {
+      background-color: #f0f0f0
+    }
+
+    .nav-tabs .nav-link.active {
+      background-color: #737373;
+      color: #f0f0f0
+    }
+
+    .btn-color:hover,
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+      background-color: #b1000e
+    }
+
+    .nav-link,
+    .nav-link:hover,
+    .txt-dark {
+      color: #333
+    }
+
+    .nav-tabs .nav-link {
+      border: 1px solid transparent;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+    }
+
+    .tab-pane {
+      border-top: 4px solid #737373;
+      padding: 0
+    }
+
+    .nav-tabs {
+      margin-bottom: 0
+    }
+
+    .btn-color {
+      background-color: #c00;
+      color: #fff
+    }
+
+    .btn-color:hover {
+      color: #fff
+    }
+
+    .img-setup {
+      height: 100px;
+      width: 120px
+    }
+
+    .status-card-text-space {
+      padding-left: 5px
+    }
+
+    table.table-bordered {
+      border: 1px solid #737373;
+      margin-top: 20px
+    }
+
+    table.table-bordered>thead>tr>th {
+      border: 1px solid #fff;
+      background-color: #737373;
+      color: #fff
+    }
+
+    table.table-bordered>tbody>tr>td {
+      border: 1px solid #737373
+    }
+
+    .fixTableHead {
+      overflow-y: auto;
+      height: 467px
+    }
+
+    .blinking-green,
+    .blinking-red,
+    .blinking-yellow,
+    .dot-gray,
+    .dot-green,
+    .dot-red,
+    .dot-yellow {
+      width: 18px;
+      height: 18px;
+      border-radius: 100%
+    }
+
+    .fixTableHead thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2
+    }
+
+    .dot-red {
+      background: red
+    }
+
+    .dot-green {
+      background: green
+    }
+
+    .dot-yellow {
+      background: #ff0
+    }
+
+    .dot-gray {
+      background: #ccc9c9
+    }
+
+    .blinking-red {
+      animation: 1s infinite blink-red
+    }
+
+    @keyframes blink-red {
+
+      0%,
+      100% {
+        opacity: 0;
+        background-color: red
+      }
+
+      50% {
+        opacity: 1;
+        background-color: red
+      }
+    }
+
+    .blinking-green {
+      animation: 1s infinite blink-green
+    }
+
+    @keyframes blink-green {
+
+      0%,
+      100% {
+        opacity: 0;
+        background-color: green
+      }
+
+      50% {
+        opacity: 1;
+        background-color: green
+      }
+    }
+
+    .blinking-yellow {
+      animation: 1s infinite blink-yellow
+    }
+
+    .overlay,
+    .overlay__inner {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%
+    }
+
+    @keyframes blink-yellow {
+
+      0%,
+      100% {
+        opacity: 0;
+        background-color: #ff0
+      }
+
+      50% {
+        opacity: 1;
+        background-color: #ff0
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      background: #55505082;
+      z-index: 10
+    }
+
+    .bg-grey,
+    .title-p {
+      background-color: #f2f2f2
+    }
+
+    .overlay__inner {
+      position: absolute
+    }
+
+    .overlay__content {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%)
+    }
+
+    .spinner {
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+      border-width: 8px;
+      border-color: rgba(255, 255, 255, .05);
+      border-top-color: #0d66d0;
+      animation: 1s linear infinite spin;
+      border-radius: 100%;
+      border-style: solid
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+
+    .font-weight-bold {
+      font-weight: 700 !important
+    }
+
+    .w-80 {
+      width: 80%
+    }
+
+    .title-p {
+      padding: 12px 20px
+    }
+
+    table {
+      border-collapse: unset !important;
+      border-spacing: 0px
+    }
+
+    table td,
+    table th {
+      padding: 10px 15px;
+      font-size: 83%;
+      text-align: left;
+      line-height: 140%
+    }
+
+    table.TableStyle2 td,
+    table.TableStyle2 th {
+      border: 1px solid #ddd
+    }
+
+    table td {
+      background-color: #fff
+    }
+
+    .b-radius-0 {
+      border-radius: 0
+    }
+
+    .clear-both {
+      clear: both
+    }
+
+    .empty-div {
+      width: 50px
+    }
+
+    .status-heading {
+      margin: 0 0 6px;
+      font-size: 18px
+    }
+
+    .fs-18 {
+      font-size: 18px
+    }
+
+    .metering-card-header {
+      text-align: center;
+      font-size: 25px
+    }
+
+
+    .tab-content>.active {
+      display: block !important;
+    }
+
+    .tab-content>.tab-pane {
+      display: none;
+    }
+
+    .fade {
+      opacity: 0;
+      transition: opacity 0.15s linear;
+    }
+
+    .fade.show {
+      opacity: 1;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /*************************** style.css************************************ */
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+      <div class="col">
+        <div class="h-100 d-flex flex-column">
+          <div class="row justify-content-center bg-grey">
+            <nav class="navbar">
+              <div class="w-100">
+                <div class="mx-5 text-white d-flex flex-row">
+                  <div class="d-flex justify-content-center align-items-center w-100">
+                    <!-- <span class="mx-2 p-2 active-tab-border"> -->
+                    <a href="index.html" class="mx-2 p-2 active-tab-border">
+                      Home
+                    </a>
+                    <!-- </span> -->
+                    <!-- <span class="mx-2 p-2 inactive-tab"> -->
+                    <a href="configuration.html" class="mx-2 p-2 inactive-tab">Configuration</a>
+                    <!-- </span> -->
+                    <!-- <span class="mx-2 p-2 inactive-tab"> -->
+                    <!-- <a href="https://www.hitachi-hirel.com/contact-us" class="mx-2 p-2 inactive-tab">Contact</a> -->
+                    <a href="contact-us.html" class="mx-2 p-2 inactive-tab">Contact</a>
+                    <!-- </span> -->
+                  </div>
+                  <div>
+                    <img id="logoImg" loading="lazy" src="asset/img/logo_01_01.png" style="width: 150px; height: 35px;">
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <div class="row justify-content-center flex-grow-1 bg-white">
+            <div class="w-100">
+              <div class="mx-5">
+                <div class="mt-4 d-flex justify-content-between">
+                  <h4><b>UPS 1</b></h4>
+                  <div><b>Date <span id="ups_date"></span> | Time <span id="ups_time"></span> </b></div>
+                </div>
+                <div class="mt-3">
+                  <nav>
+
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                      <a onclick="changeUrlParams('status')" class="nav-link active" id="nav-status-tab"
+                        data-toggle="tab" href="#status" role="tab" aria-controls="status" aria-selected="true">
+                        <b>
+                          <!-- <i class="bi bi-check2-circle"></i> -->
+                          <span class="m-2">Status</span>
+                        </b>
+                      </a>
+
+                      <a onclick="changeUrlParams('metering')" class="nav-link" id="nav-metering-tab" data-toggle="tab"
+                        role="tab" href="#metering" aria-controls="metering" aria-selected="false">
+                        <b>
+                          <!-- <i class="bi bi-speedometer2"></i> -->
+                          <span class="m-2">Metering</span>
+                        </b>
+                      </a>
+
+                      <a onclick="changeUrlParams('alarmlog')" class="nav-link" id="nav-alarmlog-tab" data-toggle="tab"
+                        role="tab" href="#alarmlog" aria-controls="alarmlog" aria-selected="false">
+                        <b>
+                          <!-- <i class="bi bi-calendar-event"></i> -->
+                          <span class="m-2">AlarmLog</span>
+                        </b>
+                      </a>
+
+                      <a onclick="changeUrlParams('datalog')" class="nav-link" id="nav-datalog-tab" data-toggle="tab"
+                        role="tab" href="#datalog" aria-controls="datalog" aria-selected="false">
+                        <b>
+                          <!-- <i class="bi bi-clipboard-data"></i> -->
+                          <span class="m-2">DataLog</span>
+                        </b>
+                      </a>
+
+                    </div>
+
+                  </nav>
+
+
+                  <div class="tab-content" id="nav-tabContent">
+
+                    <!-- spinner with overlay -->
+                    <div class="overlay">
+                      <div class="overlay__content text-center w-50">
+                        <span class="spinner"></span>
+                      </div>
+                    </div>
+                    <!-- spinner with overlay -->
+
+                    <div class="tab-pane fade show active" id="status" role="tabpanel" aria-labelledby="nav-status-tab">
+                      <div class="mt-3">
+                        <div class="row mb-5">
+                          <div class="col p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless statusTable">
+                                  <thead>
+                                    <tr class="mt-5">
+                                      <th scope="col" rowspan="2" class="align-middle"
+                                        style="background-color: #f1f8ff; text-align: center;">
+                                        <span style="font-size: 26px;font-style: italic;" id="statusImage">
+                                          i4+ Series
+                                        </span>
+                                        <!-- <img src="asset/blank_img.jpg" class="card-img-top img-setup" alt="Img"
+                                          id="statusImage" /> -->
+                                      </th>
+                                      <!-- <th scope="col" colspan="3">Model Name</th> -->
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom" colspan="3">
+                                        <h5 id="titleStr" style="font-size: 32px;">i4ET (SINGLE PHASE UPS)</h5>
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row"></th>
+                                      <td>
+                                        <div id="id1">
+                                          <div class="d-flex flex-column">
+                                            <span class="status-heading"><b>Bypass Input</b></span>
+                                            <div class="d-flex">
+                                              <div class="dot-gray" id="bypass_input_css"></div>
+                                              <span class="status-card-text-space" id="bypass_input_css_text">
+                                                NA
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Main's Supply</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="mainsupply_input_css"></div>
+                                            <span class="status-card-text-space" id="mainsupply_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Rectifier Operation</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="rectifier_input_css"></div>
+                                            <span class="status-card-text-space" id="rectifier_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <th scope="row"></th>
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading">
+                                            <!-- <b>Booster Operation(Battery
+                                              Discharging)</b> -->
+                                            <b>Battery Operation</b>
+                                          </span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="battery_input_css"></div>
+                                            <span class="status-card-text-space" id="battery_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <!-- <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Charger Operation (Battery Charging)</b>
+                                          </span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="battery_charging_input_css"></div>
+                                            <span class="status-card-text-space" id="battery_charging_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td> -->
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Inverter Operation</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="inverter_input_css"></div>
+                                            <span class="status-card-text-space" id="inverter_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Static Switch</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="load_bypass_input_css"></div>
+                                            <span class="status-card-text-space" id="load_bypass_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row"></th>
+                                      <!-- <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Load on Inverter</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="load_inverter_input_css"></div>
+                                            <span class="status-card-text-space" id="load_inverter_input_css_text">
+                                              NA </span>
+                                          </div>
+                                        </div>
+                                      </td> -->
+
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Synchronization</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="synchronization_input_css"></div>
+                                            <span class="status-card-text-space" id="synchronization_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Common Alarm Indication</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="common_alarm_input_css"></div>
+                                            <span class="status-card-text-space" id="common_alarm_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <!-- <tr>
+                                      <th scope="row"></th>
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Common Alarm Indication</b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="common_alarm_input_css"></div>
+                                            <span class="status-card-text-space" id="common_alarm_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex flex-column">
+                                          <span class="status-heading"><b>Battery MCCB Status </b></span>
+                                          <div class="d-flex">
+                                            <div class="dot-gray" id="battery_mccb_input_css"></div>
+                                            <span class="status-card-text-space" id="battery_mccb_input_css_text">
+                                              NA
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </td>
+                                     
+                                    </tr> -->
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row my-4 d-none" id="activeAlarmRow">
+                          <div class="col-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <h3 class="card-title text-center">Active Alarms</h3>
+                                <hr>
+
+                                <div id="activeAlarmDiv"> </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <!-- metering  -->
+                    <div class="tab-pane fade" id="metering" role="tabpanel" aria-labelledby="nav-metering-tab">
+
+
+                      <!------------ for 3 phase start ---------------->
+                      <div class="mt-3 container-fluid" id="row1">
+                        <div class="row">
+                          <div class="col-6 p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="main-input">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="4" class="border-bottom metering-card-header">
+                                        Main's Input
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom"></th>
+                                      <th class="border-bottom fs-18">R-Y Phase</th>
+                                      <th class="border-bottom fs-18">Y-B Phase</th>
+                                      <th class="border-bottom fs-18">B-R Phase</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Voltage</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Current</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Frequency</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6 p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="alternate">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="4" class="border-bottom metering-card-header">
+                                        Alternate
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom"></th>
+                                      <th class="border-bottom fs-18">R-Y Phase</th>
+                                      <th class="border-bottom fs-18">Y-B Phase</th>
+                                      <th class="border-bottom fs-18">B-R Phase</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">ByPass Voltage</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Alternate Current</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Frequency</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-3 container-fluid" id="row2">
+                        <div class="row">
+
+                          <div class="col-6 p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="inverter">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="4" class="border-bottom metering-card-header ">
+                                        Inverter
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom"></th>
+                                      <th class="border-bottom fs-18 ">R-Y Phase</th>
+                                      <th class="border-bottom fs-18">Y-B Phase</th>
+                                      <th class="border-bottom fs-18">B-R Phase</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Voltage</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Current</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Frequency</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-6 p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="output">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="4" class="border-bottom metering-card-header ">
+                                        Output
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom"></th>
+                                      <th class="border-bottom fs-18">R-Y Phase</th>
+                                      <th class="border-bottom fs-18">Y-B Phase</th>
+                                      <th class="border-bottom fs-18">B-R Phase</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Voltage</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Current</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Frequency</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="mt-3 container-fluid" id="row3">
+                        <div class="row">
+                          <div class="col-6 p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="upsload-three">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="5" class="border-bottom metering-card-header">
+                                        UPS Load
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom"></th>
+                                      <th class="border-bottom fs-18">R-Y Phase</th>
+                                      <th class="border-bottom fs-18">Y-B Phase</th>
+                                      <th class="border-bottom fs-18">B-R Phase</th>
+                                      <th class="border-bottom fs-18">Total Load</th>
+                                    </tr>
+
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Load in KVA</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Load in KW</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Power Factor</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6 p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="totalload-three">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="5" class="border-bottom metering-card-header">
+                                        Total Load
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom fs-18"></th>
+                                      <th class="border-bottom fs-18">R-Y Phase</th>
+                                      <th class="border-bottom fs-18">Y-B Phase</th>
+                                      <th class="border-bottom fs-18">B-R Phase</th>
+                                      <th class="border-bottom fs-18">Total Load</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Load in KVA</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Load in KW</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Power Factor</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="mt-3 container-fluid" id="row4">
+                        <div class="row">
+                          <!-- battery -->
+                          <div class="col-6 p-3">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="battery">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="3" class="border-bottom metering-card-header ">
+                                        Battery
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class=""></th>
+                                      <th class=""></th>
+                                      <th class=""></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">&nbsp;</th>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-end">Voltage</th>
+                                      <td class="text-center">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-end">Current</th>
+                                      <td class="text-center">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-end">Status</th>
+                                      <td class="text-center">-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- dc link voltage -->
+                          <div class="col-6 p-3 mt-4">
+                            <div class="card shadow rounded mb-4">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="rectifier">
+                                  <thead>
+                                    <tr>
+                                      <th scope="row" colspan="3" class="fs-18">DC Link Voltage</th>
+                                      <td scope="row">-</td>
+                                    </tr>
+                                  </thead>
+                                </table>
+                              </div>
+                            </div>
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="rectifier-output-voltage-three">
+                                  <thead>
+                                    <tr>
+                                      <th scope="row" colspan="3" class="fs-18">Charger O/P Voltage</th>
+                                      <td scope="row">-</td>
+                                    </tr>
+                                  </thead>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <!------------ for 3 phase end ---------------->
+
+
+                      <!------------ for 1 phase start ---------------->
+                      <div class="mt-3 container-fluid d-none" id="row5">
+                        <div class="row">
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="main-input-single">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="4" class="border-bottom metering-card-header">
+                                        Main's Input
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom">&nbsp;</th>
+                                      <th class="border-bottom fs-18">R-Y Phase</th>
+                                      <th class="border-bottom fs-18">Y-B Phase</th>
+                                      <th class="border-bottom fs-18">B-R Phase</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Voltage</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Current</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Frequency</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="alternate-single">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="3" class="border-bottom metering-card-header">
+                                        Alternate
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class=" fs-18">&nbsp;</th>
+                                      <th class=" fs-18">&nbsp;</th>
+                                      <th class=" fs-18">&nbsp;</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row" class="text-left">ByPass Voltage</th>
+                                      <td class="text-end">-</td>
+
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-left">Alternate Current</th>
+                                      <td class="text-end">-</td>
+
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-left">Frequency</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="inverter-single">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="3" class="border-bottom metering-card-header">
+                                        Inverter
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class=" fs-18">&nbsp;</th>
+                                      <th class=" fs-18">&nbsp;</th>
+                                      <th class=" fs-18">&nbsp;</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row" class="text-start">Voltage</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-start">Current</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                    <th scope="row" class="text-start">Frequency</th>
+                                    <td class="text-end">-</td>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-3 container-fluid d-none" id="row6">
+                        <div class="row">
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body pb-0">
+                                <table class="table table-borderless" id="ups-totalload-single">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="3" class="border-bottom metering-card-header">
+                                        UPS & Total Load
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class="border-bottom"></th>
+                                      <th class="border-bottom fs-18">UPS Load</th>
+                                      <th class="border-bottom fs-18">TOTAL Load</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Load in KVA</th>
+                                      <td>0 Volt</td>
+                                      <td>0 Volt</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Load in KW</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Power Factor</th>
+                                      <td>-</td>
+                                      <td>-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">&nbsp;</th>
+                                      <td>&nbsp;</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body pb-0">
+                                <table class="table table-borderless" id="output-single">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="3" class="border-bottom metering-card-header">
+                                        Output
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class=" fs-18">&nbsp;</th>
+                                      <th class=" fs-18">&nbsp;</th>
+                                      <th class=" fs-18">&nbsp;</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row" class="text-start">Voltage</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-start">Current</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-start">Frequency</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">&nbsp;</th>
+                                      <td>&nbsp;</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body pb-0">
+                                <table class="table table-borderless" id="battery-single">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col" colspan="3" class="border-bottom metering-card-header">
+                                        Battery
+                                      </th>
+                                    </tr>
+                                    <tr>
+                                      <th class=" fs-18">&nbsp;</th>
+                                      <th class=" fs-18">&nbsp;</th>
+                                      <th class=" fs-18">&nbsp;</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row" class="text-start">Voltage</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-start">Current</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row" class="text-start">Status</th>
+                                      <td class="text-end">-</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">&nbsp;</th>
+                                      <td>&nbsp;</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-3 container-fluid d-none" id="row7">
+                        <div class="row">
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="rectifier-single">
+                                  <thead>
+                                    <tr>
+                                      <th scope="row" colspan="3" class="fs-18">DC Link Voltage</th>
+                                      <td scope="row">-</td>
+                                    </tr>
+                                  </thead>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-4 p-2">
+                            <div class="card shadow rounded">
+                              <div class="card-body">
+                                <table class="table table-borderless" id="rectifier-output-voltage-single">
+                                  <thead>
+                                    <tr>
+                                      <th scope="row" colspan="3" class="fs-18">Charger O/P Voltage</th>
+                                      <td scope="row">-</td>
+                                    </tr>
+                                  </thead>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!------------ for 1 phase end ---------------->
+
+                    </div>
+
+                    <!-- alarm log -->
+                    <div class="tab-pane fade" id="alarmlog" role="tabpanel" aria-labelledby="nav-alarmlog-tab">
+                      <!-- alarm log table -->
+                      <div class="row mt-3">
+                        <div class="col-12 ">
+                          <button type="button" class="btn btn-color"
+                            onclick="exportToCSV('alarmTable', 'alarmLog')">Export to
+                            CSV</button>
+                        </div>
+                      </div>
+                      <div class="fixTableHead mt-2">
+                        <table id="alarmTable" class="table table-bordered mt-0" style="width: 100%;">
+                          <thead>
+                            <tr>
+                              <th scope="col" style="font-size: 18px;">Serial_No</th>
+                              <th scope="col" style="font-size: 18px;">Status</th>
+                              <th scope="col" style="font-size: 18px;">Alarm_Number</th>
+                              <th scope="col" style="font-size: 18px;">Date</th>
+                              <th scope="col" style="font-size: 18px;">Time</th>
+                              <th scope="col" style="font-size: 18px;">Alarm_Name</th>
+                            </tr>
+                          </thead>
+                          <tbody id="alarmTableBody"> </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+
+                    <!-- data log -->
+                    <div class="tab-pane fade" id="datalog" role="tabpanel" aria-labelledby="nav-datalog-tab">
+
+
+                      <!-- data log table -->
+                      <div class="row mt-3">
+                        <div class="col-12">
+                          <button type="button" class="btn btn-color"
+                            onclick="exportToCSV('dataLogTable', 'dataLog')">Export to
+                            CSV</button>
+                        </div>
+                      </div>
+                      <div class="fixTableHead mt-2 overflow-x-auto">
+                        <table id="dataLogTable" class="table table-bordered mt-0">
+                          <thead>
+                            <tr>
+                              <th scope="col" style="font-size: 18px;">Serial_No</th>
+                              <th scope="col" style="padding: 0 40px 10px 40px;font-size: 18px;">Date</th>
+                              <th scope="col" style="padding: 0 40px 10px 40px;font-size: 18px;">Time</th>
+                              <th scope="col" style="font-size: 18px;">UI_Alarm</th>
+                              <th scope="col" style="font-size: 18px;">Rectifier_Alarm1</th>
+                              <th scope="col" style="font-size: 18px;">Rectifier_Alarm2</th>
+                              <th scope="col" style="font-size: 18px;">Inverter_Alarm1</th>
+                              <th scope="col" style="font-size: 18px;">Inverter_Alarm2</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Alarm1</th>
+                              <th scope="col" style="font-size: 18px;">Inverter_Alarm3</th>
+                              <th scope="col" style="font-size: 18px;">Can_Alarm1</th>
+                              <th scope="col" style="font-size: 18px;">Input_Alarm_0</th>
+                              <th scope="col" style="font-size: 18px;">Rectifier_Status1</th>
+                              <th scope="col" style="font-size: 18px;">Inverter_Status1</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Status1</th>
+                              <th scope="col" style="font-size: 18px;">R-Y_Phase_Input_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">R_Phase_Input_Current</th>
+                              <th scope="col" style="font-size: 18px;">Y-B_Phase_Input_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">Y_Phase_Input_Current</th>
+                              <th scope="col" style="font-size: 18px;">B-R_Phase_Input_Voltage</th>
+
+                              <th scope="col" style="font-size: 18px;">B_Phase_Input_Current</th>
+                              <th scope="col" style="font-size: 18px;">Mains_Input_Freq</th>
+                              <th scope="col" style="font-size: 18px;">DC_Link_Voltage</th>
+
+                              <th scope="col" style="font-size: 18px;">Charger_O/P_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">R-Phase_Output_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">Y-Phase_Output_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">B-Phase_Output_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">R-Phase_Output_Current</th>
+                              <th scope="col" style="font-size: 18px;">Y-Phase_Output_Current</th>
+                              <th scope="col" style="font-size: 18px;">B-Phase_Output_Current</th>
+
+                              <th scope="col" style="font-size: 18px;">Output_Freq</th>
+                              <th scope="col" style="font-size: 18px;">R_Phase_Bypass_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">Y_Phase_Bypass_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">B_Phase_Bypass_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">R_Phase_Alternate_Current</th>
+                              <th scope="col" style="font-size: 18px;">Y_Phase_Alternate_Current</th>
+                              <th scope="col" style="font-size: 18px;">B_Phase_Alternate_Current</th>
+                              <th scope="col" style="font-size: 18px;">Bypass_Freq</th>
+
+                              <th scope="col" style="font-size: 18px;">R-Phase_Inverter_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">Y-Phase_Inverter_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">B-Phase_Inverter_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">R-Phase_Inverter_Current</th>
+                              <th scope="col" style="font-size: 18px;">Y-Phase_Inverter_Current</th>
+                              <th scope="col" style="font-size: 18px;">B-Phase_Inverter_Current</th>
+                              <th scope="col" style="font-size: 18px;">Inverter_Frequency</th>
+
+                              <th scope="col" style="font-size: 18px;">Battery_Voltage</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Current</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Status</th>
+                              <th scope="col" style="font-size: 18px;">R-Phase_Output_Power_(In KVA)</th>
+                              <th scope="col" style="font-size: 18px;">R-Phase_Output_Power_(In KW)</th>
+                              <th scope="col" style="font-size: 18px;">R-Phase_Output_Power_Factor</th>
+                              <th scope="col" style="font-size: 18px;">Y-Phase_Output_Power_(In KVA)</th>
+                              <th scope="col" style="font-size: 18px;">Y-Phase_Output_Power_(In KW)</th>
+                              <th scope="col" style="font-size: 18px;">Y-Phase_Output_Power_Factor</th>
+                              <th scope="col" style="font-size: 18px;">B-Phase_Output_Power_(In KVA)</th>
+                              <th scope="col" style="font-size: 18px;">B-Phase_Output_Power_(In KW)</th>
+                              <th scope="col" style="font-size: 18px;">B-Phase_Output_Power_Factor</th>
+
+                              <th scope="col" style="font-size: 18px;">Total_Output_Power_(In KVA)</th>
+                              <th scope="col" style="font-size: 18px;">Total_Output_Power_(In KW)</th>
+                              <th scope="col" style="font-size: 18px;">Total_Output_Power_PF</th>
+
+                              <th scope="col" style="font-size: 18px;">R_Phase_UPS(Module)_Power_(In KVA)</th>
+                              <th scope="col" style="font-size: 18px;">R_Phase_UPS(Module)_Power_(In KW)</th>
+                              <th scope="col" style="font-size: 18px;">R_Phase_UPS(Module)_Power_Factor</th>
+                              <th scope="col" style="font-size: 18px;">Y_Phase_UPS(Module)_Power_(In KVA)</th>
+                              <th scope="col" style="font-size: 18px;">Y_Phase_UPS(Module)_Power_(In KW)</th>
+                              <th scope="col" style="font-size: 18px;">Y_Phase_UPS(Module)_Power_Factor</th>
+                              <th scope="col" style="font-size: 18px;">B_Phase_UPS(Module)_Power_(In KVA)</th>
+                              <th scope="col" style="font-size: 18px;">B_Phase_UPS(Module)_Power_(In KW)</th>
+                              <th scope="col" style="font-size: 18px;">B-Phase UPS(Module)_Power_Factor</th>
+                              <th scope="col" style="font-size: 18px;">Total_UPS(Module)_Power_(In KVA)</th>
+                              <th scope="col" style="font-size: 18px;">Total_UPS(Module)_Power_(In KW)</th>
+                              <th scope="col" style="font-size: 18px;">Total_UPS(Module)_Power_PF</th>
+                              <th scope="col" style="font-size: 18px;">System_Control_Card_Software_Version</th>
+                              <th scope="col" style="font-size: 18px;">User_Interface_Card_Software_Version</th>
+                              <th scope="col" style="font-size: 18px;">Total_Number_of_Faults_Store_in_UPS</th>
+                              <th scope="col" style="font-size: 18px;">Current_Fault_Store_Location_in_UPS</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Room_Temperature</th>
+                              <th scope="col" style="font-size: 18px;">Traceback_bit_Read</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Backup_AH_(BMS Module)</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Backup_Time_(BMS Module)</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Life_(Discharge Cycle)</th>
+                              <th scope="col" style="font-size: 18px;">Battery_Life_(In Month)</th>
+                              <th scope="col" style="font-size: 18px;">UPS_Model</th>
+                            </tr>
+                          </thead>
+                          <tbody id="dataTableBody"></tbody>
+                        </table>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  // document.addEventListener("DOMContentLoaded", function() {
+
+  /*********************** app.js  ****************************/
+  let socket = null;
+  let retryInterval = 1000; // initial retry interval
+  let serialNoAlarm = 0;
+  let serialNoDataLog = 0;
+  let isFirstTimeLoad = false;
+
+  // // to refresh page in 5 sec
+  // setTimeout(function () {
+  //   window.location = window.location;
+  // }, 10000);
+
+  var localIP = location.hostname;
+  var url = "ws://" + localIP + ":80/ws";
+  console.log(url);
+  // var url = "ws://localhost:8080";
+  var ws = new WebSocket(url);
+
+  connect();
+
+  var deviceId;
+  var sentMsgAlarm = true;
+  var sentMsgData = true;
+
+  function exportToCSV(tableId, exportType) {
+    // Variable to store the final csv data
+    var csv_data = [];
+
+    // Get each row data
+    var rows = document.getElementById(tableId).getElementsByTagName("tr");
+
+    for (var i = 0; i < rows.length; i++) {
+      // Get each column data
+      var cols = rows[i].querySelectorAll("td,th");
+
+      // Stores each csv row data
+      var csvrow = [];
+      for (var j = 0; j < cols.length; j++) {
+        // Get the text data of each cell
+        // of a row and push it to csvrow
+        csvrow.push(cols[j].innerHTML);
+      }
+
+      // Combine each column value with comma
+      csv_data.push(csvrow.join(","));
+    }
+
+    // Combine each row data with new line character
+    csv_data = csv_data.join("\n");
+
+    // Call this function to download csv file
+    downloadCSVFile(csv_data, exportType);
+  }
+
+  function downloadCSVFile(csv_data, exportType) {
+    // Create CSV file object and feed
+    // our csv_data into it
+    CSVFile = new Blob([csv_data], {
+      type: "text/csv",
+    });
+
+    // Create to temporary link to initiate
+    // download process
+    var temp_link = document.createElement("a");
+
+    // Download csv file
+    temp_link.download = exportType + ".csv";
+    var url = window.URL.createObjectURL(CSVFile);
+    temp_link.href = url;
+
+    // This link should not be displayed
+    temp_link.style.display = "none";
+    document.body.appendChild(temp_link);
+
+    // Automatically click the link to
+    // trigger download
+    temp_link.click();
+    document.body.removeChild(temp_link);
+  }
+
+  function connect() {
+    // var ip = location.host;
+    // alert(ip);
+
+    window.addEventListener("online", function () {
+      // console.log("I am connected to the internet");
+      // console.log('navigator.onLine ==> ', navigator.onLine)
+      if (navigator.onLine) {
+        connect();
+      }
+    });
+
+    ws.onopen = function (stat) {
+      ws.send("Status WS Started");
+      console.log("Web socket is connected");
+      retryInterval = 1000;
+    };
+
+    ws.onclose = function (event) {
+      console.log("WebSocket is closed now.");
+
+      // attempt to reconnect
+      setTimeout(function () {
+        console.log("Attempting to reconnect...");
+
+        ws.close();
+
+        var localIP = location.hostname;
+        var url = "ws://" + localIP + ":80/ws";
+        console.log(url);
+        // url = "ws://localhost:8080";
+        ws = new WebSocket(url);
+
+        connect();
+
+        if (retryInterval > 40000) {
+          retryInterval = 1000;
+        } else {
+          retryInterval += 2000; // exponential backoff
+        }
+        console.log(retryInterval);
+      }, retryInterval);
+    };
+
+
+
+    /***********************************/
+    // Listen for the beforeunload or unload event on the window
+    window.addEventListener('beforeunload', () => {
+      // Close the WebSocket connection
+      console.log('Close the WebSocket connection')
+      ws.close();
+    });
+
+    // You can also listen for the close event on the socket to handle it properly
+    ws.addEventListener('close', (event) => {
+      if (event.wasClean) {
+        console.log(`WebSocket connection closed cleanly, code: ${event.code}, reason: ${event.reason}`);
+      } else {
+        console.error(`WebSocket connection closed unexpectedly`);
+      }
+    });
+    /***********************************/
+
+    ws.onmessage = async function (evt) {
+      if (ws.readyState !== WebSocket.CLOSED) {
+        console.log('inside before function')
+        var ups_data = await UPS_MSG(evt.data);
+
+        // console.log(ups_data)
+        if (ups_data) {
+          if (!ups_data.dataLog && !ups_data.alarmLog) {
+            document.getElementsByClassName("overlay")[0].classList.add("d-none");
+          }
+        }
+      }
+      deviceId = await ups_data.dev_id;
+
+      if (!isFirstTimeLoad) {
+        tabs();
+      }
+
+      /*****************datalog data*****************/
+      if (ups_data.DATA_NAME === "datalog") {
+        if (ups_data.dataLog.status == 0) {
+          document.getElementsByClassName("overlay")[0].classList.add("d-none");
+        } else if (ups_data.dataLog && !ups_data.dataLog.status) {
+          // Split the text into an array of alarms
+          const dataLogData = ups_data.dataLog.File_payload.split(" @ \n");
+
+          // Convert the array of datalog data into an array of objects
+          let arr = dataLogData.map((alarm) => {
+            if (alarm) {
+              let tmpSplitArr = alarm.split(",");
+              return tmpSplitArr;
+            }
+          });
+
+          arr.splice(-1, 1);
+          let tmpArrNew = arr;
+          let chunk_size = 88;
+          let num_chunks = tmpArrNew.length;
+
+          const tableBody = document.querySelector("#dataLogTable tbody");
+
+          for (let i = 0; i < num_chunks; i++) {
+            let rowi = document.createElement("tr");
+            let celli = document.createElement("td");
+            celli.textContent = ++serialNoDataLog;
+            rowi.appendChild(celli);
+
+            tmpArrNew[i].splice(82);
+            // tmpArrNew[i].splice(-7)
+
+            for (let j = 0; j < tmpArrNew[i].length; j++) {
+              let cellj = document.createElement("td");
+              cellj.textContent = tmpArrNew[i][j];
+              rowi.appendChild(cellj);
+            }
+
+            tableBody.appendChild(rowi);
+          }
+        }
+      }
+
+      /*****************alarm data*****************/
+      if (ups_data.DATA_NAME === "alarmlog") {
+        if (ups_data.alarmLog.status == 0) {
+          document.getElementsByClassName("overlay")[0].classList.add("d-none");
+        } else if (ups_data.alarmLog && !ups_data.alarmLog.status) {
+          // Split the text into an array of alarms
+          let alarmsLogData = ups_data.alarmLog.File_payload.split("@ \n");
+
+          // Convert the array of alarmslog data into an array of objects
+          let arr = [];
+          if (arr.length > 0) {
+            arr = [];
+          }
+          arr = alarmsLogData.map((alarm) => {
+            const [Status, Alarm_Number, Date, Time, Alarm_Name] =
+              alarm.split(",");
+            return {
+              Status,
+              Alarm_Number,
+              Date,
+              Time,
+              Alarm_Name,
+            };
+          });
+
+          arr.splice(-1, 1);
+
+          // Create a table in HTML
+          let tableBody = document.querySelector("#alarmTable tbody");
+
+          for (const item of arr) {
+            const row = document.createElement("tr");
+            const cell0 = document.createElement("td");
+            cell0.textContent = ++serialNoAlarm;
+            row.appendChild(cell0);
+            const cell1 = document.createElement("td");
+            cell1.textContent =
+              item.Status == 0 ? "Alarm Occurred" : "Alarm Released";
+            row.appendChild(cell1);
+            const cell2 = document.createElement("td");
+            cell2.textContent = item.Alarm_Number.includes("\n")
+              ? item.Alarm_Number.replace(/[\r\n]/gm, "")
+              : item.Alarm_Number;
+            row.appendChild(cell2);
+            const cell3 = document.createElement("td");
+            cell3.textContent = item.Date;
+            row.appendChild(cell3);
+            const cell4 = document.createElement("td");
+            cell4.textContent = item.Time;
+            row.appendChild(cell4);
+            const cell5 = document.createElement("td");
+            cell5.textContent = item.Alarm_Name;
+            // cell4.textContent = item.Alarm_Name.includes('@') ? item.Alarm_Name.split('@')[0] : item.Alarm_Name;
+            row.appendChild(cell5);
+
+            tableBody.appendChild(row);
+          }
+        }
+      }
+
+      /******************** status code ******************/
+      let titleStr;
+      let statusImage;
+      let UI_Alarm = ups_data?.UI_Alarm;
+      let Rectifier_Alarm1 = ups_data?.Rectifier_Alarm1;
+      let Rectifier_Alarm2 = ups_data?.Rectifier_Alarm2;
+      let Inverter_Alarm1 = ups_data?.Inverter_Alarm1;
+      let Inverter_Alarm2 = ups_data?.Inverter_Alarm2;
+      let Battery_Alarm1 = ups_data?.Battery_Alarm1;
+      let Inverter_Alarm3 = ups_data?.Inverter_Alarm3;
+      let Input_Alarm_0 = ups_data?.Input_Alarm_0;
+      let Can_Alarm1 = ups_data?.Can_Alarm1;
+      let Rectifier_Status1 = ups_data?.Rectifier_Status1;
+      let Inverter_Status1 = ups_data?.Inverter_Status1;
+      let Battery_Status1 = ups_data?.Battery_Status1;
+
+      let Bypass_Input_text;
+      let Bypass_Input_text_class;
+
+      let mainsupply_Input_text;
+      let mainsupply_Input_text_class;
+
+      let rectifier_Input_text;
+      let rectifier_Input_text_class;
+
+      let battery_Input_text;
+      let battery_Input_text_class;
+
+      let battery_charging_Input_text;
+      let battery_charging_Input_text_class;
+
+      let inverter_Input_text;
+      let inverter_Input_text_class;
+
+      let load_inverter_Input_text;
+      let load_inverter_Input_text_class;
+
+      let synchronization_Input_text;
+      let synchronization_Input_text_class;
+
+      let common_alarm_Input_text;
+      let common_alarm_Input_text_class;
+
+      let battery_mccb_Input_text;
+      let battery_mccb_Input_text_class;
+
+      if (ups_data.DATA_NAME === "status") {
+        let activeAlarmData = [];
+        let activeAlarmCnt = 0;
+
+        /********************active Alarm code************************/
+
+        const allAlarms = [
+          UI_Alarm, Rectifier_Alarm1, Rectifier_Alarm2,
+          Inverter_Alarm1, Inverter_Alarm2, Battery_Alarm1,
+          Inverter_Alarm3, Input_Alarm_0, Can_Alarm1
+        ];
+
+        const isAlarmActive = alarms => {
+          for (let key in alarms) {
+            if (alarms[key] === 1) return true;
+          }
+          return false;
+        }
+
+        const isAllAlarmsInactive = allAlarms.every(alarm => !isAlarmActive(alarm));
+
+        if (
+          isAllAlarmsInactive
+        ) {
+          document.getElementById("activeAlarmRow").classList.add("d-none");
+          activeAlarmData = [];
+          activeAlarmCnt = 0;
+        } else {
+
+
+          if (ups_data.DATA_TYPE === 1) {
+            // single phase
+
+            // ---------------------ui_alarm
+            if (isAlarmActive(UI_Alarm)) {
+              const uiAlarms = [
+                "SC COMM. FAIL", "RESERVED UI - 1", "RESERVED UI - 2", "RESERVED UI - 3",
+                "RESERVED UI - 4", "RESERVED UI - 5", "RESERVED UI - 6", "RESERVED UI - 7",
+                "BAT. DISCHARGING", "CHARGER FAIL", "INVERTER FAIL", "RESERVED UI - 11",
+                "MAN TRANS TO ALT", "RESERVED UI - 13", "BATT LIFE DETORA", "COMMON ALARM"
+              ];
+
+              handleAlarms(UI_Alarm, uiAlarms);
+            }
+
+            // ---------------------------rectifier alarm1
+            if (isAlarmActive(Rectifier_Alarm1)) {
+              const rectifierAlarms = [
+                "INPUT OV", "INPUT UV", "RECT FRC OPEN", "RECT DC HIGH", "MAIN'S FAIL",
+                "RECT OVER TEMP", "MANUAL BOOST", "CAPACITOR FAIL", "RECT SAT TRIP",
+                "PRE F/B FAIL", "PMI FAIL", "RECT I/P NO SYNC", "MAIN'S LOW TRIP",
+                "MAIN'S HIGH TRIP", "CAN COMM FAIL", "MAG OT I/P"
+              ];
+
+              handleAlarms(Rectifier_Alarm1, rectifierAlarms);
+            }
+
+            if (isAlarmActive(Rectifier_Alarm2)) {
+              const rectifierAlarms2 = [
+                "INV FRC OPEN", "INV CT F/B OPEN", "INV-V F/B OPEN", "PS FAIL", "INV HIGH DC",
+                "I/P CURR FB FAIL", "OUT CURR FB FAIL", "DC FB OPEN", "OUTPUT FB OPEN",
+                "MIS OFF", "MAG OT O/P", "RECT OVERLOAD", "LOW BATTERY TRIP", "INV SAT TRIP",
+                "INPUT I-PEAK", "LOAD ON BYPASS"
+              ];
+
+              handleAlarms(Rectifier_Alarm2, rectifierAlarms2);
+            }
+
+
+            if (isAlarmActive(Inverter_Alarm1)) {
+              const inverterAlarms1 = [
+                "INVERTER LOW", "INVERTER HIGH", "ALTERNATE LOW", "ALTERNATE HIGH", "OUTPUT LOW",
+                "OUTPUT HIGH", "INV TRIP", "ALT FO", "NO SYNC", "OVERLOAD", "OVERLOAD TRIP",
+                "OUTPUT CL ACT", "INV OVER TEMP", "INV SSW ERROR", "ALT SSW ERROR", "BATTERY LOW"
+              ];
+
+              handleAlarms(Inverter_Alarm1, inverterAlarms1);
+            }
+
+
+            if (isAlarmActive(Inverter_Alarm2)) {
+              const inverterAlarms2 = [
+                "RESERVED SC-64", "RESERVED SC-65", "RESERVED SC-66", "RESERVED SC-67",
+                "RESERVED SC-68", "RESERVED SC-69", "RESERVED SC-70", "RESERVED SC-71",
+                "RESERVED SC-72", "RESERVED SC-73", "RESERVED SC-74", "RESERVED SC-75",
+                "RESERVED SC-76", "RESERVED SC-77", "RESERVED SC-78", "RESERVED SC-79"
+              ];
+
+              handleAlarms(Inverter_Alarm2, inverterAlarms2);
+            }
+
+
+            if (isAlarmActive(Battery_Alarm1)) {
+              const batteryAlarms1 = [
+                "RESERVED SC-80", "RESERVED SC-81", "RESERVED SC-82", "RESERVED SC-83",
+                "RESERVED SC-84", "RESERVED SC-85", "RESERVED SC-86", "RESERVED SC-87",
+                "RESERVED SC-88", "RESERVED SC-89", "RESERVED SC-90", "RESERVED SC-91",
+                "RESERVED SC-92", "RESERVED SC-93", "RESERVED SC-94", "RESERVED SC-95"
+              ];
+
+              handleAlarms(Battery_Alarm1, batteryAlarms1);
+            }
+
+            if (isAlarmActive(Inverter_Alarm3)) {
+              const inverterAlarms3 = [
+                "RESERVED SC-96", "RESERVED SC-97", "RESERVED SC-98", "RESERVED SC-99",
+                "RESERVED SC-100", "RESERVED SC-101", "RESERVED SC-102", "RESERVED SC-103",
+                "RESERVED SC-104", "RESERVED SC-105", "RESERVED SC-106", "RESERVED SC-107",
+                "RESERVED SC-108", "RESERVED SC-109", "RESERVED SC-110", "RESERVED SC-111"
+              ];
+              handleAlarms(Inverter_Alarm3, inverterAlarms3);
+            }
+
+            if (isAlarmActive(Input_Alarm_0)) {
+              const inputAlarms0 = [
+                "DIG I/P-01 SHORT", "DIG I/P-02 SHORT", "DIG I/P-03 SHORT", "DIG I/P-04 SHORT",
+                "DIG I/P-05 SHORT", "DIG I/P-06 SHORT", "DIG I/P-07 SHORT", "DIG I/P-08 SHORT",
+                "DIG I/P-09 SHORT", "DIG I/P-10 SHORT", "DIG I/P-11 SHORT", "DIG I/P-12 SHORT",
+                "DIG I/P-13 SHORT", "DIG I/P-14 SHORT", "DIG I/P-15 SHORT", "DIG I/P-16 SHORT"
+              ];
+              handleAlarms(Input_Alarm_0, inputAlarms0);
+            }
+
+            if (isAlarmActive(Can_Alarm1)) {
+              const canAlarms1 = [
+                "RESERVED SC-112", "RESERVED SC-113", "RESERVED SC-114", "RESERVED SC-115",
+                "RESERVED SC-116", "RESERVED SC-117", "RESERVED SC-118", "RESERVED SC-119",
+                "RESERVED SC-120", "RESERVED SC-121", "RESERVED SC-122", "RESERVED SC-123",
+                "RESERVED SC-124", "RESERVED SC-125", "RESERVED SC-126", "RESERVED SC-127"
+              ];
+              handleAlarms(Can_Alarm1, canAlarms1);
+            }
+
+            const handleAlarms = (alarmObject, alarmMessages) => {
+              alarmMessages.forEach((message, index) => {
+                if (alarmObject[`BIT_${index}`] === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(message);
+                  activeAlarmCnt++;
+                }
+              });
+            };
+
+          }
+          else {
+            // three phase
+
+            const handleAlarms = (alarmObject, alarmMessages) => {
+              alarmMessages.forEach((message, index) => {
+                if (alarmObject[`BIT_${index}`] === 1 && activeAlarmCnt < 24) {
+                  activeAlarmData.push(message);
+                  activeAlarmCnt++;
+                }
+              });
+            };
+
+
+            if (isAlarmActive(UI_Alarm)) {
+              const uiAlarmsThreePhase = [
+                "SC COMM. FAIL", "CHG COMM. FAIL", "CHG COMM. FAIL", "DC-DC COMM FAIL",
+                "HEAT RUN MODE", "BATT MCCB OFF UI", "DC GROUND", "UI RES-1",
+                "BATT DISCHARGE", "RECTIFIER FAIL", "BATT.LIFE DETORA", "CHARGER FAIL",
+                "BOOST CHARGING", "UI RES-2", "MAINS HIGH TRIP", "CHG CAN FAIL"
+              ];
+              handleAlarms(UI_Alarm, uiAlarmsThreePhase);
+            }
+
+
+            if (isAlarmActive(Rectifier_Alarm1)) {
+              const rectifierAlarms1 = [
+                "RECT SAT TRIP", "RECT OT I&B T", "MAIN'S HIGH", "MAIN'S LOW", "MAIN'S HIGH TRIP",
+                "MAIN'S LOW TRIP", "MAIN'S FAIL", "MAIN'S FREQ O TOL", "I/P PHASE REV", "SMPS FAIL",
+                "PRE-CHARG FAIL", "RECT OVERLOAD", "RECT DC UNBALANCE", "I/P I-PEAK TRIP", "CBI OFF",
+                "CNT POWER ON"
+              ];
+              handleAlarms(Rectifier_Alarm1, rectifierAlarms1);
+            }
+
+            if (isAlarmActive(Rectifier_Alarm2)) {
+              const rectifierAlarms2 = [
+                "I/P I-LEAK I T", "BAT I-LEAK B T", "REC SAT TRP3 I T", "REC / BST SWT", "BAT TOO LOW I & B TRIP",
+                "LOW DC I&B TRIP", "CHG HIGH DC B T", "REC HIGH DC I&BT", "B/B SAT TRP3 B T", "I/P BREAKER TRIP",
+                "BATT BREAKER TRIP", "RECT DC LOW TRIP", "B/B FUSE FAIL", "BOOSTER ON", "CHARGER ON",
+                "RECTIFIER ON"
+              ];
+              handleAlarms(Rectifier_Alarm2, rectifierAlarms2);
+            }
+
+            if (isAlarmActive(Inverter_Alarm1)) {
+              const inverterAlarms1 = [
+                "INVERTER LOW", "INVERTER HIGH", "ALTERNATE LOW", "ALTERNATE HIGH", "OUTPUT LOW",
+                "OUTPUT HIGH", "INV SAT TRIP", "INV NOT OK", "ALT NOT OK", "OUT NOT OK",
+                "INV OT I&B T", "SSW OVER TEMP", "UPS OVERLOAD", "OVERLOAD TRIP", "INV CL ACT",
+                "ALT IS ANTICLOCK"
+              ];
+              handleAlarms(Inverter_Alarm1, inverterAlarms1);
+            }
+
+
+
+            if (isAlarmActive(Inverter_Alarm2)) {
+              const alarms = [
+                "ALT FO", "INV CL TRIP", "ECO MODE ON", "NO SYNC", "DC HIGH TRIP", "DC LOW TRIP",
+                "MIS OFF", "MAN TRAN TO BYPASS", "MBS ON", "LOAD ON BYPASS", "STOP COMMAND",
+                "NEG POWER TRIP", "TRANSFOMER OT", "TRANSFOMER OT TRIP", "SYSTEM OVERLOAD", "SYSTEM OL TRIP"
+              ];
+
+              handleAlarms(Inverter_Alarm2, alarms);
+            }
+
+
+            if (isAlarmActive(Battery_Alarm1)) {
+              const alarms = [
+                "LOW BATTERY", "RECT /BOOST CHOKE OT", "LOW BATTERY TRIP", "BATT I-PEAK TRIP", "BUCK SAT TRIP",
+                "BOOSTER SAT TRIP", "CBB OFF", "BUCK / BOOST OT", "BOOST OVER VOLT", "BUCK UNDER VOLT",
+                "BUCK OVER VOLT", "MANUAL BOOST ON", "UPS MASTER (ONLY FOR ALARM LOG)", "UPS SLAVE (ONLY FOR ALARM LOG)",
+                "B/B CHOKE OT TRIP", "RECT CHOKE OT TRIP"
+              ];
+
+              handleAlarms(Battery_Alarm1, alarms);
+            }
+
+
+            if (isAlarmActive(Inverter_Alarm3)) {
+              const alarms = [
+                "R-Ph INV SSW ERR", "Y-Ph INV SSW ERR", "B-Ph INV SSW ERR", "R-Ph ALT SSW ERR", "Y-Ph ALT SSW ERR",
+                "B-Ph ALT SSW ERR", "O/P CT FB OPEN", "I/P CT FB OPEN", "INV SAT TRIP 3 I & B T", "BOOST UNDER VOLT",
+                "SMPS FUSE FAIL", "EMERGENCY STOP", "LOAD ON INVERTER (ONLY IN ECO MODE)", "INV DC LOW INS", "HI-ALT SLEW RATE",
+                "INV VOLT FB OPEN"
+              ];
+
+              handleAlarms(Inverter_Alarm3, alarms);
+            }
+
+
+            if (isAlarmActive(Input_Alarm_0)) {
+              const alarms = [
+                "Digital Input-01 Sort", "Digital Input-02 Sort", "Digital Input-03 Sort", "Digital Input-04 Sort",
+                "Digital Input-05 Sort", "Digital Input-06 Sort", "Digital Input-07 Sort", "Digital Input-08 Sort",
+                "Digital Input-09 Sort", "Digital Input-10 Sort", "Digital Input-11 Sort", "Digital Input-12 Sort",
+                "Digital Input-13 Sort", "Digital Input-14 Sort", "Digital Input-15 Sort", "Digital Input-16 Sort"
+              ];
+
+              handleAlarms(Input_Alarm_0, alarms);
+            }
+
+            if (isAlarmActive(Can_Alarm1)) {
+              const alarms = [
+                "UPS-1 CAN-A FAIL", "UPS-2 CAN-A FAIL", "UPS-3 CAN-A FAIL", "UPS-4 CAN-A FAIL", "UPS-5 CAN-A FAIL",
+                "UPS-6 CAN-A FAIL", "UPS-7 CAN-A FAIL", "UPS-8 CAN-A FAIL", "UPS-1 SUPPLY FAIL", "UPS-2 SUPPLY FAIL",
+                "UPS-3 SUPPLY FAIL", "UPS-4 SUPPLY FAIL", "UPS-5 SUPPLY FAIL", "CAN-A COMM FAIL", "MASTER CAN-B FAIL",
+                "SLAVE CAN-B FAIL"
+              ];
+
+              handleAlarms(Can_Alarm1, alarms);
+            }
+          }
+
+
+          if (activeAlarmData.length > 0) {
+            document.getElementById("activeAlarmRow").classList.remove("d-none");
+            let divStr = '<div class="row justify-content-center">';
+            activeAlarmData.forEach(function (value, index) {
+              divStr += `<div class="col-3 card m-1 p-2 shadow d-flex flex-row"> <span class="dot-red align-self-center m-2"></span> <span class="align-items-center d-flex">${value}</span> </div>`;
+            });
+            divStr += "<div>";
+
+            document.getElementById("activeAlarmDiv").innerHTML = divStr;
+          }
+        }
+
+        /********************Alarm code************************/
+
+        titleStr =
+          ups_data.DATA_TYPE === 1 ? "i4ET (1-PHASE UPS)" : "i6ET (3-PHASE UPS)";
+        document.getElementById("titleStr").innerText = titleStr;
+
+        statusImage = ups_data.DATA_TYPE === 1 ? "i4+ Series" : "i6 Series";
+        document.getElementById("statusImage").innerText = statusImage;
+
+        /******************** bypass input **************************/
+
+        // if (Inverter_Alarm1.BIT_2 === 1 || Inverter_Alarm1.BIT_3 === 1) {
+        //   Bypass_Input_text = "Out of Range";
+        //   Bypass_Input_text_class = "blinking-red";
+        // } else if (Inverter_Status1.BIT_6 === 0) {
+        //   Bypass_Input_text = "Absent";
+        //   Bypass_Input_text_class = "dot-red";
+        // } else if (Inverter_Status1.BIT_6 === 1) {
+        //   Bypass_Input_text = "Within range";
+        //   Bypass_Input_text_class = "dot-green";
+        // }
+
+        if (Rectifier_Status1.BIT_10 === 1 && Rectifier_Status1.BIT_11 === 1) {
+          Bypass_Input_text = "Normal";
+          Bypass_Input_text_class = "dot-green";
+        } else if (Rectifier_Status1.BIT_10 === 0 && Rectifier_Status1.BIT_11 === 1) {
+          Bypass_Input_text = "Normal";
+          Bypass_Input_text_class = "dot-green";
+        } else if (Rectifier_Status1.BIT_10 === 1 && Rectifier_Status1.BIT_11 === 0) {
+          Bypass_Input_text = "Out of Range";
+          Bypass_Input_text_class = "blinking-red";
+        } else if (Rectifier_Status1.BIT_10 === 0 && Rectifier_Status1.BIT_11 === 0) {
+          Bypass_Input_text = "Absent";
+          Bypass_Input_text_class = "dot-red";
+        }
+
+        document
+          .getElementById("bypass_input_css")
+          .classList.remove(
+            ...document.getElementById("bypass_input_css").classList
+          );
+        document
+          .getElementById("bypass_input_css")
+          .classList.add(Bypass_Input_text_class);
+        document.getElementById("bypass_input_css_text").innerText =
+          Bypass_Input_text;
+
+        /******************** bypass input **************************/
+
+        /******************** main supply **************************/
+
+        // if (Rectifier_Alarm1.BIT_6 === 1) {
+        //   mainsupply_Input_text = "Absent";
+        //   mainsupply_Input_text_class = "dot-gray";
+        // } else if (Rectifier_Alarm1.BIT_2 === 1 || Rectifier_Alarm1.BIT_3 === 1) {
+        //   mainsupply_Input_text = "Out of Range";
+        //   mainsupply_Input_text_class = "blinking-green";
+        // } else if (Rectifier_Alarm1.BIT_6 === 0) {
+        //   mainsupply_Input_text = "Within range";
+        //   mainsupply_Input_text_class = "dot-green";
+        // }
+
+
+        if (Rectifier_Status1.BIT_9 === 1 && Rectifier_Status1.BIT_8 === 1) {
+          mainsupply_Input_text = "Normal";
+          mainsupply_Input_text_class = "dot-green";
+        } else if (Rectifier_Status1.BIT_9 === 1 && Rectifier_Status1.BIT_8 === 0) {
+          mainsupply_Input_text = "Normal";
+          mainsupply_Input_text_class = "dot-green";
+        } else if (Rectifier_Status1.BIT_9 === 0 && Rectifier_Status1.BIT_8 === 1) {
+          mainsupply_Input_text = "Out of Range";
+          mainsupply_Input_text_class = "blinking-red";
+        } else if (Rectifier_Status1.BIT_9 === 0 && Rectifier_Status1.BIT_8 === 0) {
+          mainsupply_Input_text = "Absent";
+          mainsupply_Input_text_class = "dot-red";
+        }
+
+        document
+          .getElementById("mainsupply_input_css")
+          .classList.remove(
+            ...document.getElementById("mainsupply_input_css").classList
+          );
+        document
+          .getElementById("mainsupply_input_css")
+          .classList.add(mainsupply_Input_text_class);
+        document.getElementById("mainsupply_input_css_text").innerText =
+          mainsupply_Input_text;
+        /************************* main supply *****************************/
+
+        /******************** rectifier operation **************************/
+
+        // if (Rectifier_Alarm1.BIT_0 === 1) {
+        //   rectifier_Input_text = "Trip";
+        //   rectifier_Input_text_class = "blinking-red";
+        // } else if (Rectifier_Status1.BIT_1 === 0) {
+        //   rectifier_Input_text = "OFF";
+        //   rectifier_Input_text_class = "dot-gray";
+        // } else if (Rectifier_Status1.BIT_1 === 1) {
+        //   rectifier_Input_text = "ON";
+        //   rectifier_Input_text_class = "dot-green";
+        // }
+
+        if (Rectifier_Status1.BIT_13 === 1 && Rectifier_Status1.BIT_12 === 1) {
+          rectifier_Input_text = "ON";
+          rectifier_Input_text_class = "dot-green";
+        } else if (Rectifier_Status1.BIT_13 === 1 && Rectifier_Status1.BIT_12 === 0) {
+          rectifier_Input_text = "ON";
+          rectifier_Input_text_class = "dot-green";
+        } else if (Rectifier_Status1.BIT_13 === 0 && Rectifier_Status1.BIT_12 === 1) {
+          rectifier_Input_text = "Trip";
+          rectifier_Input_text_class = "blinking-red";
+        } else if (Rectifier_Status1.BIT_13 === 0 && Rectifier_Status1.BIT_12 === 0) {
+          rectifier_Input_text = "OFF";
+          rectifier_Input_text_class = "dot-red";
+        }
+
+        document
+          .getElementById("rectifier_input_css")
+          .classList.remove(
+            ...document.getElementById("rectifier_input_css").classList
+          );
+        document
+          .getElementById("rectifier_input_css")
+          .classList.add(rectifier_Input_text_class);
+        document.getElementById("rectifier_input_css_text").innerText =
+          rectifier_Input_text;
+        /******************** rectifier operation **************************/
+
+        /******************** battery operation **************************/
+        // if (Battery_Alarm1.BIT_5 === 1) {
+        //   battery_Input_text = "Trip";
+        //   battery_Input_text_class = "blinking-red";
+        // } else if (Battery_Status1.BIT_2 === 0) {
+        //   battery_Input_text = "OFF";
+        //   battery_Input_text_class = "dot-gray";
+        // } else if (Battery_Status1.BIT_2 === 1) {
+        //   battery_Input_text = "ON";
+        //   battery_Input_text_class = "dot-red";
+        // }
+
+
+        if (Battery_Status1.BIT_10 === 1 && Battery_Status1.BIT_9 === 1 && Battery_Status1.BIT_8 === 1) {
+          battery_Input_text = "Float Charging";
+          battery_Input_text_class = "dot-green";
+        } else if (Battery_Status1.BIT_10 === 1 && Battery_Status1.BIT_9 === 1 && Battery_Status1.BIT_8 === 0) {
+          battery_Input_text = "Boost Charging";
+          battery_Input_text_class = "dot-green";
+        } else if (Battery_Status1.BIT_10 === 1 && Battery_Status1.BIT_9 === 0 && Battery_Status1.BIT_8 === 0) {
+          battery_Input_text = "Discharging";
+          battery_Input_text_class = "dot-red";
+        } else if (Battery_Status1.BIT_10 === 0 && Battery_Status1.BIT_9 === 1 && Battery_Status1.BIT_8 === 1) {
+          battery_Input_text = "Buck Trip";
+          battery_Input_text_class = "blinking-red";
+        } else if (Battery_Status1.BIT_10 === 0 && Battery_Status1.BIT_9 === 0 && Battery_Status1.BIT_8 === 1) {
+          battery_Input_text = "Booster Trip";
+          battery_Input_text_class = "blinking-red";
+        } else if (Battery_Status1.BIT_10 === 0 && Battery_Status1.BIT_9 === 0 && Battery_Status1.BIT_8 === 0) {
+          battery_Input_text = "MCCB OFF";
+          battery_Input_text_class = "blinking-red";
+        }
+
+        document
+          .getElementById("battery_input_css")
+          .classList.remove(
+            ...document.getElementById("battery_input_css").classList
+          );
+        document
+          .getElementById("battery_input_css")
+          .classList.add(battery_Input_text_class);
+        document.getElementById("battery_input_css_text").innerText =
+          battery_Input_text;
+        /******************** battery operation **************************/
+
+        /******************** charger operation **************************/
+        // if (Battery_Status1.BIT_3 === 1) {
+        //   battery_charging_Input_text = "Trip";
+        //   battery_charging_Input_text_class = "blinking-red";
+        // } else if (Battery_Status1.BIT_6 === 1) {
+        //   battery_charging_Input_text = "Boost charge";
+        //   battery_charging_Input_text_class = "dot-red";
+        // } else if (Battery_Status1.BIT_5 === 1) {
+        //   battery_charging_Input_text = "Float Charge";
+        //   battery_charging_Input_text_class = "dot-green";
+        // } else if (Battery_Status1.BIT_1 === 0) {
+        //   battery_charging_Input_text = "OFF";
+        //   battery_charging_Input_text_class = "dot-gray";
+        // }
+
+        // document
+        //   .getElementById("battery_charging_input_css")
+        //   .classList.remove(
+        //     ...document.getElementById("battery_charging_input_css").classList
+        //   );
+        // document
+        //   .getElementById("battery_charging_input_css")
+        //   .classList.add(battery_charging_Input_text_class);
+        // document.getElementById("battery_charging_input_css_text").innerText =
+        //   battery_charging_Input_text;
+        /******************** charger operation **************************/
+
+        /******************** inverter operation **************************/
+        // if (Inverter_Alarm1.BIT_6 === 1) {
+        //   inverter_Input_text = "Trip";
+        //   inverter_Input_text_class = "blinking-red";
+        // } else if (Inverter_Status1.BIT_0 === 0) {
+        //   inverter_Input_text = "OFF";
+        //   inverter_Input_text_class = "dot-red";
+        // } else if (Inverter_Status1.BIT_0 === 1) {
+        //   inverter_Input_text = "ON";
+        //   inverter_Input_text_class = "dot-green";
+        // }
+
+        if (Inverter_Status1.BIT_10 === 1 && Inverter_Status1.BIT_11 === 1) {
+          inverter_Input_text = "ON + Power Flow";
+          inverter_Input_text_class = "dot-green";
+        } else if (Inverter_Status1.BIT_10 === 0 && Inverter_Status1.BIT_11 === 1) {
+          inverter_Input_text = "ON";
+          inverter_Input_text_class = "dot-green";
+        } else if (Inverter_Status1.BIT_10 === 1 && Inverter_Status1.BIT_11 === 0) {
+          inverter_Input_text = "Trip";
+          inverter_Input_text_class = "blinking-red";
+        } else if (Inverter_Status1.BIT_10 === 0 && Inverter_Status1.BIT_11 === 0) {
+          inverter_Input_text = "OFF";
+          inverter_Input_text_class = "dot-red";
+        }
+
+        document
+          .getElementById("inverter_input_css")
+          .classList.remove(
+            ...document.getElementById("inverter_input_css").classList
+          );
+        document
+          .getElementById("inverter_input_css")
+          .classList.add(inverter_Input_text_class);
+        document.getElementById("inverter_input_css_text").innerText =
+          inverter_Input_text;
+        /******************** inverter operation **************************/
+
+        /******************** load on inverter operation **************************/
+        // if (Inverter_Status1.BIT_4 === 1) {
+        //   load_inverter_Input_text = "Inverter SSW ON";
+        //   load_inverter_Input_text_class = "dot-green";
+        // } else if (Inverter_Status1.BIT_4 === 0) {
+        //   load_inverter_Input_text = "Inverter SSW OFF";
+        //   load_inverter_Input_text_class = "dot-gray";
+        // }
+
+        // document
+        //   .getElementById("load_inverter_input_css")
+        //   .classList.remove(
+        //     ...document.getElementById("load_inverter_input_css").classList
+        //   );
+        // document
+        //   .getElementById("load_inverter_input_css")
+        //   .classList.add(load_inverter_Input_text_class);
+        // document.getElementById("load_inverter_input_css_text").innerText =
+        //   load_inverter_Input_text;
+        /******************** load on inverter operation **************************/
+
+        /******************** Static Switch operation **************************/
+        // if (Inverter_Status1.BIT_3 === 1) {
+        //   load_bypass_Input_text = "Bypass SSW ON";
+        //   load_bypass_Input_text_class = "dot-red";
+        // } else if (Inverter_Status1.BIT_3 === 0) {
+        //   load_bypass_Input_text = "Bypass SSW OFF";
+        //   load_bypass_Input_text_class = "dot-gray";
+        // }
+
+
+        if (Inverter_Status1.BIT_13 === 1 && Inverter_Status1.BIT_12 === 0) {
+          load_bypass_Input_text = "On Inverter";
+          load_bypass_Input_text_class = "dot-green";
+        } else if (Inverter_Status1.BIT_13 === 0 && Inverter_Status1.BIT_12 === 1) {
+          load_bypass_Input_text = "On Bypass";
+          load_bypass_Input_text_class = "dot-red";
+        } else if (Inverter_Status1.BIT_13 === 0 && Inverter_Status1.BIT_12 === 0) {
+          load_bypass_Input_text = "Disable";
+          load_bypass_Input_text_class = "dot-gray";
+        }
+
+        document
+          .getElementById("load_bypass_input_css")
+          .classList.remove(
+            ...document.getElementById("load_bypass_input_css").classList
+          );
+        document
+          .getElementById("load_bypass_input_css")
+          .classList.add(load_bypass_Input_text_class);
+        document.getElementById("load_bypass_input_css_text").innerText =
+          load_bypass_Input_text;
+        /******************** Static Switch  operation **************************/
+
+        /******************** synchronization **************************/
+        if (Inverter_Status1.BIT_8 === 1) {
+          synchronization_Input_text = "Sync";
+          synchronization_Input_text_class = "dot-yellow";
+        } else if (Inverter_Status1.BIT_8 === 0) {
+          synchronization_Input_text = "No sync";
+          synchronization_Input_text_class = "blinking-yellow";
+        }
+
+        document
+          .getElementById("synchronization_input_css")
+          .classList.remove(
+            ...document.getElementById("synchronization_input_css").classList
+          );
+        document
+          .getElementById("synchronization_input_css")
+          .classList.add(synchronization_Input_text_class);
+        document.getElementById("synchronization_input_css_text").innerText =
+          synchronization_Input_text;
+        /******************** synchronization **************************/
+
+        /******************** battery mccb status  **************************/
+        // if (UI_Alarm.BIT_5 === 1) {
+        //   battery_mccb_Input_text = "Battery MCCB is OFF";
+        //   battery_mccb_Input_text_class = "blinking-red";
+        // } else if (UI_Alarm.BIT_5 === 0) {
+        //   battery_mccb_Input_text = "Battery MCCB is ON";
+        //   battery_mccb_Input_text_class = "dot-green";
+        // }
+
+        // document
+        //   .getElementById("battery_mccb_input_css")
+        //   .classList.remove(
+        //     ...document.getElementById("battery_mccb_input_css").classList
+        //   );
+        // document
+        //   .getElementById("battery_mccb_input_css")
+        //   .classList.add(battery_mccb_Input_text_class);
+        // document.getElementById("battery_mccb_input_css_text").innerText =
+        //   battery_mccb_Input_text;
+        /******************** battery mccb status **************************/
+
+        /******************** common alarm indication  **************************/
+        const alarms = [
+          UI_Alarm,
+          Rectifier_Alarm1,
+          Rectifier_Alarm2,
+          Inverter_Alarm1,
+          Inverter_Alarm2,
+          Battery_Alarm1,
+          Inverter_Alarm3,
+          Input_Alarm_0,
+          Can_Alarm1
+        ];
+
+        const noAlarm = alarms.every(alarm => !isAlarmActive(alarm));
+
+        const common_alarm_Input_text = noAlarm ? "No Alarm" : "Any alarm present";
+        const common_alarm_Input_text_class = noAlarm ? "dot-gray" : "blinking-red";
+
+        document.getElementById("common_alarm_input_css").classList.remove("dot-gray", "blinking-red");
+        document.getElementById("common_alarm_input_css").classList.add(common_alarm_Input_text_class);
+        document.getElementById("common_alarm_input_css_text").innerText = common_alarm_Input_text;
+
+        /******************** common alarm indication **************************/
+      }
+
+
+
+
+
+      /********************** metering code ********************/
+      if (ups_data.DATA_TYPE === 1 && ups_data.DATA_NAME === "metering") {
+        /*********************** for 1 phase ******************************/
+
+        // need to do show hide when get data
+        document.getElementById("row1").classList.add("d-none");
+        document.getElementById("row2").classList.add("d-none");
+        document.getElementById("row3").classList.add("d-none");
+        document.getElementById("row4").classList.add("d-none");
+        document.getElementById("row5").classList.remove("d-none");
+        document.getElementById("row6").classList.remove("d-none");
+        document.getElementById("row7").classList.remove("d-none");
+
+        const MAIN_INPUT_Voltage = [
+          ups_data?.R_Y_Phase_Input_Voltage,
+          ups_data?.Y_B_Phase_Input_Voltage,
+          ups_data?.B_R_Phase_Input_Voltage,
+        ];
+        const MAIN_INPUT_CURRENT = [
+          ups_data?.R_Phase_Input_Current,
+          ups_data?.Y_Phase_Input_Current,
+          ups_data?.B_Phase_Input_Current,
+        ];
+        const ALTERNET_Voltage = [
+          ups_data?.R_Phase_Bypass_Voltage,
+        ];
+        const ALTERNET_CURRENT = [
+          ups_data?.R_Phase_Alternate_Current,
+        ];
+        const INVERTER_Voltage = [
+          ups_data?.R_Phase_Inverter_Voltage,
+        ];
+        const INVERTER_CURRENT = [
+          ups_data?.R_Phase_Inverter_Current,
+        ];
+        const INVERTER_FREQUENCY = [
+          ups_data?.Inverter_Frequency,
+        ];
+        const OUTPUT_Voltage = [
+          ups_data?.R_Phase_Output_Voltage,
+        ];
+        const OUTPUT_CURRENT = [
+          ups_data?.R_Phase_Output_Current,
+        ];
+        const LOAD_IN_KVA = [
+          ups_data?.Total_UPS_Power_In_KVA,
+          ups_data?.Total_Output_Power_In_KVA,
+        ];
+        const LOAD_IN_KW = [
+          ups_data?.Total_UPS_Power_In_KW,
+          ups_data?.Total_Output_Power_In_KW,
+        ];
+        const POWER_FACTOR = [
+          ups_data?.Total_UPS_Power_PF,
+          ups_data?.Total_Output_Power_PF,
+        ];
+
+        const BATTERY_DATA = [
+          ups_data?.Battery_Voltage,
+          ups_data?.Battery_Current,
+          ups_data?.Battery_Status,
+        ];
+
+        var rectifier_table = document.getElementById("rectifier-single");
+
+        rectifier_table
+          .getElementsByTagName("thead")[0]
+          .getElementsByTagName("tr")[0]
+          .getElementsByTagName("td")[0].innerHTML =
+          ups_data?.DC_Link_Voltage + " Volt";
+
+        var main_table = document.getElementById("main-input-single");
+        var tableRef = main_table.getElementsByTagName("tbody")[0];
+        var voltage_Row = tableRef.rows[0];
+        var current_Row = tableRef.rows[1];
+        var freq_Row = tableRef.rows[2];
+
+        var voltage_cells = voltage_Row.getElementsByTagName("td");
+        for (let i = 0; i < voltage_cells.length; i++) {
+          voltage_cells[i].innerHTML = MAIN_INPUT_Voltage[i] + " Volt";
+        }
+
+        var current_cells = current_Row.getElementsByTagName("td");
+        for (let i = 0; i < current_cells.length; i++) {
+          current_cells[i].innerHTML = MAIN_INPUT_CURRENT[i] + " Amp";
+        }
+
+        var freq_cells = freq_Row.getElementsByTagName("td");
+        for (let i = 0; i < freq_cells.length; i++) {
+          freq_cells[i].innerHTML = ups_data?.Mains_Input_Freq + " Hz";
+        }
+
+        var alternate_table = document.getElementById("alternate-single");
+        tableRef = alternate_table.getElementsByTagName("tbody")[0];
+        voltage_Row = tableRef.rows[0];
+        current_Row = tableRef.rows[1];
+        freq_Row = tableRef.rows[2];
+
+        voltage_cells = voltage_Row.getElementsByTagName("td");
+        for (let i = 0; i < voltage_cells.length; i++) {
+          voltage_cells[i].innerHTML = ALTERNET_Voltage[i] + " Volt";
+        }
+
+        current_cells = current_Row.getElementsByTagName("td");
+        for (let i = 0; i < current_cells.length; i++) {
+          current_cells[i].innerHTML = ALTERNET_CURRENT[i] + " Amp";
+        }
+
+        freq_cells = freq_Row.getElementsByTagName("td");
+        for (let i = 0; i < freq_cells.length; i++) {
+          freq_cells[i].innerHTML = ups_data?.Bypass_Freq + " Hz";
+        }
+
+        var inverter_table = document.getElementById("inverter-single");
+        tableRef = inverter_table.getElementsByTagName("tbody")[0];
+        voltage_Row = tableRef.rows[0];
+        current_Row = tableRef.rows[1];
+        frequency_Row = tableRef.rows[2];
+
+        voltage_cells = voltage_Row.getElementsByTagName("td");
+        for (let i = 0; i < voltage_cells.length; i++) {
+          voltage_cells[i].innerHTML = INVERTER_Voltage[i] + " Volt";
+        }
+
+        current_cells = current_Row.getElementsByTagName("td");
+        for (let i = 0; i < current_cells.length; i++) {
+          current_cells[i].innerHTML = INVERTER_CURRENT[i] + " Amp";
+        }
+
+        frequency_cells = frequency_Row.getElementsByTagName("td");
+        for (let i = 0; i < frequency_cells.length; i++) {
+          frequency_cells[i].innerHTML = INVERTER_FREQUENCY[i] + " Hz";
+        }
+
+        var output_table = document.getElementById("output-single");
+        tableRef = output_table.getElementsByTagName("tbody")[0];
+        voltage_Row = tableRef.rows[0];
+        current_Row = tableRef.rows[1];
+        freq_Row = tableRef.rows[2];
+
+        voltage_cells = voltage_Row.getElementsByTagName("td");
+        for (let i = 0; i < voltage_cells.length; i++) {
+          voltage_cells[i].innerHTML = OUTPUT_Voltage[i] + " Volt";
+        }
+
+        current_cells = current_Row.getElementsByTagName("td");
+        for (let i = 0; i < current_cells.length; i++) {
+          current_cells[i].innerHTML = OUTPUT_CURRENT[i] + " Amp";
+        }
+
+        freq_cells = freq_Row.getElementsByTagName("td");
+        for (let i = 0; i < freq_cells.length; i++) {
+          freq_cells[i].innerHTML = ups_data?.Output_Freq + " Hz";
+        }
+
+        var rectifier_output_voltage_single = document
+          .getElementById("rectifier-output-voltage-single")
+          .getElementsByTagName("thead")[0]
+          .rows[0].getElementsByTagName("td");
+        rectifier_output_voltage_single[0].innerHTML =
+          ups_data?.Charger_OUTPUT_Voltage + " Volt";
+
+        document
+          .getElementById("battery-single")
+          .getElementsByTagName("tbody")[0]
+          .rows[0].getElementsByTagName("td")[0].innerHTML =
+          ups_data?.Battery_Voltage + " Volt";
+        document
+          .getElementById("battery-single")
+          .getElementsByTagName("tbody")[0]
+          .rows[1].getElementsByTagName("td")[0].innerHTML =
+          ups_data?.Battery_Current + " Amp";
+
+        if (ups_data?.Battery_Status === 0) {
+          document
+            .getElementById("battery-single")
+            .getElementsByTagName("tbody")[0]
+            .rows[2].getElementsByTagName("td")[0].innerHTML = "OFF";
+        } else if (ups_data?.Battery_Status === 1) {
+          document
+            .getElementById("battery-single")
+            .getElementsByTagName("tbody")[0]
+            .rows[2].getElementsByTagName("td")[0].innerHTML = "CHARGING";
+        } else {
+          document
+            .getElementById("battery-single")
+            .getElementsByTagName("tbody")[0]
+            .rows[2].getElementsByTagName("td")[0].innerHTML = "DISCHARGING";
+        }
+
+        var load_table = document.getElementById("ups-totalload-single");
+        tableRef = load_table.getElementsByTagName("tbody")[0];
+        var kva_Row = tableRef.rows[0];
+        var kw_Row = tableRef.rows[1];
+        var pf_Row = tableRef.rows[2];
+
+        var kva_cells = kva_Row.getElementsByTagName("td");
+
+        for (let i = 0; i < kva_cells.length; i++) {
+          kva_cells[i].innerHTML = LOAD_IN_KVA[i] + " KVA";
+        }
+
+        var kw_cells = kw_Row.getElementsByTagName("td");
+        for (let i = 0; i < kw_cells.length; i++) {
+          kw_cells[i].innerHTML = LOAD_IN_KW[i] + " KW";
+        }
+
+        var pf_cells = pf_Row.getElementsByTagName("td");
+        for (let i = 0; i < pf_cells.length; i++) {
+          pf_cells[i].innerHTML = POWER_FACTOR[i] + " PF";
+        }
+      }
+      else if (ups_data.DATA_TYPE === 3 && ups_data.DATA_NAME === "metering") {
+        /*********************** for 3 phase ******************************/
+
+        document.getElementById("row1").classList.remove("d-none");
+        document.getElementById("row2").classList.remove("d-none");
+        document.getElementById("row3").classList.remove("d-none");
+        document.getElementById("row4").classList.remove("d-none");
+        document.getElementById("row5").classList.add("d-none");
+        document.getElementById("row6").classList.add("d-none");
+        document.getElementById("row7").classList.add("d-none");
+
+        const MAIN_INPUT_Voltage = [
+          ups_data?.R_Y_Phase_Input_Voltage,
+          ups_data?.Y_B_Phase_Input_Voltage,
+          ups_data?.B_R_Phase_Input_Voltage,
+        ];
+        const MAIN_INPUT_CURRENT = [
+          ups_data?.R_Phase_Input_Current,
+          ups_data?.Y_Phase_Input_Current,
+          ups_data?.B_Phase_Input_Current,
+        ];
+        const ALTERNET_Voltage = [
+          ups_data?.R_Phase_Bypass_Voltage,
+          ups_data?.Y_Phase_Bypass_Voltage,
+          ups_data?.B_Phase_Bypass_Voltage,
+        ];
+        const ALTERNET_CURRENT = [
+          ups_data?.R_Phase_Alternate_Current,
+          ups_data?.Y_Phase_Alternate_Current,
+          ups_data?.B_Phase_Alternate_Current,
+        ];
+        const INVERTER_Voltage = [
+          ups_data?.R_Phase_Inverter_Voltage,
+          ups_data?.Y_Phase_Inverter_Voltage,
+          ups_data?.B_Phase_Inverter_Voltage,
+        ];
+        const INVERTER_CURRENT = [
+          ups_data?.R_Phase_Inverter_Current,
+          ups_data?.Y_Phase_Inverter_Current,
+          ups_data?.B_Phase_Inverter_Current,
+        ];
+        const INVERTER_FREQUENCY = [
+          ups_data?.Inverter_Frequency,
+          ups_data?.Inverter_Frequency,
+          ups_data?.Inverter_Frequency,
+        ];
+        const OUTPUT_Voltage = [
+          ups_data?.R_Phase_Output_Voltage,
+          ups_data?.Y_Phase_Output_Voltage,
+          ups_data?.B_Phase_Output_Voltage,
+        ];
+        const OUTPUT_CURRENT = [
+          ups_data?.R_Phase_Output_Current,
+          ups_data?.Y_Phase_Output_Current,
+          ups_data?.B_Phase_Output_Current,
+        ];
+
+        const LOAD_IN_KVA_UPS = [
+          ups_data?.R_Phase_UPS_Power_In_KVA,
+          ups_data?.Y_Phase_UPS_Power_In_KVA,
+          ups_data?.B_Phase_UPS_Power_In_KVA,
+          ups_data?.Total_UPS_Power_In_KVA,
+        ];
+        const LOAD_IN_KW_UPS = [
+          ups_data?.R_Phase_UPS_Power_In_KW,
+          ups_data?.Y_Phase_UPS_Power_In_KW,
+          ups_data?.B_Phase_UPS_Power_In_KW,
+          ups_data?.Total_UPS_Power_In_KW,
+        ];
+        const POWER_FACTOR_UPS = [
+          ups_data?.R_Phase_UPS_Power_Factor,
+          ups_data?.Y_Phase_UPS_Power_Factor,
+          ups_data?.B_Phase_UPS_Power_Factor,
+          ups_data?.Total_UPS_Power_PF,
+        ];
+
+        const LOAD_IN_KVA_TOTAL_OUTPUT = [
+          ups_data?.R_Phase_Output_Power_In_KVA,
+          ups_data?.Y_Phase_Output_Power_In_KVA,
+          ups_data?.B_Phase_Output_Power_In_KVA,
+          ups_data?.Total_Output_Power_In_KVA,
+        ];
+        const LOAD_IN_KW_TOTAL_OUTPUT = [
+          ups_data?.R_Phase_Output_Power_In_KW,
+          ups_data?.Y_Phase_Output_Power_In_KW,
+          ups_data?.B_Phase_Output_Power_In_KW,
+          ups_data?.Total_Output_Power_In_KW,
+        ];
+        const POWER_FACTOR_TOTAL_OUTPUT = [
+          ups_data?.R_Phase_Output_Power_Factor,
+          ups_data?.Y_Phase_Output_Power_Factor,
+          ups_data?.B_Phase_Output_Power_Factor,
+          ups_data?.Total_Output_Power_PF,
+        ];
+
+        const BATTERY_DATA = [
+          ups_data?.Battery_Voltage,
+          ups_data?.Battery_Current,
+          ups_data?.Battery_Status,
+        ];
+
+        var rectifier_table = document.getElementById("rectifier");
+        rectifier_table
+          .getElementsByTagName("thead")[0]
+          .getElementsByTagName("tr")[0]
+          .getElementsByTagName("td")[0].innerHTML =
+          ups_data?.DC_Link_Voltage + " Volt";
+
+        var main_table = document.getElementById("main-input");
+        var tableRef = main_table.getElementsByTagName("tbody")[0];
+        var voltage_Row = tableRef.rows[0];
+        var current_Row = tableRef.rows[1];
+        var freq_Row = tableRef.rows[2];
+
+        var voltage_cells = voltage_Row.getElementsByTagName("td");
+        for (let i = 0; i < voltage_cells.length; i++) {
+          voltage_cells[i].innerHTML = MAIN_INPUT_Voltage[i] + " Volt";
+        }
+
+        var current_cells = current_Row.getElementsByTagName("td");
+        for (let i = 0; i < current_cells.length; i++) {
+          current_cells[i].innerHTML = MAIN_INPUT_CURRENT[i] + " Amp";
+        }
+
+        var freq_cells = freq_Row.getElementsByTagName("td");
+        for (let i = 0; i < freq_cells.length; i++) {
+          freq_cells[i].innerHTML = ups_data?.Mains_Input_Freq + " Hz";
+        }
+
+        var alternate_table = document.getElementById("alternate");
+        tableRef = alternate_table.getElementsByTagName("tbody")[0];
+        voltage_Row = tableRef.rows[0];
+        current_Row = tableRef.rows[1];
+        freq_Row = tableRef.rows[2];
+
+        voltage_cells = voltage_Row.getElementsByTagName("td");
+        for (let i = 0; i < voltage_cells.length; i++) {
+          voltage_cells[i].innerHTML = ALTERNET_Voltage[i] + " Volt";
+        }
+
+        current_cells = current_Row.getElementsByTagName("td");
+        for (let i = 0; i < current_cells.length; i++) {
+          current_cells[i].innerHTML = ALTERNET_CURRENT[i] + " Amp";
+        }
+
+        freq_cells = freq_Row.getElementsByTagName("td");
+        for (let i = 0; i < freq_cells.length; i++) {
+          freq_cells[i].innerHTML = ups_data?.Bypass_Freq + " Hz";
+        }
+
+        var inverter_table = document.getElementById("inverter");
+        tableRef = inverter_table.getElementsByTagName("tbody")[0];
+        voltage_Row = tableRef.rows[0];
+        current_Row = tableRef.rows[1];
+        frequency_Row = tableRef.rows[2];
+
+        voltage_cells = voltage_Row.getElementsByTagName("td");
+        for (let i = 0; i < voltage_cells.length; i++) {
+          voltage_cells[i].innerHTML = INVERTER_Voltage[i] + " Volt";
+        }
+
+        current_cells = current_Row.getElementsByTagName("td");
+        for (let i = 0; i < current_cells.length; i++) {
+          current_cells[i].innerHTML = INVERTER_CURRENT[i] + " Amp";
+        }
+
+        frequency_cells = frequency_Row.getElementsByTagName("td");
+        for (let i = 0; i < frequency_cells.length; i++) {
+          frequency_cells[i].innerHTML = INVERTER_FREQUENCY[i] + " Hz";
+        }
+
+        var output_table = document.getElementById("output");
+        tableRef = output_table.getElementsByTagName("tbody")[0];
+        voltage_Row = tableRef.rows[0];
+        current_Row = tableRef.rows[1];
+        freq_Row = tableRef.rows[2];
+
+        voltage_cells = voltage_Row.getElementsByTagName("td");
+        for (let i = 0; i < voltage_cells.length; i++) {
+          voltage_cells[i].innerHTML = OUTPUT_Voltage[i] + " Volt";
+        }
+
+        current_cells = current_Row.getElementsByTagName("td");
+        for (let i = 0; i < current_cells.length; i++) {
+          current_cells[i].innerHTML = OUTPUT_CURRENT[i] + " Amp";
+        }
+
+        freq_cells = freq_Row.getElementsByTagName("td");
+        for (let i = 0; i < freq_cells.length; i++) {
+          freq_cells[i].innerHTML = ups_data?.Output_Freq + " Hz";
+        }
+
+        var rectifier_table = document
+          .getElementById("rectifier-output-voltage-three")
+          .getElementsByTagName("thead")[0]
+          .rows[0].getElementsByTagName("td");
+        rectifier_table[0].innerHTML = ups_data?.Charger_OUTPUT_Voltage + " Volt";
+
+        document
+          .getElementById("battery")
+          .getElementsByTagName("tbody")[0]
+          .rows[1].getElementsByTagName("td")[0].innerHTML =
+          ups_data?.Battery_Voltage + " Volt";
+        document
+          .getElementById("battery")
+          .getElementsByTagName("tbody")[0]
+          .rows[2].getElementsByTagName("td")[0].innerHTML =
+          ups_data?.Battery_Current + " Amp";
+
+        if (ups_data?.Battery_Status === 0) {
+          document
+            .getElementById("battery")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "OFF";
+        } else if (ups_data?.Battery_Status === 1) {
+          document
+            .getElementById("battery")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "CHARGING";
+        } else {
+          document
+            .getElementById("battery")
+            .getElementsByTagName("tbody")[0]
+            .rows[3].getElementsByTagName("td")[0].innerHTML = "DISCHARGING";
+        }
+
+        var load_table = document.getElementById("totalload-three");
+        tableRef = load_table.getElementsByTagName("tbody")[0];
+        var kva_Row = tableRef.rows[0];
+        var kw_Row = tableRef.rows[1];
+        var pf_Row = tableRef.rows[2];
+
+        var kva_cells = kva_Row.getElementsByTagName("td");
+        for (let i = 0; i < kva_cells.length; i++) {
+          kva_cells[i].innerHTML = LOAD_IN_KVA_TOTAL_OUTPUT[i] + " KVA";
+        }
+
+        var kw_cells = kw_Row.getElementsByTagName("td");
+        for (let i = 0; i < kw_cells.length; i++) {
+          kw_cells[i].innerHTML = LOAD_IN_KW_TOTAL_OUTPUT[i] + " KW";
+        }
+
+        var pf_cells = pf_Row.getElementsByTagName("td");
+        for (let i = 0; i < pf_cells.length; i++) {
+          pf_cells[i].innerHTML = POWER_FACTOR_TOTAL_OUTPUT[i] + " PF";
+        }
+
+        var load_table = document.getElementById("upsload-three");
+        tableRef = load_table.getElementsByTagName("tbody")[0];
+        var kva_Row = tableRef.rows[0];
+        var kw_Row = tableRef.rows[1];
+        var pf_Row = tableRef.rows[2];
+
+        var kva_cells = kva_Row.getElementsByTagName("td");
+        for (let i = 0; i < kva_cells.length; i++) {
+          kva_cells[i].innerHTML = LOAD_IN_KVA_UPS[i] + " KVA";
+        }
+
+        var kw_cells = kw_Row.getElementsByTagName("td");
+        for (let i = 0; i < kw_cells.length; i++) {
+          kw_cells[i].innerHTML = LOAD_IN_KW_UPS[i] + " KW";
+        }
+
+        var pf_cells = pf_Row.getElementsByTagName("td");
+        for (let i = 0; i < pf_cells.length; i++) {
+          pf_cells[i].innerHTML = POWER_FACTOR_UPS[i] + " PF";
+        }
+      }
+    };
+  }
+
+  function tabs() {
+    isFirstTimeLoad = true;
+    console.log("tab called");
+
+    let tagName = getActiveTagName();
+    changeUrlParams(tagName);
+  }
+
+  function getActiveTagName() {
+    let hashTag = new URL(document.URL).hash;
+
+    if (!hashTag || hashTag == "#status") tagName = "status";
+    else if (hashTag == "#metering") tagName = "metering";
+    else if (hashTag == "#alarmlog") tagName = "alarmlog";
+    else if (hashTag == "#datalog") tagName = "datalog";
+
+    return tagName;
+  }
+
+  function changeUrlParams(tabName) {
+    console.log(tabName)
+    makeTabActive(tabName);
+
+    if (deviceId) {
+      if (tabName === "alarmlog") {
+        serialNoAlarm = 0;
+
+        var obj = {};
+        obj.msg_id = 2;
+        obj.dev_id = deviceId;
+        var jsonString = JSON.stringify(obj);
+
+        // Get the table body element
+        const alarmTableBody = document.getElementById("alarmTableBody");
+        // Clear the existing table data
+        alarmTableBody.innerHTML = "";
+
+        document.getElementsByClassName("overlay")[0].classList.remove("d-none"); //loading start
+
+        ws.send(jsonString);
+
+      } else if (tabName === "datalog") {
+        serialNoDataLog = 0;
+        var obj = {};
+        obj.msg_id = 3;
+        obj.dev_id = deviceId;
+        var jsonString = JSON.stringify(obj);
+
+        // Get the table body element
+        const dataTableBody = document.getElementById("dataTableBody");
+
+        // Clear the existing table data
+        dataTableBody.innerHTML = "";
+
+        //loading start
+        document.getElementsByClassName("overlay")[0].classList.remove("d-none");
+        ws.send(jsonString);
+
+      }
+    }
+  }
+
+  /********************** Date & Time --- start ****************/
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  var curr_date = dd + "/" + mm + "/" + yyyy;
+
+  setInterval(function () {
+    const curr_time = new Date()
+      .toTimeString()
+      .replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+    document.getElementById("ups_time").innerHTML = curr_time;
+  }, 1000);
+  document.getElementById("ups_date").innerHTML = curr_date;
+  /********************** Date & Time --- end ****************/
+
+  var hashTagCss;
+
+  function makeTabActive(tagNam) {
+    // this function is to remain on same page when refresh
+
+    (hashTagCss = "show"), "active";
+
+    document.getElementById("nav-status-tab").classList.remove("active");
+    document.getElementById("nav-metering-tab").classList.remove("active");
+    document.getElementById("nav-alarmlog-tab").classList.remove("active");
+    document.getElementById("nav-datalog-tab").classList.remove("active");
+
+    document.getElementById("status").classList.remove("show", "active");
+    document.getElementById("metering").classList.remove("show", "active");
+    document.getElementById("alarmlog").classList.remove("show", "active");
+    document.getElementById("datalog").classList.remove("show", "active");
+
+    document.getElementById("nav-" + tagNam + "-tab").classList.add("active");
+    document.getElementById(tagNam).classList.add("show", "active");
+  }
+
+  // $("a[href='#metering']").click(function () {
+  //   $("html, body").animate({ scrollTop: 0 }, 800);
+  //   // return false;
+  // });
+
+  document.querySelector('a[href="#metering"]').addEventListener('click', function () {
+    // Smooth scroll to the top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    // Prevent the default anchor behavior
+    // If you want to prevent the default behavior of the anchor (e.g., navigating to the top), uncomment the next line
+    event.preventDefault();
+  });
+
+
+  document.querySelector('a[href="#alarmlog"]').addEventListener('click', function () {
+    // Smooth scroll to the top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    // Prevent the default anchor behavior
+    // If you want to prevent the default behavior of the anchor (e.g., navigating to the top), uncomment the next line
+    event.preventDefault();
+  });
+
+  document.querySelector('a[href="#datalog"]').addEventListener('click', function () {
+    // Smooth scroll to the top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    // Prevent the default anchor behavior
+    // If you want to prevent the default behavior of the anchor (e.g., navigating to the top), uncomment the next line
+    event.preventDefault();
+  });
+
+  /*********************** app.js  ****************************/
+
+
+  /*********************** ups.js  ****************************/
+  const convertToDecimal = (data) => {
+    return parseInt(data, 16);
+  };
+
+  const singlePhaseValues = async (singlePhaseVars) => {
+    let DC_Link_Voltage = singlePhaseVars.DC_Lk_Vol;
+    let R_Phase_Bypass_Voltage = singlePhaseVars.R_Ph_By_Vol;
+    let R_Phase_Alternate_Current = singlePhaseVars.R_Ph_Alt_Cur;
+    let Bypass_Freq = singlePhaseVars.By_Freq;
+    let R_Phase_Inverter_Voltage = singlePhaseVars.R_Ph_Invt_Vol;
+    let R_Phase_Inverter_Current = singlePhaseVars.R_Ph_Invt_Cur;
+    let Inverter_Frequency = singlePhaseVars.Inverter_Freq;
+    let Battery_Voltage = singlePhaseVars.Bat_Vol;
+    let Battery_Current = singlePhaseVars.Bat_Cur;
+    let Battery_Status = singlePhaseVars.Bat_Stat;
+    let Total_UPS_Power_In_KVA = singlePhaseVars.Tot_UPS_KVAp;
+    let Total_UPS_Power_In_KW = singlePhaseVars.Tot_UPS_KWp;
+    let Total_UPS_Power_PF = singlePhaseVars.Tot_UPS_pf;
+    let R_Y_Phase_Input_Voltage = singlePhaseVars["RY_Ph_I/P_Vol"];
+    let R_Phase_Input_Current = singlePhaseVars["R_Ph_I/P_Cur"];
+    let Y_B_Phase_Input_Voltage = singlePhaseVars["YB_Ph_I/P_Vol"];
+    let Y_Phase_Input_Current = singlePhaseVars["Y_Ph_I/P_Cur"];
+    let B_R_Phase_Input_Voltage = singlePhaseVars["BR_Ph_I/P_Vol"];
+    let B_Phase_Input_Current = singlePhaseVars["B_Ph_I/P_Cur"];
+    let Mains_Input_Freq = singlePhaseVars["Mains_I/P_Freq"];
+    let Charger_OUTPUT_Voltage = singlePhaseVars["Charger_O/P_Vol"];
+    let R_Phase_Output_Voltage = singlePhaseVars["R_Ph_O/P_Vol"];
+    let R_Phase_Output_Current = singlePhaseVars["R_Ph_O/P_Cur"];
+    let Output_Freq = singlePhaseVars["O/P_Freq"];
+    let Total_Output_Power_In_KVA = singlePhaseVars["Tot_O/P_KVAp"];
+    let Total_Output_Power_In_KW = singlePhaseVars["Tot_O/P_KWp"];
+    let Total_Output_Power_PF = singlePhaseVars["Tot_O/P_pf"];
+
+    let singlePhaseJson = {
+      R_Y_Phase_Input_Voltage: R_Y_Phase_Input_Voltage,
+      R_Phase_Input_Current: R_Phase_Input_Current,
+      Y_B_Phase_Input_Voltage: Y_B_Phase_Input_Voltage,
+      Y_Phase_Input_Current: Y_Phase_Input_Current,
+      B_R_Phase_Input_Voltage: B_R_Phase_Input_Voltage,
+      B_Phase_Input_Current: B_Phase_Input_Current,
+      Mains_Input_Freq: Mains_Input_Freq,
+      DC_Link_Voltage: DC_Link_Voltage,
+      Charger_OUTPUT_Voltage: Charger_OUTPUT_Voltage,
+      R_Phase_Output_Voltage: R_Phase_Output_Voltage,
+      R_Phase_Output_Current: R_Phase_Output_Current,
+      Output_Freq: Output_Freq,
+      R_Phase_Bypass_Voltage: R_Phase_Bypass_Voltage,
+      R_Phase_Alternate_Current: R_Phase_Alternate_Current,
+      Bypass_Freq: Bypass_Freq,
+      R_Phase_Inverter_Voltage: R_Phase_Inverter_Voltage,
+      R_Phase_Inverter_Current: R_Phase_Inverter_Current,
+      Inverter_Frequency: Inverter_Frequency,
+      Battery_Voltage: Battery_Voltage,
+      Battery_Current: Battery_Current,
+      Battery_Status: Battery_Status,
+
+      Total_Output_Power_In_KVA: Total_Output_Power_In_KVA,
+      Total_Output_Power_In_KW: Total_Output_Power_In_KW,
+      Total_Output_Power_PF: Total_Output_Power_PF,
+
+      Total_UPS_Power_In_KVA: Total_UPS_Power_In_KVA,
+      Total_UPS_Power_In_KW: Total_UPS_Power_In_KW,
+      Total_UPS_Power_PF: Total_UPS_Power_PF,
+
+      DATA_TYPE: 1,
+      DATA_NAME: "metering",
+    };
+
+    return singlePhaseJson;
+  };
+
+  const threePhasevalues = async (threePhaseVars) => {
+    let DC_Link_Voltage = threePhaseVars.DC_Lk_Vol;
+    let R_Phase_Bypass_Voltage = threePhaseVars.R_Ph_By_Vol;
+    let Y_Phase_Bypass_Voltage = threePhaseVars.Y_Ph_By_Vol;
+    let B_Phase_Bypass_Voltage = threePhaseVars.B_Ph_By_Vol;
+    let R_Phase_Alternate_Current = threePhaseVars.R_Ph_Alt_Cur;
+    let Y_Phase_Alternate_Current = threePhaseVars.Y_Ph_Alt_Cur;
+    let B_Phase_Alternate_Current = threePhaseVars.B_Ph_Alt_Cur;
+    let Bypass_Freq = threePhaseVars.By_Freq;
+
+    let R_Phase_Inverter_Voltage = threePhaseVars.R_Ph_Invt_Vol;
+    let Y_Phase_Inverter_Voltage = threePhaseVars.Y_Ph_Invt_Vol;
+    let B_Phase_Inverter_Voltage = threePhaseVars.B_Ph_Invt_Vol;
+    let R_Phase_Inverter_Current = threePhaseVars.R_Ph_Invt_Cur;
+    let Y_Phase_Inverter_Current = threePhaseVars.Y_Ph_Invt_Cur;
+    let B_Phase_Inverter_Current = threePhaseVars.B_Ph_Invt_Cur;
+    let Inverter_Frequency = threePhaseVars.Inverter_Freq;
+
+    let Battery_Voltage = threePhaseVars.Bat_Vol;
+    let Battery_Current = threePhaseVars.Bat_Cur;
+    let Battery_Status = threePhaseVars.Bat_Stat;
+
+    let R_Phase_UPS_Power_In_KVA = threePhaseVars.R_Ph_UPS_KVAp;
+    let R_Phase_UPS_Power_In_KW = threePhaseVars.R_Ph_UPS_KWp;
+    let R_Phase_UPS_Power_Factor = threePhaseVars.R_Ph_UPS_pf;
+    let Y_Phase_UPS_Power_In_KVA = threePhaseVars.Y_Ph_UPS_KVAp;
+    let Y_Phase_UPS_Power_In_KW = threePhaseVars.Y_Ph_UPS_KWp;
+    let Y_Phase_UPS_Power_Factor = threePhaseVars.Y_Ph_UPS_pf;
+    let B_Phase_UPS_Power_In_KVA = threePhaseVars.B_Ph_UPS_KVAp;
+    let B_Phase_UPS_Power_In_KW = threePhaseVars.B_Ph_UPS_KWp;
+    let B_Phase_UPS_Power_Factor = threePhaseVars.B_Ph_UPS_pf;
+    let Total_UPS_Power_In_KVA = threePhaseVars.Tot_UPS_KVAp;
+    let Total_UPS_Power_In_KW = threePhaseVars.Tot_UPS_KWp;
+    let Total_UPS_Power_PF = threePhaseVars.Tot_UPS_pf;
+
+    let R_Y_Phase_Input_Voltage = threePhaseVars["RY_Ph_I/P_Vol"];
+    let R_Phase_Input_Current = threePhaseVars["R_Ph_I/P_Cur"];
+    let Y_B_Phase_Input_Voltage = threePhaseVars["YB_Ph_I/P_Vol"];
+    let Y_Phase_Input_Current = threePhaseVars["Y_Ph_I/P_Cur"];
+    let B_R_Phase_Input_Voltage = threePhaseVars["BR_Ph_I/P_Vol"];
+    let B_Phase_Input_Current = threePhaseVars["B_Ph_I/P_Cur"];
+    let Mains_Input_Freq = threePhaseVars["Mains_I/P_Freq"];
+    let Charger_OUTPUT_Voltage = threePhaseVars["Charger_O/P_Vol"];
+    let R_Phase_Output_Voltage = threePhaseVars["R_Ph_O/P_Vol"];
+    let R_Phase_Output_Current = threePhaseVars["R_Ph_O/P_Cur"];
+    let Output_Freq = threePhaseVars["O/P_Freq"];
+    let Total_Output_Power_In_KVA = threePhaseVars["Tot_O/P_KVAp"];
+    let Total_Output_Power_In_KW = threePhaseVars["Tot_O/P_KWp"];
+    let Total_Output_Power_PF = threePhaseVars["Tot_O/P_pf"];
+    let Y_Phase_Output_Voltage = threePhaseVars["Y_Ph_O/P_Vol"];
+    let B_Phase_Output_Voltage = threePhaseVars["B_Ph_O/P_Vol"];
+    let Y_Phase_Output_Current = threePhaseVars["Y_Ph_O/P_Cur"];
+    let B_Phase_Output_Current = threePhaseVars["B_Ph_O/P_Cur"];
+    let R_Phase_Output_Power_In_KVA = threePhaseVars["R_Ph_O/P_KVAp"];
+    let R_Phase_Output_Power_In_KW = threePhaseVars["R_Ph_O/P_KWp"];
+    let R_Phase_Output_Power_Factor = threePhaseVars["R_Ph_O/P_pf"];
+    let Y_Phase_Output_Power_In_KVA = threePhaseVars["Y_Ph_O/P_KVAp"];
+    let Y_Phase_Output_Power_In_KW = threePhaseVars["Y_Ph_O/P_KWp"];
+    let Y_Phase_Output_Power_Factor = threePhaseVars["Y_Ph_O/P_pf"];
+    let B_Phase_Output_Power_In_KVA = threePhaseVars["B_Ph_O/P_KVAp"];
+    let B_Phase_Output_Power_In_KW = threePhaseVars["B_Ph_O/P_KWp"];
+    let B_Phase_Output_Power_Factor = threePhaseVars["B_Ph_O/P_pf"];
+
+    let threePhaseJson = {
+      R_Y_Phase_Input_Voltage: R_Y_Phase_Input_Voltage,
+      R_Phase_Input_Current: R_Phase_Input_Current,
+      Y_B_Phase_Input_Voltage: Y_B_Phase_Input_Voltage,
+      Y_Phase_Input_Current: Y_Phase_Input_Current,
+      B_R_Phase_Input_Voltage: B_R_Phase_Input_Voltage,
+      B_Phase_Input_Current: B_Phase_Input_Current,
+      Mains_Input_Freq: Mains_Input_Freq,
+      DC_Link_Voltage: DC_Link_Voltage,
+      Charger_OUTPUT_Voltage: Charger_OUTPUT_Voltage,
+      R_Phase_Output_Voltage: R_Phase_Output_Voltage,
+      Y_Phase_Output_Voltage: Y_Phase_Output_Voltage,
+      B_Phase_Output_Voltage: B_Phase_Output_Voltage,
+      R_Phase_Output_Current: R_Phase_Output_Current,
+      Y_Phase_Output_Current: Y_Phase_Output_Current,
+      B_Phase_Output_Current: B_Phase_Output_Current,
+      Output_Freq: Output_Freq,
+      R_Phase_Bypass_Voltage: R_Phase_Bypass_Voltage,
+      Y_Phase_Bypass_Voltage: Y_Phase_Bypass_Voltage,
+      B_Phase_Bypass_Voltage: B_Phase_Bypass_Voltage,
+      R_Phase_Alternate_Current: R_Phase_Alternate_Current,
+      Y_Phase_Alternate_Current: Y_Phase_Alternate_Current,
+      B_Phase_Alternate_Current: B_Phase_Alternate_Current,
+      Bypass_Freq: Bypass_Freq,
+      R_Phase_Inverter_Voltage: R_Phase_Inverter_Voltage,
+      Y_Phase_Inverter_Voltage: Y_Phase_Inverter_Voltage,
+      B_Phase_Inverter_Voltage: B_Phase_Inverter_Voltage,
+      R_Phase_Inverter_Current: R_Phase_Inverter_Current,
+      Y_Phase_Inverter_Current: Y_Phase_Inverter_Current,
+      B_Phase_Inverter_Current: B_Phase_Inverter_Current,
+      Inverter_Frequency: Inverter_Frequency,
+      Battery_Voltage: Battery_Voltage,
+      Battery_Current: Battery_Current,
+      Battery_Status: Battery_Status,
+
+      R_Phase_Output_Power_In_KVA: R_Phase_Output_Power_In_KVA,
+      R_Phase_Output_Power_In_KW: R_Phase_Output_Power_In_KW,
+      R_Phase_Output_Power_Factor: R_Phase_Output_Power_Factor,
+      Y_Phase_Output_Power_In_KVA: Y_Phase_Output_Power_In_KVA,
+      Y_Phase_Output_Power_In_KW: Y_Phase_Output_Power_In_KW,
+      Y_Phase_Output_Power_Factor: Y_Phase_Output_Power_Factor,
+      B_Phase_Output_Power_In_KVA: B_Phase_Output_Power_In_KVA,
+      B_Phase_Output_Power_In_KW: B_Phase_Output_Power_In_KW,
+      B_Phase_Output_Power_Factor: B_Phase_Output_Power_Factor,
+
+      Total_Output_Power_In_KVA: Total_Output_Power_In_KVA,
+      Total_Output_Power_In_KW: Total_Output_Power_In_KW,
+      Total_Output_Power_PF: Total_Output_Power_PF,
+
+      R_Phase_UPS_Power_In_KVA: R_Phase_UPS_Power_In_KVA,
+      R_Phase_UPS_Power_In_KW: R_Phase_UPS_Power_In_KW,
+      R_Phase_UPS_Power_Factor: R_Phase_UPS_Power_Factor,
+      Y_Phase_UPS_Power_In_KVA: Y_Phase_UPS_Power_In_KVA,
+      Y_Phase_UPS_Power_In_KW: Y_Phase_UPS_Power_In_KW,
+      Y_Phase_UPS_Power_Factor: Y_Phase_UPS_Power_Factor,
+      B_Phase_UPS_Power_In_KVA: B_Phase_UPS_Power_In_KVA,
+      B_Phase_UPS_Power_In_KW: B_Phase_UPS_Power_In_KW,
+      B_Phase_UPS_Power_Factor: B_Phase_UPS_Power_Factor,
+
+      Total_UPS_Power_In_KVA: Total_UPS_Power_In_KVA,
+      Total_UPS_Power_In_KW: Total_UPS_Power_In_KW,
+      Total_UPS_Power_PF: Total_UPS_Power_PF,
+
+      DATA_TYPE: 3,
+      DATA_NAME: "metering",
+    };
+
+    return threePhaseJson;
+  };
+
+  const UPS_MSG = (payload) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let parsedPayload;
+        let json = {};
+        let id = {};
+        let jsonValues = {};
+        let jsonValuesStatus = {};
+        let jsonValuesDataLog = {};
+        let jsonValuesConfiguration = {};
+
+        if (isJson(payload)) {
+          parsedPayload = JSON.parse(payload);
+
+          id = {
+            dev_id: parsedPayload.dev_id,
+          };
+          if (parsedPayload.ph_type === 1) {
+            // single phase
+            if (parsedPayload.msg_id === 1) {
+              jsonValues = await singlePhaseValues(parsedPayload.properties);
+            }
+            if (parsedPayload.msg_id === 7) {
+              // jsonValues = await singlePhaseStatusValues(parsedPayload.properties);
+              jsonValuesStatus = await mapAlarmData(
+                parsedPayload.properties,
+                parsedPayload.ph_type
+              );
+            }
+          } else if (parsedPayload.ph_type === 0) {
+            // three phase
+            if (parsedPayload.msg_id === 1) {
+              jsonValues = await threePhasevalues(parsedPayload.properties);
+            }
+            if (parsedPayload.msg_id === 7) {
+              jsonValuesStatus = await mapAlarmData(
+                parsedPayload.properties,
+                parsedPayload.ph_type
+              );
+            }
+          }
+
+          if (parsedPayload.msg_id === 3) {
+            jsonValuesDataLog = {
+              dataLog: parsedPayload.properties,
+              DATA_NAME: "datalog",
+            };
+          }
+
+          if (parsedPayload.msg_id === 2) {
+            jsonValuesDataLog = {
+              alarmLog: parsedPayload.properties,
+              DATA_NAME: "alarmlog",
+            };
+          }
+
+          if (parsedPayload.msg_id === 8) {
+            jsonValuesConfiguration = {
+              configData: parsedPayload.properties,
+              DATA_NAME: "configuration",
+            };
+          }
+
+          json = {
+            ...id,
+            ...jsonValues,
+            ...jsonValuesStatus,
+            ...jsonValuesDataLog,
+            ...jsonValuesConfiguration,
+          };
+        }
+
+        if (!isJson(payload)) {
+          json = { payload };
+        }
+        // return json;
+        resolve(json);
+      } catch (error) {
+        reject(error.message);
+      }
+    });
+  };
+
+  const isJson = (str) => {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      //JSON is not okay
+      return false;
+    }
+    return true;
+  };
+
+  const mapAlarmData = async (alarmData, ph_type) => {
+    const [
+      UI_Alarm,
+      Rectifier_Alarm1,
+      Rectifier_Alarm2,
+      Inverter_Alarm1,
+      Inverter_Alarm2,
+      Battery_Alarm1,
+      Inverter_Alarm3,
+      Input_Alarm_0,
+      Can_Alarm1,
+      Rectifier_Status1,
+      Inverter_Status1,
+      Battery_Status1,
+    ] = await Promise.all([
+      createBITAlarmJSON(alarmData.UI_Alarm),
+      createBITAlarmJSON(alarmData.Rectifier_Alarm1),
+      createBITAlarmJSON(alarmData.Rectifier_Alarm2),
+      createBITAlarmJSON(alarmData.Inverter_Alarm1),
+      createBITAlarmJSON(alarmData.Inverter_Alarm2),
+      createBITAlarmJSON(alarmData.Battery_Alarm1),
+      createBITAlarmJSON(alarmData.Inverter_Alarm3),
+      createBITAlarmJSON(alarmData.Input_Alarm_0),
+      createBITAlarmJSON(alarmData.Can_Alarm1), //---
+      createBITAlarmJSON(alarmData.Rectifier_Status1),
+      createBITAlarmJSON(alarmData.Inverter_Status1),
+      createBITAlarmJSON(alarmData.Battery_Status1),
+    ]);
+
+    let allAlarmBitJson = {
+      UI_Alarm,
+      Rectifier_Alarm1,
+      Rectifier_Alarm2,
+      Inverter_Alarm1,
+      Inverter_Alarm2,
+      Battery_Alarm1,
+      Inverter_Alarm3,
+      Input_Alarm_0,
+      Can_Alarm1,
+      Rectifier_Status1,
+      Inverter_Status1,
+      Battery_Status1,
+      DATA_TYPE: ph_type === 1 ? 1 : 3,
+      DATA_NAME: "status",
+    };
+
+    return allAlarmBitJson;
+  };
+
+  const createBITAlarmJSON = async (UIAlarm) => {
+    let mobusBit = {};
+    const modbus = convertToBinary(UIAlarm);
+    let modbusBITRepr = modbus.toString().padStart(16, "0");
+    for (let index = 15; index >= 0; index--) {
+      mobusBit[`BIT_${15 - index}`] = Number(modbusBITRepr[index]);
+    }
+    return mobusBit;
+  };
+
+  function convertToBinary(x) {
+    let bin = 0;
+    let rem,
+      i = 1,
+      step = 1;
+    while (x != 0) {
+      rem = x % 2;
+      x = parseInt(x / 2);
+      bin = bin + rem * i;
+      i = i * 10;
+    }
+    return bin;
+  }
+
+  /*********************** ups.js  ****************************/
+
+
+  // })
+</script>
